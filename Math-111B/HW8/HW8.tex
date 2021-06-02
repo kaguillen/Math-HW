@@ -1,0 +1,145 @@
+\documentclass[12pt]{article}
+%------------------------------- BEGIN PREAMBLE
+% packages used
+\usepackage{amssymb,amsmath,amsfonts,mathrsfs,pgffor,marvosym,amsthm, mathtools}
+% macros
+\DeclarePairedDelimiter\set\{\}
+\newcommand      {\N}         {{\mathbb N}}
+\newcommand      {\Z}         {{\mathbb Z}}
+\newcommand      {\Q}         {{\mathbb Q}}
+\newcommand      {\R}         {{\mathbb R}}
+\newcommand      {\C}         {{\mathbb C}}
+\newcommand      {\vb}        {\mathbf}
+\newcommand      {\PP}        {{\mathscr P}}
+
+\newcommand {\lines}[1] {\foreach \n in {1,...,#1}{ \vspace{9mm} \hrule height 
+0.2pt  }\vspace{2mm} }
+% adjustment of page dimensions
+\textwidth=7in
+\textheight=9.8in
+\topmargin= -0.8in
+\oddsidemargin= -0.3in
+\evensidemargin= 0.0in
+\setlength{\parskip}{1ex plus0.5ex minus0.2ex}
+\setlength{\jot}{10pt}
+%-------------------------------- END PREAMBLE
+\begin{document}
+\begin{flushright}
+    Name: Kevin Guillen \\*
+    Student ID: 1747199
+\end{flushright}
+\begin{center}
+    {\bf Algebra II - Spring - HW8 - \today}
+\end{center}
+
+\noindent Mandatory:\\
+\\
+%===========================================================PROBLEM 1==========================================================================
+(1) If $n,m\in\N$, let us say that $n\leq m$ if and only if $n$ divides $m$. Show that the relation $\leq$ is a partial order on $\N$. Is the set $\{2,3,4,5\}$ a chain?\\
+\begin{proof}
+	We need to show that this relation is the reflexive, antisymetric, and transitive in order to be a partial order on $\N$.
+
+	Reflexive: Let $n \in \N$. We know $n\leq n$ is true since $n\mid n \implies nk = n$, where $k$ will just be 1 and we know 1 is in the set of natural numbers.
+
+	Antisymetric: Let $n,m\in \N$. We konw that if $n\leq m$ that implies that $n|m$ which means there exists $d\in \N$ such that $nd = m$. Now if $m \leq n$ that implies $m\mid n$ which means there exists $b\in N$ such that $mb = n$. Now plugging in the first expresion into the second one for $m$ we get,
+	\begin{align*}
+		mb &= n \\
+		ndb &= n
+	\end{align*}
+	This statement can only hold if both $d$ and $b$ are equal to 1. Which implies that $m = n$. Thus this relation is antisymetric. 
+
+	Transitivity: Let $x,y,z \in \N$. Where $x\leq y$ and $y\leq$. Like before that would imply $xd = y$ and $yb = z$. So plugging in the first equallity into the secoond one for $y$ we get,
+	\begin{align*}
+		yb &=z \\
+		xdb &= z
+	\end{align*}
+	We know that $db = c$ where $c$ is some natural number since $d,b$ were natural numbers and the natural numbers are closed under multiplication, so we get $xc = z \implies x \leq z$. Thus this relation is transitive.
+
+	Therefore this realtion is a partial order on $\N$.
+\end{proof}
+
+The given set is not a chain. One reason is imediately we see that $2\leq 3$ doesn't hold based on our given relation and there actually is no relation between 3 and any of the other given elements. Meaing it doesn't satisfy the required conditions and thus not a chain. 
+
+\newpage
+%===========================================================PROBLEM 2==========================================================================
+(2) Let $R$ be a commutative ring with $1\neq 0$. The \textit{Jacobson radical} of $R$, denoted $J(R)$, is defined as the intersection of all maximal ideals of $R$. In symbols:
+\begin{equation*}
+	J(R):=\bigcap_{M=\text{maximal ideal of }R} M.
+\end{equation*}
+Prove that $J(R)$ is a proper ideal of $R$, and determine $J(\Z)$.
+\begin{proof}
+	I beleive in a previous homeowork we proved that the intersection of ideals is an ideal, but I'll show it again with the follwoing. 
+
+	Obvisouly this is non empty since in class we learned that for this type of ring there always exists a maximal ideal. 
+
+	Let $a,b \in J(R)$. We want to show that $a-b \in J(R)$. We know though that since $a,b\in J(R)$ are in all maximal ideals of $R$ then by definition of them being ideals we know that $a-b \in M$ for all $M$. Therefore it is also in $J(R)$
+
+	Let $r \in R$ and $a\in J(R)$ we want to show $ra \in J(R)$, but like the reasoning before since $a$ is in every maximal ideal of $R$ then by defintion of them being ideals $ra \in M$ for all $M$ and thus $ra\in J(R)$ 
+
+	Thus this form an ideal. The reaons this is a proper ideal is that by definition maximal ideals have to be proper, and since none of these ideals contain the whole ring it's the intersection can never create the whole ring thus this ideal is proper as well. 
+\end{proof}
+
+$J(\Z)$. We know that the all maximal ideals of $\Z$ have the form $p\Z$ where $p$ is prime. Since for each $p$ the set $p\Z$ is just all multiples of $p$. So for an element to exists in every maximal ideal of $\Z$ it would mean that it is divisble by all possible primes. Since the number of primes is infinte the only integer that can satisfy that requirement would be $0$. Thus $J(\Z) = \set{0}$
+
+
+%===========================================================PROBLEM 3==========================================================================
+(3) Recall that the \textit{Gaussian integers} $\Z[i]$ is the following subring of $\C$:
+\begin{equation*}
+	\Z[i]:=\{a+bi:a,b\in\Z\}.
+\end{equation*}
+Use the fact that $(1+i)(1-i)=2$ to show that the ideal of $\Z[i]$ generated by 2 is not a prime ideal.
+\begin{proof}
+	Well we know that the ideal generated by 2 is the following,
+	\begin{align}
+		I = (2) = \set{2r : r\in Z[i]} = \set{2a+2bi: a,b\in \Z}
+	\end{align}
+
+	Whihc is just the set of elements with even coeffiecents. Which means that $(1+i),(1-i)\notin I$. Applying the fact given though, we see that their product equals 2, and 2 is indeed in the set. Which means this fails to satisfy the requirements to be a prime ideal, since neither of the 2 elements we multiplied are in the set, but their product produced an element in the set. 
+\end{proof}
+\newpage
+%===========================================================PROBLEM 4==========================================================================
+(4) Let $A$ and $B$ be commutative rings both with 1 and let $f:A\to B$ be a unital ring homomorphism. If $P$ is a prime ideal of $B$, prove that
+\begin{equation*}
+	f^{-1}(P)=\{a\in A:f(a)\in P\}
+\end{equation*}
+is a prime ideal of $A$.
+\begin{proof}
+	First we know this is non empty since from clas we know every ideal contains $0$ and thus $f^{-1}(P)$ will contain 0 
+
+	Let's take $x,y\in f^{-1}(P)$ by definition this means that $f(x),f(y)\in P$. We know $P$ to be an ideal, so by defintion we know $f(x)+f(y)\in P$. Thanks to the ring homomorphism we also know that $f(x)+ f(y) = f(x+y)$ which means $x+y \in f^{-1}(P)$.
+
+	Let $x\in f^{-1}(P)$ and $a \in A$. We know that $f(x)\in P$ and because $P$ is an ideal, we have it that $f(a)\cdot f(x)\in P$. Like before thanks to the ring homomoprhism we know $f(a)f(x) = f(ax)$ which means $ax \in f^{-1}(P)$. With these two conditions we just proved $f^{-1}(P)$ is an ideal. 
+
+	Now take $x\cdot y\in f^{-1}(P)$ we know $f(xy)\in P$, and by the ring homomorphism we then know $f(x)f(y) \in P$. Thus by definition either $f(x)$ or $f(y)$ are in $P$. This gives us that either $x$ or $y$ are in $f^{-1}(P).$
+
+	Therefore $f^{-1}(P)$ is a prime ideal. 
+\end{proof}
+
+
+Optional:\\
+\\
+(5) Give an example to show that the result of problem (4) is not true if ``prime ideal'' is replaced with ``maximal ideal.''\\
+\\
+(6) Let $p\in\N$ be a prime. Consider the following subset of the rationals:
+\begin{equation*}
+	\Z_{(p)}:=\{\frac{a}{b}\in\Q:\text{gcd}(a,b)=1\text{ and }p\nmid b\}.
+\end{equation*}
+In words, $\Z_{(p)}$ is the set of rational numbers $x\in\Q$ such that when $x$ is written in lowest terms, say $x=\frac{a}{b}$, then $p$ does not divide $b$.\\
+(a) Show that $\Z_{(p)}$ is a subring of $\Q$. (The ring $\Z_{(p)}$ is called the \textit{localization of }$\Z$\textit{ at }$(p)$.)\\
+(b) Use the usual bar notation for the elements of $\Z/p\Z$; that is, write $\overline{k}=k+p\Z$ for each $k\in\Z$. Define a map
+\begin{align*}
+	\phi:\Z_{(p)}	&\to\Z/p\Z\\
+	x		&\mapsto \overline{a}\cdot(\overline{b})^{-1}\text{ if }x=\frac{a}{b}.
+\end{align*}
+Prove that $\phi$ is a well-defined, unital, and surjective ring homomorphism. Deduce that
+\begin{equation*}
+	p\Z_{(p)}=\{\frac{a}{b}\in\Q:\text{gcd}(a,b)=1\text{, }p\nmid b\text{, and }p\mid a\}
+\end{equation*}
+is a maximal ideal of $\Z_{(p)}$.\\
+(c) Show that $p\Z_{(p)}$ is the \textit{unique} maximal ideal of $\Z_{(p)}$.
+
+\end{document}
+
+
+
+
