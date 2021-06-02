@@ -41,7 +41,7 @@
 
 	Reflexive: Let $n \in \N$. We know $n\leq n$ is true since $n\mid n \implies nk = n$, where $k$ will just be 1 and we know 1 is in the set of natural numbers.
 
-	Antisymetric: Let $n,m\in \N$. We konw that if $n\leq m$ that implies that $n|m$ which means there exists $d\in \N$ such that $nd = m$. Now if $m \leq n$ that implies $m\mid n$ which means there exists $b\in N$ such that $mb = n$. Now plugging in the first expresion into the second one for $m$ we get,
+	Antisymetric: Let $n,m\in \N$. We know that if $n\leq m$ that implies that $n|m$ which means there exists $d\in \N$ such that $nd = m$. Now if $m \leq n$ that implies $m\mid n$ which means there exists $b\in N$ such that $mb = n$. Now plugging in the first expresion into the second one for $m$ we get,
 	\begin{align*}
 		mb &= n \\
 		ndb &= n
@@ -76,7 +76,7 @@ Prove that $J(R)$ is a proper ideal of $R$, and determine $J(\Z)$.
 
 	Let $r \in R$ and $a\in J(R)$ we want to show $ra \in J(R)$, but like the reasoning before since $a$ is in every maximal ideal of $R$ then by defintion of them being ideals $ra \in M$ for all $M$ and thus $ra\in J(R)$ 
 
-	Thus this form an ideal. The reaons this is a proper ideal is that by definition maximal ideals have to be proper, and since none of these ideals contain the whole ring it's the intersection can never create the whole ring thus this ideal is proper as well. 
+	Thus this form an ideal. The reasons this is a proper ideal is that by definition maximal ideals have to be proper, and since none of these ideals contain the whole ring it's the intersection can never create the whole ring thus this ideal is proper as well. 
 \end{proof}
 
 $J(\Z)$. We know that the all maximal ideals of $\Z$ have the form $p\Z$ where $p$ is prime. Since for each $p$ the set $p\Z$ is just all multiples of $p$. So for an element to exists in every maximal ideal of $\Z$ it would mean that it is divisble by all possible primes. Since the number of primes is infinte the only integer that can satisfy that requirement would be $0$. Thus $J(\Z) = \set{0}$
@@ -115,28 +115,6 @@ is a prime ideal of $A$.
 	Therefore $f^{-1}(P)$ is a prime ideal. 
 \end{proof}
 
-
-Optional:\\
-\\
-(5) Give an example to show that the result of problem (4) is not true if ``prime ideal'' is replaced with ``maximal ideal.''\\
-\\
-(6) Let $p\in\N$ be a prime. Consider the following subset of the rationals:
-\begin{equation*}
-	\Z_{(p)}:=\{\frac{a}{b}\in\Q:\text{gcd}(a,b)=1\text{ and }p\nmid b\}.
-\end{equation*}
-In words, $\Z_{(p)}$ is the set of rational numbers $x\in\Q$ such that when $x$ is written in lowest terms, say $x=\frac{a}{b}$, then $p$ does not divide $b$.\\
-(a) Show that $\Z_{(p)}$ is a subring of $\Q$. (The ring $\Z_{(p)}$ is called the \textit{localization of }$\Z$\textit{ at }$(p)$.)\\
-(b) Use the usual bar notation for the elements of $\Z/p\Z$; that is, write $\overline{k}=k+p\Z$ for each $k\in\Z$. Define a map
-\begin{align*}
-	\phi:\Z_{(p)}	&\to\Z/p\Z\\
-	x		&\mapsto \overline{a}\cdot(\overline{b})^{-1}\text{ if }x=\frac{a}{b}.
-\end{align*}
-Prove that $\phi$ is a well-defined, unital, and surjective ring homomorphism. Deduce that
-\begin{equation*}
-	p\Z_{(p)}=\{\frac{a}{b}\in\Q:\text{gcd}(a,b)=1\text{, }p\nmid b\text{, and }p\mid a\}
-\end{equation*}
-is a maximal ideal of $\Z_{(p)}$.\\
-(c) Show that $p\Z_{(p)}$ is the \textit{unique} maximal ideal of $\Z_{(p)}$.
 
 \end{document}
 
