@@ -1,0 +1,424 @@
+\documentclass[12pt]{article}
+
+\usepackage{ amssymb, amsmath, bm }
+\usepackage{amssymb,amsmath,amsfonts,mathrsfs,pgffor,marvosym,amsthm,mathtools}
+\addtolength{\textheight}{2.0in}
+\addtolength{\topmargin}{-0.95in}
+\addtolength{\textwidth}{1.6in}
+\addtolength{\evensidemargin}{-0.8in}
+\addtolength{\oddsidemargin}{-0.8in}
+\setlength{\parskip}{0.1in}
+\setlength{\parindent}{0.0in}
+
+\raggedbottom
+
+\newcommand{\given}{\, | \,}
+
+\begin{document}
+
+\begin{flushleft}
+
+Prof.~David Draper \\
+Department of Statistics \\
+University of California, Santa Cruz
+
+\end{flushleft}
+
+\begin{center}
+
+\textbf{\large STAT 131: Take-Home Test 2} \textit{[520 total points]}
+
+\large
+
+(please watch email and \texttt{Canvas} for the final due date)
+
+\end{center}
+
+1.~\textit{[70 total points]} (the Exchange Paradox) You're playing the
+following monetary game against an opponent, with a referee also taking part; imagine playing this game with two of your friends, which will provide context for the amounts of money that would reasonably be involved in playing it. The
+referee has two envelopes (numbered 1 and 2 for the sake of this problem,
+but when the game is played the envelopes have no markings on them), and
+(without you or your opponent seeing what she does) she (the referee) puts \$$m$ in envelope 1 and \$$2 \, m$ in envelope 2 for some $m > 0$ (let's treat $m$ as
+continuous in this problem, even though in practice it would be
+rounded, let's say to the nearest dollar). You and your opponent each get
+one of the envelopes at random. You open your envelope secretly and find
+\$$x$ (your opponent also looks secretly in his envelope), and the referee
+then asks you if you want to trade envelopes with your opponent. You
+reason that if you trade, you will get either \$$\frac{ x }{ 2 }$ or \$$2 \,
+x$, each with probability $\frac{ 1 }{ 2 }$. This makes the expected
+value of the amount of money you'll get if you trade equal to $\left(
+\frac{ 1 }{ 2 } \right) \left( \frac{ \$ x }{ 2 } \right) + \left( \frac{
+1 }{ 2 } \right) \left( \$ 2 \, x \right) = \frac{ \$ 5 x }{ 4 }$, which is
+greater than the \$$x$ you currently have, so you offer to trade. The
+paradox is that your opponent is capable of making exactly the same
+calculation. How can the trade be advantageous for both of you? (It can't be.)
+
+The point of this problem is to demonstrate that the above reasoning is
+flawed from a Bayesian point of view; the conclusion that trading
+envelopes is always optimal is based on the assumption that there's no
+information obtained by observing the contents of the envelope you get,
+and this assumption can be seen to be false when you reason in a Bayesian
+way. At a moment in time before the game begins, let $p ( m )$ be your
+(continuous) prior distribution (PDF) for the amount of money $M$ the referee will put in envelope 1, and let $X$ be the amount of money you'll find in your
+envelope when you open it (when the game is actually played, the observed
+$x$, of course, will be data that can be used to decrease your uncertainty
+about $M$). 
+
+(a) \textit{[20 total points for this part of this problem]} (preliminary calculations)
+
+\begin{itemize}
+
+\item[(i)]
+
+Explain why the setup of this problem implies that
+$P ( X = m | M = m ) = P ( X = 2 \, m | M = m ) = \frac{ 1 }{ 2 }$, and use
+this to show that
+\begin{equation} \label{e:calculation-1}
+P ( M = x | X = x ) = \frac{ p ( x ) }{ p ( x ) + p \! \left( \frac{ x }{
+2 } \right) } \ \ \ \mbox{and} \ \ \ P \! \left( M = \left. \frac{ x }{ 2
+} \right| X = x \right) = \frac{ p \! \left( \frac{ x }{ 2 } \right) }{ p
+( x ) + p \! \left( \frac{ x }{ 2 } \right) } \, .
+\end{equation}
+\textit{[10 points]}
+
+{\bf Answer:}  Given the value of $m$ doesn't change the fact that one of the envolops will have twice the amount of the other. Let's refer the enevelop with double the money as the "winning" envelope. The actual amount $m$ does not effect how the person deposts the two amounts into either evelope. So in a sense we have,
+\begin{align*}
+    f_{X|M}(x|m) = \begin{dcases}\dfrac{1}{2} & x = m \\ \dfrac{1}{2} & x = 2m\end{dcases}
+\end{align*}
+
+Which is why both $P ( X = m | M = m )$ and $P ( X = 2 \, m | M = m )$ are equal to $\dfrac{1}{2}$
+
+We can use this information alongside Baye's theroem in odds form to get the desired expressions. Let's look at $P(M = x \given M = m)$ in Baye's odds form,
+\begin{align*}
+    \dfrac{P(M = x \given M = m)}{P(M = \frac{x}{2} \given M = m)} = \dfrac{P(M=x)}{P(M=\frac{x}{2})} \cdot \dfrac{P(X=x\given M = x)}{P(X=x\given M = \frac{x}{2})}
+\end{align*}
+
+We just showed that $P ( X = m | M = m )$ and $P ( X = 2 \, m | M = m )$ are equal to $\dfrac{1}{2}$, so the baye's factor turns out to be 1. This leaves us with just the prior odds factor. We are given though from the problem that we should consider $p(m)$ to be our PDF for the amount of money ($M$) the referee will put in envelope 1. Which means our prior odds factor can be expressed as,
+\begin{align*}
+    \dfrac{P(M = x \given M = m)}{P(M = \frac{x}{2} \given M = m)} = \dfrac{P(x)}{P(\frac{x}{2})} \cdot 1
+\end{align*}
+We know the relation between odds and probablilty is the form,
+\begin{align*}
+    \text{Odds} = \dfrac{p}{1-p} \rightarrow p = \dfrac{\text{Odds}}{1 + \text{Odds}}
+\end{align*}
+
+Thus if we plug in our odds for $P(M=x\given M = m)$ we will get the probability which is as follows,
+\begin{align*}
+    p = \dfrac{\dfrac{p(x)}{p(\frac{x}{2})}}{1 + \dfrac{p(x)}{p(\frac{x}{2})}} = \dfrac{p(x)}{p(\frac{x}{2})} \cdot \dfrac{1}{1+\frac{p(x)}{p(\frac{x}{2})}} = \dfrac{p(x)}{p(\frac{x}{2})+p(x)}
+\end{align*}
+
+Thus we have $P(M = x\given X =x) = \dfrac{ p ( x ) }{ p ( x ) + p \! \left( \frac{ x }{
+    2 } \right) }$ as desired. Then for the other equation it follows the exact same reasoning we just obviously swap the numerators and denominators when calculating the odds for $P(M = \dfrac{x}{2} \given X =x)$ to get 
+\begin{align*}
+    \dfrac{P(M = \frac{x}{2} \given M = m)}{P(M = x \given M = m)} = \dfrac{p(\frac{x}{2})}{p(x)}
+\end{align*}
+and plugging this into our equation for solving probabilty from odds we get,
+\begin{align*}
+    p = \dfrac{\dfrac{p(\frac{x}{2})}{p(x)}}{1+ \dfrac{p(\frac{x}{2})}{p(x)}} = \dfrac{p(\frac{x}{2})}{p(x)} \cdot \dfrac{1}{1+ \frac{p(\frac{x}{2})}{p(x)}} = \dfrac{ p \! \left( \frac{ x }{ 2 } \right) }{ p
+    ( x ) + p \! \left( \frac{ x }{ 2 } \right) }
+\end{align*}
+
+Which means we get $\left( M = \left. \frac{ x }{ 2} \right| X = x \right) = \dfrac{ p \! \left( \frac{ x }{ 2 } \right) }{ p( x ) + p \! \left( \frac{ x }{ 2 } \right) } $ as desired. 
+
+\item[(ii)]
+
+Demonstrate from this that the expected value of the amount $Y$ of money
+in your opponent's envelope, given than you've found \$$x$ in the envelope
+you've opened, is
+\begin{equation} \label{e:calculation-2}
+E ( Y | X = x ) = \frac{ p ( x ) }{ p ( x ) + p \! \left( \frac{ x }{ 2 }
+\right) } ( 2 \, x ) + \frac{ p \! \left( \frac{ x }{ 2 } \right) }{ p ( x ) + p \! \left( \frac{ x }{ 2 } \right) } \left( \frac{ x }{ 2 } \right) \, .
+\end{equation}
+\textit{[10 points]}
+
+\end{itemize}
+
+(b) \textit{[40 total points for this part of this problem]} (Bayesian decision theory)
+
+\begin{itemize}
+
+\item[(i)]
+
+Suppose that for you in this game, money and
+utility coincide (or at least suppose that utility is linear in money for
+you with a positive slope). Use Bayesian decision theory, through the
+principle of maximizing expected utility, to show that you should offer to
+trade envelopes if and only if
+\begin{equation} \label{e:meu-1}
+p \! \left( \frac{ x }{ 2 } \right) < 2 \, p ( x ) \, . 
+\end{equation} 
+\textit{[10 points]}
+
+\item[(ii)]
+
+If you and two friends (one of whom would serve as the referee) were to
+actually play this game with real money in the envelopes, it would
+probably be the case that small amounts of money are more likely to be
+chosen by the referee than big amounts, which makes it interesting to
+explore condition (3) for prior distributions that are decreasing (that
+is, for which $p ( m_2 ) < p ( m_1 )$ for $m_2 > m_1$). Make a sketch of
+what condition (3) implies for a decreasing $p$. \textit{[10 points]}
+
+\item[(iii)]
+
+One possible example of a
+continuous decreasing family of priors on $M$ is the \textit{exponential}
+distribution indexed by the parameter $\lambda > 0$,
+which represents the reciprocal of the mean of the distribution. Identify the set of
+conditions in this family of priors, as a function of $x$ and $\lambda$,
+under which it's optimal for you to trade. Does the inequality you obtain
+in this way make good intuitive sense (in terms of both $x$ and
+$\lambda$)? Explain briefly. \textit{[20 points]}
+
+\end{itemize}
+
+(c) \textit{[10 points]} Looking carefully at the correct argument in paragraph 2 of this problem, identify the precise point at which the argument in the
+first paragraph breaks down, and specify what someone who believes the
+argument in paragraph 1 is implicitly assuming about the prior distribution $p ( m )$. 
+
+2.~\textit{[210 total points]} (practice with joint, marginal and conditional densities) This is a toy problem designed to give you practice in working with a number of the concepts we've examined; in a course like this, every now and then you have to stop looking at real-world problems and just work on technique (it's similar to classical musicians needing to practice scales, in addition to actual pieces of symphonic or chamber music).
+
+Suppose that the continuous random vector $\bm{ X } = ( X_1, X_2 )$ has PDF given by
+\begin{equation} \label{e:toy-1}
+f_{ \bm{ X } } ( \bm{ x } ) = \left\{ \begin{array}{cc} 4 \, x_1 \, x_2 & \text{for } 0 < x_1 < 1, 0 < x_2 < 1 \\ 0 & \text{otherwise} \end{array} \right\} \,
+\end{equation}
+in which $\bm{ x } = ( x_1, x_2 )$, and define the random vector $\bm{ Y } = ( Y_1, Y_2 )$ with the transformation $( Y_1 = X_1, Y_2 = X_1 \, X_2 )$.
+
+\begin{itemize}
+
+\item[(a)]
+
+Are $X_1$ and $X_2$ independent in the joint PDF in equation (\ref{e:toy-1})? Present any relevant calculations to support your answer. \textit{[10 points]}
+
+\item[(b)]
+
+Either work out the correlation $\rho ( X_1, X_2 )$ between $X_1$ and $X_2$ or explain why no calculation is necessary in correctly identifying the value of $\rho$. \textit{[10 points]}
+
+\item[(c)]
+
+\textit{[50 total points for this part of this problem]}
+
+\begin{itemize}
+
+\item[(i)]
+
+Sketch the set $S_{ \bm{ X } }$ of possible $\bm{ X }$ values and the image $S_{ \bm{ Y } }$ of $S_{ \bm{ X } }$ under the transformation from $\bm{ X }$ to $\bm{ Y }$.  \textit{[20 points]}
+
+\item[(ii)]
+
+Show that the joint distribution of $\bm{ Y } = ( Y_1, Y_2 )$ is
+\begin{equation} \label{e:toy-2}
+f_{ \bm{ Y } } ( \bm{ y } ) = \left\{ \begin{array}{cc} 4 \, \frac{ y_2 }{ y_1 } & \text{for } 0 < y_1 < 1, 0 < y_2 < y_1 < 1 \\ 0 & \text{otherwise} \end{array} \right\} \, ,
+\end{equation}
+in which $\bm{ y } = ( y_1, y_2 )$; verify your calculation by demonstrating that ${\int \! \! \int}_{ S_{ \bm{ Y } } } \, f_{ \bm{ Y } } ( \bm{ y } ) \, d \bm{ y } = 1$. \textit{[30 points]}
+
+\end{itemize}
+
+\item[(d)]
+
+\textit{[120 total points for this part of this problem]} Work out 
+
+\begin{itemize}
+
+\item[(i)]
+
+the marginal distributions for $Y_1$ and $Y_2$, sketching both distributions and checking that they both integrate to 1 \textit{[40 points]};
+
+\item[(ii)]
+
+the conditional distributions $f_{ Y_1 \given Y_2 } ( y_1 \given y_2 )$ and $f_{ Y_2 \given Y_1 } ( y_2 \given y_1 )$, checking that they each integrate to 1 \textit{[40 points]}; and 
+
+\item[(iii)]
+
+the conditional expectations $E ( Y_1 \given Y_2 )$ and $E ( Y_2 \given Y_1 )$ \textit{[20 points]}; and
+
+\item[(iv)]
+
+the conditional variances $V ( Y_1 \given Y_2 )$ and $V ( Y_2 \given Y_1 )$. (\textit{Hint:} recall that the variance of a random variable $W$ is just $E \left( W^2 \right) - [ E ( W ) ]^2$.) \textit{[20 points]}
+
+\end{itemize}
+
+\item[(e)]
+
+Are $Y_1$ and $Y_2$ independent? Present any relevant calculations to support your answer. \textit{[10 points]}
+
+\item[(f)]
+
+Either work out the correlation $\rho ( Y_1, Y_2 )$ between $Y_1$ and $Y_2$ or explain why no calculation is necessary in correctly identifying the value of $\rho$. \textit{[10 points]}
+
+\end{itemize}
+
+3.~\textit{[100 total points]} (moment-generating functions) Distributions may in general be skewed, but there may be conditions on their parameters that make the skewness get smaller or even disappear. This problem uses moment-generating functions (MGFs) to explore that idea for two important discrete distributions, the Binomial and the Poisson.
+
+\begin{itemize}
+
+\item[(a)]
+
+\textit{[30 total points for this part of this problem]} We saw in class that if $X \sim \text{Binomial} ( n, p )$, for $0 < p < 1$ and integer $n \ge 1$, then the MGF of $X$ is given by
+\begin{equation} \label{e:binomial-mgf-1}
+\psi_X ( t ) = \left[ p \, e^t + ( 1 - p ) \right]^n \, .
+\end{equation}
+for all real $t$, and we used this to work out the first three moments of $X$ (note that the expression for $E \left( X^3 \right)$ is only correct for $n \ge 3$):
+\begin{eqnarray} \label{e:binomial-mgf-2}
+E ( X ) = n \, p \, , \ \ \ E \left( X^2 \right) = n \, p [ ( 1 + ( n - 1 ) p ] \, , \\ E \left( X^3 \right) = n \, p [ 1 + ( n - 2 ) ( n - 1 ) p^2 + 3 \, ( n - 1 ) p ] \, ,
+\end{eqnarray}
+from which we also found that $V ( X ) = n \, p ( 1 - p )$. 
+
+\begin{itemize}
+
+\item[(i)]
+
+Show that the above facts imply that
+\begin{equation} \label{e:binomial-mgf-3}
+\mbox{skewness} ( X ) = \frac{ 1 - 2 \, p }{ \sqrt{ n \, p ( 1 - p ) } } \, .
+\end{equation}
+\textit{[10 points]}
+
+\item[(ii)]
+
+Under what condition on $p$, if any, does the skewness vanish? Under what condition on $n$, if any, does the skewness tend to 0? Explain briefly. \textit{[20 points]}
+
+\end{itemize}
+
+\item[(b)]
+
+\textit{[70 total points for this part of this problem]} In our brief discussion of stochastic processes we encountered the \textit{Poisson} distribution: if $Y \sim \text{Poisson} ( \lambda )$, for $\lambda > 0$, then the PMF of $Y$ is
+\begin{equation} \label{e:poisson-mgf-1}
+f_Y ( y ) = \left\{ \begin{array}{cc} \frac{ \lambda^y \, e^{ - \lambda } }{ y ! } & \text{for } y = 0, 1, \, \dots \\ 0 & \text{otherwise} \end{array} \right\} \, .
+\end{equation}
+
+\begin{itemize}
+
+\item[(i)]
+
+Use this to show that for all real $t$ the MGF of $Y$ is
+\begin{equation} \label{e:poisson-mgf-2}
+\psi_Y ( t ) = e^{ \lambda \left( e^t - 1 \right) } \, .
+\end{equation}
+\textit{[10 points]}
+
+\item[(ii)]
+
+Use $\psi_Y ( t )$ in equation (\ref{e:poisson-mgf-2}) to compute the first three moments of $Y$, the variance of $Y$ and the skewness of $Y$. Under what condition on $\lambda$, if any, does the skewness either disappear or tend to 0? Explain briefly. \textit{[60 points]}
+
+\end{itemize}
+
+\end{itemize}
+
+4.~\textit{[140 total points]} (archaeology) Paleontologists estimate the moment in the remote past when a given species became extinct by taking cylindrical, vertical core samples well below the earth's surface and looking for the last occurrence of the species in the fossil record, measured in meters above the point $P$ at which the species was known to have first emerged. Letting $\{ y_i, i = 1, \ldots, n \}$ denote \vspace*{0.5ex} a sample of such distances above $P$ at a random set of locations, the model \vspace*{0.5ex} \fbox{$( Y_i | \theta )
+\stackrel{\mbox{\tiny IID}}{\sim} \mbox{Uniform} ( 0, \theta ) \ ( * )$}
+emerges from simple and plausible assumptions. In this model the unknown
+$\theta > 0$ can be used, through carbon dating, to estimate the species
+extinction time.
+
+The marginal distribution of a single observation $y_i$ in this model may be written
+\begin{equation} \label{uniform-1}
+p_{ Y_i } ( y_i \given \theta ) = \left\{ \begin{array}{cc} \frac{ 1 }{ \theta } & \mbox{if } 0 \le y_i \le \theta \\ 0 & \mbox{otherwise} \end{array}
+\right\} = \frac{ 1 }{ \theta } \, I \left( 0 \le y_i \le \theta \right) \, , 
+\end{equation}
+where $I ( A ) = 1$ if $A$ is true and 0 otherwise. 
+
+\begin{itemize}
+
+\item[(a)] 
+
+Briefly explain why the statement $\{ 0 \le y_i \le \theta \mbox{ for all } i = 1, \ldots, n \}$ is equivalent to the statement $\{ m = \max \left( y_1, \ldots y_n \right) \le \theta \}$, and use this to show that the joint distribution of $\bm{ Y } = ( Y_1, \dots, Y_n )$ (given $\theta$) in this model is
+\begin{equation} \label{uniform-2}
+f_{ Y_1, \dots, Y_n } ( y_1, \dots, y_n \given \theta ) = \frac{ I ( m \le \theta ) }{ \theta^n } \, .
+\end{equation}
+\textit{[20 points]}
+
+\item[(b)]
+
+\textit{[30 total points for this part of this problem]} Letting the observed values of $( Y_1, \dots, Y_n )$ be $\bm{ y } = ( y_1, \dots, y_n )$, an important object in both frequentist and Bayesian inferential statistics is the \textit{likelihood function} $\ell ( \theta \given \bm{ y } )$, which is obtained from the joint distribution of $( Y_1, \dots, Y_n )$ (given $\theta$) simply by
+\begin{itemize}
+
+\item[(1)]
+
+thinking of $f_{ Y_1, \dots, Y_n } ( y_1, \dots, y_n \given \theta )$ as a function of $\theta$ for fixed $\bm{ y }$, and
+
+\item[(2)]
+
+multiplying by an arbitrary positive constant $c$:
+\begin{equation} \label{uniform-2.1}
+\ell ( \theta \given \bm{ y } ) = c \, f_{ \bm{ Y } } ( \bm{ y } \given \theta ) \, .
+\end{equation}
+
+\end{itemize}
+Using this terminology, in part (a) you showed that the likelihood function in this problem is $\ell ( \theta \given \bm{ y } ) = \theta^{ - n } I ( \theta \ge m )$, where $m$ is the largest of the $y_i$ values. Both frequentists and Bayesians are interested in something called the \textit{maximum likelihood estimator} (MLE) $\hat{ \theta }_{ \text{MLE} }$, which is the value of $\theta$ that makes $\ell ( \theta \given \bm{ y } )$ as large as possible. 
+
+\begin{itemize}
+
+\item[(i)]
+
+Make a rough sketch of the likelihood function, and use your sketch to show that the MLE in this problem is $\hat{ \theta }_{ \text{MLE} } = m = \max \left( y_1, \ldots y_n \right)$. \textit{[20 points]}
+
+\item[(ii)]
+
+Maximization of a function is often accomplished by setting its first derivative to 0 and solving the resulting equation. Briefly explain why that method won't work in finding the MLE in this case. \textit{[10 points]}
+
+\end{itemize}
+
+\item[(c)] 
+
+\textit{[30 total points for this part of this problem]} A positive quantity $W$ follows the \textit{Pareto} distribution (written $W \sim \mbox{Pareto} ( \alpha, \beta )$) if, for parameters $\alpha, \beta > 0$, it has PDF
+\begin{equation} \label{uniform-3}
+f_W( w ) = \left\{ \begin{array}{cc} \alpha \, \beta^{ \alpha } \, w^{ - ( \alpha + 1 ) } & \mbox{if } w \ge \beta \\ 0 & \mbox{otherwise} \end{array} \right\} .  
+\end{equation} 
+This distribution has mean $\frac{ \alpha \beta }{ \alpha - 1 }$ (if
+$\alpha > 1$) and variance $\frac{ \alpha \beta^2 }{ ( \alpha - 1 )^2 (
+\alpha - 2 ) }$ (if $\alpha > 2$).
+
+\begin{itemize}
+
+\item[(i)]
+
+For frequentists the likelihood function is just a function $\ell ( \theta \given \bm{ y } )$, but for Bayesians it can be regarded as an un-normalized density function for $\theta$. Show that, from this point of view, the likelihood function in this problem corresponds to an un-normalized version of the Pareto$( n - 1, m )$ distribution. \textit{[10 points]}
+
+\item[(ii)]
+
+Bayes's Theorem for a one-dimensional continuous unknown (such as $\theta$ in this situation) says that the conditional density $f_{ \Theta \given \bm{ Y } } ( \theta \given \bm{ y } )$ for $\theta$ given $\bm{ Y } = \bm{ y }$ --- which is called the \textit{posterior distribution} for $\theta$ given the data --- is a positive (normalizing) constant $c$ times a PDF $f_\Theta ( \theta )$ --- called the \textit{prior distribution} for $\theta$ --- that captures any available information about $\theta$ external to the data set, times the likelihood distribution $\ell ( \theta \given \bm{ y } )$:
+\begin{equation} \label{uniform-4}
+\begin{array}{ccccccc} f_{ \Theta \given \bm{ Y } } ( \theta \given \bm{ y } ) & = & c & \cdot & f_\Theta ( \theta ) & \cdot & \ell ( \theta \given \bm{ y } ) \\ \left( \begin{array}{c} \text{posterior} \\ \text{distribution} \end{array} \right) & = & \left( \begin{array}{c} \text{normalizing} \\ \text{constant} \end{array} \right) & \cdot & \left( \begin{array}{c} \text{prior} \\ \text{distribution} \end{array} \right) & \cdot & \left( \begin{array}{c} \text{likelihood} \\ \text{distribution} \end{array} \right) \end{array}
+\end{equation}
+The posterior distribution is the goal of a Bayesian inferential analysis: it summarizes \textit{all} available information, both \textit{external to} (prior) and \textit{internal to} (likelihood) your data set. Show that if the prior distribution for $\theta$ in this problem is taken to be (\ref{uniform-3}), under the model $( * )$ above the posterior
+distribution is $f_{ \Theta \given \bm{ Y } } ( \theta \given \bm{ y } ) = \text{Pareto} \left[ \alpha + n, \max ( \beta, m ) \right]$. (Bayesian terminology: Note that what just happened was that the product of two Pareto distributions (prior, likelihood) is another Pareto distribution (posterior); a prior distribution that makes this happen is called \textit{conjugate} to the likelihood in the model.) \textit{[20 points]}
+
+\item[(d)]
+
+\textit{[60 total points for this part of this problem]} In an experiment conducted in the Antarctic in the 1980s to study a
+particular species of fossil ammonite, the following was a linearly rescaled
+version of the observed dataset: 
+
+\begin{quote}
+
+$\bm{ y } = ( y_1, \ldots, y_n ) = ( 2.8, 1.7, 1.0, 5.1, 3.7, 1.5, 4.3, 2.0, 3.2, 2.1, 0.4 )$. 
+
+\end{quote}
+
+Prior information equivalent to a Pareto distribution specified by the choice $( \alpha, \beta ) = ( 2.5, 4 )$ was available. 
+
+\begin{itemize}
+
+\item[(i)]
+
+Plot the prior, likelihood, and posterior distributions arising from this data set on the same graph, explicitly identifying the three curves. \textit{[30 points]}
+
+\item[(ii)]
+
+Work out the posterior mean and SD (square root of the posterior variance), and use them to complete the following sentence:
+
+\begin{quote}
+
+\textit{On the basis of this prior and data information, the $\theta$ value for this species of fossil ammonite is about \underline{\hspace*{0.5in}}, give or take about \underline{\hspace*{0.5in}}.}
+
+\end{quote}
+\textit{[30 points]}
+
+\end{itemize}
+
+\end{itemize}
+
+\end{itemize}
+
+\end{document}
