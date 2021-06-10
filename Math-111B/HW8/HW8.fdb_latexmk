@@ -1,8 +1,8 @@
 # Fdb version 3
-["pdflatex"] 1622615332 "c:/Users/Kevin Guillen/Documents/Math-HW/Math-111B/HW8/HW8.tex" "HW8.pdf" "HW8" 1622615333
-  "HW8.aux" 1622615333 32 ab05033ccbb38b00a31b200ccedf8001 "pdflatex"
-  "HW8.tex" 1622615332 7327 b7009bade502b259fa7846e4264421d3 ""
-  "c:/Users/Kevin Guillen/Documents/Math-HW/Math-111B/HW8/HW8.tex" 1622615332 7327 b7009bade502b259fa7846e4264421d3 ""
+["pdflatex"] 1623019933 "c:/Users/Kevin Guillen/Documents/Math-HW/Math-111B/HW8/HW8.tex" "HW8.pdf" "HW8" 1623019934
+  "HW8.aux" 1623019934 32 ab05033ccbb38b00a31b200ccedf8001 "pdflatex"
+  "HW8.tex" 1623019933 7333 17e69f4ad916ceb38754533dce2009be ""
+  "c:/Users/Kevin Guillen/Documents/Math-HW/Math-111B/HW8/HW8.tex" 1623019933 7333 17e69f4ad916ceb38754533dce2009be ""
   "c:/texlive/2021/texmf-dist/fonts/map/fontname/texfonts.map" 1622596518 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2021/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1622595046 1004 54797486969f23fa377b128694d548df ""
   "c:/texlive/2021/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1622595046 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -93,6 +93,6 @@
   "c:/texlive/2021/texmf-var/web2c/pdftex/pdflatex.fmt" 1622599673 2746602 ea80a005d1b84f117210ab4e3a0ad72d ""
   "c:/texlive/2021/texmf.cnf" 1622599593 713 e69b156964470283e0530f5060668171 ""
   (generated)
-  "HW8.log"
   "HW8.aux"
+  "HW8.log"
   "HW8.pdf"

@@ -9,7 +9,8 @@
 \addtolength{\oddsidemargin}{-0.8in}
 \setlength{\parskip}{0.1in}
 \setlength{\parindent}{0.0in}
-
+\DeclarePairedDelimiter\set\{\}
+\DeclarePairedDelimiter\prn()
 \raggedbottom
 
 \newcommand{\given}{\, | \,}
@@ -68,7 +69,7 @@ about $M$).
 
 \begin{itemize}
 
-\item[(i)]
+\item[(i)]%-----------------------------PROBLEM 1 A I ---------------------------------------
 
 Explain why the setup of this problem implies that
 $P ( X = m | M = m ) = P ( X = 2 \, m | M = m ) = \frac{ 1 }{ 2 }$, and use
@@ -120,7 +121,7 @@ and plugging this into our equation for solving probabilty from odds we get,
 
 Which means we get $\left( M = \left. \frac{ x }{ 2} \right| X = x \right) = \dfrac{ p \! \left( \frac{ x }{ 2 } \right) }{ p( x ) + p \! \left( \frac{ x }{ 2 } \right) } $ as desired. 
 
-\item[(ii)]
+\item[(ii)]%-----------------------------PROBLEM 1 A II ---------------------------------------
 
 Demonstrate from this that the expected value of the amount $Y$ of money
 in your opponent's envelope, given than you've found \$$x$ in the envelope
@@ -133,11 +134,32 @@ E ( Y | X = x ) = \frac{ p ( x ) }{ p ( x ) + p \! \left( \frac{ x }{ 2 }
 
 \end{itemize}
 
+{\bf Answer:} The key observation to notice for solving this problem is the following. If in our envelope we find $x$ dollars the probability that our opponent has $2x$ dollars is the same as if the decided amount of money were to be $x$,
+\begin{center}
+    Given $(X=x)\implies (Y=2x) = (M=x)$. 
+\end{center}
+So, now when calculating for $P(Y = 2x \given X = x)$ we can rewrite it as $P(M = x \given X = x)$ which we just calculated.
+\begin{align*}
+    P(Y = 2x \given X =x) = \dfrac{p(x)}{p(x) + p(\frac{x}{2})}
+\end{align*}
+Knowing this we can construct the conditional distribution as follows,
+\begin{align*}
+    \text{Given } X = x, Y = \begin{dcases}
+        2x & \dfrac{p(x)}{p(x) + p(\frac{x}{2})} \\ \dfrac{x}{2} & \dfrac{ p \! \left( \frac{ x }{ 2 } \right) }{ p( x ) + p \! \left( \frac{ x }{ 2 } \right) }
+    \end{dcases}
+\end{align*}
+
+We know for the expected value of a discrete random variable we simply take its weighted average. Giving us,
+\begin{align*}
+    E(Y\given X = x) = (2x)\dfrac{p(x)}{p(x) + p(\frac{x}{2})} + (\dfrac{x}{2})\dfrac{ p \! \left( \frac{ x }{ 2 } \right) }{ p( x ) + p \! \left( \frac{ x }{ 2 } \right) }
+\end{align*}
+
+
 (b) \textit{[40 total points for this part of this problem]} (Bayesian decision theory)
 
 \begin{itemize}
 
-\item[(i)]
+\item[(i)] %-----------------------------PROBLEM 1 B I ---------------------------------------
 
 Suppose that for you in this game, money and
 utility coincide (or at least suppose that utility is linear in money for
@@ -149,7 +171,41 @@ p \! \left( \frac{ x }{ 2 } \right) < 2 \, p ( x ) \, .
 \end{equation} 
 \textit{[10 points]}
 
-\item[(ii)]
+{\bf Answer:}
+Our 2 actions for this problem is to either not trade or to trade.$a_1$ will be the action of not trading, and $a_2$ will be our action to trade. Letting $W$ be our money after we perform an action we get the following,
+\begin{align*}
+    U(W) \text{ under } a_1 \text{(not trading)} = U(x) \\
+    U(W) \text{ under } a_2 \text{(trading)} = U(Y)
+\end{align*}
+
+This is because when we trade with our opponent our money simply becomes $Y$ and if we don't trade our money remains the same. So we'd only want to trade if our utility function for taking action $a_2$ were to be greater than taking action $a_1$. We can determine this by looking at the expected value of our utility function based on its inputs,
+\begin{align*}
+    E(U(a_2)) > E(U(a_1)) && \text{Applying observation from above} \\
+    E(U(Y)) > E(U(x)).
+\end{align*}
+
+Since, we know the utility function to be increasing the general form would be $U(w) = a\cdot w + b $. Applying this to what we have above and using properties of expected values when adding or multiplying the random variable my constants we get,
+\begin{align*}
+    E(U(Y)) &> E(U(x)) \\
+    = aE(Y) + b &> aE(x) + b.
+\end{align*}
+
+Since we are given $x$ though because recall $x$ is simply the amount of money we find in our envelope the inequality is actually read as,
+\begin{align*}
+    aE(Y\given X = x) + b > a x + b \\
+    E(Y\given X = x) > x
+\end{align*}
+We know this expected value though, it is just what we calculated in the previous problem.
+\begin{align*}
+    (2x)\dfrac{p(x)}{p(x) + p(\frac{x}{2})} + (\dfrac{x}{2})\dfrac{ p \! \left( \frac{ x }{ 2 } \right) }{ p( x ) + p \! \left( \frac{ x }{ 2 } \right) } > x && \text{Dividing by $x$} \\
+    2\dfrac{p(x)}{p(x)+ p()\frac{x}{2})} + \dfrac{1}{2}\dfrac{p(\frac{x}{2})}{p(x)+p(\frac{x}{2})} > 1 \\
+    \dfrac{2\cdot2\cdot p(x)}{2p(x) + 2p(\frac{x}{2}) } + \dfrac{p(\frac{x}{2})}{2p(x)+2p(\frac{x}{2})} > 1 \\
+    \dfrac{4p(x) + p(\frac{x}{})}{2p(x)+ 2p(\frac{x}{2})} > 1 && \text{Multiplying by $2(p(x)+p(\frac{x}{2}))$} \\
+    4p(x) + p(\dfrac{x}{2}) > 2p(x) + 2p(\dfrac{x}{2}) && \text{performing some algebra} \\
+    2p(x) > p(\dfrac{x}{2}).
+\end{align*}As desired. 
+
+\item[(ii)]%-----------------------------PROBLEM 1 B II ---------------------------------------
 
 If you and two friends (one of whom would serve as the referee) were to
 actually play this game with real money in the envelopes, it would
@@ -158,8 +214,9 @@ chosen by the referee than big amounts, which makes it interesting to
 explore condition (3) for prior distributions that are decreasing (that
 is, for which $p ( m_2 ) < p ( m_1 )$ for $m_2 > m_1$). Make a sketch of
 what condition (3) implies for a decreasing $p$. \textit{[10 points]}
+\newpage
 
-\item[(iii)]
+\item[(iii)]%-----------------------------PROBLEM 1 B III ---------------------------------------
 
 One possible example of a
 continuous decreasing family of priors on $M$ is the \textit{exponential}
@@ -170,11 +227,30 @@ under which it's optimal for you to trade. Does the inequality you obtain
 in this way make good intuitive sense (in terms of both $x$ and
 $\lambda$)? Explain briefly. \textit{[20 points]}
 
+\textbf{Answer:}
+This follows from what we solved previously where we'd only want to trade if and only if \[p(\dfrac{x}{2}) < 2p(x).\]
+In the case where we are using the exponential distribution function for $f_M(x)$, we get that \[f_M(x) = \lambda e^{-\lambda x}.\]
+So using this distribution function and applying it to our inequality for when to trade we get the following.
+\begin{align*}
+    f_M(\frac{x}{2}) &< 2f_M(x) && \text{Given $X= x$} \\
+    \lambda \exp(-\lambda \frac{x}{2})&< 2\lambda \exp(-\lambda x) && \text{$\lambda> 0$ so we can divide}\\
+    \exp(-\lambda \frac{x}{2})&<2\exp(-\lambda x) \\
+    -\dfrac{\lambda x}{2}&< \ln(2) - \lambda x \\
+    \dfrac{\lambda x}{2}&< \ln(2) \\
+    \lambda x &<2\ln(2) \\
+    x &< \dfrac{2\ln(2)}{\lambda}.
+\end{align*}
+We have from the problem that $E(M) = \dfrac{1}{\lambda}$ 
 \end{itemize}
-
+%-----------------------------PROBLEM 1 C---------------------------------------
 (c) \textit{[10 points]} Looking carefully at the correct argument in paragraph 2 of this problem, identify the precise point at which the argument in the
 first paragraph breaks down, and specify what someone who believes the
 argument in paragraph 1 is implicitly assuming about the prior distribution $p ( m )$. 
+
+\textbf{Answer:}
+The argument begins to breakdown at the ending of the first paragraph where the expected value is supposedly supposed to be $\dfrac{5x}{4}$ alongside the given formula to justify this. The reason it breaks down here is that the expected value here does not take into account opening your envelope and seeing how much money you received. With this reasoning a person is led to believe that the distribution doesn't change before and after seeing the money in the given envelope. 
+
+\newpage
 
 2.~\textit{[210 total points]} (practice with joint, marginal and conditional densities) This is a toy problem designed to give you practice in working with a number of the concepts we've examined; in a course like this, every now and then you have to stop looking at real-world problems and just work on technique (it's similar to classical musicians needing to practice scales, in addition to actual pieces of symphonic or chamber music).
 
@@ -186,25 +262,36 @@ in which $\bm{ x } = ( x_1, x_2 )$, and define the random vector $\bm{ Y } = ( Y
 
 \begin{itemize}
 
-\item[(a)]
+\item[(a)]%-----------------------------PROBLEM 2 A ---------------------------------------
 
 Are $X_1$ and $X_2$ independent in the joint PDF in equation (\ref{e:toy-1})? Present any relevant calculations to support your answer. \textit{[10 points]}
 
-\item[(b)]
+\textbf{Answer:} We can determine independence for $X_1$ and $X_2$ by checking to see if the product of their marginal distributions is equal to their join distribution. To obtain the marginal distribution for $X_1$ we simply fix an $x_1$ and integrate with respect to $x_2$ over its support. An identical process follows to obtain the marginal distribution for $X_2$.
+\begin{align*}
+    \text{fixing an $x_1 \in (0,1)$, } f_{X_1}(x_1) = \int_{0}^{1}4x_1x_2  \,dx_2  &= 4x_1 \dfrac{(x_2)^2}{2}\Big|_0^1 \\
+    &= 2x_1 \\
+    \text{fixing an $x_2\in (0,1)$, } f_{X_2}(x_2)  = \int_{0}^{1}4x_1x_2  \,dx_1 &= 4x_1 \dfrac{(x_1)^2}{2}\Big|_0^1 \\
+    &= 2x_2. 
+\end{align*}
+Now taking their product \[f_{X_1}(x_1)\cdot f_{X_2}(x_2) = 2x_1 \cdot 2x_2 = 4x_1x_2 = f_X(x).\] 
+So indeed $X_1$ and $X_2$ are independent.
+
+\item[(b)]%-----------------------------PROBLEM 2 B ---------------------------------------
 
 Either work out the correlation $\rho ( X_1, X_2 )$ between $X_1$ and $X_2$ or explain why no calculation is necessary in correctly identifying the value of $\rho$. \textit{[10 points]}
 
+\textbf{Answer:}The reason no calculation is needed is that we just showed that $X_1$ and $X_2$ are independent, and we know from previous work that when this is the case the correlation will come out to be 0. 
 \item[(c)]
 
 \textit{[50 total points for this part of this problem]}
 
 \begin{itemize}
 
-\item[(i)]
+\item[(i)]%-----------------------------PROBLEM 2 C I---------------------------------------
 
 Sketch the set $S_{ \bm{ X } }$ of possible $\bm{ X }$ values and the image $S_{ \bm{ Y } }$ of $S_{ \bm{ X } }$ under the transformation from $\bm{ X }$ to $\bm{ Y }$.  \textit{[20 points]}
 
-\item[(ii)]
+\item[(ii)]%-----------------------------PROBLEM 2 C II---------------------------------------
 
 Show that the joint distribution of $\bm{ Y } = ( Y_1, Y_2 )$ is
 \begin{equation} \label{e:toy-2}
@@ -220,29 +307,29 @@ in which $\bm{ y } = ( y_1, y_2 )$; verify your calculation by demonstrating tha
 
 \begin{itemize}
 
-\item[(i)]
+\item[(i)]%-----------------------------PROBLEM 2 D I ---------------------------------------
 
 the marginal distributions for $Y_1$ and $Y_2$, sketching both distributions and checking that they both integrate to 1 \textit{[40 points]};
 
-\item[(ii)]
+\item[(ii)]%-----------------------------PROBLEM 2 D II ---------------------------------------
 
 the conditional distributions $f_{ Y_1 \given Y_2 } ( y_1 \given y_2 )$ and $f_{ Y_2 \given Y_1 } ( y_2 \given y_1 )$, checking that they each integrate to 1 \textit{[40 points]}; and 
 
-\item[(iii)]
+\item[(iii)]%-----------------------------PROBLEM 2 D III ---------------------------------------
 
 the conditional expectations $E ( Y_1 \given Y_2 )$ and $E ( Y_2 \given Y_1 )$ \textit{[20 points]}; and
 
-\item[(iv)]
+\item[(iv)]%-----------------------------PROBLEM 2 D IV ---------------------------------------
 
 the conditional variances $V ( Y_1 \given Y_2 )$ and $V ( Y_2 \given Y_1 )$. (\textit{Hint:} recall that the variance of a random variable $W$ is just $E \left( W^2 \right) - [ E ( W ) ]^2$.) \textit{[20 points]}
 
 \end{itemize}
 
-\item[(e)]
+\item[(e)]%-----------------------------PROBLEM 2 E ---------------------------------------
 
 Are $Y_1$ and $Y_2$ independent? Present any relevant calculations to support your answer. \textit{[10 points]}
 
-\item[(f)]
+\item[(f)]%-----------------------------PROBLEM 2 F ---------------------------------------
 
 Either work out the correlation $\rho ( Y_1, Y_2 )$ between $Y_1$ and $Y_2$ or explain why no calculation is necessary in correctly identifying the value of $\rho$. \textit{[10 points]}
 
@@ -266,7 +353,7 @@ from which we also found that $V ( X ) = n \, p ( 1 - p )$.
 
 \begin{itemize}
 
-\item[(i)]
+\item[(i)]%-----------------------------PROBLEM 3 A I ---------------------------------------
 
 Show that the above facts imply that
 \begin{equation} \label{e:binomial-mgf-3}
@@ -274,7 +361,7 @@ Show that the above facts imply that
 \end{equation}
 \textit{[10 points]}
 
-\item[(ii)]
+\item[(ii)]%-----------------------------PROBLEM 3 A II ---------------------------------------
 
 Under what condition on $p$, if any, does the skewness vanish? Under what condition on $n$, if any, does the skewness tend to 0? Explain briefly. \textit{[20 points]}
 
@@ -289,7 +376,7 @@ f_Y ( y ) = \left\{ \begin{array}{cc} \frac{ \lambda^y \, e^{ - \lambda } }{ y !
 
 \begin{itemize}
 
-\item[(i)]
+\item[(i)]%-----------------------------PROBLEM 3 B I ---------------------------------------
 
 Use this to show that for all real $t$ the MGF of $Y$ is
 \begin{equation} \label{e:poisson-mgf-2}
@@ -297,7 +384,7 @@ Use this to show that for all real $t$ the MGF of $Y$ is
 \end{equation}
 \textit{[10 points]}
 
-\item[(ii)]
+\item[(ii)]%-----------------------------PROBLEM 3 B II ---------------------------------------
 
 Use $\psi_Y ( t )$ in equation (\ref{e:poisson-mgf-2}) to compute the first three moments of $Y$, the variance of $Y$ and the skewness of $Y$. Under what condition on $\lambda$, if any, does the skewness either disappear or tend to 0? Explain briefly. \textit{[60 points]}
 
