@@ -1,0 +1,78 @@
+\documentclass[12pt]{article}
+%------------------------------- BEGIN PREAMBLE
+% packages used
+\usepackage{amssymb,amsmath,amsfonts,mathrsfs,pgffor,marvosym,amsthm}
+% macros
+\newcommand      {\Nm}         {{\mathbb N}}
+\newcommand      {\Zm}         {{\mathbb Z}}
+\newcommand      {\Qm}         {{\mathbb Q}}
+\newcommand      {\Rm}         {{\mathbb R}}
+\newcommand      {\Cm}         {{\mathbb C}}
+\newcommand      {\vb}        {\mathbf}
+\newcommand      {\PP}        {{\mathscr P}}
+\newcommand {\lines}[1] {\foreach \n in {1,...,#1}{ \vspace{9mm} \hrule height 
+0.2pt  }\vspace{2mm} }
+% adjustment of page dimensions
+\textwidth=7in
+\textheight=9.8in
+\topmargin= -0.8in
+\oddsidemargin= -0.3in
+\evensidemargin= 0.0in
+\setlength{\parskip}{1ex plus0.5ex minus0.2ex}
+\setlength{\jot}{10pt}
+%-------------------------------- END PREAMBLE
+\begin{document}
+\begin{flushright}
+    Name:  \\*
+    
+\end{flushright}
+\begin{center}
+    {\bf Topology - Summer Session 1 - HW2 - 7/3/2021}
+\end{center}
+
+% STATEMENT OF PROBLEM 1
+\noindent {\bf (3.3)}  For each topology on $\{a, b, c, d\}$ from Question 3.2, list the open sets in the subspace topology for the subset $\{a, b, c\}$.
+\begin{proof}
+    Recalling from $3.2$ the only list of open sets that formed a topology were the following,
+    \begin{center}
+        $V_1 = \emptyset, \{a\}, \{a,b\}, \{a,b,c,d\}$ \\
+        $V_2 = \emptyset, \{a,c\}, \{a,b,c\}, \{a,c,d\}, \{a,b,c,d\}.$ 
+    \end{center}
+    So taking the intersection of $\{a,b,c\}$ with every open set in each topology will give us each the list of open sets in the subspace for the subset $\{a,b,c\}$
+    \begin{align*}
+        \forall U \in V_1,\ U\cap \{a,b,c\} &= \emptyset, \{a\}, \{a,b\},\{a,b,c\} \\
+        \forall U \in V_2,\ U \cap \{a,b,c\} &= \emptyset, \{a,c\},\{a,b,c\}.
+    \end{align*}
+
+\end{proof}
+
+% STATEMENT OF PROBLEM 2
+\noindent {\bf (3.8)} Let $f:\Rm \to \Zm$ be the floor function which rounds a real number $x$ down to the nearest integer:
+\begin{align*}
+    f(x) = n \text{ provided that } n \in \Zm \text{ and } n \leq x < n+1
+\end{align*}
+Determine whether $f$ is continuous. 
+
+\begin{proof}
+    We know in $\Zm$ that for any $n\in \Zm$, $\{n\}$ will be an open set. Taking the inverse image of this open set we see we get,
+    \begin{align*}
+        f^{-1}(n) = [n,n+1)
+    \end{align*}
+    which is a closed set in $\Rm$. Thus, by definition the floor function is not continuous.
+\end{proof}
+
+% STATEMENT OF PROBLEM 3
+\noindent {\bf (3.11)}Let $T$ be a set and $B$ a collection of subsets of $T$. Show that if every element of $T$ belongs to at least one subset in $B$ and $B$ is closed under finite intersections, then the collection of all unions of sets in $B$ forms a topology on $T$
+\begin{proof}
+    Assuming that if $\forall x \in T,\ \exists U \in B$ such that, $x \in U$, and that $B$ is closed under finite intersections, we want to show the collection of all unions of sets in $B$ forms a topology on $T$. Let's refer to this collection as $B'$.
+    
+    The first thing we need to show is that the empty set is in $B'$. Since $B'$ is defined as all unions of sets in $B$, let's take the union of sets in $B$ indexed by $I$, where $I = \emptyset$ to get
+    \begin{align*}
+        \bigcup_{i\in I}U_i = \emptyset, \text{ where $U_i \in B$}.
+    \end{align*}
+    Then we have that $\emptyset \in B'$, satisfying the first requirement. 
+
+    Now to show that $T$ is in $B'$. 
+\end{proof}
+
+\end{document}
