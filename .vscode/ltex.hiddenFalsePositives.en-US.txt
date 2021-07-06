@@ -1,3 +1,5 @@
 {"rule":"SENTENCE_FRAGMENT","sentence":"^\\QSince the number of primes is infinite the only integer that can satisfy that requirement would be \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q.\\E$"}
 {"rule":"PUNCTUATION_PARAGRAPH_END","sentence":"^\\Q\\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q Knowing this we can construct the conditional distribution as follows, Given \\E(?:Dummy|Ina|Jimmy-)[0-9]+$"}
 {"rule":"PUNCTUATION_PARAGRAPH_END","sentence":"^\\QGiving us, \\E(?:Dummy|Ina|Jimmy-)[0-9]+$"}
+{"rule":"SENTENCE_FRAGMENT","sentence":"^\\QWhich is a closed set in \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q.\\E$"}
+{"rule":"SENTENCE_FRAGMENT","sentence":"^\\QSince \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q is also defined to be subsets of \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q taking any union of these subsets can never equal anything more than \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q.\\E$"}

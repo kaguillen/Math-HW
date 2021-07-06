@@ -1,7 +1,7 @@
 \documentclass[12pt]{article}
 %------------------------------- BEGIN PREAMBLE
 % packages used
-\usepackage{amssymb,amsmath,amsfonts,mathrsfs,pgffor,marvosym,amsthm}
+\usepackage{amssymb,amsmath,amsfonts,mathrsfs,pgffor,marvosym,amsthm, mathrsfs}
 % macros
 \newcommand      {\Nm}         {{\mathbb N}}
 \newcommand      {\Zm}         {{\mathbb Z}}
@@ -10,6 +10,7 @@
 \newcommand      {\Cm}         {{\mathbb C}}
 \newcommand      {\vb}        {\mathbf}
 \newcommand      {\PP}        {{\mathscr P}}
+\newcommand      {\BB}        {{\mathscr B}}
 \newcommand {\lines}[1] {\foreach \n in {1,...,#1}{ \vspace{9mm} \hrule height 
 0.2pt  }\vspace{2mm} }
 % adjustment of page dimensions
@@ -64,15 +65,43 @@ Determine whether $f$ is continuous.
 % STATEMENT OF PROBLEM 3
 \noindent {\bf (3.11)}Let $T$ be a set and $B$ a collection of subsets of $T$. Show that if every element of $T$ belongs to at least one subset in $B$ and $B$ is closed under finite intersections, then the collection of all unions of sets in $B$ forms a topology on $T$
 \begin{proof}
-    Assuming that if $\forall x \in T,\ \exists U \in B$ such that, $x \in U$, and that $B$ is closed under finite intersections, we want to show the collection of all unions of sets in $B$ forms a topology on $T$. Let's refer to this collection as $B'$.
+    Assuming that if $\forall x \in T,\ \exists U \in B$ such that, $x \in U$, and that $B$ is closed under finite intersections, we want to show the collection of all unions of sets in $B$ forms a topology on $T$. Let's refer to this collection as $\BB$.
     
-    The first thing we need to show is that the empty set is in $B'$. Since $B'$ is defined as all unions of sets in $B$, let's take the union of sets in $B$ indexed by $I$, where $I = \emptyset$ to get
+    The first thing we need to show is that the empty set is in $B'$. Since $\BB$ is defined as all unions of sets in $B$, let's take the union of sets in $B$ indexed by $I$, where $I = \emptyset$ to get
     \begin{align*}
         \bigcup_{i\in I}U_i = \emptyset, \text{ where $U_i \in B$}.
     \end{align*}
-    Then we have that $\emptyset \in B'$, satisfying the first requirement. 
+    Then we have that $\emptyset \in \BB$, satisfying the first requirement. 
 
-    Now to show that $T$ is in $B'$. 
+    Now to show that $T$ is in $\BB$. 
+    This is similar to as before in that $B$ is defined in that for any element in $T$ there is at least one subset in $B$ that contains that element. Since $B$ is also defined to be subsets of $T$ taking any union of these subsets can never equal anything more than $T$. Now $\BB$ is defined to be any     union of set in $B$, thus taking the union of all sets in $B$ will result in $T$.
+
+    Thus, we have it that $T\in \BB$
+    \newpage
+
+    Now to show that the union of elements of any subcollection is closed. Taking a union of subcollections in $\BB$ to be $U$. In other words $U$ is obtained by,
+    \begin{align*}
+        U = \bigcup_{i \in I}U_i 
+    \end{align*}
+    where $I$ is some index set, and $U_i \in \BB$. We know $\BB$ to be defined as the collection of any unions of set in $B$, there each $U_i$ can be expressed as,
+    \begin{align*}
+        U_i = \bigcup_{j \in J}B_j
+    \end{align*}
+    where $J$ is some index set, and $B_j \in B$. Expanding this out we get,
+    \begin{align*}
+        U = \bigcup_{i\in I}\bigcup_{j \in J}B_{j,i}
+    \end{align*}
+    we see that this is simply a union of sets in $B$, and $\BB$ is defined to be the collection of any union of sets in $B$, thus $U \in \BB$.
+
+    Now we need to show $\BB$ is closed under finite intersection. Take $U_1$, $U_2\in \BB$. They are defined as, \[U_1 = \bigcup_{i \in I}B_i\] \[U_2 =\bigcup_{j \in J}B_j\] for $I$ and $J$ as some index and $B_i,\ B_j\in B$.
+    Taking the intersection of these two we get,
+    \begin{align*}
+        U_1 \cap U_2 =  \bigcup_{i \in I}B_i \cap \bigcup_{j \in J}B_j =  \bigcup_{i \in I}\bigcup_{j \in J}(B_i \cap B_j)
+    \end{align*}
+    Since $B_i$ and $B_j$ are elements of $B$, and $B$ was defined to be closed under intersection, this then just becomes a union of set in $B$, which by definition is then in $\BB$. It is obvious that this will hold for finite intersection through induction. 
+
+    Thus, $\BB$ does indeed form a topology for $T$
+    
 \end{proof}
 
 \end{document}
