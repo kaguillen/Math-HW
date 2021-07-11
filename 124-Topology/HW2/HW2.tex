@@ -1,7 +1,8 @@
 \documentclass[12pt]{article}
 %------------------------------- BEGIN PREAMBLE
 % packages used
-\usepackage{amssymb,amsmath,amsfonts,mathrsfs,pgffor,marvosym,amsthm, mathrsfs}
+\usepackage{amssymb,amsmath,amsfonts,mathrsfs,pgffor,marvosym,amsthm, mathrsfs, mathtools}
+\DeclarePairedDelimiter\set\{\}
 % macros
 \newcommand      {\Nm}         {{\mathbb N}}
 \newcommand      {\Zm}         {{\mathbb Z}}
@@ -13,6 +14,7 @@
 \newcommand      {\BB}        {{\mathscr B}}
 \newcommand {\lines}[1] {\foreach \n in {1,...,#1}{ \vspace{9mm} \hrule height 
 0.2pt  }\vspace{2mm} }
+
 % adjustment of page dimensions
 \textwidth=7in
 \textheight=9.8in
@@ -24,15 +26,18 @@
 %-------------------------------- END PREAMBLE
 \begin{document}
 \begin{flushright}
-    Name:  \\*
+    Name:  Kevin Guillen \\ Mingji Chen 
     
 \end{flushright}
 \begin{center}
-    {\bf Topology - Summer Session 1 - HW2 - 7/3/2021}
+    {\bf Topology - Summer Session 1 - HW2 - 7/10/2021}
 \end{center}
 
+I wasn't sure wheather or not to include our 3rd memeber Gordon since we tried contacting, but they didn't respond to our discussion in our Canvas group page, and he didn't submit any of his work this was just Kevin and Mingji. 
+
 % STATEMENT OF PROBLEM 1
-\noindent {\bf (3.3)}  For each topology on $\{a, b, c, d\}$ from Question 3.2, list the open sets in the subspace topology for the subset $\{a, b, c\}$.
+\noindent {\bf (3.3)}  For each topology on $\{a, b, c, d\}$ from Question 3.2, list the open sets in the subspace topology for the 
+subset $\{a, b, c\}$.
 \begin{proof}
     Recalling from $3.2$ the only list of open sets that formed a topology were the following,
     \begin{center}
@@ -59,7 +64,7 @@ Determine whether $f$ is continuous.
     \begin{align*}
         f^{-1}(n) = [n,n+1)
     \end{align*}
-    which is a closed set in $\Rm$. Thus, by definition the floor function is not continuous.
+    which is not a closed set in $\Rm$, but neither is it open Thus, by definition the floor function is not continuous.
 \end{proof}
 
 % STATEMENT OF PROBLEM 3
@@ -77,7 +82,7 @@ Determine whether $f$ is continuous.
     This is similar to as before in that $B$ is defined in that for any element in $T$ there is at least one subset in $B$ that contains that element. Since $B$ is also defined to be subsets of $T$ taking any union of these subsets can never equal anything more than $T$. Now $\BB$ is defined to be any     union of set in $B$, thus taking the union of all sets in $B$ will result in $T$.
 
     Thus, we have it that $T\in \BB$
-    \newpage
+    
 
     Now to show that the union of elements of any subcollection is closed. Taking a union of subcollections in $\BB$ to be $U$. In other words $U$ is obtained by,
     \begin{align*}
@@ -103,5 +108,74 @@ Determine whether $f$ is continuous.
     Thus, $\BB$ does indeed form a topology for $T$
     
 \end{proof}
+
+% STATEMENT OF PROBLEM 3
+\noindent {\bf (4.1)} Let $S$ be a disconnected space say $S = U \cup V$ and $U \cap V = \emptyset$, and that $U,V$ are open and nonempty. If $x\in U$ and $y \in V$ prove there can be continous map $f:[0,1]\to S$ such that $f(0) = x$ and $f(1) = y$
+\begin{proof}
+    We know there exists $x$ in $U$ such that $f(0) = x$, therefore $f^{-1}(U) = U'$ and that 0 is in $U'$. The same is true that there exists some $y$ in $V$ such that $f(1) = y$ and therefore, $f^{-1}(V) = V'$ and $1$ is in $V'$ 
+
+    We know since $U$ and $V$ were open in $S$ that $U'$ and $V'$ have to be open in $[0,1]$. And because $U\cup V = S$ that means $U'\cup V' = [0,1]$.and since $U \cap V = \emptyset$ then $U'\cap V'= \emptyset$. This means $[0,1]$ can be formed by a union of 2 open and disjoint sets, meaning it is disconnected, but we know from class this is not true, therefore there can be no continous map from $[0,1]$ to $S$
+
+
+\end{proof}    
+
+\noindent {\bf (4.2)} Let $T$ be the set $\{a,b,c\}$ for the following topologies on $T$ determine which are connected and which are Hausdorff. 
+
+$1)\ \emptyset,\{a\},\{a, b\},\{a, b, c\}. \\
+\indent 2)\ \emptyset,\{a\},\{b, c\},\{a, b, c\}. \\
+\indent 3)\ \emptyset,\{a\},\{a, b\},\{a, c\},\{c\},\{a, b, c\}$
+\begin{proof}
+    1) is connected since there are no 2 disjoint sets such that their union forms $T$. However though it is not Hausdorff since for example take $a$ and $b$ there are no 2 disjoint open sets where 1 contains $a$ and the other contains $b$
+
+    2) is disconnected since $\{a\} \cap \{b,c\} = \emptyset$, and $\{a\}\cup\{b,c\} = T$ and they are both open making this topology disconnected. This topology is not Hausdorff though since there are no 2 disjoint open sets that one contains $b$ and one contains $c$
+
+    3) is disconnected since $\set{a,b} \cap \set{c} = \emptyset$ and $\set{a,b} \cup \set{c} = T$, and they are both open, making this topology disconnected. This topology is not Hausdorff though since there are no 2 disjoint open sets that one contains $a$ and the other contains $b$
+
+\end{proof}
+
+\noindent {\bf (4.3)} Prove that every continous map from $\Rm \to \Qm$ is constant. 
+
+\begin{proof}
+    To prove this we're going to show that $\Qm$ is actually a disconnected space. Take $a$ and $b$ in $\Qm$, we know that between any two rational numbers there exists an irrational number between them, let's refer to it as $q$, $a < q < b$. 
+    
+    Let's consider the sets formed using $q$, $U = (-\infty, q)$ and $V = (q, \infty)$. We now want to show that these two sets are indeed open, consider for any $x \in \Qm$ such that $x < q$. We know that for any $\delta-$neighborhood of $x$, where $\delta = q - x$ that $\delta-$neighborhood of $x$ will be contained in $(-\infty, q)$. 
+
+    Similair reasoning will apply for $x > q$ simply setting $\delta = x - q$ meaning $U$ and $V$ are open. So we have $U \cup V = \Qm$ and $U \cap V = \emptyset$. Making $\Qm$ disconnecetd. 
+
+    We know from class that $\Rm$ is a connected space, so assuming $f$ to be a continous map from $\Rm$ to $\Qm$. We know $\Qm = U \cup V$, therefore $\Rm = f^{-1}(U)\cup f^{-1}(V)$, we know these sets are open since they are open in $\Qm$, and that they are disjoint. But like stated before we know $\Rm$ is connected. Making this a contradiction. Thefore any continous map from $\Rm$ to $\Qm$ has to be constant since $\Qm$ is disconnected. 
+
+    
+\end{proof}
+
+\noindent {\bf (4.5)} Is $[0,\frac{1}{2})$ compact, if not give an example of an unbounded function. 
+\begin{proof}
+    It is not compact. An example would be $f(x) = \frac{1}{x - \frac{1}{2}}$ on $[0,\dfrac{1}{2})$ since,
+    \begin{align*}
+        \lim_{x \to \frac{1}{2}}\dfrac{1}{x-\frac{1}{2}} = \infty  
+    \end{align*}
+\end{proof}
+
+\noindent {\bf (4.7)} Show that $\Zm$ is Hausdorff without using proposition 4.35
+
+\begin{proof}
+    Consider for any integers $m$ and $n$ the ball of radius $\frac{1}{3}$ we know in the set of integers the $d(m,n) = |n-m|$ as a lowerbound of 1. Therefore since our raidus is $\frac{1}{3}$ which is less than 1, meaning for any two integers these sets will always be disjoint. $B_{\frac{1}{3}}(m)\cap \Zm = \set{m}$ and $B_{\frac{1}{3}}(n) \cap \Zm= \set{n}$, so we have $\set{m}$ and $\set{n}$ as open disjoint sets. Showing $\Zm$ actually has a discrete topology under the metric $d(n,m) = |n-m|$, and every discrete topology is Hausdorff
+\end{proof}
+
+\noindent {\bf (4.8)} Prove that if $T$ is a Hausdorff space and $x_1,...,x_n$ is a finite list of distinct points in $T$, then there are open sets $U_1,...,U_n$ each containing one, and only one, of the points $x_1,...,x_n$
+
+\begin{proof}
+    Since $T$ is Hausdorff for $x_i$ and $x_j$ ($i \neq j$) $\exists U_{i,j}$ and $U_{j,i}$ that are open and disjoint containing $x_i$ and $x_j$ respectively. Then for $x_i$ we can find, \[U_{i,1},\ U_{i,2},\ ...,\ U_{i,n} \rightarrow \bigcap_{j =1, j \neq i}^n (U{i,j})\] that is an open set and contains $x_i$ but doesn't contain any other $x_j (i\neq j)$. Hence, denote this set to be \[U_1 = \bigcap_{j = 1}^n(U{i,j})\] similairly we can find $U_2,\ ....,\ U_n$
+\end{proof}
+
+\noindent {\bf (4.9)} If the set of integers were given the indiscrete topology, would it be connected? Compact? Hausdorff?
+\begin{proof}
+    If $\Zm$ would be given an indiscrete topology we cannot seperate $m$ and $n$ with disjoint open sets, therfore $\Zm$ can't be Hausdorff.
+    
+    $\Zm$ is connected because there are no other open sets such that $Z = U \cup V$.
+
+    $\Zm$ is copmpact because any open cover has a finite subcover. 
+\end{proof}
+
+
 
 \end{document}
