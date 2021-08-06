@@ -1,7 +1,8 @@
 \documentclass[12pt]{article}
 %------------------------------- BEGIN PREAMBLE
 % packages used
-\usepackage{amssymb,amsmath,amsfonts,mathrsfs,pgffor,marvosym,amsthm}
+\usepackage{amssymb,amsmath,amsfonts,mathrsfs,pgffor,marvosym,amsthm, mathrsfs, mathtools}
+\DeclarePairedDelimiter\set\{\}
 % macros
 \newcommand      {\Nm}         {{\mathbb N}}
 \newcommand      {\Zm}         {{\mathbb Z}}
@@ -10,8 +11,10 @@
 \newcommand      {\Cm}         {{\mathbb C}}
 \newcommand      {\vb}        {\mathbf}
 \newcommand      {\PP}        {{\mathscr P}}
+\newcommand      {\BB}        {{\mathscr B}}
 \newcommand {\lines}[1] {\foreach \n in {1,...,#1}{ \vspace{9mm} \hrule height 
 0.2pt  }\vspace{2mm} }
+
 % adjustment of page dimensions
 \textwidth=7in
 \textheight=9.8in

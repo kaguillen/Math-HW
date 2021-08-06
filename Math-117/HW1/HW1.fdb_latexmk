@@ -1,13 +1,15 @@
 # Fdb version 3
-["pdflatex"] 1627693449 "c:/Users/Kevin Guillen/Documents/Math-HW/HWTemplate/HWTemplate.tex" "HWTemplate.pdf" "HWTemplate" 1627693450
-  "HWTemplate.aux" 1627693450 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
-  "HWTemplate.tex" 1627693447 1228 56713ed1ba40d5ba5c9422482952391a ""
-  "c:/Users/Kevin Guillen/Documents/Math-HW/HWTemplate/HWTemplate.tex" 1627693447 1228 56713ed1ba40d5ba5c9422482952391a ""
+["pdflatex"] 1627923713 "c:/Users/Kevin Guillen/Documents/Math-HW/Math-117/HW1/HW1.tex" "HW1.pdf" "HW1" 1627923713
+  "HW1.aux" 1627923713 34 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "HW1.tex" 1627923711 1375 3ab2d18a7a69cfdac2c1a1f8d534daf1 ""
+  "c:/Users/Kevin Guillen/Documents/Math-HW/Math-117/HW1/HW1.tex" 1627923711 1375 3ab2d18a7a69cfdac2c1a1f8d534daf1 ""
   "c:/texlive/2021/texmf-dist/fonts/map/fontname/texfonts.map" 1622596518 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm" 1622595680 1324 c910af8c371558dc20f2d7822f66fe64 ""
   "c:/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmr12.tfm" 1622595680 1288 655e228510b4c2a1abe905c368440826 ""
+  "c:/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmti12.tfm" 1622595680 1484 ed72f8f5cf654cda15ecc8e32bfcbee5 ""
   "c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb" 1622595046 32080 340ef9bf63678554ee606688e7b5339d ""
   "c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb" 1622595046 32722 d7379af29a190c3f453aba36302ff5a9 ""
+  "c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb" 1622595046 36118 fad905eba93cff5bce1e185fe980a177 ""
   "c:/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1622597661 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "c:/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex" 1622598025 521 8e224a7af69b7fee4451d1bf76b46654 ""
   "c:/texlive/2021/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex" 1622598025 13391 84d29568c13bdce4133ab4a214711112 ""
@@ -64,6 +66,6 @@
   "c:/texlive/2021/texmf-var/web2c/pdftex/pdflatex.fmt" 1622599673 2746602 ea80a005d1b84f117210ab4e3a0ad72d ""
   "c:/texlive/2021/texmf.cnf" 1622599593 713 e69b156964470283e0530f5060668171 ""
   (generated)
-  "HWTemplate.aux"
-  "HWTemplate.log"
-  "HWTemplate.pdf"
+  "HW1.aux"
+  "HW1.log"
+  "HW1.pdf"

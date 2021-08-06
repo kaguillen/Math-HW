@@ -1,9 +1,9 @@
-PWD c:/Users/Kevin Guillen/Documents/Math-HW/HWTemplate
+PWD c:/Users/Kevin Guillen/Documents/Math-HW/Math-117/HW1
 INPUT c:/texlive/2021/texmf.cnf
 INPUT c:/texlive/2021/texmf-dist/web2c/texmf.cnf
 INPUT c:/texlive/2021/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT c:/Users/Kevin Guillen/Documents/Math-HW/HWTemplate/HWTemplate.tex
-OUTPUT HWTemplate.log
+INPUT c:/Users/Kevin Guillen/Documents/Math-HW/Math-117/HW1/HW1.tex
+OUTPUT HW1.log
 INPUT c:/texlive/2021/texmf-dist/tex/latex/base/article.cls
 INPUT c:/texlive/2021/texmf-dist/tex/latex/base/article.cls
 INPUT c:/texlive/2021/texmf-dist/tex/latex/base/article.cls
@@ -275,10 +275,10 @@ INPUT c:/texlive/2021/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 INPUT c:/texlive/2021/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 INPUT c:/texlive/2021/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 INPUT c:/texlive/2021/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
-INPUT ./HWTemplate.aux
-INPUT HWTemplate.aux
-INPUT HWTemplate.aux
-OUTPUT HWTemplate.aux
+INPUT ./HW1.aux
+INPUT HW1.aux
+INPUT HW1.aux
+OUTPUT HW1.aux
 INPUT c:/texlive/2021/texmf-dist/tex/latex/graphics/graphicx.sty
 INPUT c:/texlive/2021/texmf-dist/tex/latex/graphics/graphicx.sty
 INPUT c:/texlive/2021/texmf-dist/tex/latex/graphics/graphicx.sty
@@ -341,8 +341,10 @@ INPUT c:/texlive/2021/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 INPUT c:/texlive/2021/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 INPUT c:/texlive/2021/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 INPUT c:/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
-OUTPUT HWTemplate.pdf
+INPUT c:/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmti12.tfm
+OUTPUT HW1.pdf
 INPUT c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map
-INPUT HWTemplate.aux
+INPUT HW1.aux
 INPUT c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 INPUT c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb
+INPUT c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb
