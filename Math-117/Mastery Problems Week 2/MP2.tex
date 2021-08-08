@@ -1,8 +1,9 @@
 \documentclass[12pt]{article}
 %------------------------------- BEGIN PREAMBLE
 % packages used
-\usepackage{amssymb,amsmath,amsfonts,mathrsfs,pgffor,marvosym,amsthm}
+\usepackage{amssymb,amsmath,amsfonts,mathrsfs,pgffor,marvosym,amsthm,mathtools}
 % macros
+\DeclarePairedDelimiter\set\{\}
 \newcommand      {\Nm}         {{\mathbb N}}
 \newcommand      {\Zm}         {{\mathbb Z}}
 \newcommand      {\Qm}         {{\mathbb Q}}
@@ -49,9 +50,50 @@
 
             Recall though that $\omega$ was defined as a symmetric bilinear form, therefore $b_\omega$ is a symmetric bilinear form.
             
-            We can see from here that the symmetric bilinear form is uniquely determined by the quadratic from 
+            Now for the converse, let $\omega(x) = (x,x)$ be a quadratic function,
+            \begin{align*}
+                b_\omega(x,x) &= \omega(x+x) - \omega(x) - \omega(x) \\
+                &= (x+x, x+x) - (x,x) - (x,x) \\
+                &= 4(x,x) - 2(x,x) \\
+                &= 2(x,x) \\
+                \frac{1}{2}b_\omega(x) = (x,x)
+            \end{align*}
         \end{proof}
 
+        Thus we see $\frac{1}{2}b_\omega(x,x)$ is the bilinear form determined by the quadratic form $\omega(x) = (x,x)$
+
+        \item[(b)] Is the conclusion of part (a) still true if char($\Fm)=2$?
+        
+        \textbf{Answer:} No. As we see at the end if the characteristic of the underlying field were to be 2 that would mean 2 would not exist in the field and we wouldn't be able to divide by 2.    
+        \newpage
+        \item[(c)] Yes. The quadratic forms have a 1-1 correspondence with symmetric billinear forms, but non symmetric bilinear forms can define the same quadratic form as some symmetric billinear form. This is because every bilinear form $\omega$ gives a quadratic form by $q(x) = \omega(x,x)$, but we see it doesn't concern the antisymmetric form of $\omega$, therfore not effecting $q$. This is why you can have a non symmetric billinear form and a symmetric bilinear form define the same quadratic form. 
+    \end{itemize}
+
+    \item[\textbf{[1]}] For all the following make the application of the Axiom of Choice (or any equivalent statement) explicit in the arguement.
+    \begin{itemize}
+        \item[(a)] Prove that every vector space has a basis.
+        \begin{proof}
+            We know from class that if $V$ is a finite dimensional vector space we can consider the set $X_1$  containing a single non-zero vector of $x\in V$. if $X$ spans the whole vector space then we are done. If not we can take another vector $x\in V$ and not in the span of $X_1$. We can define the set $X_2 = X_1 \cup \set{x} $ and if this doesn't span the whole vector space we can repeat the process until it terminates. The issues that arises isn't with finite dimensional vector spaces but for infinite ones.
+
+            To prove that infinite dimensional vector spaces do indeed have a basis let us consider the collection $S$ which is a collection of subsets of some set. Also that whenever these subsets form a chain such that $S_1 \subset S_2 \subset S_3 \dots$ that the union of these subsets is in $S$. Applying Zorn's Lemma which is an equivlant statment to the Axiom of Choice, we know there exists a maximal element in $S$ such that it is not properly contained by other elements in $S$, which implies every element in $S$ is contained in this maximal element in $S$. 
+
+            We can now let this collection $S$ be the collection of all linearly independent subsets of $V$. Because the union of an increasing chain of linearly independent sets is also a linearly independent set, we can apply Zorn's Lemma as stated before and gurantee that there will be a maximal linaerly independent set in this collection. This maximal linearly independent set will then serve as the basis for $V$. The reason we know it can is if there were to exist another linearly independent vector in $V$ not covered by the span of the maximal set, then that would be a contradiciton since the maximal set by defintion cannot be properly contained by another subset.
+        \end{proof}
+        \item[(b)] Let dim$_\Fm (V)$ denote the dimension of the vector space $V$ over the field $\Fm$. What is  dim$_\Rm(\Rm^2)$? How about dim$_\Qm(\Rm^2)$
+        \begin{proof}
+            We know from the class and the textbook that the dimension of a finite dimensional vector space over a field $\Fm$ is simply the number of elements in the basis of said vector space. So in the case of the $\Rm$-vector space $\Rm^2$ we know it's basis is the following \[\set{(1,0),(0,1)}\]
+
+            We know the span of this set covers the whole vector space because any vector in $\Rm^2$ can be expressed as the following,
+            \[(x,y) = a(1,0)+b(0,1)\]
+
+            Where $a =x$, and $b = y$. We know we can do this since $x,y \in \Rm$ and since $\Rm^2$ is over the field $\Rm$, $a,b\in \Rm$ 
+            
+            For dim$_\Qm(\Rm^2)$ we know because of the axiom of choice a basis exists for an infinite dimensional vector space. We also know dim$_\Rm(\Rm[x]) = |\Nm| $. Meaning it is countably infinite, thus dim$_\Qm(\Rm^2)$ is uncountably infinte. We can get an idea of what this basis is by trying to construct it. Imagine we have the form like before,
+            \[(x,y) = a(1,0) + b(0,1)\]
+            Say $x$ is $\sqrt{2}$. We know this is irrational and therefore exists outside of $\Qm$. If we add it as a vector we can repeat the process for $\sqrt{3}$ and repeat forever using our favorite irrational numbers. The uncountably infinite parts comes in because we know from real analysis there are far more irrational numbers than there are rational numbers which is why the reals are uncountably infinte and the rationals countably infinte. So the basis will look like a set of infintely linearly independent vectors that are composed of values in $\Rm$
+        \end{proof}
+
+        \item[(c)] Am stuck on this and ran out of time.........
     \end{itemize}
 
 \end{itemize}
