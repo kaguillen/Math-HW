@@ -9,6 +9,7 @@
 \newcommand      {\Qm}         {{\mathbb Q}}
 \newcommand      {\Rm}         {{\mathbb R}}
 \newcommand      {\Cm}         {{\mathbb C}}
+\newcommand      {\Fm}         {{\mathbb F}}
 \newcommand      {\vb}        {\mathbf}
 \newcommand      {\PP}        {{\mathscr P}}
 \newcommand      {\BB}        {{\mathscr B}}
@@ -35,7 +36,7 @@
 
 \begin{itemize}
 
-    \item[$\textbf{[1]}$]
+    \item[$\textbf{[1]}$]%--------------------------------Problem 1
     Confirm that the following form a group. Furthermore, determine which are Abelian. 
     \begin{itemize}
     
@@ -84,7 +85,7 @@
     
     \vspace{.5cm}
     
-    \item[$\textbf{[2]}$]
+    \item[$\textbf{[2]}$]%--------------------------------Problem 2
     Confirm that the following form a field.
     \begin{itemize}
     
@@ -95,6 +96,20 @@
     [n] + [m] = [n + m] \hspace{.3cm} \text{and} \hspace{.3cm} [n] \cdot [m] = [n \cdot m]
     \end{equation*}
     You may assume that $\mathbb{Z}$ has all the standard properties such as associativity, commutativity, etc...
+
+    \begin{proof}
+        We know from class that for any integer $n$, $\Zm/n\Zm$ will be a commutative ring. All we need to show now is that, when $n$ is prime, every non-zero element in it will have multiplicative inverses. 
+
+        By definition a prime number, $p$, will share no common divisors except 1 with another integer $n$ ($n\neq p$). Thus take any non-zero element $n \in \Zm/p\Zm$. $n$ represents a congruence class of elements which are by definition not multiples of $p$. Thus, gcd$(n,p) = 1$. 
+
+        From here we know from elementary number theory that there exists $u,v\in\Zm$ such that \[u\cdot n + v\cdot p = 1.\] Bringing this into $\Zm/p\Zm$ we have
+        \begin{align*}
+            \overline{u}\cdot \overline{n} + \overline{0} \equiv \overline{1} \\
+            \overline{u}\cdot \overline{n} \equiv \overline{1}
+        \end{align*}
+
+        That means for any non-zero $n\in \Zm/p\Zm$, where $p$ is prime, that there exists a $u\in \Zm/p\Zm$ such that $\overline{u}\cdot \overline{n}= 1 $. Which means that every non-zero element has a multiplicative inverse. Thus satisfying the criteria to be a field.
+    \end{proof}
     
     \vspace{.3cm}
     \item[(b)]
@@ -106,17 +121,109 @@
     \end{split}
     \end{equation*}
     You may assume that $\mathbb{Q}$ has all of the standard properties of a field. 
+
+    \begin{proof} 
+
+        \textit{Associativity:} For any $x,y,\ z \in \Qm(\sqrt{2})$ we have,
+        \begin{align*}
+            x + (y + z) &= (a_1 + b_1\sqrt{2}) + ((a_2 + b_2\sqrt{2}) + (a_3 + b_3\sqrt{2})) \\
+            &= (a_1 + b_1\sqrt{2}) + (((a_2 + a_3) + (b_2 + b_3)\sqrt{2})) \\
+            &= (a_1 + (a_2 + a_3)) + (b_1 + (b_2 + b_3))\sqrt{2} && \text{since $\Qm$ is associative} \\
+            &= ((a_1 + a_2) + a_3) + ((b_1 + b_2) + b_3)\sqrt{2} \\
+            &= ((a_1 + a_2) + (b_1 + b_2)\sqrt{2}) +(a_3 + b_3\sqrt{2}) \\
+            &= ((a_1 + b_1\sqrt{2}) + (a_2 + b_2\sqrt{2})) + (a_3 + b_3\sqrt{2}) \\
+            &= (x+y) + z
+        \end{align*}
+
+        we also have,
+        \begin{align*}
+            x \cdot (y \cdot z) &= (a_1 + b_1\sqrt{2}) \cdot ((a_2 + b_2\sqrt{2}) \cdot (a_3 + b_3\sqrt{2})) \\
+            &= (a_1 + b_1\sqrt{2}) \cdot (((a_2 \cdot a_3) + (b_2 \cdot b_3)\sqrt{2})) \\
+            &= (a_1 \cdot (a_2 \cdot a_3)) + (b_1 \cdot (b_2 \cdot b_3))\sqrt{2} && \text{since $\Qm$ is associative} \\
+            &= ((a_1 \cdot a_2) \cdot a_3) + ((b_1 \cdot b_2) \cdot b_3)\sqrt{2} \\
+            &= ((a_1 \cdot a_2) + (b_1 \cdot b_2)\sqrt{2}) \cdot(a_3 + b_3\sqrt{2}) \\
+            &= ((a_1 + b_1\sqrt{2}) \cdot (a_2 + b_2\sqrt{2})) \cdot (a_3 + b_3\sqrt{2}) \\
+            &= (x\cdot y) \cdot z
+        \end{align*}
+
+        \textit{Identity element:} Let our additive identity be $0 = 0 + 0\sqrt{2}$, we see for any $(a+b\sqrt{2}) \in \Qm(\sqrt{2})$
+
+        \begin{align*}
+            0 + (a+b\sqrt{2}) &= (0+0\sqrt{2}) + (a+b\sqrt{2}) \\
+            &= (0+a) + (0+b)\sqrt{2} \\
+            &= a + b\sqrt{2} \\
+            &= (a+ 0) + (b+0)\sqrt{2} \\
+            &= (a+b\sqrt{2}) + (0+ 0\sqrt{2})\\
+            &= (a+b\sqrt{2}) + 0
+        \end{align*}
+
+        Let our multiplicative identity be $1 = 1 + 1 \sqrt{2}$, we see for any $(a+b\sqrt{2})\in \Qm(\sqrt{2})$,
+        
+        \begin{align*}
+            1 \cdot (a + b\sqrt{2}) &= (1+1\sqrt{2}) \cdot (a+b\sqrt{2}) \\
+            &= (1\cdot a) + (1\cdot b)\sqrt{2} \\
+            &= a + b\sqrt{2} \\
+            &= (a\cdot 1) + (b\cdot 1)\sqrt{2} \\
+            &= (a+b\sqrt{2}) \cdot (1+1\sqrt{2}) \\
+            &= (a+b\sqrt{2}) \cdot 1
+        \end{align*}
+
+        \textit{Inverse element:} Since $a,b\in \Qm$ for $(a+b\sqrt{2})\in\Qm(\sqrt{2})$ The additive inverse for $(a+b\sqrt{2})$ is simply $((-a)+(-b)\sqrt{2}$ where $-a,-b$ are simply the additive inverses for $a,b\in\Qm$ since $\Qm$ is a field. 
+        \[(a+b\sqrt{2}) + ((-a)+(-b)\sqrt{2}) = (a-a) + (b-b)\sqrt{2} = 0+0\sqrt{2} = 0\]
+        \[((-a)+(-b)\sqrt{2}) + (a+b\sqrt{2}) = (-a + a) + (-b + b)\sqrt{2} = 0+0\sqrt{2} = 0\]
+
+        The same reasoning applies for multiplicative inverses in that for any element $a+b\sqrt{2}\in \Qm(\sqrt{2})$ the multiplicative inverse will simply be $a^{-1}+ b^{-1}\sqrt{2} \in \Qm(\sqrt{2})$ where $a^{-1}$ and $b^{-1}$ are simply $a$ and $b$'s multiplicative inverse in $\Qm$ respectively. 
+        
+
+        \textit{Commutativity:} Let $x,y\in \Qm(\sqrt{2})$, we can see under addition that,
+        \begin{align*}
+            x + y &= (a_1 + b_1\sqrt{2}) + (a_2 + b_2\sqrt{2}) \\
+            &= (a_1 + a_2) + (b_1 + b_2)\sqrt{2} && \text{elements in $\Qm$ are commutative} \\
+            &= (a_2 + a_1) + (b_2 + b_1)\sqrt{2} \\
+            &= (a_2 + b_2\sqrt{2}) + (a_1 + b_1\sqrt{2})\\
+            &= y + x 
+        \end{align*}
+
+        We also see under multiplication that,
+        \begin{align*}
+            x \cdot y &= (a_1 + b_1\sqrt{2}) \cdot (a_2 + b_2\sqrt{2}) \\
+            &= (a_1 \cdot a_2) + (b_1 \cdot b_2)\sqrt{2} && \text{elements in $\Qm$ are commutative} \\
+            &= (a_2 \cdot a_1) + (b_2 \cdot b_1)\sqrt{2} \\
+            &= (a_2 + b_2\sqrt{2}) \cdot (a_1 + b_1\sqrt{2})\\
+            &= y \cdot x 
+        \end{align*}
+        
+        \newpage %PAGE BREAK
+
+        \textit{Distrubitve Property:} We see for $x,y,\ z \in \Qm(\sqrt{2})$,
+        \begin{align*}
+            x\cdot (y + z) &= (a_1 + b_1(\sqrt{2})) \cdot ((a_2 + b_2(\sqrt{2})) + (a_3 + b_3(\sqrt{2}))) \\
+            &= (a_1 + b_1(\sqrt{2})) \cdot ((a_2 + a_3) + (b_2 + b_3)\sqrt{2}) \\
+            &= a_1(a_2 + a_3) + b_1(b_2 + b_3)\sqrt{2} && \text{Distrubition holds in $\Qm$}\\
+            &= (a_1a_2 + a_1a_3) + (b_1b_2 + b_1b_3)\sqrt{2} \\
+            &= (a_1 + b_1\sqrt{2})(a_2 + b_2\sqrt{2}) + (a_1 + b_1\sqrt{2})(a_3 + b_3\sqrt{2}) \\
+            &= xy + xz
+        \end{align*}
+
+        We can see $\Qm(\sqrt{2})$ does indeed form a field. 
+    \end{proof}
     
     \end{itemize}
     
     \vspace{.5cm}
     
-    \item[$\textbf{[3]}$]
+    \item[$\textbf{[3]}$]%--------------------------------Problem 3
     The fact that $\mathbb{Z}/p\mathbb{Z}$ (where $p$ is a prime) is a field shows that not quite all the laws of elementary arithmetic hold in fields; in $\mathbb{Z}/2\mathbb{Z}$, for instance, $1 + 1 = 0$. Prove that if $\mathbb{F}$ is a field, then either the result of repeatedly adding $1$ to itself is always different from $0$, or else the first time that it is equal to $0$ occurs when the number of summands is a prime. (The \textit{characteristic} of the field $\mathbb{F}$, denoted by $\text{char}(\mathbb{F})$, is defined to be $0$ in the first case and the crucial prime in the second.) 
     
+    \begin{proof}
+        By defintion every field must contain a multiplicative identity 1, and an additive identity 0 such that $1\neq 0$. If we repeatedly add 1 to itself and never reach 0 then we are done, if not we want to show it will be prime. The reason being is if char$(\Fm)=n$, where $n$ is composite. That would mean $n$ has divisors other than 1 and itself, so we can express $n$ as $n = dk $ where $d,k \in \Zm$ and $1 < d,k < n$. By defintion of $n$ being the characteristic of the field that means $n\cdot 1 = 0$, but $n = dk$, so therefore $dk \cdot 1 = 0$. But a field has no proper zero divisors as we've shown in class, therefore $d\cdot 1 = 0$ or $k \cdot 1 = 0$ which is a contradiction since $n$ is supposed to be the characteristic of $\Fm$ and $r$ and $s$ are less than $n$. Therefore $n$ must be prime if not equal to 0.
+
+
+    \end{proof}
+
     \vspace{.5cm}
     
-    \item[$\textbf{[4]}$]
+    \item[$\textbf{[4]}$]%--------------------------------Problem 4
     Let $\mathbb{R}^2 = \{ (x,y) \hspace{.1cm} | \hspace{.1cm} x,y \in \mathbb{R} \}$. 
     \begin{itemize}
     
@@ -127,6 +234,11 @@
     (x,y) + (z,w) = (x + z,y + w) \hspace{.3cm} \text{and} \hspace{.3cm} (x,y) \cdot (z,w) = (x \cdot z,y \cdot w)
     \end{equation*}
     does $\mathbb{R}^2$ become a field?
+
+    \begin{proof}
+        No. This is because $(1,0),(0,1)\in \Rm^2$, which are non zero but we see their product is the zero element of the field, which can't means it can't be a field since in class we showed a field doesn't have zero divisors. 
+        \[(1,0)\cdot(0,1) = (0,0)\] 
+    \end{proof}
     
     \vspace{.3cm}
     \item[(b)]
@@ -135,17 +247,34 @@
     (x,y) + (z,w) = (x + z,y + w) \hspace{.3cm} \text{and} \hspace{.3cm} (x,y) \cdot (z,w) = (x \cdot z - y \cdot w,x \cdot w + y \cdot z)
     \end{equation*}
     is $\mathbb{R}^2$ a field then?
+
+    \begin{proof}
+        Yes this forms a field. For multiplication we see it follows that of values in the $\Cm$ which we know from class is a field. Since recall,
+        \begin{align*}
+            (x+iy)(z+iw) = (xz) + i(xw) + i(yz) -(yw) \\
+            = (xz -yw) + i(xw + yz)
+        \end{align*}
+
+        In this case those the coeffectients done for the imaginary componenet are is simply the 2nd comonponent in $\Rm^2$ and the real component of the the complex number lines up with the first comonponent of $\Rm^2$.
+
+        We know $\Rm^2 = \Rm \times  \Rm$, we also know $\Rm$ is an abelian group under addition by definition of being a field. We know from group theory that the direct product of 2 abelian groups is also an abelian group. Therefore $\Rm^2$ under this defintion of addition and multiplication is indeed a field, more specifically the only way to make $\Rm^2$ into a field. 
+
+    \end{proof}
     
     \end{itemize}
     
     \vspace{.5cm}
     
-    \item[$\textbf{[5]}$]
+    \item[$\textbf{[5]}$]%--------------------------------Problem 5
     Show that for any field $\mathbb{F}$ the set $\mathbb{F}^n = \{ (x_1,\dots,x_n) \hspace{.1cm} | \hspace{.1cm} x_1,\dots,x_n \in \mathbb{F} \}$ forms a vector space over the field $\mathbb{F}$ where addition of vectors is taken componentwise. If $\mathbb{F} = \mathbb{Z}/p\mathbb{Z}$ for $p$ a prime, how many vectors are there in $\mathbb{F}^n$?
+
+    \begin{proof}
+        To answer the 2nd question. There will be $p^n$ vectors. This is because $\Zm/p\Zm$ contains $p$ elements, and $\Fm^n$ are $n-$tuple elements. Meaning each component there are $p$ choices, and there are $n$ components, therefore $p^n$ vectors. 
+    \end{proof}
     
     
     
-    \item[$\textbf{[6]}$]
+    \item[$\textbf{[6]}$]%--------------------------------Problem 6
     Consider the $\mathbb{C}$-vector space $\mathbb{C}^3$. For each of the following determine whether the subsets form a vector subspace:
     \begin{itemize}
     
@@ -173,7 +302,7 @@
     
     \vspace{.5cm}
     
-    \item[$\textbf{[7]}$]
+    \item[$\textbf{[7]}$]%--------------------------------Problem 7
     \begin{itemize}
     
     \item[(a)]
@@ -191,7 +320,7 @@
     
     \vspace{.5cm}
     
-    \item[$\textbf{[8]}$]
+    \item[$\textbf{[8]}$]%--------------------------------Problem 8
     For any field $\mathbb{F}$ let $\mathbb{F}[x] = \{ a_0 + a_1x + \dots + a_nx^n \hspace{.1cm} | \hspace{.1cm} a_0,a_1,\dots,a_n \in \mathbb{F} \}$ where $x^i = x^j$ if and only if $i = j$. 
     \begin{itemize}
     
@@ -211,26 +340,82 @@
     
     \vspace{.5cm}
     
-    \item[$\textbf{[9]}$]
+    \item[$\textbf{[9]}$]%--------------------------------Problem 9
     \begin{itemize}
     
     \item[(a)]
     Show that if both $U$ and $W$ are three-dimensional vector subspaces of a five-dimensional $\mathbb{F}$-vector space $V$, then $U$ and $W$ are not disjoint. 
+
+    \begin{proof}
+        Since by defition every vector space contains a zero vector, every subspace of a vector space will contain the zero vector. Which means every subspace therefore contains at least one subspace and that is the subspace containing only the zero vector. Thus if $U$ and $W$ are three-deimensional vector subspaces of a five-dimensional $\Fm$-vector space $V$. Since $U$ and $W$ are subspaces of the same vector space $V$, then they share the same zero vector. Thus,
+        \begin{align*}
+            U \cap W \neq \emptyset
+        \end{align*}
+    \end{proof}
     
     \vspace{.3cm}
     \item[(b)]
     Show that if $U$ and $W$ are finite-dimensional vector subspaces of a $\mathbb{F}$-vector space $V$, then:
     \begin{equation*}
-    \dim(U) + \dim(W) = \dim(U + W) - \dim(U \cap W)
+    \dim(U) + \dim(W) = \dim(U + W) + \dim(U \cap W)
     \end{equation*}
     This is the analogue of the \textit{Inclusion-Exclusion Principle} for sets adapted to vector spaces. In a certain sense the dimension for vector spaces plays the same role cardinality has with respect to sets. 
+
+    \begin{proof}
+        $U$ and $W$ are finite dimensional, so we have dim($U\cap W) = n$. Meaning our basis can be expressed as the set of vectors
+        \[\set{v_1, v_2,\dots, v_n}\]
+
+        This set the basis for $U\cap W$. Meaning this set is linearly independent in $U$ and in $W$. Which means this set of vectors is a subset to the basis for $U$ and $W$. Giving us the basis for $U$ as,
+        \[\set{v_1, v_2, \dots, v_n, u_1, \dots u_i}\]
+        And the basis for $W$ as,
+        \[\set{v_1,v_2,\dots, v_n, w_1,\dots, w_j}\]
+
+        This implies dim$(U) = n + i$ and dim$(W) = n + j$. 
+
+        Now our goal is to show the union of $\mathcal{B}_U$ and $\mathcal{B}_W$ serves as a basis for $U + W$. 
+
+        For any $v\in V$ we know this vector is simply $v = u + w$ for $u\in U$ and $w\in W$. We also know $u$ and $w$ can be expressed as a linear combination of the vectors in it's basis for coeffectients in $\Fm$. Therefore we have,
+        \begin{align*}
+            v &= \alpha_1v_1 + \alpha_2v_2 + \dots \alpha_nv_n + \beta_1u_1 + \dots \beta_iu_i \textbf{+} \gamma_1v_1+\dots \gamma_nv_n + \delta w_1 + \dots +\delta_j w_j \\
+            v &= (\alpha_1 + \gamma_1)v_1 + \dots + (\alpha_n + \gamma_n)v_n + \beta_1u_1 + \dots \beta_iu_i + \delta_1w_1 + \dots \delta_jw_j
+        \end{align*}
+
+        Therefore the union of $\mathcal{B}_U$ and $\mathcal{B}_W$ spans the whole vector space of $U+W$
+
+        Now we want to show these vectors are linearly independent,
+        \begin{align*}
+            \alpha_1v_1+ \alpha_2v_2+ \dots+ \alpha_nv_n+ \beta_1u_1+ \dots\beta_i u_i +  \delta_1w_1+\dots+ \delta_jw_j = 0 \\
+            \delta_1w_1+\dots+ \delta_jw_j = -(\alpha_1v_1 + \alpha_2v_2+ \dots+ \alpha_nv_n+ \beta_1u_1+ \dots\beta_i u_i)
+        \end{align*}
+
+        Which means $\delta_1w_1+\dots+ \delta_jw_j $ is a vector in the span of $\mathcal{B}_U$, therefore $\delta_1w_1+\dots+ \delta_jw_j \in U$. Remeber though that $\set{w_1,\dots,w_j}$ is the basis for $W$, and thus $\delta_1w_1+\dots+ \delta_jw_j $ is in $W$ as well, since it is in both $W$ and $U$ it must also be in their intersection. That means our set of vectors $\set{v_1, v_2,\dots, v_n}$ can be used to express $\delta_1w_1+\dots+ \delta_jw_j$,
+        \begin{align*}
+            \delta_1w_1+\dots+ \delta_jw_j = \beta_1v_1 + \dots \beta_nv_n \\
+            \beta_1v_1 + \dots \beta_nv_n  - (\delta_1w_1+\dots+ \delta_jw_j ) = 0
+        \end{align*}
+
+        Recall though the set of vectors $\set{v_1,v_2,\dots, v_n, w_1,\dots, w_j}$ is linearly independent, so the only way to satisfy this is if all $\delta_i$ and $\beta_i$ are equal to 0. The same reasoning applies to 
+        \[\beta_1v_1+\beta_2v_2+\dots+ \beta_nv_n+ \delta_1w_1+\dots+\delta_j w_j\]
+        in that all coeffectients will have to be 0 to satisfy the equation. Making the above vectors linearly independent. Therefore,
+        \[\set{v_1, v_2, \dots, v_n, u_1, \dots u_i,w_1,\dots, w_j}\] are linearly independent. Meaning it satisfies all the criteria to be a basis for $U+W$. 
+
+        We see though that dim$(U+W) = n + i + j$. Recall though that dim$(U) = n + i$ and dim$(W) = n + j$ and dim$(U\cap W) = n$. 
+        \begin{align*}
+            \text{dim}(U) + \text{dim}(W) = n+i +n+j = 2n + i + j \\
+            \text{dim}(U+ W) + \text{dim}(U\cap W ) = n+i + j + n = 2n + i + j 
+        \end{align*}
+
+        Therefore $\dim(U) + \dim(W) = \dim(U + W) + \dim(U \cap W)$ as desired.
+
+        
+    \end{proof}
     
     \end{itemize}
     
     \vspace{.5cm}
     
-    \item[$\textbf{[10]}$]
-    Let $V$ be a finite-dimensional $\mathbb{F}$-vector space with dual $V^*$. If $y \in V^*$ is non-zero and $\alpha \in \mathbb{F}$ is arbitrary, does there necessarily exist a vector $x \in V$ such that $[x,y] = \alpha$, or equivalently $y(x) = \alpha$?
+    \item[$\textbf{[10]}$]%--------------------------------Problem 10
+    Let $V$ be a finite-dimensional $\mathbb{F}$-vector space with dual $V^*$. If $y \in V^*$ is non-zero and $\alpha \in \mathbb{F}$ is arbitrary, does there necessarily exist a vector $x \in V$ such that $[x,y] = \alpha$, or equivalently $y(x) = \alpha  $?
     
     \end{itemize}
 
