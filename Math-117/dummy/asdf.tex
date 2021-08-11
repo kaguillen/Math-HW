@@ -1,0 +1,89 @@
+
+\documentclass[12pt]{article}
+%------------------------------- BEGIN PREAMBLE
+% packages used
+\usepackage{amssymb,amsmath,amsfonts,mathrsfs,pgffor,marvosym,amsthm, mathrsfs, mathtools}
+\DeclarePairedDelimiter\set\{\}
+% macros
+\newcommand      {\Nm}         {{\mathbb N}}
+\newcommand      {\Zm}         {{\mathbb Z}}
+\newcommand      {\Qm}         {{\mathbb Q}}
+\newcommand      {\Rm}         {{\mathbb R}}
+\newcommand      {\Cm}         {{\mathbb C}}
+\newcommand      {\Fm}         {{\mathbb F}}
+\newcommand      {\vb}        {\mathbf}
+\newcommand      {\PP}        {{\mathscr P}}
+\newcommand      {\BB}        {{\mathscr B}}
+\newcommand {\lines}[1] {\foreach \n in {1,...,#1}{ \vspace{9mm} \hrule height 
+0.2pt  }\vspace{2mm} }
+
+% adjustment of page dimensions
+\textwidth=7in
+\textheight=9.8in
+\topmargin= -0.8in
+\oddsidemargin= -0.3in
+\evensidemargin= 0.0in
+\setlength{\parskip}{1ex plus0.5ex minus0.2ex}
+\setlength{\jot}{10pt}
+%-------------------------------- END PREAMBLE
+\begin{document}
+\begin{flushright}
+    Name: Kevin Guillen \\*
+    Student ID: 1747199
+\end{flushright}
+\begin{center}
+    
+\end{center}
+Show that if $U$ and $W$ are finite-dimensional vector subspaces of a $\mathbb{F}$-vector space $V$, then:
+\begin{equation*}
+\dim(U) + \dim(W) = \dim(U + W) + \dim(U \cap W)
+\end{equation*}
+This is the analogue of the \textit{Inclusion-Exclusion Principle} for sets adapted to vector spaces. In a certain sense the dimension for vector spaces plays the same role cardinality has with respect to sets. 
+
+\begin{proof}
+    $U$ and $W$ are finite dimensional, so we have dim($U\cap W) = n$. Meaning our basis can be expressed as the set of vectors
+    \[\set{v_1, v_2,\dots, v_n}\]
+
+    This set the basis for $U\cap W$. Meaning this set is linearly independent in $U$ and in $W$. Which means this set of vectors is a subset to the basis for $U$ and $W$. Giving us the basis for $U$ as,
+    \[\set{v_1, v_2, \dots, v_n, u_1, \dots u_i}\]
+    And the basis for $W$ as,
+    \[\set{v_1,v_2,\dots, v_n, w_1,\dots, w_j}\]
+
+    This implies dim$(U) = n + i$ and dim$(W) = n + j$. 
+
+    Now our goal is to show the union of $\mathcal{B}_U$ and $\mathcal{B}_W$ serves as a basis for $U + W$. 
+
+    For any $v\in V$ we know this vector is simply $v = u + w$ for $u\in U$ and $w\in W$. We also know $u$ and $w$ can be expressed as a linear combination of the vectors in it's basis for coeffectients in $\Fm$. Therefore we have,
+    \begin{align*}
+        v &= \alpha_1v_1 + \alpha_2v_2 + \dots \alpha_nv_n + \beta_1u_1 + \dots \beta_iu_i \textbf{+} \gamma_1v_1+\dots \gamma_nv_n + \delta w_1 + \dots +\delta_j w_j \\
+        v &= (\alpha_1 + \gamma_1)v_1 + \dots + (\alpha_n + \gamma_n)v_n + \beta_1u_1 + \dots \beta_iu_i + \delta_1w_1 + \dots \delta_jw_j
+    \end{align*}
+
+    Therefore the union of $\mathcal{B}_U$ and $\mathcal{B}_W$ spans the whole vector space of $U+W$
+
+    Now we want to show these vectors are linearly independent,
+    \begin{align*}
+        \alpha_1v_1+ \alpha_2v_2+ \dots+ \alpha_nv_n+ \beta_1u_1+ \dots\beta_i u_i +  \delta_1w_1+\dots+ \delta_jw_j = 0 \\
+        \delta_1w_1+\dots+ \delta_jw_j = -(\alpha_1v_1 + \alpha_2v_2+ \dots+ \alpha_nv_n+ \beta_1u_1+ \dots\beta_i u_i)
+    \end{align*}
+
+    Which means $\delta_1w_1+\dots+ \delta_jw_j $ is a vector in the span of $\mathcal{B}_U$, therefore $\delta_1w_1+\dots+ \delta_jw_j \in U$. Remeber though that $\set{w_1,\dots,w_j}$ is the basis for $W$, and thus $\delta_1w_1+\dots+ \delta_jw_j $ is in $W$ as well, since it is in both $W$ and $U$ it must also be in their intersection. That means our set of vectors $\set{v_1, v_2,\dots, v_n}$ can be used to express $\delta_1w_1+\dots+ \delta_jw_j$,
+    \begin{align*}
+        \delta_1w_1+\dots+ \delta_jw_j = \beta_1v_1 + \dots \beta_nv_n \\
+        \beta_1v_1 + \dots \beta_nv_n  - (\delta_1w_1+\dots+ \delta_jw_j ) = 0
+    \end{align*}
+
+    Recall though the set of vectors $\set{v_1,v_2,\dots, v_n, w_1,\dots, w_j}$ is linearly independent, so the only way to satisfy this is if all $\delta_i$ and $\beta_i$ are equal to 0. The same reasoning applies to 
+    \[\beta_1v_1+\beta_2v_2+\dots+ \beta_nv_n+ \delta_1w_1+\dots+\delta_j w_j\]
+    in that all coeffectients will have to be 0 to satisfy the equation. Making the above vectors linearly independent. Therefore,
+    \[\set{v_1, v_2, \dots, v_n, u_1, \dots u_i,w_1,\dots, w_j}\] are linearly independent. Meaning it satisfies all the criteria to be a basis for $U+W$. 
+
+    We see though that dim$(U+W) = n + i + j$. Recall though that dim$(U) = n + i$ and dim$(W) = n + j$ and dim$(U\cap W) = n$. 
+    \begin{align*}
+        \text{dim}(U) + \text{dim}(W) = n+i +n+j = 2n + i + j \\
+        \text{dim}(U+ W) + \text{dim}(U\cap W ) = n+i + j + n = 2n + i + j 
+    \end{align*}
+
+    Therefore $\dim(U) + \dim(W) = \dim(U + W) + \dim(U \cap W)$ as desired.
+\end{proof}
+\end{document}
