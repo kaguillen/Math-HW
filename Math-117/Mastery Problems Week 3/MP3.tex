@@ -1,0 +1,127 @@
+\documentclass[12pt]{article}
+%------------------------------- BEGIN PREAMBLE
+% packages used
+\usepackage{amssymb,amsmath,amsfonts,mathrsfs,pgffor,marvosym,amsthm,mathtools}
+% macros
+\DeclarePairedDelimiter\set\{\}
+\newcommand      {\Nm}         {{\mathbb N}}
+\newcommand      {\Zm}         {{\mathbb Z}}
+\newcommand      {\Qm}         {{\mathbb Q}}
+\newcommand      {\Rm}         {{\mathbb R}}
+\newcommand      {\Cm}         {{\mathbb C}}
+\newcommand      {\vb}        {\mathbf}
+\newcommand      {\PP}        {{\mathscr P}}
+\newcommand      {\Fm}          {{\mathbb F}}
+\newcommand {\lines}[1] {\foreach \n in {1,...,#1}{ \vspace{9mm} \hrule height 
+0.2pt  }\vspace{2mm} }
+% adjustment of page dimensions
+\textwidth=7in
+\textheight=9.8in
+\topmargin= -0.8in
+\oddsidemargin= -0.5in
+\evensidemargin= 0.0in
+\setlength{\parskip}{1ex plus0.5ex minus0.2ex}
+\setlength{\jot}{10pt}
+%-------------------------------- END PREAMBLE
+\begin{document}
+\begin{flushright}
+    Name: Kevin Guillen \\*
+    Student ID: 1747199
+\end{flushright}
+\begin{center}
+    {\bf 117 - SS2 - MP3 - August 13th, 2021}
+\end{center}
+
+\begin{itemize}
+    \item{[5]} Let the $\Rm$-vector space of all smooth functions on $\Rm^3$ be denoted by $C^\infty(\Rm^3)$ where a smooth function on $\Rm^3$ is a
+    function $f : \Rm^3 \rightarrow \Rm$ that has continuous partial derivatives of every order. Define a differential 1-form on $\Rm^3$ to be
+    a symbol of the form: \[\omega = f_1dx + f_2dy + f_3dz\]
+    for $f_1,f_2,f_3\in C^\infty(\Rm^3)$ and let the collection of all differential 1-forms on $\Rm^3$ be denoted by $\Omega^1(\Rm^3)$
+    \begin{itemize}
+        \item{[a]} Show that $\Omega^1(\Rm^3)$ can be regarded as a $\Rm$-vector space.
+        \begin{proof}
+                First we will begin my showing the set $(\Omega^1,+)$ forms an abelian group.
+                
+                \textit{Associative:} We see for any vectors $f,g,h \in \Omega^1$ we have the following,
+                \begin{align*}
+                    f+ (g+h) = \begin{pmatrix}f_1 \\ f_2 \\ f_3 \end{pmatrix} + \left[ \begin{pmatrix}g_1 \\ g_2 \\ g_3 \end{pmatrix} +\begin{pmatrix}h_1 \\ h_2 \\ h_3 \end{pmatrix}\right] &= \begin{pmatrix}f_1 \\ f_2 \\ f_3 \end{pmatrix} + \begin{pmatrix}g_1 + h_1 \\ g_2  + h_2\\ g_3  + h_3\end{pmatrix}\\
+                    &= \begin{pmatrix}f_1 + (g_1 + h_1)\\ f_2 + (g_2 + h_2) \\ f_3 + (g_3 + h_3) \end{pmatrix} \\
+                    &= \begin{pmatrix}(f_1+g_1) + h_1  \\ (f_2 + g_2) + h_3 \\ (f_3+ g_3) + h_3 \end{pmatrix}\\
+                    &=\begin{pmatrix}f_1 + g_1 \\ f_2 + g_2 \\ f_3 + g_3 \end{pmatrix} + \begin{pmatrix}h_1 \\ h_2 \\ h_3 \end{pmatrix} \\
+                    &= \left[\begin{pmatrix}f_1 \\ f_2 \\ f_3 \end{pmatrix} + \begin{pmatrix}g_1 \\ g_2 \\g_3 \end{pmatrix}\right] + \begin{pmatrix}h_1 \\ h_2 \\ h_3 \end{pmatrix} \\
+                    &= (f+g) + h
+                \end{align*}
+
+                \textit{Identity:} Let the identity of $\Omega^1$ be the following,
+                \[0 = \begin{pmatrix}
+                    f_0 \\f_0\\f_0
+                \end{pmatrix} = \begin{pmatrix}
+                    0\\0\\0
+                \end{pmatrix}\] 
+                \newpage
+                Which is simply the vector composed of of zero functions. We can see it satisfies the requirements by the following, for any $f\in \Omega^1 $
+                \begin{align*}
+                    0 + f =\begin{pmatrix}
+                        f_0 \\f_0 \\ f_0
+                    \end{pmatrix} + \begin{pmatrix}
+                        f_1 \\ f_2 \\f_3
+                    \end{pmatrix} &= \begin{pmatrix}
+                        f_0 + f_1 \\ f_0 + f_2 \\ f_0 + f_3
+                    \end{pmatrix} \\
+                    &= \begin{pmatrix}
+                        f_1 \\ f_2\\ f_3
+                    \end{pmatrix} = f \\
+                    f+ 0 = \begin{pmatrix}
+                        f_1 \\ f_2 \\f_3
+                    \end{pmatrix} + \begin{pmatrix}
+                        f_0 \\f_0 \\ f_0
+                    \end{pmatrix} &=  \begin{pmatrix}
+                        f_1 + f_0 \\ f_2 + f_0 \\ f_3 + f_0
+                    \end{pmatrix} \\
+                    &= \begin{pmatrix}
+                        f_1 \\ f_2\\ f_3
+                    \end{pmatrix} = f
+                \end{align*}
+
+                \textit{Inverse:}  We see for any vector $f$ in $\Omega^1$ the inverse of $f$ is defined as the following, \[f^{-1} = \begin{pmatrix}-f_1 \\ -f_2 \\ -f_3 \end{pmatrix}\]
+                We can see that this does indeed serve as an inverse since,
+                \begin{align*}
+                    f + f^{-1} = \begin{pmatrix}f_1 \\ f_2 \\ f_3 \end{pmatrix} + \begin{pmatrix}-f_1 \\ -f_2 \\ -f_3 \end{pmatrix} &= \begin{pmatrix}f_1 -f_1\\ f_2-f_2 \\ f_3-f_3 \end{pmatrix} \\
+                    &= \begin{pmatrix}0 \\ 0 \\ 0 \end{pmatrix} = 0 \\
+                    f^{-1} + f = \begin{pmatrix}-f_1 \\ -f_2 \\ -f_3 \end{pmatrix} + \begin{pmatrix}f_1 \\ f_2 \\ f_3 \end{pmatrix} &= \begin{pmatrix}-f_1 +f_1\\ -f_2+f_2 \\ -f_3+f_3 \end{pmatrix} \\
+                    &= \begin{pmatrix}
+                        0\\0\\0
+                    \end{pmatrix} = 0
+                \end{align*}
+
+                \newpage
+                \textit{Commutative:} Let $f,g\in \Omega^1$. We can see based on the following these elements are commutative.
+                \begin{align}
+                    f + g = \begin{pmatrix}f_1 \\ f_2 \\ f_3 \end{pmatrix} + \begin{pmatrix} g_1 \\ g_2 \\ g_3\end{pmatrix} &= \begin{pmatrix} f_1 + g_1 \\ f_2 +g_2 \\ f_3 + g_3 \end{pmatrix} \\
+                    &=\begin{pmatrix} g_1 + f_1 \\ g_2 +f_2 \\ g_3 + f_3 \end{pmatrix} =  \begin{pmatrix} g_1 \\ g_2 \\ g_3\end{pmatrix} + \begin{pmatrix}f_1 \\ f_2 \\ f_3 \end{pmatrix} = g + f
+                \end{align}
+
+                So we have it that $(\Omega^1,+)$ is indeed an abelian group. Now we will show that it behaves well with scalars. 
+
+                Let $\alpha,\beta \in \Rm$ and $f\in \Omega^1$
+                \begin{align*}
+                    \alpha\left[\beta \begin{pmatrix}f_1 \\ f_2 \\ f_3 \end{pmatrix}\right] = \alpha \begin{pmatrix}\beta f_1 \\ \beta f_2 \\ \beta f_3 \end{pmatrix} &= \begin{pmatrix}\alpha\beta f_1 \\ \alpha\beta f_2 \\ \alpha\beta f_3 \end{pmatrix} \\
+                    &= \begin{pmatrix}(\alpha \beta) f_1 \\ (\alpha \beta)f_3 \\ (\alpha \beta)f_3  \end{pmatrix} \\
+                    &= (\alpha\beta) \begin{pmatrix}f_1 \\ f_2 \\ f_3 \end{pmatrix}
+                \end{align*}
+
+                Distribution holds, for $\alpha,\beta \in \Rm$ and $f,g\in \Omega^1$.
+                \begin{align*}
+                    \alpha\left[\begin{pmatrix}f_1 \\ f_2 \\ f_3 \end{pmatrix} + \begin{pmatrix}g_1 \\ g_2 \\ g_3 \end{pmatrix}\right] = \alpha \begin{pmatrix} f_1 + g_1 \\ f_2 + g_2 \\ f_3 + g_3 \end{pmatrix}
+                \end{align*}
+
+
+
+        \end{proof}
+        
+        
+    \end{itemize}    
+    
+\end{itemize}
+
+\end{document}
