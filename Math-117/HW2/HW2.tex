@@ -1,0 +1,171 @@
+\documentclass[12pt]{article}
+%------------------------------- BEGIN PREAMBLE
+% packages used
+\usepackage{amssymb,amsmath,amsfonts,mathrsfs,pgffor,marvosym,amsthm,mathtools,tikz-cd}
+% macros
+\DeclarePairedDelimiter\set\{\}
+\newcommand      {\Nm}         {{\mathbb N}}
+\newcommand      {\Zm}         {{\mathbb Z}}
+\newcommand      {\Qm}         {{\mathbb Q}}
+\newcommand      {\Rm}         {{\mathbb R}}
+\newcommand      {\Cm}         {{\mathbb C}}
+\newcommand      {\vb}        {\mathbf}
+\newcommand      {\PP}        {{\mathscr P}}
+\newcommand      {\Fm}          {{\mathbb F}}
+\newcommand {\lines}[1] {\foreach \n in {1,...,#1}{ \vspace{9mm} \hrule height 
+0.2pt  }\vspace{2mm} }
+% adjustment of page dimensions
+\textwidth=7in
+\textheight=9.8in
+\topmargin= -0.8in
+\oddsidemargin= -0.5in
+\evensidemargin= 0.0in
+\setlength{\parskip}{1ex plus0.5ex minus0.2ex}
+\setlength{\jot}{10pt}
+%-------------------------------- END PREAMBLE
+\begin{document}
+\begin{flushright}
+    Name: Kevin Guillen \\*
+    Student ID: 1747199
+\end{flushright}
+\begin{center}
+    {\bf 117 - SS2 - MP3 - August 13th, 2021}
+\end{center}
+
+\begin{itemize}
+
+%------------------------------------------------------PROBLEM 1---------------------------------------------------------
+    \item[$\textbf{[1]}$] 
+    Let $V$ and $W$ be $\mathbb{F}$-vector spaces (of any dimension) and $f: V \rightarrow W$ a linear transformation. Show that the induced map $\overline{f}: V/\ker(f) \rightarrow W$ in the following diagram is injective:
+    \[ \begin{tikzcd}
+    V \arrow{r}{\pi} \arrow{rd}[swap]{f} & V/\ker(f) \arrow[dashed]{d}{\overline{f}} \\
+    & W
+    \end{tikzcd} \]
+    where $\pi(v) = v + \ker(f)$ and $f = \overline{f} \circ \pi$. 
+    
+    \begin{proof}
+        Take $v_1 + \ker(f)$ and $v_2 + \text{ker}(f)$ in $V/\ker(f)$ such that $v_1 + \ker(f) \neq v_2 + \ker(f)$. The induced map $\overline{f}(v)$ is simply $\overline{f}(v+ \ker(f)) = f(v)$. So assuming \[\overline{f}(v_1 + \ker(f)) = \overline{f}(v_2 + \ker(f))\]
+        we get the following,
+        \begin{align*}
+            f(v_1 + \ker(f)) &= f(v_2 +\ker(f)) \\
+            f(v_1 + \ker(f)) - f(v_2 +\ker(f)) &= 0 \\
+            f((v_1 -v_2) + \ker(f) ) &=0\\
+            \rightarrow v_1 = v_2
+        \end{align*} 
+        which is a contradiction since we said they were not equal. Thus the induced map is indeed injective.  
+    \end{proof}
+
+    \vspace{.5cm}
+%------------------------------------------------------PROBLEM 2---------------------------------------------------------  
+    \item[$\textbf{[2]}$]
+    Let $V$ be a $\mathbb{F}$-vector space of dimension $n$. Suppose that $m < n$ and that $y_1,\dots,y_m \in V^*$.
+    \begin{itemize}
+    
+    \vspace{.3cm}
+    \item[(a)]
+    Prove that there exists a non-zero vector $x \in V$ such that $[x,y_j] = 0$ for $1 \leq j \leq m$. What does this result say about the solutions of linear equations?
+    \begin{proof}
+        We can prove this using the rank-nullity theorem from linear algebra. To apply it we will first define the map
+        \begin{align*}
+            \phi: V &\to \Fm^m \\
+            x &\mapsto (y_1(x), \dots, y_m(x))
+        \end{align*}
+
+        We are given that the dimension of $V$ is $n$, we know from class that the dimension of $\Fm^m$ is simply $m$. We also know that $m < n$, recall the rank-nullity theorem \[\text{dim}(V) = \text{dim}(\Fm^m)+\text{dim}(\ker(\phi))\] thus by the rank nullity theorem we know that the kernal of $\phi$ is non trivial. Therefore there exists a non-zero vector $x\in V$ such that $[x,y_j] = 0$ for $1\leq j \leq m$
+    \end{proof}
+    
+    \vspace{.3cm}
+    \item[(b)]
+    Under what conditions on the scalars $\alpha_1,\dots,\alpha_m \in \mathbb{F}$ is it true that there exists a vector $x \in V$ such that $[x,y_j] = \alpha_j$ for $1 \leq j \leq m$? What does this result say about the solutions of linear equations?
+    
+    \end{itemize}
+    
+    \vspace{.5cm}
+%------------------------------------------------------PROBLEM 3---------------------------------------------------------    
+    \item[$\textbf{[3]}$]
+    Provide an example of a $\mathbb{F}$-vector space $V$ with three $\mathbb{F}$-vector subspaces $U$, $W_1$, and $W_2$ such that $U \oplus W_1 = U \oplus W_2$, but $W_1 \neq W_2$. Note that this means that there is no cancellation law for direct sums. What is the geometric picture corresponding to this situation?
+    
+    \vspace{.5cm}
+%------------------------------------------------------PROBLEM 4---------------------------------------------------------   
+    \item[$\textbf{[4]}$]
+    Given a finite-dimensional $\mathbb{F}$-vector space $V$, form the direct sum $W = V \oplus V^*$, and prove that the correspondence $(x,y) \rightarrow (y,x)$ is an isomorphism between $W$ and $W^*$. 
+    
+    \vspace{.5cm}
+%------------------------------------------------------PROBLEM 5---------------------------------------------------------   
+    \item[$\textbf{[5]}$]
+    Let $U$ and $V$ be $\mathbb{F}$-vector spaces. A bilinear form $\omega: U \oplus V \rightarrow \mathbb{F}$ is \textit{degenerate} if, as a function of one of its two arguments, it vanishes identically for some non-zero value of its other argument; otherwise it is \textit{non-degenerate}.
+    \begin{itemize}
+    
+    \vspace{.3cm}
+    \item[(a)]
+    Give an example of a degenerate bilinear form (not identically zero) on the $\mathbb{C}$-vector space $\mathbb{C}^2 \oplus \mathbb{C}^2$.
+    
+    \vspace{.3cm}
+    \item[(b)]
+    Give an example of a non-degenerate bilinear form on the $\mathbb{C}$-vector space $\mathbb{C}^2 \oplus \mathbb{C}^2$.  
+    
+    \end{itemize}
+    
+    \vspace{.5cm}
+%------------------------------------------------------PROBLEM 6---------------------------------------------------------   
+    \item[$\textbf{[6]}$]
+    Does there exist a $\mathbb{F}$-vector space $V$ and a bilinear form $\omega: V \oplus V \rightarrow \mathbb{F}$ such that $\omega$ is not identically zero, but $\omega(x,x) = 0$ for every $x \in V$?
+    
+    \vspace{.5cm}
+%------------------------------------------------------PROBLEM 7---------------------------------------------------------   
+    \item[$\textbf{[7]}$]
+    Let $\{e_1,e_2\}$ and $\{e_1',e_2',e_3'\}$ be the standard bases for the $\mathbb{R}$-vector spaces $\mathbb{R}^2$ and $\mathbb{R}^3$, respectively, where \newline $e_i = (\delta_{1i},\delta_{2i})$ and $e_i' = (\delta_{1i},\delta_{2i},\delta_{3i})$ for $\delta_{pq}$ representing the Kronecker delta. Given that $x = (1,1) \in \mathbb{R}^2$ and $y = (1,1,1) \in \mathbb{R}^3$, find the coordinates of $x \otimes y \in \mathbb{R}^2 \otimes \mathbb{R}^3$ with respect to the standard product basis $\{e_i \otimes e_j' \hspace{.1cm} | \hspace{.1cm} 1 \leq i \leq 2, 1 \leq j \leq 3\}$. 
+    
+    \vspace{.5cm}
+%------------------------------------------------------PROBLEM 8---------------------------------------------------------   
+    \item[$\textbf{[8]}$]
+    Let $\mathcal{S}_k$ represent the permutation group on $k$ elements. 
+    \begin{itemize}
+    
+    \vspace{.3cm}
+    \item[(a)]
+    Prove that if $\sigma,\tau \in \mathcal{S}_k$, then there exists a unique $\pi \in \mathcal{S}_k$ such that $\sigma\pi = \tau$. 
+    
+    \vspace{.3cm}
+    \item[(b)]
+    Prove that if $\sigma,\tau,\pi \in \mathcal{S}_k$ such that $\pi\sigma = \pi\tau$, then $\sigma = \tau$. 
+    
+    \end{itemize}
+    
+    \vspace{.5cm}
+%------------------------------------------------------PROBLEM 9---------------------------------------------------------  
+    \item[$\textbf{[9]}$]
+    Let $\mathcal{S}_k$ represent the permutation group on $k$ elements. Prove that every permutation in $\mathcal{S}_k$ is the product of transpositions of the form $(j,j+1)$, where $1 \leq j < k$. Is this factorization unique?
+    
+    \newpage
+%------------------------------------------------------PROBLEM 10--------------------------------------------------------   
+    \item[$\textbf{[10]}$]
+    Let $V$ be a finite-dimensional $\mathbb{F}$-vector space.
+    \begin{itemize}
+    
+    \vspace{.3cm}
+    \item[(a)]
+    A bilinear form $b_1: V \times V \rightarrow \mathbb{F}$ is called \textit{symmetric} if $b_1(v,w) = b_1(w,v)$. Similarly, a bilinear form $b_2: V \times V \rightarrow \mathbb{F}$ is called \textit{skew-symmetric} if $b_2(v,w) = -b_2(w,v)$. Prove that any bilinear form $\omega: V \times V \rightarrow \mathbb{F}$ can be written as a sum of symmetric and skew-symmetric bilinear forms. You may assume that $\text{char}(\mathbb{F}) \neq 2$.
+    
+    \vspace{.3cm}
+    \item[(b)]
+    What if $\text{char}(\mathbb{F}) = 2$ in part (a)? Does the decomposition of $\omega$ into symmetric and skew-symmetric bilinear forms no longer work?
+    
+    \vspace{.3cm}
+    \item[(c)]
+    For a field $\mathbb{F}$ with $\text{char}(\mathbb{F}) \neq 2$ it is known that skew-symmetric and alternating bilinear forms are the same. If instead we consider $\text{char}(\mathbb{F}) = 2$ then symmetric and skew-symmetric bilinear forms are the same, and since alternating bilinear forms are skew-symmetric no matter the characteristic of a field it follows that alternating bilinear forms are symmetric. Is it true that all symmetric bilinear forms on a field of characteristic $2$ are alternating?
+    
+    \vspace{.3cm}
+    \item[(d)]
+    A $2$-tensor $x_1 \otimes y_1 \in V \otimes V$ is called \textit{symmetric} if $x_1 \otimes y_1 = y_1 \otimes x_1$. Similarly, a $2$-tensor $x_2 \otimes y_2 \in V \otimes V$ is called \textit{skew-symmetric} if $x_2 \otimes y_2 = -y_2 \otimes x_2$. Prove that $V \otimes V = \text{Sym}^2(V) \oplus \text{Skew}^2(V)$, where $\text{Sym}^2(V)$ and $\text{Skew}^2(V)$ represent the symmetric and skew-symmetric $2$-tensors on $V$, respectively. You may assume that $\text{char}(\mathbb{F}) \neq 2$.
+    
+    \vspace{.3cm}
+    \item[(e)]
+    What if $\text{char}(\mathbb{F}) = 2$ in part (c)? Does the decomposition of $V \otimes V$ no longer hold true?
+    
+    \end{itemize}
+    
+    \end{itemize}
+
+
+\end{document}

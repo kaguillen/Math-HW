@@ -101,26 +101,125 @@
                     &=\begin{pmatrix} g_1 + f_1 \\ g_2 +f_2 \\ g_3 + f_3 \end{pmatrix} =  \begin{pmatrix} g_1 \\ g_2 \\ g_3\end{pmatrix} + \begin{pmatrix}f_1 \\ f_2 \\ f_3 \end{pmatrix} = g + f
                 \end{align}
 
-                So we have it that $(\Omega^1,+)$ is indeed an abelian group. Now we will show that it behaves well with scalars. 
+                So we have it that $(\Omega^1,+)$ is indeed an abelian group.
 
-                Let $\alpha,\beta \in \Rm$ and $f\in \Omega^1$
+                Let $\alpha,\beta \in \Rm$ and $f\in \Omega^1$ we see compatability of scalar multiplication with field multiplication through the following,
                 \begin{align*}
                     \alpha\left[\beta \begin{pmatrix}f_1 \\ f_2 \\ f_3 \end{pmatrix}\right] = \alpha \begin{pmatrix}\beta f_1 \\ \beta f_2 \\ \beta f_3 \end{pmatrix} &= \begin{pmatrix}\alpha\beta f_1 \\ \alpha\beta f_2 \\ \alpha\beta f_3 \end{pmatrix} \\
                     &= \begin{pmatrix}(\alpha \beta) f_1 \\ (\alpha \beta)f_3 \\ (\alpha \beta)f_3  \end{pmatrix} \\
                     &= (\alpha\beta) \begin{pmatrix}f_1 \\ f_2 \\ f_3 \end{pmatrix}
                 \end{align*}
 
-                Distribution holds, for $\alpha,\beta \in \Rm$ and $f,g\in \Omega^1$.
+                Distribution of scalars with respect to vector addition holds, for $\alpha,\beta \in \Rm$ and $f,g\in \Omega^1$.
                 \begin{align*}
-                    \alpha\left[\begin{pmatrix}f_1 \\ f_2 \\ f_3 \end{pmatrix} + \begin{pmatrix}g_1 \\ g_2 \\ g_3 \end{pmatrix}\right] = \alpha \begin{pmatrix} f_1 + g_1 \\ f_2 + g_2 \\ f_3 + g_3 \end{pmatrix}
+                    \alpha\left[\begin{pmatrix}f_1 \\ f_2 \\ f_3 \end{pmatrix} + \begin{pmatrix}g_1 \\ g_2 \\ g_3 \end{pmatrix}\right] = \alpha \begin{pmatrix} f_1 + g_1 \\ f_2 + g_2 \\ f_3 + g_3 \end{pmatrix} &= \begin{pmatrix}\alpha(f_1 + g_1) \\ \alpha(f_2 + g_2) \\ \alpha (f_3 + g_3) \end{pmatrix} \\
+                    &= \begin{pmatrix}\alpha f_1 + \alpha g_1 \\ \alpha f_2 + \alpha g_2 \\ \alpha f_3 + \alpha g_3 \end{pmatrix} \\ &= \begin{pmatrix}\alpha f_1 \\ \alpha f_2 \\ \alpha f_3 \end{pmatrix} + \begin{pmatrix}\alpha g_1 \\ \alpha g_2 \\ \alpha g_3 \end{pmatrix} \\ 
+                    &=\alpha\begin{pmatrix} f_1 \\  f_2 \\  f_3 \end{pmatrix}+  \alpha\begin{pmatrix} g_1 \\  g_2 \\  g_3 \end{pmatrix}
+                \end{align*}
+                \newpage
+                Distribution of scalar multiplicatoin with respect to field addition,
+                \begin{align*}
+                    (\alpha + \beta) \begin{pmatrix}f_1 \\ f_2 \\ f_3 \end{pmatrix} = \begin{pmatrix}(\alpha + \beta)f_1 \\ (\alpha + \beta)f_2 \\ (\alpha + \beta)f_3 \end{pmatrix} &= \begin{pmatrix}\alpha f_1 + \beta f_1 \\ \alpha f_2 + \beta f_2 \\ \alpha f_3 + \beta f_3 \end{pmatrix} \\
+                    &= \begin{pmatrix}\alpha f_1 \\ \alpha f_2 \\ \alpha f_3 \end{pmatrix} + \begin{pmatrix}\beta f_1 \\ \beta f_2 \\ \beta f_3\end{pmatrix} \\
+                    &= \alpha \begin{pmatrix}f_1 \\ f_2 \\ f_3 \end{pmatrix} + \beta\begin{pmatrix}f_1 \\ f_2 \\ f_3 \end{pmatrix}
                 \end{align*}
 
+                We can see our scalar multiplicative identity as, $1 \in \Rm$ and $f\in \Omega^1$,
+                \begin{align*}
+                    1\begin{pmatrix}f_1 \\ f_2 \\ f_3 \end{pmatrix} &= \begin{pmatrix}1f_1 \\ 1f_2 \\ 1f_3 \end{pmatrix} = \begin{pmatrix}f_1 \\ f_2 \\ f_3 \end{pmatrix} \\
+                    \begin{pmatrix}f_1 \\ f_2 \\ f_3\end{pmatrix} 1 &= \begin{pmatrix}f_1 1 \\ f_2 1 \\ f_3 1 \end{pmatrix} = \begin{pmatrix}f_1 \\ f_2 \\ f_3\end{pmatrix}
+                \end{align*}
 
+                Thus $\Omega^1$ can be regarded as an $\Rm$-vector space.  
+
+
+
+        \end{proof}
+
+        \item{[b]} Show that the differential map is linear
+        \begin{proof}
+            Let $\alpha, \beta \in \Rm$ and $f,g \in C^\infty (\Rm^3)$, we see from the following,
+            \begin{align*}
+                \text{d}(\alpha f + \beta g) &=  \frac{\partial}{\partial x}(\alpha f + \beta g)dx + \frac{\partial}{dy}(\alpha f + \beta g)dy + \frac{\partial}{dz}(\alpha f + \beta g)dz \\
+                &=(\frac{\partial f}{\partial x}\alpha dx + \frac{\partial g}{\partial x}\beta dx) + (\frac{\partial f}{\partial y}\alpha dy + \frac{\partial g}{\partial y}\beta dy) + (\frac{\partial f}{\partial z}\alpha dz + \frac{\partial g}{\partial z}\beta dz) \\
+                 &= (\frac{\partial f}{\partial x}\alpha dx + \frac{\partial f}{\partial y}\alpha dy + \frac{\partial f}{\partial z}\alpha \partial z) + (\frac{\partial g}{\partial x}\beta dx + \frac{\partial f}{\partial y}\beta dy + \frac{\partial g}{\partial z}\beta dz) \\
+                &= \alpha(\frac{\partial f}{\partial x} dx + \frac{\partial f}{\partial y} dy + \frac{\partial f}{\partial z} \partial z) + \beta(\frac{\partial g}{\partial x} dx + \frac{\partial f}{\partial y} dy + \frac{\partial g}{\partial z} dz) \\
+                &= \alpha \text{d}(f) + \beta \text{d}(g)
+            \end{align*}
+
+            With all that we can see that the differential function is closed under scalar multiplication and vector addition and is therefore linear. 
+        \end{proof}
+
+        \item{[c]} Is the differential map as defined by (b) injective, surjective, both or neither. 
+        \begin{proof}
+            We know it can't be surjective since consider the vector $f \in \Omega^1(\Rm)$ defined as the following \[f= \begin{pmatrix}z\\z\\z \end{pmatrix}\] Since $f$ is simply the image of some function in $C^\infty(\Rm^3)$ through the differential map then we can obtain that function through integrating $f$. The issue we see though,
+            \begin{align*}
+                \int z dx = zx + C \\
+                \int z dy = zy + C \\
+                \int z dz = \frac{z^2}{2} + C
+            \end{align*}
+
+            We see when we integrate with respect to the variable we took the partial derivative of that we do not get the same functions. This is why the differential map cannot be surjective. 
+
+
+            The differential map can't be injective either. Consider $f: \Rm^3 \to \Rm$, defined by $f(x,y,z) \mapsto C$ where $C$ is simply a constant. We see when we take d$(f)$ we will get,
+            \begin{align*}
+                \text{d}(f) = \begin{pmatrix}0\\ 0\\ 0 \end{pmatrix} = 0
+            \end{align*}
+
+            We know though there are an infinite number of constant functions to choose from but these constant functions when plugging into the differential map will all map to 0 meaning the differential map is not injective. 
+
+            Thus we have it that the differntial map as defined in part b is neither injective nor surjective. 
 
         \end{proof}
         
         
     \end{itemize}    
+\newpage
+    \textbf{Resubmission}
+    \item[\textbf{[2]}] A bilinear form $\omega$ on $V \bigoplus V $ for $\Fm$-vector space is symmetric if $\omega(x,y) = \omega(y,x)$ for all $x,y \in V$. A quadratic form on $V$ is a function $q:V\to \Fm$ obtained from a bilinear form $\omega$ by writing $q(x) = \omega(x,x)$.
+    \begin{itemize}
+        \item[(a)] Prove that if char$(\Fm)\neq 2$ then every synmetric bilinear form is uniquely determined by the corresponding quadratic form. 
+        \begin{proof}
+            Let $\omega$ be a symmetric bilinear form in a vector space $V$, we will show that $\omega(x) = (x,x)$ is a quadratic form in the same vector space $V$. We see first that \[\omega(\alpha x) = (\alpha x, \alpha x) = \alpha^2(x,x) = \alpha^2 \omega(x).\] Now we must show $b_\omega(x,y) = \omega(x+y) -\omega(x) - \omega(y)$ is a symmetric bilinear form. We can see that this is satisfied by the following,
+            \begin{align*}
+                b_\omega(x,y) &= \omega(x+y) - \omega(x) - \omega(y) \\
+                &= (x+y, x+y) - (x,x) - (y,y) \\ 
+                &= (x,x+y) + (y,x+y) - (x,x) - (y,y) \\
+                &= (x,x) + (x,y) + (y,x) + (y,y) - (x,x) - (y,y) \\
+                &= (x,y) + (y,x) && \text{$\omega$ is a symmetric bilinear form so,} \\
+                &= 2(x,y)
+            \end{align*}
+
+            Recall though that $\omega$ was defined as a symmetric bilinear form, therefore $b_\omega$ is a symmetric bilinear form.
+            
+            Now for the converse, let $\omega(x) = (x,x)$ be a quadratic function,
+            \begin{align*}
+                b_\omega(x,x) &= \omega(x+x) - \omega(x) - \omega(x) \\
+                &= (x+x, x+x) - (x,x) - (x,x) \\
+                &= 4(x,x) - 2(x,x) \\
+                &= 2(x,x) \\
+                \frac{1}{2}b_\omega(x) &= (x,x)
+            \end{align*}
+        \end{proof}
+
+        Thus we see $\frac{1}{2}b_\omega(x,x)$ is the bilinear form determined by the quadratic form $\omega(x) = (x,x)$
+
+        \item[(b)] Is the conclusion of part (a) still true if char($\Fm)=2$?
+        References: Wikipedia on quadratic forms and bilinear forms. 
+
+        \textbf{Answer:} No. This is because for the 1-1correspondence to exist we see in order to obtain the symmetric bilinear form from the quadratic form we have to divide by 2. The issue with a field having a characteristic of 2 is that it means that's the number of times to sum the multiplicative identity until it results in the additive identity 0. This would mean we would be dividing by 0 in order to obtain the corresponding symmetric bilinear form. 
+
+        An example of this is where $\omega$ is a symmetric bilinear form, we know we can obtain the corresponding quadratic form asssociative with $\omega$ by setting the quadratic form $q_\omega(x) = \omega(x,x)$. We know the reverse is true where $q$ is a quadratic form and $\omega_q(x,y) = \omega(x+y) - \omega(x) -\omega(y)$ is symmetric bilinear form as shown in part a.  
+
+        But when char$(\Fm) = 2$ we can see when $\omega_q$ is alternating that \[\omega_q(x,x) = \omega(2x)-2\omega(x) = 2\omega(x) = 0\]
+
+        But if $\omega$ were to be alternating $\omega_b$ would be the zero quadratic form. 
+
+
+        
+        \item[(c)] Yes. The quadratic forms have a 1-1 correspondence with symmetric billinear forms, but non symmetric bilinear forms can define the same quadratic form as some symmetric billinear form. This is because every bilinear form $\omega$ gives a quadratic form by $q(x) = \omega(x,x)$, but we see it doesn't concern the antisymmetric component of $\omega$, therefore not effecting $q$. This is why you can have a non symmetric billinear form and a symmetric bilinear form define the same quadratic form. 
+    \end{itemize}
     
 \end{itemize}
 
