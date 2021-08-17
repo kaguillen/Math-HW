@@ -4,6 +4,8 @@
 \usepackage{amssymb,amsmath,amsfonts,mathrsfs,pgffor,marvosym,amsthm,mathtools,tikz-cd}
 % macros
 \DeclarePairedDelimiter\set\{\}
+\newenvironment{solution}{\begin{proof}[\textbf{\textit{Solution}}]}{\end{proof}}
+\newenvironment{proof1}{\begin{proof}[\textbf{\textit{Proof}}]}{\end{proof}}
 \newcommand      {\Nm}         {{\mathbb N}}
 \newcommand      {\Zm}         {{\mathbb Z}}
 \newcommand      {\Qm}         {{\mathbb Q}}
@@ -15,7 +17,7 @@
 \newcommand {\lines}[1] {\foreach \n in {1,...,#1}{ \vspace{9mm} \hrule height 
 0.2pt  }\vspace{2mm} }
 % adjustment of page dimensions
-\textwidth=7in
+\textwidth=7.5in
 \textheight=9.8in
 \topmargin= -0.8in
 \oddsidemargin= -0.5in
@@ -84,6 +86,16 @@
 %------------------------------------------------------PROBLEM 3---------------------------------------------------------    
     \item[$\textbf{[3]}$]
     Provide an example of a $\mathbb{F}$-vector space $V$ with three $\mathbb{F}$-vector subspaces $U$, $W_1$, and $W_2$ such that $U \oplus W_1 = U \oplus W_2$, but $W_1 \neq W_2$. Note that this means that there is no cancellation law for direct sums. What is the geometric picture corresponding to this situation?
+    
+    \textbf{Solution:}
+    
+        Let $V = \Rm^2$. Now let the vector subspaces $U,W_1,\ W_2$ be $\text{span}((1,0)), \text{span}((0,1)), \text{and }\text{span}((1,1))$ respectively. We can see that, 
+        \[U \oplus W_1 = U \oplus W_2\]
+        \[\text{span}((1,0))\oplus \text{span}((0,1)) = \text{span}((1,0))\oplus\text{span}((1,1)\]
+
+        While $W_1 \neq W_2$ because $\text{span}((1,1) \neq \text{span}((0,1))$
+
+    
     
     \vspace{.5cm}
 %------------------------------------------------------PROBLEM 4---------------------------------------------------------   
