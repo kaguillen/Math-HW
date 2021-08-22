@@ -1,0 +1,184 @@
+\documentclass[12pt]{article}
+%------------------------------- BEGIN PREAMBLE
+% packages used
+\usepackage{amssymb,amsmath,amsfonts,mathrsfs,pgffor,marvosym,amsthm,mathtools}
+% macros
+\DeclarePairedDelimiter\set\{\}
+\newcommand      {\Nm}         {{\mathbb N}}
+\newcommand      {\Zm}         {{\mathbb Z}}
+\newcommand      {\Qm}         {{\mathbb Q}}
+\newcommand      {\Rm}         {{\mathbb R}}
+\newcommand      {\Cm}         {{\mathbb C}}
+\newcommand      {\vb}        {\mathbf}
+\newcommand      {\PP}        {{\mathscr P}}
+\newcommand      {\Fm}          {{\mathbb F}}
+\newcommand {\lines}[1] {\foreach \n in {1,...,#1}{ \vspace{9mm} \hrule height 
+0.2pt  }\vspace{2mm} }
+
+
+\newcommand {\f}[1]{{#1_1 dx + #1_2 dy + #1_3 dz}}
+\newcommand {\ff}[2]{{(#1_1 + #2_1) dx + (#1_2+ #2_2) dy + (#1_3 +#2_3)dz}}
+\newcommand {\fff}[3]{{(#1_1 + #2_1 + #3_1) dx + (#1_2+ #2_2 + #3_2) dy + (#1_3 +#2_3 + #3_3)dz}}
+% adjustment of page dimensions
+\textwidth=7in
+\textheight=9.8in
+\topmargin= -0.8in
+\oddsidemargin= -0.5in
+\evensidemargin= 0.0in
+\setlength{\parskip}{1ex plus0.5ex minus0.2ex}
+\setlength{\jot}{10pt}
+%-------------------------------- END PREAMBLE
+\begin{document}
+\begin{flushright}
+    Name: Kevin Guillen \\*
+    Student ID: 1747199
+\end{flushright}
+\begin{center}
+    {\bf 117 - SS2 - MP3 - August 13th, 2021}
+\end{center}
+\begin{itemize}
+    \item{[5]} Let the $\Rm$-vector space of all smooth functions on $\Rm^3$ be denoted by $C^\infty(\Rm^3)$ where a smooth function on $\Rm^3$ is a
+    function $f : \Rm^3 \rightarrow \Rm$ that has continuous partial derivatives of every order. Define a differential 1-form on $\Rm^3$ to be
+    a symbol of the form: \[\omega = f_1dx + f_2dy + f_3dz\]
+    for $f_1,f_2,f_3\in C^\infty(\Rm^3)$ and let the collection of all differential 1-forms on $\Rm^3$ be denoted by $\Omega^1(\Rm^3)$
+    \begin{itemize}
+        \item{[a]} Show that $\Omega^1(\Rm^3)$ can be regarded as a $\Rm$-vector space.
+        \begin{proof}
+                First we will begin my showing the set $(\Omega^1,+)$ forms an abelian group.
+                
+                \textit{Associative:} We see for any vectors $f,g,h \in \Omega^1$ we have the following,
+                \begin{align*}
+                    f+(g+h) &= \f{f} + ((\f{g}) + (\f{h})) \\
+                     &=\f{f} + (\ff{g}{h}) \\
+                     &= (f_1 + (g_1 + h_1))dx+ (f_2 + (g_2 + h_2))dy +(f_3 + (g_3 + h_3))dz \\
+                     &= ((f_1 + g_1) + h_1)dx+ ((f_2 + g_2) + h_2)dy +((f_3 + g_3) + h_3)dz \\
+                     &=(\ff{f}{g}) + \f{h} \\
+                     &= ((\f{f}) + (\f{g})) + \f{h} \\
+                     &= (f+g) + h
+                \end{align*}
+
+                \textit{Identity:} Let the identity of $\Omega^1$ be the following,
+                \[0 = \begin{pmatrix}
+                    f_0 \\f_0\\f_0
+                \end{pmatrix} = \begin{pmatrix}
+                    0\\0\\0
+                \end{pmatrix}\] 
+                \newpage
+                Which is simply the vector composed of of zero functions. We can see it satisfies the requirements by the following, for any $f\in \Omega^1 $
+                \begin{align*}
+                    0 + f =\begin{pmatrix}
+                        f_0 \\f_0 \\ f_0
+                    \end{pmatrix} + \begin{pmatrix}
+                        f_1 \\ f_2 \\f_3
+                    \end{pmatrix} &= \begin{pmatrix}
+                        f_0 + f_1 \\ f_0 + f_2 \\ f_0 + f_3
+                    \end{pmatrix} \\
+                    &= \begin{pmatrix}
+                        f_1 \\ f_2\\ f_3
+                    \end{pmatrix} = f \\
+                    f+ 0 = \begin{pmatrix}
+                        f_1 \\ f_2 \\f_3
+                    \end{pmatrix} + \begin{pmatrix}
+                        f_0 \\f_0 \\ f_0
+                    \end{pmatrix} &=  \begin{pmatrix}
+                        f_1 + f_0 \\ f_2 + f_0 \\ f_3 + f_0
+                    \end{pmatrix} \\
+                    &= \begin{pmatrix}
+                        f_1 \\ f_2\\ f_3
+                    \end{pmatrix} = f
+                \end{align*}
+
+                \textit{Inverse:}  We see for any vector $f$ in $\Omega^1$ the inverse of $f$ is defined as the following, \[f^{-1} = \begin{pmatrix}-f_1 \\ -f_2 \\ -f_3 \end{pmatrix}\]
+                We can see that this does indeed serve as an inverse since,
+                \begin{align*}
+                    f + f^{-1} = \begin{pmatrix}f_1 \\ f_2 \\ f_3 \end{pmatrix} + \begin{pmatrix}-f_1 \\ -f_2 \\ -f_3 \end{pmatrix} &= \begin{pmatrix}f_1 -f_1\\ f_2-f_2 \\ f_3-f_3 \end{pmatrix} \\
+                    &= \begin{pmatrix}0 \\ 0 \\ 0 \end{pmatrix} = 0 \\
+                    f^{-1} + f = \begin{pmatrix}-f_1 \\ -f_2 \\ -f_3 \end{pmatrix} + \begin{pmatrix}f_1 \\ f_2 \\ f_3 \end{pmatrix} &= \begin{pmatrix}-f_1 +f_1\\ -f_2+f_2 \\ -f_3+f_3 \end{pmatrix} \\
+                    &= \begin{pmatrix}
+                        0\\0\\0
+                    \end{pmatrix} = 0
+                \end{align*}
+
+                \newpage
+                \textit{Commutative:} Let $f,g\in \Omega^1$. We can see based on the following these elements are commutative.
+                \begin{align}
+                    f + g = \begin{pmatrix}f_1 \\ f_2 \\ f_3 \end{pmatrix} + \begin{pmatrix} g_1 \\ g_2 \\ g_3\end{pmatrix} &= \begin{pmatrix} f_1 + g_1 \\ f_2 +g_2 \\ f_3 + g_3 \end{pmatrix} \\
+                    &=\begin{pmatrix} g_1 + f_1 \\ g_2 +f_2 \\ g_3 + f_3 \end{pmatrix} =  \begin{pmatrix} g_1 \\ g_2 \\ g_3\end{pmatrix} + \begin{pmatrix}f_1 \\ f_2 \\ f_3 \end{pmatrix} = g + f
+                \end{align}
+
+                So we have it that $(\Omega^1,+)$ is indeed an abelian group.
+
+                Let $\alpha,\beta \in \Rm$ and $f\in \Omega^1$ we see compatability of scalar multiplication with field multiplication through the following,
+                \begin{align*}
+                    \alpha\left[\beta \begin{pmatrix}f_1 \\ f_2 \\ f_3 \end{pmatrix}\right] = \alpha \begin{pmatrix}\beta f_1 \\ \beta f_2 \\ \beta f_3 \end{pmatrix} &= \begin{pmatrix}\alpha\beta f_1 \\ \alpha\beta f_2 \\ \alpha\beta f_3 \end{pmatrix} \\
+                    &= \begin{pmatrix}(\alpha \beta) f_1 \\ (\alpha \beta)f_3 \\ (\alpha \beta)f_3  \end{pmatrix} \\
+                    &= (\alpha\beta) \begin{pmatrix}f_1 \\ f_2 \\ f_3 \end{pmatrix}
+                \end{align*}
+
+                Distribution of scalars with respect to vector addition holds, for $\alpha,\beta \in \Rm$ and $f,g\in \Omega^1$.
+                \begin{align*}
+                    \alpha\left[\begin{pmatrix}f_1 \\ f_2 \\ f_3 \end{pmatrix} + \begin{pmatrix}g_1 \\ g_2 \\ g_3 \end{pmatrix}\right] = \alpha \begin{pmatrix} f_1 + g_1 \\ f_2 + g_2 \\ f_3 + g_3 \end{pmatrix} &= \begin{pmatrix}\alpha(f_1 + g_1) \\ \alpha(f_2 + g_2) \\ \alpha (f_3 + g_3) \end{pmatrix} \\
+                    &= \begin{pmatrix}\alpha f_1 + \alpha g_1 \\ \alpha f_2 + \alpha g_2 \\ \alpha f_3 + \alpha g_3 \end{pmatrix} \\ &= \begin{pmatrix}\alpha f_1 \\ \alpha f_2 \\ \alpha f_3 \end{pmatrix} + \begin{pmatrix}\alpha g_1 \\ \alpha g_2 \\ \alpha g_3 \end{pmatrix} \\ 
+                    &=\alpha\begin{pmatrix} f_1 \\  f_2 \\  f_3 \end{pmatrix}+  \alpha\begin{pmatrix} g_1 \\  g_2 \\  g_3 \end{pmatrix}
+                \end{align*}
+                \newpage
+                Distribution of scalar multiplicatoin with respect to field addition,
+                \begin{align*}
+                    (\alpha + \beta) \begin{pmatrix}f_1 \\ f_2 \\ f_3 \end{pmatrix} = \begin{pmatrix}(\alpha + \beta)f_1 \\ (\alpha + \beta)f_2 \\ (\alpha + \beta)f_3 \end{pmatrix} &= \begin{pmatrix}\alpha f_1 + \beta f_1 \\ \alpha f_2 + \beta f_2 \\ \alpha f_3 + \beta f_3 \end{pmatrix} \\
+                    &= \begin{pmatrix}\alpha f_1 \\ \alpha f_2 \\ \alpha f_3 \end{pmatrix} + \begin{pmatrix}\beta f_1 \\ \beta f_2 \\ \beta f_3\end{pmatrix} \\
+                    &= \alpha \begin{pmatrix}f_1 \\ f_2 \\ f_3 \end{pmatrix} + \beta\begin{pmatrix}f_1 \\ f_2 \\ f_3 \end{pmatrix}
+                \end{align*}
+
+                We can see our scalar multiplicative identity as, $1 \in \Rm$ and $f\in \Omega^1$,
+                \begin{align*}
+                    1\begin{pmatrix}f_1 \\ f_2 \\ f_3 \end{pmatrix} &= \begin{pmatrix}1f_1 \\ 1f_2 \\ 1f_3 \end{pmatrix} = \begin{pmatrix}f_1 \\ f_2 \\ f_3 \end{pmatrix} \\
+                    \begin{pmatrix}f_1 \\ f_2 \\ f_3\end{pmatrix} 1 &= \begin{pmatrix}f_1 1 \\ f_2 1 \\ f_3 1 \end{pmatrix} = \begin{pmatrix}f_1 \\ f_2 \\ f_3\end{pmatrix}
+                \end{align*}
+
+                Thus $\Omega^1$ can be regarded as an $\Rm$-vector space.  
+
+
+
+        \end{proof}
+
+        \item{[b]} Show that the differential map is linear
+        \begin{proof}
+            Let $\alpha, \beta \in \Rm$ and $f,g \in C^\infty (\Rm^3)$, we see from the following,
+            \begin{align*}
+                \text{d}(\alpha f + \beta g) &=  \frac{\partial}{\partial x}(\alpha f + \beta g)dx + \frac{\partial}{dy}(\alpha f + \beta g)dy + \frac{\partial}{dz}(\alpha f + \beta g)dz \\
+                &=(\frac{\partial f}{\partial x}\alpha dx + \frac{\partial g}{\partial x}\beta dx) + (\frac{\partial f}{\partial y}\alpha dy + \frac{\partial g}{\partial y}\beta dy) + (\frac{\partial f}{\partial z}\alpha dz + \frac{\partial g}{\partial z}\beta dz) \\
+                 &= (\frac{\partial f}{\partial x}\alpha dx + \frac{\partial f}{\partial y}\alpha dy + \frac{\partial f}{\partial z}\alpha \partial z) + (\frac{\partial g}{\partial x}\beta dx + \frac{\partial f}{\partial y}\beta dy + \frac{\partial g}{\partial z}\beta dz) \\
+                &= \alpha(\frac{\partial f}{\partial x} dx + \frac{\partial f}{\partial y} dy + \frac{\partial f}{\partial z} \partial z) + \beta(\frac{\partial g}{\partial x} dx + \frac{\partial f}{\partial y} dy + \frac{\partial g}{\partial z} dz) \\
+                &= \alpha \text{d}(f) + \beta \text{d}(g)
+            \end{align*}
+
+            With all that we can see that the differential function is closed under scalar multiplication and vector addition and is therefore linear. 
+        \end{proof}
+
+        \item{[c]} Is the differential map as defined by (b) injective, surjective, both or neither. 
+        \begin{proof}
+            We know it can't be surjective since consider the vector $f \in \Omega^1(\Rm)$ defined as the following \[f= \begin{pmatrix}z\\z\\z \end{pmatrix}\] Since $f$ is simply the image of some function in $C^\infty(\Rm^3)$ through the differential map then we can obtain that function through integrating $f$. The issue we see though,
+            \begin{align*}
+                \int z dx = zx + C \\
+                \int z dy = zy + C \\
+                \int z dz = \frac{z^2}{2} + C
+            \end{align*}
+
+            We see when we integrate with respect to the variable we took the partial derivative of that we do not get the same functions. This is why the differential map cannot be surjective. 
+
+
+            The differential map can't be injective either. Consider $f: \Rm^3 \to \Rm$, defined by $f(x,y,z) \mapsto C$ where $C$ is simply a constant. We see when we take d$(f)$ we will get,
+            \begin{align*}
+                \text{d}(f) = \begin{pmatrix}0\\ 0\\ 0 \end{pmatrix} = 0
+            \end{align*}
+
+            We know though there are an infinite number of constant functions to choose from but these constant functions when plugging into the differential map will all map to 0 meaning the differential map is not injective. 
+
+            Thus we have it that the differntial map as defined in part b is neither injective nor surjective. 
+
+        \end{proof}
+        
+        
+    \end{itemize}    
+\end{itemize}
+\end{document}
