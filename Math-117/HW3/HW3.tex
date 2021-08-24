@@ -1,0 +1,251 @@
+\documentclass[12pt]{article}
+%------------------------------- BEGIN PREAMBLE
+% packages used
+\usepackage{amssymb,amsmath,amsfonts,mathrsfs,pgffor,marvosym,amsthm,mathtools}
+% macros
+\DeclarePairedDelimiter\set\{\}
+\newcommand      {\Nm}         {{\mathbb N}}
+\newcommand      {\Zm}         {{\mathbb Z}}
+\newcommand      {\Qm}         {{\mathbb Q}}
+\newcommand      {\Rm}         {{\mathbb R}}
+\newcommand      {\Cm}         {{\mathbb C}}
+\newcommand      {\vb}        {\mathbf}
+\newcommand      {\PP}        {{\mathscr P}}
+\newcommand      {\Fm}          {{\mathbb F}}
+\newcommand {\lines}[1] {\foreach \n in {1,...,#1}{ \vspace{9mm} \hrule height 
+0.2pt  }\vspace{2mm} }
+
+
+\newcommand {\f}[1]{{#1_1 dx + #1_2 dy + #1_3 dz}}
+\newcommand {\ff}[2]{{(#1_1 + #2_1) dx + (#1_2+ #2_2) dy + (#1_3 +#2_3)dz}}
+\newcommand {\fff}[3]{{(#1_1 + #2_1 + #3_1) dx + (#1_2+ #2_2 + #3_2) dy + (#1_3 +#2_3 + #3_3)dz}}
+% adjustment of page dimensions
+\textwidth=7in
+\textheight=9.8in
+\topmargin= -0.8in
+\oddsidemargin= -0.5in
+\evensidemargin= 0.0in
+\setlength{\parskip}{1ex plus0.5ex minus0.2ex}
+\setlength{\jot}{10pt}
+%-------------------------------- END PREAMBLE
+\begin{document}
+\begin{flushright}
+    Name: Kevin Guillen \\*
+    Student ID: 1747199
+\end{flushright}
+\begin{center}
+    {\bf 117 - SS2 - HW3 - August 25th, 2021}
+\end{center}
+
+\begin{itemize}
+%------------------------------------------------------PROBLEM 1---------------------------------------------------------
+    \item[$\textbf{[1]}$]
+    Let $V$ and $W$ be finite-dimensional $\mathbb{F}$-vector spaces.
+    \begin{itemize}
+    
+    \vspace{.3cm}
+    \item[(a)]
+    Show that $\dim(\text{Hom}(V,W)) = \dim(V)\dim(W)$ by finding an explicit basis.
+
+    \begin{proof}
+        Since $V$ and $W$ are both finite, let the dimension of $V$ and the dimension of $W$ be denoted by $n$ and $m$ respectively. By definintion that means the basis for $V$ and $W$ are the following.
+        \begin{align*}
+            \mathcal{B_V} &= \set{v_1, v_2, \dots, v_n} \\
+            \mathcal{B_W} &= \set{w_1, w_2, \dots, w_m}
+        \end{align*} 
+
+        Now let us define the lienar maps $\pi_{ij}: V \to W$ for $1\leq i \leq n$ and $1 \leq j \leq m$ by the following,
+        \begin{align*}
+            \pi_{ij}(v_p)= \begin{cases}w_j & p = i \\ 0 & p\neq i \end{cases}
+        \end{align*}
+
+        These will serve as a basis for Hom$(V,W)$, and we will prove it with the following. Let $\alpha_{ij}$ be a scalar and assume we have,
+        \begin{align*}
+            \pi = \sum_{i,j}^{n,m} \alpha_{ij} \pi_{ij} = 0 
+        \end{align*}
+        This would mean for $\pi(v_i)$ and $i \in \set{1, 2, \dots, n}$,
+        \begin{align*}
+            \pi(v_i) = \sum_{j}^m \alpha_{ij} w_j = 0 
+        \end{align*}
+        Recalle though that the set of vector $w_j$ for $1 \leq j \leq m$ are linearly independent, and thus our maps $\pi_{ij}$ are also linearly independent. 
+
+        Now take any function $\pi$ from Hom$(V,W)$. We can define it its values when inputting the basis of $V$ as $\pi(v_i)\in W$. Meaning when $i \in {1,2,\dots, n}$ and $\alpha_{ij}$ as a scalar, we can express $\pi(v_i)$ as,
+        \begin{align*}
+            \pi(v_i) = \sum_{j}^m \alpha_{ij}w_j
+        \end{align*} 
+        Which means,
+        \begin{align*}
+            \pi = \sum_{i,j}^{n,m} \alpha_{ij}\pi_{ij}
+        \end{align*}
+        because the linear functions agree on basis vectors. This means for $1 \leq i \leq n$ and $1 \leq j \leq m$,
+        \[\text{Hom}(V,W) = \text{span}(\set{\pi_{ij}})\]
+
+        This is the proof since we know there are $\text{dim}(V)\text{dim}(W)$ of these functions. 
+
+    \end{proof}
+    
+    \vspace{.3cm}
+    \item[(b)]
+    Show that $\text{Hom}(V,V) \cong V \otimes V^*$.
+    
+    \end{itemize}
+    
+    \vspace{.5cm}
+%------------------------------------------------------PROBLEM 2---------------------------------------------------------   
+    \item[$\textbf{[2]}$]
+    Let $T: \mathbb{F}^3 \rightarrow \mathbb{F}^3$ be the linear transformation with matrix:
+    \begin{equation*}
+    \mathbf{A} = \begin{pmatrix}
+    1 & 4 & 3 \\
+    3 & 4 & 1 \\
+    4 & 4 & 4
+    \end{pmatrix}
+    \end{equation*}
+    Compute the standard matrix $[\Lambda^2 T]$ with respect to the standard basis $\{e_1 \wedge e_2, e_1 \wedge e_3, e_2 \wedge e_3\}$ of $\Lambda^2(\mathbb{F}^3)$. 
+    
+    \vspace{.5cm}
+%------------------------------------------------------PROBLEM 3---------------------------------------------------------   
+    \item[$\textbf{[3]}$]
+    Let $V$ be a $\mathbb{F}$-vector space. Show that if $T,S \in \text{End}(V)$ such that $ST - TS$ commutes with $S$, then for every $k \in \mathbb{N}$:
+    \begin{equation*}
+    S^kT - TS^k = kS^{k-1}(ST - TS)
+    \end{equation*} 
+    
+    \vspace{.5cm}
+%------------------------------------------------------PROBLEM 4--------------------------------------------------------- 
+    \item[$\textbf{[4]}$]
+    Let $V$ be a $\mathbb{F}$-vector space. Show that if $T \in \text{End}(V)$ such that $T^2 - T + I = 0$, then $T$ is invertible. 
+    \begin{proof}
+        \begin{align*}
+            T^2 - T + I &= 0 \\ 
+            T^2 &= T-I && I = TT^{-1} \\
+            T^2 &= T-TT^{-1} \\
+            T^2 &= T(I - T^{-1}) \\
+            T &= (I - T^{-1})
+        \end{align*}
+
+        Therefore $T$ is invertible. 
+    \end{proof}
+    \vspace{.5cm}
+%------------------------------------------------------PROBLEM 5---------------------------------------------------------
+    \item[$\textbf{[5]}$]
+    Let $V$ be a $\mathbb{F}$-vector space. If $S,T \in \text{End}(V)$ such that $ST = 0$, does it follow that $TS = 0$?
+    \begin{proof}
+        Consider the vector space $\Rm^2$ over $\Rm$. We have in End$(V)$ the following,
+        \begin{align*}
+            S &= \begin{pmatrix}
+                1 & -1 \\ 1 & -1
+            \end{pmatrix} \\
+            T &= \begin{pmatrix}
+                1 & 1 \\ 1 & 1
+            \end{pmatrix}
+        \end{align*}
+
+        We see though that,
+        \begin{align*}
+            ST = \begin{pmatrix}
+                1 & -1 \\ 1 & -1
+            \end{pmatrix}\begin{pmatrix}
+                1 & 1 \\ 1 & 1
+            \end{pmatrix} = \begin{pmatrix}
+                0 & 0 \\ 0 & 0
+            \end{pmatrix} = 0
+        \end{align*}
+        but,
+        \begin{align*}
+            TS = \begin{pmatrix}
+                1 & 1 \\ 1 & 1
+            \end{pmatrix}\begin{pmatrix}
+                1 & -1 \\ 1 & -1
+            \end{pmatrix} = \begin{pmatrix}
+                2 & -2 \\ 2 & -2
+            \end{pmatrix} \neq ST
+        \end{align*}
+
+        So, no. If we have two linear transformation $S$ and $T$ such that $ST = 0$ it does not follow that $TS = 0$
+    \end{proof}
+    \vspace{.5cm}
+%------------------------------------------------------PROBLEM 6---------------------------------------------------------  
+    \item[$\textbf{[6]}$]
+    Let $\mathbb{P}_n[x]$ denote the $\mathbb{F}$-vector space of all polynomials with degree less than or equal to $n$ whose coefficients come from $\mathbb{F}$. Suppose that $L \in \text{End}(V)$ such that $Lp(x) = p(x + 1)$ for every $p(x) \in \mathbb{P}_n[x]$. Prove that if $D$ is the differentiation operator defined through the power rule, then:
+    \begin{equation*}
+    I + \frac{D}{1!} + \frac{D^2}{2!} + \dots + \frac{D^{n-1}}{(n - 1)!} = L
+    \end{equation*}
+    
+    \vspace{.5cm}
+%-------------------------------------------------PROBLEM 7---------------------------------------------------------   
+    \item[$\textbf{[7]}$]
+    Let $V$ be a $\mathbb{F}$-vector space with subspaces $U$ and $W$. Prove that if $T \in \text{End}(V)$ such that $U$ and $W$ are invariant under $T$, then the subspace spanned by $U$ and $W$ is invariant under $T$. 
+
+    \begin{proof}
+        Let the vector space $Z$ represent the subspace spanned by $U+W$.
+        \[Z = \text{span}(\set{U+W})\]
+        Meaning any vector $z\in Z$ is of the form $z = u + w$ where $u$ and $w$ are vectors of $U$ and $W$ respectively. This gives us,
+        \begin{align*}
+            T(z) = T(u + w) = T(u) + T(w) \subseteq U + W
+        \end{align*}
+    \end{proof}
+    
+    \vspace{.5cm}
+%------------------------------------------------------PROBLEM 8--------------------------------------------------------- 
+    \item[$\textbf{[8]}$]
+    Let $V$ be a $\mathbb{F}$-vector space with $E,F: V \rightarrow V$ projections. 
+    \begin{itemize}
+
+    \vspace{.3cm}
+    \item[(a)]
+    Prove that $\text{im}(E) = \text{im}(F)$ if and only if $EF = F$ and $FE = E$.
+    
+    \vspace{.3cm}
+    \item[(b)]
+    Prove that $\ker(E) = \ker(F)$ if and only $EF = E$ and $FE = F$.
+    
+    \end{itemize}
+    
+    \vspace{.5cm}
+%------------------------------------------------------PROBLEM 9---------------------------------------------------------  
+    \item[$\textbf{[9]}$]
+    \begin{itemize}
+    
+    \item[(a)]
+    Prove that if $E$ is a projection on a finite-dimensional $\mathbb{F}$-vector space, then there exists a basis $\mathcal{B}$ such that the matrix representative $[E]_\mathcal{B}$ has the following special form: $e_{ij} = 0$ if $i \neq j$ and $e_{ii} = 0$ or $1$ for all $i$ and $j$. 
+    
+    \vspace{.3cm}
+    \item[(b)]
+    An \textit{involution} is a linear transformation $U$ on a $\mathbb{F}$-vector space $V$ such that $U^2 = I$. Show that if $\text{char}(\mathbb{F}) \neq 2$, then the equation $U = 2E - I$ establishes a one-to-one correspondence between all projections $E$ and all involutions $U$.
+    
+    \vspace{.3cm}
+    \item[(c)]
+    Prove that the only eigenvalues of a projection are $0$ and $1$. Furthermore, prove that the only eigenvalues of an involution are $-1$ and $1$. (This does not require the vector space to be finite-dimensional.)
+    
+    \end{itemize}
+    
+    
+%------------------------------------------------------PROBLEM 10--------------------------------------------------------
+    \item[$\textbf{[10]}$]
+    Find all the (complex) eigenvalues and eigenvectors of the following matrices over $\mathbb{C}$:
+    \begin{equation*}
+    \mathbf{A} = \begin{pmatrix}
+    0 & 1 \\
+    0 & 0
+    \end{pmatrix}, \hspace{.3cm} \mathbf{B} = \begin{pmatrix}
+    1 & 0 \\
+    0 & i
+    \end{pmatrix}, \hspace{.3cm} \mathbf{C} = \begin{pmatrix}
+    1 & 1 \\
+    0 & i
+    \end{pmatrix}, \hspace{.3cm} \mathbf{D} = \begin{pmatrix}
+    1 & 1 & 1 \\
+    1 & 1 & 1 \\
+    1 & 1 & 1
+    \end{pmatrix}, \hspace{.3cm} \text{and} \hspace{.3cm} \mathbf{E} = \begin{pmatrix}
+    1 & 1 & 1 \\
+    0 & 1 & 1 \\
+    0 & 0 & 1
+    \end{pmatrix}
+    \end{equation*}
+    
+    \end{itemize}
+
+
+\end{document}

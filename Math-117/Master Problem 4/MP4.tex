@@ -34,13 +34,15 @@
     Student ID: 1747199
 \end{flushright}
 \begin{center}
-    {\bf 117 - SS2 - MP3 - August 13th, 2021}
+    {\bf 117 - SS2 - MP4 - August 20th, 2021}
 \end{center}
+\textbf{[5]} and \textbf{[1]} resubmissions.
 \begin{itemize}
     \item{[5]} Let the $\Rm$-vector space of all smooth functions on $\Rm^3$ be denoted by $C^\infty(\Rm^3)$ where a smooth function on $\Rm^3$ is a
     function $f : \Rm^3 \rightarrow \Rm$ that has continuous partial derivatives of every order. Define a differential 1-form on $\Rm^3$ to be
     a symbol of the form: \[\omega = f_1dx + f_2dy + f_3dz\]
     for $f_1,f_2,f_3\in C^\infty(\Rm^3)$ and let the collection of all differential 1-forms on $\Rm^3$ be denoted by $\Omega^1(\Rm^3)$
+
     \begin{itemize}
         \item{[a]} Show that $\Omega^1(\Rm^3)$ can be regarded as a $\Rm$-vector space.
         \begin{proof}
@@ -58,89 +60,86 @@
                 \end{align*}
 
                 \textit{Identity:} Let the identity of $\Omega^1$ be the following,
-                \[0 = \begin{pmatrix}
-                    f_0 \\f_0\\f_0
-                \end{pmatrix} = \begin{pmatrix}
-                    0\\0\\0
-                \end{pmatrix}\] 
-                \newpage
+                \[0 = f_0dx + f_0dy + f_0dz = 0dx + 0dy + 0dz\]
                 Which is simply the vector composed of of zero functions. We can see it satisfies the requirements by the following, for any $f\in \Omega^1 $
                 \begin{align*}
-                    0 + f =\begin{pmatrix}
-                        f_0 \\f_0 \\ f_0
-                    \end{pmatrix} + \begin{pmatrix}
-                        f_1 \\ f_2 \\f_3
-                    \end{pmatrix} &= \begin{pmatrix}
-                        f_0 + f_1 \\ f_0 + f_2 \\ f_0 + f_3
-                    \end{pmatrix} \\
-                    &= \begin{pmatrix}
-                        f_1 \\ f_2\\ f_3
-                    \end{pmatrix} = f \\
-                    f+ 0 = \begin{pmatrix}
-                        f_1 \\ f_2 \\f_3
-                    \end{pmatrix} + \begin{pmatrix}
-                        f_0 \\f_0 \\ f_0
-                    \end{pmatrix} &=  \begin{pmatrix}
-                        f_1 + f_0 \\ f_2 + f_0 \\ f_3 + f_0
-                    \end{pmatrix} \\
-                    &= \begin{pmatrix}
-                        f_1 \\ f_2\\ f_3
-                    \end{pmatrix} = f
+                    0 + f &= f_0dx + f_0dy + f_0dz + \f{f}  \\
+                    &= (f_0 + f_1)dx + (f_0 + f_2)dy + (f_0 + f_3)dz \\
+                    &= \f{f}\\
+                    &= f\\
+                             \\
+                    f + 0 &= \f{f} + f_0dx + f_0dy + f_0dz \\
+                    &= (f_1 + f_0)dx + (f_2 + f_0)dy + (f_3 + f_0)dz \\ 
+                    &= \f{f} \\
+                    &= f 
                 \end{align*}
 
-                \textit{Inverse:}  We see for any vector $f$ in $\Omega^1$ the inverse of $f$ is defined as the following, \[f^{-1} = \begin{pmatrix}-f_1 \\ -f_2 \\ -f_3 \end{pmatrix}\]
+                \textit{Inverse:}  We see for any vector $f$ in $\Omega^1$ the inverse of $f$ is defined as the following, \[f^{-1} = (-f_1)dx + (-f_2)dy + (-f_3)dz\]
                 We can see that this does indeed serve as an inverse since,
+
                 \begin{align*}
-                    f + f^{-1} = \begin{pmatrix}f_1 \\ f_2 \\ f_3 \end{pmatrix} + \begin{pmatrix}-f_1 \\ -f_2 \\ -f_3 \end{pmatrix} &= \begin{pmatrix}f_1 -f_1\\ f_2-f_2 \\ f_3-f_3 \end{pmatrix} \\
-                    &= \begin{pmatrix}0 \\ 0 \\ 0 \end{pmatrix} = 0 \\
-                    f^{-1} + f = \begin{pmatrix}-f_1 \\ -f_2 \\ -f_3 \end{pmatrix} + \begin{pmatrix}f_1 \\ f_2 \\ f_3 \end{pmatrix} &= \begin{pmatrix}-f_1 +f_1\\ -f_2+f_2 \\ -f_3+f_3 \end{pmatrix} \\
-                    &= \begin{pmatrix}
-                        0\\0\\0
-                    \end{pmatrix} = 0
+                    f + f^{-1} &= \f{f} + (-f_1)dx +(-f_2)dy + (-f_3)dz \\
+                    &= (f_1 - f_1)dx + (f_2 - f_2)dy + (f_3 - f_3)dz \\
+                    &= 0dx + 0dy + 0dz \\
+                    &= 0 \\
+                    \\
+                    f^{-1} + f &= (-f_1)dx + (-f_2)dy + (-f_3)dz + \f{f} \\ 
+                    &= (-f_1+f_1)dx + (-f_2+f_2)dy + (-f_3+f_3)dz \\ 
+                    &= 0dx + 0dy + 0dz \\
+                    &= 0 
                 \end{align*}
 
-                \newpage
                 \textit{Commutative:} Let $f,g\in \Omega^1$. We can see based on the following these elements are commutative.
-                \begin{align}
-                    f + g = \begin{pmatrix}f_1 \\ f_2 \\ f_3 \end{pmatrix} + \begin{pmatrix} g_1 \\ g_2 \\ g_3\end{pmatrix} &= \begin{pmatrix} f_1 + g_1 \\ f_2 +g_2 \\ f_3 + g_3 \end{pmatrix} \\
-                    &=\begin{pmatrix} g_1 + f_1 \\ g_2 +f_2 \\ g_3 + f_3 \end{pmatrix} =  \begin{pmatrix} g_1 \\ g_2 \\ g_3\end{pmatrix} + \begin{pmatrix}f_1 \\ f_2 \\ f_3 \end{pmatrix} = g + f
-                \end{align}
+
+                \begin{align*}
+                    f + g &= \f{f} + \f{g} \\
+                        &= (f_1 + g_1)dx + (f_2 + g_2)dy + (f_3 + g_3)dz \\
+                        &= (g_1 + f_1)dx + (g_2 + f_2)dy + (g_3 + f_3)dz \\
+                        &= \f{g} + \f{f} \\
+                        &= g + f
+                \end{align*}
 
                 So we have it that $(\Omega^1,+)$ is indeed an abelian group.
 
                 Let $\alpha,\beta \in \Rm$ and $f\in \Omega^1$ we see compatability of scalar multiplication with field multiplication through the following,
                 \begin{align*}
-                    \alpha\left[\beta \begin{pmatrix}f_1 \\ f_2 \\ f_3 \end{pmatrix}\right] = \alpha \begin{pmatrix}\beta f_1 \\ \beta f_2 \\ \beta f_3 \end{pmatrix} &= \begin{pmatrix}\alpha\beta f_1 \\ \alpha\beta f_2 \\ \alpha\beta f_3 \end{pmatrix} \\
-                    &= \begin{pmatrix}(\alpha \beta) f_1 \\ (\alpha \beta)f_3 \\ (\alpha \beta)f_3  \end{pmatrix} \\
-                    &= (\alpha\beta) \begin{pmatrix}f_1 \\ f_2 \\ f_3 \end{pmatrix}
+                    \alpha(\beta f) &= \alpha(\f{\beta f}) \\
+                    &= \f{\alpha \beta f} \\
+                    &= \f{(\alpha\beta) f} \\
+                    &= (\alpha\beta)(\f{f}) \\
+                    &= (\alpha\beta)f
                 \end{align*}
-
+      
                 Distribution of scalars with respect to vector addition holds, for $\alpha,\beta \in \Rm$ and $f,g\in \Omega^1$.
                 \begin{align*}
-                    \alpha\left[\begin{pmatrix}f_1 \\ f_2 \\ f_3 \end{pmatrix} + \begin{pmatrix}g_1 \\ g_2 \\ g_3 \end{pmatrix}\right] = \alpha \begin{pmatrix} f_1 + g_1 \\ f_2 + g_2 \\ f_3 + g_3 \end{pmatrix} &= \begin{pmatrix}\alpha(f_1 + g_1) \\ \alpha(f_2 + g_2) \\ \alpha (f_3 + g_3) \end{pmatrix} \\
-                    &= \begin{pmatrix}\alpha f_1 + \alpha g_1 \\ \alpha f_2 + \alpha g_2 \\ \alpha f_3 + \alpha g_3 \end{pmatrix} \\ &= \begin{pmatrix}\alpha f_1 \\ \alpha f_2 \\ \alpha f_3 \end{pmatrix} + \begin{pmatrix}\alpha g_1 \\ \alpha g_2 \\ \alpha g_3 \end{pmatrix} \\ 
-                    &=\alpha\begin{pmatrix} f_1 \\  f_2 \\  f_3 \end{pmatrix}+  \alpha\begin{pmatrix} g_1 \\  g_2 \\  g_3 \end{pmatrix}
+                    \alpha(f + g) &= \alpha(\f{f} + \f{g}) \\
+                    &= \alpha((f_1 + g_1)dx + (f_2 + g_2)dy + (f_3 + g_3)dz) \\ 
+                    &= \alpha(f_1 + g_1)dx + \alpha(f_2 + g_2)dy + \alpha(f_3 + g_3)dz \\
+                    &= (\alpha f_1 + \alpha g_1)dx + (\alpha f_2 + \alpha g_2)dy + (\alpha f_3 + \alpha g_3)dz \\
+                    &= (\f{\alpha f}) + (\f{\alpha g}) \\
+                    &= \alpha(\f{f}) + \alpha(\f{g}) \\
+                    &= \alpha f + \alpha g
                 \end{align*}
-                \newpage
+
                 Distribution of scalar multiplicatoin with respect to field addition,
                 \begin{align*}
-                    (\alpha + \beta) \begin{pmatrix}f_1 \\ f_2 \\ f_3 \end{pmatrix} = \begin{pmatrix}(\alpha + \beta)f_1 \\ (\alpha + \beta)f_2 \\ (\alpha + \beta)f_3 \end{pmatrix} &= \begin{pmatrix}\alpha f_1 + \beta f_1 \\ \alpha f_2 + \beta f_2 \\ \alpha f_3 + \beta f_3 \end{pmatrix} \\
-                    &= \begin{pmatrix}\alpha f_1 \\ \alpha f_2 \\ \alpha f_3 \end{pmatrix} + \begin{pmatrix}\beta f_1 \\ \beta f_2 \\ \beta f_3\end{pmatrix} \\
-                    &= \alpha \begin{pmatrix}f_1 \\ f_2 \\ f_3 \end{pmatrix} + \beta\begin{pmatrix}f_1 \\ f_2 \\ f_3 \end{pmatrix}
+                    (\alpha + \beta)f &= (\alpha + \beta)(\f{f}) \\ 
+                    &= \f{(\alpha + \beta)f} \\
+                    &= (\alpha f_1+ \beta f_1)dx + (\alpha f_2 + \beta f_2)dy + (\alpha f_3 + \beta f_3)dz \\ 
+                    &= \f{\alpha f} + \f{\beta f} \\
+                    &= \alpha(\f{f}) + \beta(\f{f})\\
+                    &= \alpha f + \beta f
                 \end{align*}
 
                 We can see our scalar multiplicative identity as, $1 \in \Rm$ and $f\in \Omega^1$,
                 \begin{align*}
-                    1\begin{pmatrix}f_1 \\ f_2 \\ f_3 \end{pmatrix} &= \begin{pmatrix}1f_1 \\ 1f_2 \\ 1f_3 \end{pmatrix} = \begin{pmatrix}f_1 \\ f_2 \\ f_3 \end{pmatrix} \\
-                    \begin{pmatrix}f_1 \\ f_2 \\ f_3\end{pmatrix} 1 &= \begin{pmatrix}f_1 1 \\ f_2 1 \\ f_3 1 \end{pmatrix} = \begin{pmatrix}f_1 \\ f_2 \\ f_3\end{pmatrix}
+                    1 f &= 1 (\f{f})\\ &= \f{1f} \\ &= \f{f} = f\\
+                    \\
+                    f 1 &= (\f{f})1 \\ &= (f_1 1)dx + (f_2 1)dy + (f_3 1)dz \\ &= \f{f} = f
                 \end{align*}
-
                 Thus $\Omega^1$ can be regarded as an $\Rm$-vector space.  
-
-
-
         \end{proof}
-
+        \newpage
         \item{[b]} Show that the differential map is linear
         \begin{proof}
             Let $\alpha, \beta \in \Rm$ and $f,g \in C^\infty (\Rm^3)$, we see from the following,
@@ -151,7 +150,6 @@
                 &= \alpha(\frac{\partial f}{\partial x} dx + \frac{\partial f}{\partial y} dy + \frac{\partial f}{\partial z} \partial z) + \beta(\frac{\partial g}{\partial x} dx + \frac{\partial f}{\partial y} dy + \frac{\partial g}{\partial z} dz) \\
                 &= \alpha \text{d}(f) + \beta \text{d}(g)
             \end{align*}
-
             With all that we can see that the differential function is closed under scalar multiplication and vector addition and is therefore linear. 
         \end{proof}
 
@@ -163,9 +161,7 @@
                 \int z dy = zy + C \\
                 \int z dz = \frac{z^2}{2} + C
             \end{align*}
-
             We see when we integrate with respect to the variable we took the partial derivative of that we do not get the same functions. This is why the differential map cannot be surjective. 
-
 
             The differential map can't be injective either. Consider $f: \Rm^3 \to \Rm$, defined by $f(x,y,z) \mapsto C$ where $C$ is simply a constant. We see when we take d$(f)$ we will get,
             \begin{align*}
@@ -180,5 +176,54 @@
         
         
     \end{itemize}    
+
+
+    \item[\textbf{[1]}] For all the following make the application of the Axiom of Choice (or any equivalent statement) explicit in the arguement.
+    \begin{itemize}
+        \item[(a)] Prove that every vector space has a basis.
+        \begin{proof}
+            We know from class that if $V$ is a finite dimensional vector space we can consider the set $X_1$  containing a single non-zero vector of $x\in V$. if $X$ spans the whole vector space then we are done. If not we can take another vector $x\in V$ and not in the span of $X_1$. We can define the set $X_2 = X_1 \cup \set{x} $ and if this doesn't span the whole vector space we can repeat the process until it terminates. The issues that arises isn't with finite dimensional vector spaces but for infinite ones.
+
+            To prove that infinite dimensional vector spaces do indeed have a basis let us consider the collection $S$ which is a collection of subsets of some set. Also that whenever these subsets form a chain such that $S_1 \subset S_2 \subset S_3 \dots$ that the union of these subsets is in $S$. Applying Zorn's Lemma which is an equivlant statment to the Axiom of Choice, we know there exists a maximal element in $S$ such that it is not properly contained by other elements in $S$, which implies every element in $S$ is contained in this maximal element in $S$. 
+
+            We can now let this collection $S$ be the collection of all linearly independent subsets of $V$. Because the union of an increasing chain of linearly independent sets is also a linearly independent set, we can apply Zorn's Lemma as stated before and gurantee that there will be a maximal linaerly independent set in this collection. This maximal linearly independent set will then serve as the basis for $V$. The reason we know it can is if there were to exist another linearly independent vector in $V$ not covered by the span of the maximal set, then that would be a contradiciton since the maximal set by defintion cannot be properly contained by another subset.
+        \end{proof}
+        \item[(b)] Let dim$_\Fm (V)$ denote the dimension of the vector space $V$ over the field $\Fm$. What is  dim$_\Rm(\Rm^2)$? How about dim$_\Qm(\Rm^2)$
+        \begin{proof}
+            We know from the class and the textbook that the dimension of a finite dimensional vector space over a field $\Fm$ is simply the number of elements in the basis of said vector space. So in the case of the $\Rm$-vector space $\Rm^2$ we know it's basis is the following \[\set{(1,0),(0,1)}\]
+
+            We know the span of this set covers the whole vector space because any vector in $\Rm^2$ can be expressed as the following,
+            \[(x,y) = a(1,0)+b(0,1)\]
+
+            Where $a =x$, and $b = y$. We know we can do this since $x,y \in \Rm$ and since $\Rm^2$ is over the field $\Rm$, $a,b\in \Rm$. So we have the dimension to be 2.  
+            \newpage
+            For dim$_\Qm(\Rm^2)$ we know because of the axiom of choice that a basis exists for an infinte dimensional vector space. 
+
+            One can consider any transcendental number in $\Rm$ for this proof, but for our case specifically let's consider $e$. We know from real analysis that a transcendental number cannot be the root of any non-zero polynomial wiht rational coefficents. In other words for any non zero natural number with $\alpha_0,\alpha_1\dots,\alpha_n $ where $\alpha_i \neq 0$ for some $i$, and $\alpha_i \in \Qm$ for all $i$ we get the following,
+            \[\alpha_0 + \alpha_1e + \dots + \alpha_n e^n \neq 0.\]
+
+            we can expand this reasoning in $\Rm^2$ to get
+            \begin{align*}
+                \alpha_0 + \alpha_1(e,0) +\dots +\alpha_n (e^n,0) \neq (0,0).
+            \end{align*}
+
+            Then through definition the set \[\left\{(1,0),\ (e,0),\ \dots,\ (e^n,0)\right\}\] is a set of linearly independent vectors, and there is $n+1$ of them.
+            
+            We know though that if a vector space has dimension $N$ then any set of linearly independent vectors in that vector space will have at most $N$ vectors. This is where the issue comes, because above we just defined a set of linearly independent vectors in the vector space $\Rm^2$ over $\Qm$ that contains $n+1$ vectors for any non zero natural number $n$. Therefore $\Rm^2$ over $\Qm$ cannot be of finite dimension, and therefore has infinite dimension. 
+
+
+        \end{proof}
+
+        \item[(c)] Prove or disprove: Let $\Fm_1$ and $\Fm_2$ be fields, and $V$ and $W$ be vector spaces. If $V$ and $W$ over $\Fm_1$ are isomoprhic, then they are isomorphic over $\Fm_2$?
+        \begin{proof}
+            This is not always true, at least for the following example. Let the vector spaces $V$ and $W$ to be $\Rm$ and $\Rm^2$ respectively. We will choose to work with the fields $\Qm$ and $\Rm$.
+            
+            We know from (b) that the dimension of $\Rm^2$ is infinty, and the same reasoning will show us that $\Rm$ over $\Qm$ will also be infinty. Meaning we can construct and isomorphism between these two vector spaces over $\Qm$. 
+
+            We also know though that the dimesnion of $\Rm^2$ over $\Rm$ is 2, and with similair reasoning we can know that the dimension of $\Rm$ over $\Rm$ is 1. Which means they can't be isomorphic to one another. 
+            
+            Thus we have it that over $\Qm$ these two vector spaces are isomorhic, but over another field $\Rm$ they are not.
+        \end{proof} 
+    \end{itemize}
 \end{itemize}
 \end{document}

@@ -74,6 +74,8 @@
         \end{align*}
 
         We are given that the dimension of $V$ is $n$, we know from class that the dimension of $\Fm^m$ is simply $m$. We also know that $m < n$, recall the rank-nullity theorem \[\text{dim}(V) = \text{dim}(\Fm^m)+\text{dim}(\ker(\phi))\] thus by the rank nullity theorem we know that the kernal of $\phi$ is non trivial. Therefore there exists a non-zero vector $x\in V$ such that $[x,y_j] = 0$ for $1\leq j \leq m$
+
+        What this is saying about hte solutions of linear equations is well first the system of lienar equations is underdetermined. Since we proved there exists at least 1 solution then there exists infinitly many since in an underdetermined system there is either 0 solutions or infinitely many (I think).
     \end{proof}
     
     \vspace{.3cm}
@@ -96,19 +98,35 @@
         While $W_1 \neq W_2$ because $\text{span}((1,1) \neq \text{span}((0,1))$
 
     
-    
+        What I'm seeing geometrically as long as you have any two linearly independent vectors when taking the span of both and with the span of either with the span of a 3rd linaerly independent vector you get the same space which is just $\Rm^2$. Even though the span of the first 2 vector were different subspaces. Similair to what we covered in linear algebra, and kind of like the example you gave in class about the plane direct sum a normal vector. 
     \vspace{.5cm}
 %------------------------------------------------------PROBLEM 4---------------------------------------------------------   
     \item[$\textbf{[4]}$]
     Given a finite-dimensional $\mathbb{F}$-vector space $V$, form the direct sum $W = V \oplus V^*$, and prove that the correspondence $(x,y) \rightarrow (y,x)$ is an isomorphism between $W$ and $W^*$. 
 
+    I apologize in advanced if parts of this are reptitive or redundant I just have a really hard time wording it since I get why it works, I just haven't gotten to the point of being fully comfortable talking about the bidual so trying to use the ismorphism to say it is essentially the same to the finite vector space $V$ is kind of uncomfortable right now. So I tried to say it explicitly and also just through language, hope this is suitable. 
+
     \begin{proof}
-        First we can see that $W^* = (V\oplus V^*)^* = V^* \oplus V^{**}$. Recall though from class that since $V$ is of finite dimension then there exists a natural isomorphism between $V$ and $V^{**}$. The natural ismorphism is simply $\phi(x_0)(y) = [x_0,y]$. We also know that the dual of any finite vector space has the same dimension as the original vector space. So in order to prove the ismorphism we simply need to prove injectivity. 
+        First we can see that $W^* = (V\oplus V^*)^* = V^* \oplus V^{**}$. Recall though from class that since $V$ is of finite dimension then there exists a natural isomorphism between $V$ and $V^{**}$. The natural ismorphism is simply $\phi(x_0)(y) = [x_0,y]$ meaning we can just pass vectors to $V^{**}$ because of this natural isomorphism between it and $V$. Meaning you can compose this correspondence with $\phi$ in order to send vectors in $V$ to $V^{**}$ since even though they are isomorphic they are not exactly equal. The reason we'd like to do is because then we can treat $W^{*} = V^*\oplus V^{**}$ can really just be thought of as $V^* \oplus V$.
+        
+        Now we know from class that $U\oplus V \cong V\oplus U$
+
+        Therefore $V\oplus V^*$ is isomoprhic to $V^* \oplus V$. 
+
+        From here we have the natural ismoprhism we talked about before just a little different in that we can define the map $y\in V^*$ to itself in $V^*$ and then for $x_0$ in $V$ to $[x_0,y]$ in $V^{**}$. Meaning $W$ is indeed isomorphic to $W^*$
+
+        But this is really all that the correspondence given is doing, simply taking $(x_0,y)\in V^* \oplus V$ and sending it to $(y,x_0)\in V^*\oplus V^{**}$
+        
+        We know that the dual of any finite vector space has the same dimension as the original vector space. So in order to prove the ismorphism we simply need to prove injectivity. 
+
+        Let's refer to the correspondence as $\pi$. We know that the kernal of $\pi$ will be zero because if $\pi(x,y) = (y,x) = (0,0)$ both $y$ and $x$ would have to be 0. Thus the map is indeed injective, meaning it is isomorphic. 
+
+        
 
         
     \end{proof}
     
-    \vspace{.5cm}
+    
 %------------------------------------------------------PROBLEM 5---------------------------------------------------------   
     \item[$\textbf{[5]}$]
     Let $U$ and $V$ be $\mathbb{F}$-vector spaces. A bilinear form $\omega: U \oplus V \rightarrow \mathbb{F}$ is \textit{degenerate} if, as a function of one of its two arguments, it vanishes identically for some non-zero value of its other argument; otherwise it is \textit{non-degenerate}.
@@ -118,9 +136,30 @@
     \item[(a)]
     Give an example of a degenerate bilinear form (not identically zero) on the $\mathbb{C}$-vector space $\mathbb{C}^2 \oplus \mathbb{C}^2$.
     
+    \textbf{Solution:}
+    For a bilinear form we need to find some non-zero vector $x_0\in \Cm^2$ such that for all $y\in \Cm^2$, $\omega(x_0,y) = 0$. Where $\omega$ is not identically zero. In which case we can define,
+    \[\omega: \Cm^2 \oplus \Cm^2 \to \Cm\]
+    \[\omega((c_1,c_2),(c_3,c_4)) = c_1 (c_2c_3c_4) \]
+
+    Let us fix $x_1 = (0 + 0i, 1+ 1i)$, it is clear $x_1$ is nonzero. Plugging into $\omega$ we see we get,
+    \begin{align*}
+        \omega((0+0i,1+1i),(a+bi, c+di)) &= (0+0i)((1+1i)(a+bi)(c+di)) \\
+        &= (0+0i)((1+1i)((ac - bd)+(ad + bc)i)) \\ 
+        &= (0+0i)\left[((ac-bd)-(ad+bc))+ ((ad-bc)+(ac-bd))i\right] \\
+        &= (0+0i)(\alpha + \beta i) \\
+        &= (0\alpha - 0\beta)+(0\beta + 0\alpha)i \\
+        &= 0
+    \end{align*}
+    
+    Thus we can see when we fix $x_1 = ((0+0i),(1+1i))$ for all $y$ $\omega(x_1,y) = 0 $. We know this is not identically zero since if we choose $x_2 = ((1+1i),(1+1i))$, $\omega(x_2,y) \neq 0$ for all values of $y$. 
+
     \vspace{.3cm}
     \item[(b)]
     Give an example of a non-degenerate bilinear form on the $\mathbb{C}$-vector space $\mathbb{C}^2 \oplus \mathbb{C}^2$.  
+    
+    \textbf{Solution:} Let $\omega(x,y) = \omega((c_1,c_2),(c_3,c_4)) = c_1c_3 + c_2c_4$, which is just the inner product
+
+    It's clear that since $x$ has to be fixed $c_1, c_2$ are fixed and therefore if for every value of $y$ $\omega(x,y) = 0$ $x$ has to be $0 = (0+0i,0+0i)$. Meaning $\omega$ is non-degenerate. 
     
     \end{itemize}
     
@@ -128,13 +167,30 @@
 %------------------------------------------------------PROBLEM 6---------------------------------------------------------   
     \item[$\textbf{[6]}$]
     Does there exist a $\mathbb{F}$-vector space $V$ and a bilinear form $\omega: V \oplus V \rightarrow \mathbb{F}$ such that $\omega$ is not identically zero, but $\omega(x,x) = 0$ for every $x \in V$?
+
+    \textbf{Solution:} Yes there does exist a bilinear form satisfying this property. Consider the following,
+    \begin{align*}
+        \omega(x,y) = x-y 
+    \end{align*}
+
+    In the case where $y = x$, $\omega(x,y) = \omega(x,x) = x-x  =0$. We also no this is not identically zero since for when $y\neq x$ $\omega(x,y) = x-y \neq 0$
     
-    \vspace{.5cm}
+
 %------------------------------------------------------PROBLEM 7---------------------------------------------------------   
     \item[$\textbf{[7]}$]
     Let $\{e_1,e_2\}$ and $\{e_1',e_2',e_3'\}$ be the standard bases for the $\mathbb{R}$-vector spaces $\mathbb{R}^2$ and $\mathbb{R}^3$, respectively, where \newline $e_i = (\delta_{1i},\delta_{2i})$ and $e_i' = (\delta_{1i},\delta_{2i},\delta_{3i})$ for $\delta_{pq}$ representing the Kronecker delta. Given that $x = (1,1) \in \mathbb{R}^2$ and $y = (1,1,1) \in \mathbb{R}^3$, find the coordinates of $x \otimes y \in \mathbb{R}^2 \otimes \mathbb{R}^3$ with respect to the standard product basis $\{e_i \otimes e_j' \hspace{.1cm} | \hspace{.1cm} 1 \leq i \leq 2, 1 \leq j \leq 3\}$. 
     
+    \textbf{Solution:}
+    The coordinates are simply the following,
+    \begin{align*}
+    (1,1)\otimes (1,1,1) = &(1,0) \otimes (1,0,0) + (1,0)\otimes(0,1,0) + (1,0)\otimes(0,0,1) \\ &+ (0,1)\otimes(1,0,0) + (0,1)\otimes(0,1,0) + (0,1)\otimes(0,0,1)
+    \end{align*}
+
+    Just the sum of all the elements in the basis without any scalars. 
     \vspace{.5cm}
+
+   
+
 %------------------------------------------------------PROBLEM 8---------------------------------------------------------   
     \item[$\textbf{[8]}$]
     Let $\mathcal{S}_k$ represent the permutation group on $k$ elements. 
@@ -143,19 +199,62 @@
     \vspace{.3cm}
     \item[(a)]
     Prove that if $\sigma,\tau \in \mathcal{S}_k$, then there exists a unique $\pi \in \mathcal{S}_k$ such that $\sigma\pi = \tau$. 
+
+    \begin{proof}
+        Given $\sigma, \tau \in \mathcal{S}_k$ we want to first show there exists a permuation $\pi\in \mathcal{S}_k$ such that $\sigma \pi = \tau$. We know since we are in a group that inverses exist, and also because every permuation is a biijectiion and biijections have inverses. Meaning $\sigma^{-1}$ is in $\mathcal{S}_k$. So taking the composition $\sigma \sigma^{-1} = e$. We know to get $\tau$ from $e$ it is simply $e\tau = \tau$. Therfore we can define $\pi = \sigma^{-1}\tau$. We know this is in $\mathcal{S}_k$ since it is closed under compositions. This gives us 
+        \[\sigma\pi = \tau\] as desired. 
+
+        The reason we know this is unique is because assume there exists another permutation $\alpha$ such that $\sigma\alpha = \tau$ and $\alpha \neq \tau$. That means,
+        \begin{align*}
+            \sigma\alpha &= \sigma\pi &&\text{We can compose with $\sigma^{-1}$ on the left}\\
+            \sigma^{-1}\sigma\alpha &= \sigma^{-1}\sigma\pi \\
+            e\alpha &= e\pi \\
+            \alpha &= \pi  
+        \end{align*}
+
+        Which is a contradiction, and therefore $\pi$ is unique.
+    \end{proof}
     
     \vspace{.3cm}
     \item[(b)]
     Prove that if $\sigma,\tau,\pi \in \mathcal{S}_k$ such that $\pi\sigma = \pi\tau$, then $\sigma = \tau$. 
-    
+    \begin{proof}
+        This follows from part a. We know since we are in a group every permuation has an inverse permuation. 
+        \begin{align*}
+            \pi \sigma &= \pi \tau && \text{Comoposing with $\pi^{-1}$ on the left} \\
+            \pi^{-1}\pi\sigma &= \pi^{-1}\pi\tau \\
+            e\sigma &= e\tau \\
+            \sigma &= \tau
+        \end{align*}
+        as desired.
+    \end{proof}
     \end{itemize}
     
     \vspace{.5cm}
 %------------------------------------------------------PROBLEM 9---------------------------------------------------------  
     \item[$\textbf{[9]}$]
     Let $\mathcal{S}_k$ represent the permutation group on $k$ elements. Prove that every permutation in $\mathcal{S}_k$ is the product of transpositions of the form $(j,j+1)$, where $1 \leq j < k$. Is this factorization unique?
+
+    \begin{proof}
+        We can prove this with a kind of top down approach. First we know that any permuation can be expressed as the composition of transpotions where $(j,p)$ where $p$ doesn't have to be $j=p+1$. Simply let it be the following,
+        \[(s_1, s_2, s_3 \dots, s_k) = (s_1, s_2)(s_1,s_3)(s_1,s_4)\dots (a_1, a_k)\]
+
+        Now for any transpositions of the form $(j,p)$ where $j < p$ we can write them as a composition of transpositions of the form $(j,j + 1)$ we can see this through the following,
+        \[(j,p) = (j, j + 1)(j+1, j+2)(j+2, j+3)\dots (p-2, p-1)(p-1,p)(p-2,p-1)\dots (j+1,j+2)(j,j+1)\]
+
+        Which means that any permuation can be expressed as a composition of transpositions of the form $(j,j+1)$. Since any permutation can be expressed as a composition of transpositions and any transposition can be expressed as a composition of tranpositions of the form $(j,j+1)$
+
+        Unfortunately though this factorization is not unique. Take for example $(1234) = (14)(13)(12) = (12)(23)(34)$. THe first composition if we expand to be compositions of transpositions of the desired form we get,
+        \[(14)(13)(12) = (12)(23)(34)(23)(12)(12)(23)(12)(12)\]
+        The second one we get,
+        \[(12)(23)(34) = (12)(23)(34)\] 
+
+        We see they are not equal even though they ultimately result in the same permutation. Thus it is not unique. 
+
+
+    \end{proof}
     
-    \newpage
+    
 %------------------------------------------------------PROBLEM 10--------------------------------------------------------   
     \item[$\textbf{[10]}$]
     Let $V$ be a finite-dimensional $\mathbb{F}$-vector space.
@@ -164,6 +263,30 @@
     \vspace{.3cm}
     \item[(a)]
     A bilinear form $b_1: V \times V \rightarrow \mathbb{F}$ is called \textit{symmetric} if $b_1(v,w) = b_1(w,v)$. Similarly, a bilinear form $b_2: V \times V \rightarrow \mathbb{F}$ is called \textit{skew-symmetric} if $b_2(v,w) = -b_2(w,v)$. Prove that any bilinear form $\omega: V \times V \rightarrow \mathbb{F}$ can be written as a sum of symmetric and skew-symmetric bilinear forms. You may assume that $\text{char}(\mathbb{F}) \neq 2$.
+
+    \begin{proof}
+        We want to be able to express any bilinear form $\omega$ as $\omega = \omega_1 + \omega_2$ where $\omega_1$ and $\omega_2$ are symmetric and skew symmetric respectively. Which would be as following for vectors $x,y $,
+        \[\omega(x,y) = \omega_1(x,y) + \omega_2(x,y)\]
+        \begin{align*}
+            \omega(y,x) &= \omega_1(y,x) + \omega_2(y,x) && \text{$\omega_1$ is symm. and $\omega_2$ is skew so,} \\
+            &= \omega_1(x,y) - \omega_2(x,y)
+        \end{align*}
+
+        Subtracting these equations we get,
+        \begin{align*}
+            \omega(x,y) - \omega(y,x) &= \omega_2(x,y) + \omega_2(x,y) \\
+            \omega_2(x,y) &= \dfrac{\omega(x,y)-\omega(y,x)}{2}
+        \end{align*}
+
+        Adding the equations we get,
+        \begin{align*}
+            \omega(x,y) + \omega(y,x) &= \omega_1(x,y) + \omega_1(x,y)  \\
+            \omega_1(x,y) &= \dfrac{\omega(x,y)+ \omega(y,x)}{2}
+        \end{align*}
+
+        Thus we have any bilinear form $\omega$ can be expressed as a sum of symmetric and skew-symmetric bilinear forms,
+        \[\omega(x,y) = \dfrac{\omega(x,y)+ \omega(y,x)}{2} + \dfrac{\omega(x,y)-\omega(y,x)}{2}\] 
+    \end{proof}
     
     \vspace{.3cm}
     \item[(b)]
