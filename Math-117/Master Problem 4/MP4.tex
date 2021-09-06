@@ -178,15 +178,15 @@
     \end{itemize}    
 
 
-    \item[\textbf{[1]}] For all the following make the application of the Axiom of Choice (or any equivalent statement) explicit in the arguement.
+    \item[\textbf{[1]}] For all the following make the application of the Axiom of Choice (or any equivalent statement) explicit in the argument.
     \begin{itemize}
         \item[(a)] Prove that every vector space has a basis.
         \begin{proof}
             We know from class that if $V$ is a finite dimensional vector space we can consider the set $X_1$  containing a single non-zero vector of $x\in V$. if $X$ spans the whole vector space then we are done. If not we can take another vector $x\in V$ and not in the span of $X_1$. We can define the set $X_2 = X_1 \cup \set{x} $ and if this doesn't span the whole vector space we can repeat the process until it terminates. The issues that arises isn't with finite dimensional vector spaces but for infinite ones.
 
-            To prove that infinite dimensional vector spaces do indeed have a basis let us consider the collection $S$ which is a collection of subsets of some set. Also that whenever these subsets form a chain such that $S_1 \subset S_2 \subset S_3 \dots$ that the union of these subsets is in $S$. Applying Zorn's Lemma which is an equivlant statment to the Axiom of Choice, we know there exists a maximal element in $S$ such that it is not properly contained by other elements in $S$, which implies every element in $S$ is contained in this maximal element in $S$. 
+            To prove that infinite dimensional vector spaces do indeed have a basis let us consider the collection $S$ which is a collection of subsets of some set. Also that whenever these subsets form a chain such that $S_1 \subset S_2 \subset S_3 \dots$ that the union of these subsets is in $S$. Applying Zorn's Lemma which is an equivalent statement to the Axiom of Choice, we know there exists a maximal element in $S$ such that it is not properly contained by other elements in $S$, which implies every element in $S$ is contained in this maximal element in $S$. 
 
-            We can now let this collection $S$ be the collection of all linearly independent subsets of $V$. Because the union of an increasing chain of linearly independent sets is also a linearly independent set, we can apply Zorn's Lemma as stated before and gurantee that there will be a maximal linaerly independent set in this collection. This maximal linearly independent set will then serve as the basis for $V$. The reason we know it can is if there were to exist another linearly independent vector in $V$ not covered by the span of the maximal set, then that would be a contradiciton since the maximal set by defintion cannot be properly contained by another subset.
+            We can now let this collection $S$ be the collection of all linearly independent subsets of $V$. Because the union of an increasing chain of linearly independent sets is also a linearly independent set, we can apply Zorn's Lemma as stated before and guarantee that there will be a maximal linearly independent set in this collection. This maximal linearly independent set will then serve as the basis for $V$. The reason we know it can is if there were to exist another linearly independent vector in $V$ not covered by the span of the maximal set, then that would be a contradiction since the maximal set by definition cannot be properly contained by another subset.
         \end{proof}
         \item[(b)] Let dim$_\Fm (V)$ denote the dimension of the vector space $V$ over the field $\Fm$. What is  dim$_\Rm(\Rm^2)$? How about dim$_\Qm(\Rm^2)$
         \begin{proof}
@@ -197,9 +197,9 @@
 
             Where $a =x$, and $b = y$. We know we can do this since $x,y \in \Rm$ and since $\Rm^2$ is over the field $\Rm$, $a,b\in \Rm$. So we have the dimension to be 2.  
             \newpage
-            For dim$_\Qm(\Rm^2)$ we know because of the axiom of choice that a basis exists for an infinte dimensional vector space. 
+            For dim$_\Qm(\Rm^2)$ we know because of the axiom of choice that a basis exists for an infinite dimensional vector space. 
 
-            One can consider any transcendental number in $\Rm$ for this proof, but for our case specifically let's consider $e$. We know from real analysis that a transcendental number cannot be the root of any non-zero polynomial wiht rational coefficents. In other words for any non zero natural number with $\alpha_0,\alpha_1\dots,\alpha_n $ where $\alpha_i \neq 0$ for some $i$, and $\alpha_i \in \Qm$ for all $i$ we get the following,
+            One can consider any transcendental number in $\Rm$ for this proof, but for our case specifically let's consider $e$. We know from real analysis that a transcendental number cannot be the root of any non-zero polynomial with rational coefficients. In other words for any non zero natural number with $\alpha_0,\alpha_1\dots,\alpha_n $ where $\alpha_i \neq 0$ for some $i$, and $\alpha_i \in \Qm$ for all $i$ we get the following,
             \[\alpha_0 + \alpha_1e + \dots + \alpha_n e^n \neq 0.\]
 
             we can expand this reasoning in $\Rm^2$ to get
@@ -209,20 +209,20 @@
 
             Then through definition the set \[\left\{(1,0),\ (e,0),\ \dots,\ (e^n,0)\right\}\] is a set of linearly independent vectors, and there is $n+1$ of them.
             
-            We know though that if a vector space has dimension $N$ then any set of linearly independent vectors in that vector space will have at most $N$ vectors. This is where the issue comes, because above we just defined a set of linearly independent vectors in the vector space $\Rm^2$ over $\Qm$ that contains $n+1$ vectors for any non zero natural number $n$. Therefore $\Rm^2$ over $\Qm$ cannot be of finite dimension, and therefore has infinite dimension. 
+            We know though that if a vector space has dimension $N$ then any set of linearly independent vectors in that vector space will have at most $N$ vectors. This is where the issue comes, because above we just defined a set of linearly independent vectors in the vector space $\Rm^2$ over $\Qm$ that contains $n+1$ vectors for any non zero natural number $n$. Therefore $\Rm^2$ over $\Qm$ cannot be of finite dimension, and therefore has an uncountable infinite dimension. 
 
 
         \end{proof}
 
-        \item[(c)] Prove or disprove: Let $\Fm_1$ and $\Fm_2$ be fields, and $V$ and $W$ be vector spaces. If $V$ and $W$ over $\Fm_1$ are isomoprhic, then they are isomorphic over $\Fm_2$?
+        \item[(c)] Prove or disprove: Let $\Fm_1$ and $\Fm_2$ be fields, and $V$ and $W$ be vector spaces. If $V$ and $W$ over $\Fm_1$ are isomorphic, then they are isomorphic over $\Fm_2$?
         \begin{proof}
             This is not always true, at least for the following example. Let the vector spaces $V$ and $W$ to be $\Rm$ and $\Rm^2$ respectively. We will choose to work with the fields $\Qm$ and $\Rm$.
             
-            We know from (b) that the dimension of $\Rm^2$ is infinty, and the same reasoning will show us that $\Rm$ over $\Qm$ will also be infinty. Meaning we can construct and isomorphism between these two vector spaces over $\Qm$. 
+            We know from (b) that the dimension of $\Rm^2$ is infinity, and the same reasoning will show us that $\Rm$ over $\Qm$ will also be infinity. Meaning we can construct and isomorphism between these two vector spaces over $\Qm$. 
 
-            We also know though that the dimesnion of $\Rm^2$ over $\Rm$ is 2, and with similair reasoning we can know that the dimension of $\Rm$ over $\Rm$ is 1. Which means they can't be isomorphic to one another. 
+            We also know though that the dimension of $\Rm^2$ over $\Rm$ is 2, and with similar reasoning we can know that the dimension of $\Rm$ over $\Rm$ is 1. Which means they can't be isomorphic to one another. 
             
-            Thus we have it that over $\Qm$ these two vector spaces are isomorhic, but over another field $\Rm$ they are not.
+            Thus we have it that over $\Qm$ these two vector spaces are isomorphic, but over another field $\Rm$ they are not.
         \end{proof} 
     \end{itemize}
 \end{itemize}

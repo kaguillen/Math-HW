@@ -1,0 +1,56 @@
+\documentclass[12pt]{article}
+%------------------------------- BEGIN PREAMBLE
+% packages used
+\usepackage{amssymb,amsmath,amsfonts,mathrsfs,pgffor,marvosym,amsthm,mathtools}
+% macros
+\DeclarePairedDelimiter\set\{\}
+\newcommand      {\Nm}         {{\mathbb N}}
+\newcommand      {\Zm}         {{\mathbb Z}}
+\newcommand      {\Qm}         {{\mathbb Q}}
+\newcommand      {\Rm}         {{\mathbb R}}
+\newcommand      {\Cm}         {{\mathbb C}}
+\newcommand      {\vb}        {\mathbf}
+\newcommand      {\PP}        {{\mathscr P}}
+\newcommand      {\Fm}          {{\mathbb F}}
+\newcommand {\lines}[1] {\foreach \n in {1,...,#1}{ \vspace{9mm} \hrule height 
+0.2pt  }\vspace{2mm} }
+
+\newcommand {\w} {{\wedge}}
+\newcommand {\e}[3]{{#1e_1 + #2e_2 + #3e_3}}
+\newcommand {\f}[1]{{#1_1 dx + #1_2 dy + #1_3 dz}}
+\newcommand {\ff}[2]{{(#1_1 + #2_1) dx + (#1_2+ #2_2) dy + (#1_3 +#2_3)dz}}
+\newcommand {\fff}[3]{{(#1_1 + #2_1 + #3_1) dx + (#1_2+ #2_2 + #3_2) dy + (#1_3 +#2_3 + #3_3)dz}}
+% adjustment of page dimensions
+\textwidth=7in
+\textheight=9.8in
+\topmargin= -0.8in
+\oddsidemargin= -0.5in
+\evensidemargin= 0.0in
+\setlength{\parskip}{1ex plus0.5ex minus0.2ex}
+\setlength{\jot}{10pt}
+%-------------------------------- END PREAMBLE
+\begin{document}
+\textbf{[3]}
+Let $V$ be a $\mathbb{F}$-vector space. Show that if $T,S \in \text{End}(V)$ such that $ST - TS$ commutes with $S$, then for every $k \in \mathbb{N}$:
+    \begin{equation*}
+    S^kT - TS^k = kS^{k-1}(ST - TS)
+    \end{equation*} 
+
+    \begin{proof}
+        Base case where $k = 1$
+        \[S^1T - TS^1 = 1S^0(S^1T -TS^1)\]
+        we see is true.
+
+        Now assume it holds for $k = n$
+
+        Now for $k = n +1$
+        \begin{align*}
+            S^{n+1}T - TS^{n+1} \\
+            S^nST - TS^nS && \text{Recall though $ST-TS$ commutes with $S$} \\
+            (n+1)S^n(ST-TS)
+        \end{align*}
+
+        We know it holds for $k = n$ and thus by induction it holds for $k = n+1$
+    \end{proof}
+
+\end{document}

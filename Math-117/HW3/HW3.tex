@@ -88,6 +88,12 @@
     \vspace{.3cm}
     \item[(b)]
     Show that $\text{Hom}(V,V) \cong V \otimes V^*$.
+    Sorry if this isn't formal/rigorous enough I saved this for last since I get the reasoning, but I'm running out of time. 
+    \begin{proof}
+        From class (prop 9.1) we showed that setting $U =V$ for Hom$(U,V)$ that $V^* \otimes V \cong \text{End}(V)$ and that really End$(V)$ is just Hom$(V,V)$. 
+        
+        We also know from class and a previous homework (or maybe I think a mastery problem) that $V^*\otimes V \cong V \otimes V^*$. Thus through transitivity we can compose these isomorphisms and we'll end up with $\text{Hom}(V,V) \cong V \otimes V^*$.
+    \end{proof}
     
     \end{itemize}
     
@@ -154,6 +160,23 @@
     \begin{equation*}
     S^kT - TS^k = kS^{k-1}(ST - TS)
     \end{equation*} 
+
+    \begin{proof}
+        Base case where $k = 1$
+        \[S^1T - TS^1 = 1S^0(S^1T -TS^1)\]
+        we see is true.
+
+        Now assume it holds for $k = n$
+
+        Now for $k = n +1$
+        \begin{align*}
+            S^{n+1}T - TS^{n+1} \\
+            S^nST - TS^nS && \text{Recall though $ST-TS$ commutes with $S$} \\
+            (n+1)S^n(ST-TS)
+        \end{align*}
+
+        We know it holds for $k = n$ and thus by induction it holds for $k = n+1$
+    \end{proof}
     
     \vspace{.5cm}
 %------------------------------------------------------PROBLEM 4--------------------------------------------------------- 
@@ -215,6 +238,48 @@
     \begin{equation*}
     I + \frac{D}{1!} + \frac{D^2}{2!} + \dots + \frac{D^{n-1}}{(n - 1)!} = L
     \end{equation*}
+
+    \begin{proof}
+        We are given that $Lp(x) = p(x+1)$. We know $p(x) \in \mathbb{P}_n[x]$ is of the form
+        \[p(x) = a_nx^n + \dots + a_1x + a_o\]
+        This means $Dp(x)$, where $D$ is the differentiation operator, is,
+        \begin{align*}
+            \dfrac{d}{dx}p(x) = na_nx^{n-1} + \dots + 2a_2x + a_1 + 0
+        \end{align*}
+
+        We see for different powers of $D$,
+        \begin{align*}
+            \dfrac{d^2}{dx^2}p(x) &= n(n-1)a_nx^{n-2} + \dots + 6a_3x + 2a_2 + 0 \\
+            \dfrac{d^3}{dx^3}(x) &= n(n-1)(n-2)x^{n-3} + \dots + 24a_4x + 6a_3 + 0 \\
+            &\vdots \\
+            \dfrac{d^{n-1}}{dx^{n-1}}p(x) &= n\cdot(n-1)\cdot(n-2)\dots 2\cdot a_n x + 0 = n!a_nx
+        \end{align*}
+
+        Now consider $\left(I + \frac{D}{1!} + \frac{D^2}{2!} + \dots + \frac{D^{n-1}}{(n - 1)!}\right)p(x)$ 
+        \begin{align*}
+            &= p(x) + \frac{D}{1!}p(x) + \frac{D^2}{2!}p(x)   + \dots + \dfrac{D^{n-1}}{(n-1)!}p(x) + \dfrac{D^n}{n!}p(x) \\
+            &= (a_nx^n + \dots + a_1x + a_0) + (na_nx^{n-1} + \dots + 2a_2x + a_1)  \\
+            &+ (\frac{n(n-1)}{2}a_nx^{n-2} + \dots + 3a_3x + a_2)  + (\frac{n(n-1)(n-2)}{6}x^{n-3} + \dots + 4a_4x + a_3 + 0) \\
+            &+ \dots + na_nx + a_n \\
+            &= a_n(x^n + nx^{n+1} + nx^{n-1} + \frac{n(n-1)}{2}x^{n-2} + \dots + nx + 1) + \dots + a_3(x^3 + 3x^2 + 3x + 1) \\
+            &+ a_2(x^2 + 2x + 1) + a_1(x+1) + a_0 \\
+            &= a_n(x+1)^n + \dots + a_3(x+1)^3 + a_2(x+1)^2 + a_1(x+1) + a_0 \\
+            &= p(x+1) \\
+            &= Lp(x)
+        \end{align*}
+
+        Now if $p(x)$ were to be deg$(p(x)) < n$ say for this case specifically $n-1$ through the same method as shown we'd see $D^{n-1}p(x) = (n-1)!a_{n-1}$
+
+        And we see 
+        \begin{align*}
+            \left(I + \frac{D}{1!} + \frac{D^2}{2!} + \dots + \frac{D^{n-1}}{(n - 1)!}\right)p(x) &= a_{n-1}(x^{n-1} + (n-1)x^{n-2} + \dots + 1) \\ &+ a_2(x^2 + 2x + 1) + a_1(x+1) + a_0 \\
+            &= a_{n-1}(x+1)^{n-1} + \dots + a_2(x+1)^2 + a_1(x+1) + a_0 \\
+           &= p(x+1) \\
+           &= Lp(x) 
+        \end{align*}
+
+        therefore we have as desired that $\left(I + \frac{D}{1!} + \frac{D^2}{2!} + \dots + \frac{D^{n-1}}{(n - 1)!}\right)p(x) = L$
+        \end{proof}
     
     \vspace{.5cm}
 %-------------------------------------------------PROBLEM 7---------------------------------------------------------   
@@ -224,10 +289,17 @@
     \begin{proof}
         Let the vector space $Z$ represent the subspace spanned by $U+W$.
         \[Z = \text{span}(\set{U+W})\]
-        Meaning any vector $z\in Z$ is of the form $z = u + w$ where $u$ and $w$ are vectors of $U$ and $W$ respectively. This gives us,
+        Meaning any vector $z\in Z$ is of the form $z = \alpha u + \beta w$ where $u$ and $w$ are vectors of $U$ and $W$ respectively with $\alpha$ and $\beta$ begin scalars. This gives us,
         \begin{align*}
-            T(z) = T(u + w) = T(u) + T(w) \subseteq U + W
+            T(z) = T(\alpha u + \beta w) = \alpha T( u) + \beta T( w) 
         \end{align*}
+
+        Recall though since $U$ and $W$ are invariant under $T$ we have that $T(u)\in U$ and $T(w) \in W$ and $Z$ is the span of $U+W$, therefore,
+        \begin{align*}
+            \alpha T( u) + \beta T( w)  \in Z
+        \end{align*}
+
+        Meaning $Z$ is invariant under $T$. $Z$ was defined to be the span of $U+W$. So we have that if $U$ and $W$ are invariant under $T$ then the subspace spanned by $U$ and $W$ is also invariant under $T$.
     \end{proof}
     
 %------------------------------------------------------PROBLEM 8--------------------------------------------------------- 
@@ -257,7 +329,6 @@
             FE &= E
         \end{align*}
         as desired. So now we have if im$(E) = \text{im}(F)$ implies $EF = F$ and $FE = E$
-\newpage
         Now for the reverse direction, we will assume $EF = F$ and $FE = E$. This means for any vector $x\in V$ we have, $EF(x) = F(x)$ and $FE(x) = E(x)$. 
 
         We know that for vector $x$, there exists some vector $y\in \text{im}(E)$ such that $E(x) = y$. Now consider the following,
@@ -336,11 +407,58 @@
     
     \item[(a)]
     Prove that if $E$ is a projection on a finite-dimensional $\mathbb{F}$-vector space, then there exists a basis $\mathcal{B}$ such that the matrix representative $[E]_\mathcal{B}$ has the following special form: $e_{ij} = 0$ if $i \neq j$ and $e_{ii} = 0$ or $1$ for all $i$ and $j$. 
+
+    \begin{proof}
+        First we will show why this exists. One important property about projections is that for any projection $E$ it must be idempotent, in other words it must satisfy the following $E^2 = E$
+
+        If we recall how multiplication is defined between square matrices between matrix $A$ and $B$ to obtain $C$ we get the following,
+        \begin{align*}
+            C = \begin{pmatrix}
+                c_{11} & c_{22} & \dots & c_{1n} \\
+                c_{21} & c_{22} & \dots & c_{2n} \\
+                \vdots & \vdots & & \vdots \\
+                c_{n1} & c_{n2} & \dots & c_{nn}
+            \end{pmatrix}
+        \end{align*}
+        where $c_{ij} = a_{i1}b_{ij} + a_{i2}b_{2j} + \dots + a_{in}b_{nj} = \sum_{k = 1}^n a_{ik}b_{kj}$ 
+
+        Recall though in this situation $A = B = E$. So if all our non diagonal terms are non zero the only time we could possibly have a non zero value would be when we are multiplying elements along the diagonal. In other words  for $i = j$ $c_{ij} = a_{ij} b_{ji} = a_{ii}a_{ii}$. If $e_{ii} = 0$ then $c_{ii} = 0$ if $e_{ii} = 1$ then $c_{ii} = 1$. Meaning regardless if $e_{ii} = 0 $ or $1$. A projection such that the matrix representative has this special form will satisfy the requirement of being a projection. 
+
+        Now if there did exists some other matrix representative not of this form we'd see it wouldn't satisfy $E^2 = E$. Since first consider if the diagonal could be something other than 0 or 1. We'd see it the requirement would fail due to $x^2 \neq x$ for any $x \neq 0,1$. Then the same reasoning applies to if non diagonal entries
+    \end{proof}
     
     \vspace{.3cm}
     \item[(b)]
     An \textit{involution} is a linear transformation $U$ on a $\mathbb{F}$-vector space $V$ such that $U^2 = I$. Show that if $\text{char}(\mathbb{F}) \neq 2$, then the equation $U = 2E - I$ establishes a one-to-one correspondence between all projections $E$ and all involutions $U$.
+    \begin{proof}
+        Assuming we are not working in a field of characteristic 2. First let us begin with some involution $U$ we can obtain its respective projection $E$ through the following,
+        \begin{align*}
+            E = \dfrac{U + I}{2}
+        \end{align*}
+        We know this satisfies the property of begin a projection through the following. 
+        \begin{align*}
+            E^2 = \dfrac{U+I}{2}^2 &= \dfrac{U+I}{2}\dfrac{U+I}{2} \\
+            &= \dfrac{U^2 + U + U + U^2}{4}  && \text{$U$ is an involution so,}\\
+            &= \dfrac{2U + 2I}{4} \\
+            &= \dfrac{2(U + I)}{2(2)} \\
+            &= \dfrac{U + I}{2} = E
+        \end{align*}
     
+
+    Then we see for any projection we can obtain its respective involution through,
+    \begin{align*}
+        U = 2E - I
+    \end{align*}
+    We can see this indeed satisfies being an involution through the following.
+    \begin{align*}
+        U^2 &= (2E - I)^2 \\
+        &= 4E^2 -2E -2E + I^2 && \text{Recall though $E$ is a projection so,}
+        &= 4E - 4E + I \\
+        &= 0 + I \\
+        &= I
+    \end{align*}
+    We have thus showed the 1-1 correspondence due to being able to obtain any projections respective involution and vice versa. 
+\end{proof}
     \vspace{.3cm}
     \item[(c)]
     Prove that the only eigenvalues of a projection are $0$ and $1$. Furthermore, prove that the only eigenvalues of an involution are $-1$ and $1$. (This does not require the vector space to be finite-dimensional.)
@@ -452,7 +570,7 @@
     \end{pmatrix}$ respectively.
 
     \textbf{D)} For $D$ we have, det$(D - \lambda I) = -\lambda^3 + 3\lambda^2 = -\lambda^2(\lambda - 3)$. Solving for $\lambda$ we get $\lambda = 0,3$.
-\newpage
+
     Now solving for the corresponding eigenvector for $\la_1 = 3$, (Some steps I'm skipping over since it would be a lot of matrices to type out)
     \begin{align*}
         \begin{pmatrix}
