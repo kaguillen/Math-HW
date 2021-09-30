@@ -1,0 +1,128 @@
+\documentclass[12pt]{article}
+ 
+\usepackage[top=0.5in, bottom=1.25in, left=.8in, right=.8in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb} %this is THE math package
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{fancybox}
+\usepackage{hyperref}
+\usepackage{varwidth}
+\usepackage{mdframed}
+\usepackage{mathrsfs}
+\usepackage{xcolor}
+
+%\pagecolor[rgb]{0.1,0.1,0.1}
+%\color[rgb]{.8,.8,.8}
+%------------------------
+%Fonts I use, uncomment if you like to use them.
+%The first is the general font, and the second a math font
+\usepackage{mathpazo}
+\usepackage{eulervm}
+
+%------------------------
+%This is so that we have standard fonts for the doublestroked symbols
+%for reals, naturals etc. regardless of what font you use.
+%Don't comment
+\AtBeginDocument{
+  \DeclareSymbolFont{AMSb}{U}{msb}{m}{n}
+  \DeclareSymbolFontAlphabet{\mathbb}{AMSb}}
+%------------------------
+
+%----------------------------------------------
+%User-defined environments
+%Commented because we're not using them in this document
+%The only uncommented ones are the Problem and Solution environment
+
+% \newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{question}[2][Question]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem\!]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+%\newenvironment{sub-problem}[2][]{\begin{trivlist}
+%\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+\newenvironment{solution}{\begin{proof}[\textbf{\textit{Solution}}]}{\end{proof}}
+%----------------------------------------------
+
+%----------------------------
+%User-defined notations
+\newcommand{\zz}{\mathbb Z}   %blackboard bold Z
+\newcommand{\qq}{\mathbb Q}   %blackboard bold Q
+\newcommand{\ff}{\mathbb F}   %blackboard bold F
+\newcommand{\rr}{\mathbb R}   %blackboard bold R
+\newcommand{\nn}{\mathbb N}   %blackboard bold N
+\newcommand{\cc}{\mathbb C}   %blackboard bold C
+\newcommand{\af}{\mathbb A}   %blackboard bold A
+\newcommand{\pp}{\mathbb P}   %blackboard bold P
+\newcommand{\id}{\operatorname{id}} %for identity map
+\newcommand{\im}{\operatorname{im}} %for image of a function
+\newcommand{\dom}{\operatorname{dom}} %for domain of a function
+\newcommand{\cat}[1]{\mathscr{#1}}   %calligraphic category
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert} %for absolute value
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert} %for norm
+\newcommand{\modar}[1]{\text{ mod }{#1}} %for modular arithmetic
+\newcommand{\set}[1]{\left\{#1\right\}} %for set
+\newcommand{\setp}[2]{\left\{#1\ \middle|\ #2\right\}} %for set with a property
+\newcommand{\card}[1]{\#\,{#1}} %for cardinality of a set
+
+%Re-defined notations
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\emptyset}{\varnothing}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+%----------------------------
+
+\allowdisplaybreaks
+ 
+\begin{document}
+ 
+\title{9/24 Problems}
+\author{Kevin Guillen\\[0.5cm]
+MATH 101 | Problem Solving | Fall 2021}
+\date{} 
+\maketitle
+
+%Use \[...\] instead of $$...$$
+
+\begin{problem}{1}
+Find the sum of:
+\[\frac{1}{1 \cdot 2\cdot 3} + \frac{1}{2 \cdot 3 \cdot 4} + \dots + \frac{1}{100 \cdot 101 \cdot 102}\]
+
+\begin{solution}
+    If we look at this as a summation we can describe each term as, 
+    \[\frac{1}{i \cdot (i +1) \cdot (i+2)} \] 
+    for $i\in \set{1, \dots, n}$. Giving us,
+    \[\sum_{i=1}^n \frac{1}{i \cdot (i +1) \cdot (i+2)}\]
+    Doing some algebra we can obtain the following,
+    \begin{align*}
+        \sum_{i=1}^n \frac{1}{i \cdot (i +1) \cdot (i+2)} &= \sum_{i=1}^n \frac{1}{2}\cdot \frac{2}{i \cdot (i +1) \cdot (i+2)} \\
+        &= \frac{1}{2} \cdot \sum_{i=1}^n \frac{i + 2 - i}{i \cdot (i +1) \cdot (i+2)} \\
+        &= \frac{1}{2} \cdot\sum_{i=1}^n  \frac{(i + 2)}{i \cdot (i +1) \cdot (i+2)} - \frac{i}{i \cdot (i +1) \cdot (i+2)} \\
+        &= \frac{1}{2} \cdot\sum_{i=1}^n  \frac{1}{i \cdot (i +1)} - \frac{1}{(i +1) \cdot (i+2)}
+    \end{align*}
+
+    \noindent Finally when we expand the summation out we can see something important,
+    \[\frac{1}{2}\left(\frac{1}{1 \cdot (2)} - \frac{1}{(2)\cdot(3)} + \frac{1}{2\cdot(3)} - \frac{1}{(3)\cdot(4)}+ \dots + \frac{1}{n \cdot(n+1)}-\frac{1}{(n +1)\cdot(n + 2)}\right)\]
+    that the middle terms cancel out giving us,
+    \[\frac{1}{2} \cdot \left(\frac{1}{1\cdot(1+1)} - \frac{1}{(n+1)\cdot(n+2)}\right)\]
+    Now plugging in our desired value for the problem, $n = 100$, we get,
+    \begin{align*}
+        \frac{1}{2} \cdot \left(\frac{1}{2} - \frac{1}{101 \cdot 102} \right) &= \frac{1}{4} - \frac{1}{20604} \\ 
+        &= \frac{5151}{20604} - \frac{1}{20604}  \\
+        &= \frac{5150}{20604}
+    \end{align*}
+    \end{solution}
+\end{problem}
+
+
+\end{document}
