@@ -10,6 +10,7 @@
 \usepackage{varwidth}
 \usepackage{mdframed}
 \usepackage{mathrsfs}
+\usepackage[most]{tcolorbox}
 %------------------------
 %Fonts I use, uncomment if you like to use them.
 %The first is the general font, and the second a math font
@@ -17,7 +18,7 @@
 \usepackage{eulervm}
 
 %------------------------
-%This is so that we have standard fonts for the doublestroked symbols
+%This is so that we have standard fonts for the double-stroked symbols
 %for reals, naturals etc. regardless of what font you use.
 %Don't comment
 \AtBeginDocument{
@@ -41,10 +42,10 @@
 % \newenvironment{corollary}[2][Corollary]{\begin{trivlist}
 % \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
 \newenvironment{problem}[2][Problem\!]{\begin{trivlist}
-\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
 %\newenvironment{sub-problem}[2][]{\begin{trivlist}
 %\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
-\newenvironment{solution}{\begin{proof}[\textbf{\textit{Solution}}]}{\end{proof}}
+\newenvironment{solution}{\begin{proof}[\textbf{\textit{Solution}}] }{\end{proof}}
 %----------------------------------------------
 
 %----------------------------
@@ -67,6 +68,7 @@
 \newcommand{\set}[1]{\left\{#1\right\}} %for set
 \newcommand{\setp}[2]{\left\{#1\ \middle|\ #2\right\}} %for set with a property
 \newcommand{\card}[1]{\#\,{#1}} %for cardinality of a set
+\newcommand\m[1]{\begin{pmatrix}#1\end{pmatrix}} 
 
 %Re-defined notations
 \renewcommand{\epsilon}{\varepsilon}
@@ -79,6 +81,7 @@
 %----------------------------
 
 \allowdisplaybreaks
+ 
  
 \begin{document}
  

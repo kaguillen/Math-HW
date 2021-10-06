@@ -1,47 +1,293 @@
-\documentclass[12pt]{article}
-%------------------------------- BEGIN PREAMBLE
-% packages used
-\usepackage{amssymb,amsmath,amsfonts,mathrsfs,pgffor,marvosym,amsthm, mathrsfs, mathtools}
-\DeclarePairedDelimiter\set\{\}
-% macros
-\newcommand      {\Nm}         {{\mathbb N}}
-\newcommand      {\Zm}         {{\mathbb Z}}
-\newcommand      {\Qm}         {{\mathbb Q}}
-\newcommand      {\Rm}         {{\mathbb R}}
-\newcommand      {\Cm}         {{\mathbb C}}
-\newcommand      {\vb}        {\mathbf}
-\newcommand      {\PP}        {{\mathscr P}}
-\newcommand      {\BB}        {{\mathscr B}}
-\newcommand {\lines}[1] {\foreach \n in {1,...,#1}{ \vspace{9mm} \hrule height 
-0.2pt  }\vspace{2mm} }
+\documentclass[11pt]{article}
+ 
+\usepackage[top=0.75in, bottom=1.25in, left=1in, right=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb} %this is THE math package
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{fancybox}
+\usepackage{hyperref}
+\usepackage{varwidth}
+\usepackage{mdframed}
+\usepackage{mathrsfs}
+\usepackage[most]{tcolorbox}
+%------------------------
+%Fonts I use, uncomment if you like to use them.
+%The first is the general font, and the second a math font
+\usepackage{mathpazo}
+\usepackage{eulervm}
 
-% adjustment of page dimensions
-\textwidth=7in
-\textheight=9.8in
-\topmargin= -0.8in
-\oddsidemargin= -0.3in
-\evensidemargin= 0.0in
-\setlength{\parskip}{1ex plus0.5ex minus0.2ex}
-\setlength{\jot}{10pt}
-%-------------------------------- END PREAMBLE
+%------------------------
+%This is so that we have standard fonts for the double-stroked symbols
+%for reals, naturals etc. regardless of what font you use.
+%Don't comment
+\AtBeginDocument{
+  \DeclareSymbolFont{AMSb}{U}{msb}{m}{n}
+  \DeclareSymbolFontAlphabet{\mathbb}{AMSb}}
+%------------------------
+
+%----------------------------------------------
+%User-defined environments
+%Commented because we're not using them in this document
+%The only uncommented ones are the Problem and Solution environment
+
+% \newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{question}[2][Question]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem\!]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+%\newenvironment{sub-problem}[2][]{\begin{trivlist}
+%\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+\newenvironment{solution}{\begin{proof}[\textbf{\textit{Solution}}] }{\end{proof}}
+%----------------------------------------------
+
+%----------------------------
+%User-defined notations
+\newcommand{\zz}{\mathbb Z}   %blackboard bold Z
+\newcommand{\qq}{\mathbb Q}   %blackboard bold Q
+\newcommand{\ff}{\mathbb F}   %blackboard bold F
+\newcommand{\rr}{\mathbb R}   %blackboard bold R
+\newcommand{\nn}{\mathbb N}   %blackboard bold N
+\newcommand{\cc}{\mathbb C}   %blackboard bold C
+\newcommand{\af}{\mathbb A}   %blackboard bold A
+\newcommand{\pp}{\mathbb P}   %blackboard bold P
+\newcommand{\id}{\operatorname{id}} %for identity map
+\newcommand{\im}{\operatorname{im}} %for image of a function
+\newcommand{\dom}{\operatorname{dom}} %for domain of a function
+\newcommand{\cat}[1]{\mathscr{#1}}   %calligraphic category
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert} %for absolute value
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert} %for norm
+\newcommand{\modar}[1]{\text{ mod }{#1}} %for modular arithmetic
+\newcommand{\set}[1]{\left\{#1\right\}} %for set
+\newcommand{\setp}[2]{\left\{#1\ \middle|\ #2\right\}} %for set with a property
+\newcommand{\card}[1]{\#\,{#1}} %for cardinality of a set
+\newcommand\m[1]{\begin{pmatrix}#1\end{pmatrix}} 
+
+%Re-defined notations
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\emptyset}{\varnothing}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+%----------------------------
+
+\allowdisplaybreaks
+ 
 \begin{document}
-\begin{flushright}
-    Name: Kevin Guillen \\*
-    Student ID: 1747199
-\end{flushright}
-\begin{center}
-    {\bf Class - Quarter - Assignment - Due Date}
-\end{center}
+ 
+\title{Homework 1}
+\author{Kevin Guillen\\[0.5em]
+MATH 200 | Algebra I | Fall 2021}
+\date{} 
+\maketitle
+
+I'd like my problem 2.3 to be my graded problem please.
+
 
 % STATEMENT OF PROBLEM 1
-\noindent {\bf (1)} Determine the invertible elements of the monoids among the examples in 1.2.
-\begin{itemize}
-    \item{A)} For the monoid $(\Nm_0, +)$ the only invertible element will be 0 since we see $0 + 0 = 0$
-    \\ For $(\Nm_0, \cdot)$ we see the only invertible element will be 1 since we can see $1 \cdot 1 = 0$
+\begin{tcolorbox}
+\begin{problem}{1.1} Determine the invertible elements of the monoids among the examples in 1.2. 
+\end{problem}
+\end{tcolorbox}
+    \begin{solution}$ $ \\
+        \begin{itemize}
+            \item{A)} For the monoid $(\nn_0, +)$ the only invertible element is 0, we can see $0 + 0 = 0$
+            \\ For $(\nn_0, \cdot)$ we see the only invertible element is 1, we can see $1 \cdot 1 = 1$. Then for $(\nn, \cdot )$ the only invertible element is also 1, we can see $1 \cdot 1 = 1$.
 
-    \item{B)} For the monoid $(\mathcal{P}(X), \cup)$ we can see the set of 
-\end{itemize}
+            \item{B)} For the monoid $(\mathcal{P}(X), \cup)$ the only invertible element is the empty set, $\emptyset \cup \emptyset = \emptyset$. The only invertible element in $(\mathcal{P}(X), \cap)$ is $X$ itself, we can see $X \cap X = X$.
 
+            \item{C)} For $(F(X,X), \circ)$ the only invertible element is $\text{id}_X$
+        \end{itemize}
+    \end{solution}
+
+% STATEMENT OF PROBLEM 2
+\begin{tcolorbox}
+\begin{problem}{1.2}\newcommand{\pmat}{\begin{pmatrix}a & b \\ 0 & c\end{pmatrix}}
+    \newcommand{\idm}{\begin{pmatrix}1 & 0 \\ 0 & 1 \end{pmatrix}}
+    Let \[M :=\set{\pmat \mid a,b,c \in \zz}.\]
+    $M$ is a non-commutative monoid under matrix multiplication. The element $\pmat$ is invertible if and only if $a,c\in \set{\pm 1}$. In this case one has, 
+    \[\pmat^{-1} = \begin{pmatrix}a & -abc \\ 0 & c \end{pmatrix}.\]
+\end{problem}
+\end{tcolorbox}
+    \begin{solution}\newcommand{\pmat}{\begin{pmatrix}a & b \\ 0 & c\end{pmatrix}}
+        \newcommand{\idm}{\begin{pmatrix}1 & 0 \\ 0 & 1 \end{pmatrix}}
+        First to verify we have a non-commutative monoid we will show associativity. We see for any 3 matrices in $M$ we have the following,
+        \begin{align*}
+            \pmat \left[\begin{pmatrix} x & y \\ 0 & z\end{pmatrix} \begin{pmatrix}u & v \\ 0 & w \end{pmatrix}\right] &= \left[\pmat \begin{pmatrix} x & y \\ 0 & z\end{pmatrix} \right] \begin{pmatrix}u & v \\ 0 & w \end{pmatrix} \\
+            \pmat \left[\begin{pmatrix}xu & xv + yw \\ 0 & zw \end{pmatrix}\right]&= \left[\begin{pmatrix}ax & ay + bz \\ 0 & cz \end{pmatrix}\right] \begin{pmatrix} u & v \\ 0 & w \end{pmatrix}\\
+            \begin{pmatrix}axu & axv + ayw + bzw \\ 0 & czw \end{pmatrix}&=\begin{pmatrix}axu & axv + ayw + bzw \\ 0 & czw \end{pmatrix}.
+        \end{align*}
+        As we can see associativity holds. We also know under matrix multiplication this set is closed based on the above, and the fact that the integers are closed under multiplication and addition. Now we need to show there exists an identity in $M$, this will simply be $\begin{pmatrix}1 & 0 \\ 0 & 1 \end{pmatrix}$. We verify through the following,
+        \begin{align*}
+            \pmat \idm = \begin{pmatrix} a1 & b1 \\ 0 & c1 \end{pmatrix} = \pmat \\
+            \idm \pmat = \begin{pmatrix}1a & 1b \\ 0 & 1c \end{pmatrix} = \pmat 
+        \end{align*}
+
+        Finally, we know this set is non-commutative by the following counterexample,
+        \begin{align*}
+            \m{1&3\\0&-5} \m{-2&3\\0&2} = \m{-2+0 & 3+-6\\0 & -10} = \m{-2 & 9 \\ 0 & -10} \\
+            \m{-2&3\\0&2} \m{1&3\\0&-5} = \m{-2 & -6 + -15 \\ 0 & -10} = \m{-2 & -21 \\ 0 & -10}
+        \end{align*}
+
+        We can see $\m{-2 & -21 \\ 0 & -10} \neq \m{-2 & 9 \\ 0 & -10}$. Thus $M$ is a non-commutative monoid. 
+
+        $\Rightarrow$ Given that there exists some matrix $\begin{pmatrix}x & y \\ 0 & z \end{pmatrix}$ that serves as the inverse for $\pmat$. This means,
+        \begin{align*}
+            \pmat \begin{pmatrix}x & y \\ 0 & z \end{pmatrix} &= \begin{pmatrix}
+            1 & 0 \\ 0 & 1
+            \end{pmatrix} \\
+            \begin{pmatrix}
+                ax & ay + bz \\ 0 & cz 
+            \end{pmatrix} &= \begin{pmatrix}
+                1 & 0 \\ 0 & 1
+            \end{pmatrix}
+        \end{align*}
+
+        We know though the elements $a,b,c$ are integers. We know in the ring of integers the only units are $\pm 1$. So for $ax = 1$ and $cz = 1$ to be true, $a$ and $c$ have to be $-1$ or $1$.
+
+        $\Leftarrow$ Given that $a,c \in \set{\pm 1}$, we will show $\m{a & -abc \\ 0 & c}$ serves as its inverse. 
+        \begin{align*}
+            \pmat \m{a & -abc \\ 0 & c} &= \m{aa & -aabc + bc \\ 0 & cc} && \text{$a,c \in \set{\pm 1}$ so, $aa= cc =1 $}\\
+            &= \m{1 & -ab + ab \\ 0 & 1} \\
+            &= \idm
+        \end{align*} 
+    \end{solution}
+\newpage
+% STATEMENT OF PROBLEM 3
+\begin{tcolorbox}[, sharp corners = uphill]
+    \begin{problem}{1.3}
+        Let $S$ be the set of all matrices \[\m{0 & a \\ 0 & b}\] with entries $a,b\in \zz$. Show that $S$ is a semigroup under matrix multiplication and show that $S$ has a right identity but no left identity. Determine all the right identities. Give an example of a semigroup which has a left identity but no right identity. 
+    \end{problem}
+\end{tcolorbox}
+
+\begin{solution}
+    \newcommand{\pmat}{\m{0 & a \\ 0 & b}}
+    \newcommand{\pmats}[2]{\begin{pmatrix}0 & #1 \\ 0 & #2\end{pmatrix}}
+    First we will show that $S$ is \textbf{closed} under matrix multiplication through the following,
+    \begin{align*}
+        \pmat \m{0 & x \\ 0 & y} = \m{0 & ay \\ 0 & by}.
+    \end{align*}
+    We know this is in the set $S$ since the integers are closed under multiplication meaning $bx$ and $by$ are also integers. 
+
+    Now we will show \textbf{associativity}, consider the elements $\pmats{a}{b}, \pmats{x}{y},$ and $\pmats{u}{v}$ in $S$. We see through the following, 
+    \begin{align*}
+        \pmats{a}{b} \left[\pmats{x}{y}\pmats{u}{v}\right] = \pmat \left[\pmats{xv}{yv}\right] = \pmats{ayv}{byv} \\
+        \left[\pmats{a}{b}\pmats{x}{y}\right] \pmats{u}{v} = \left[\pmats{ay}{by}\right]\pmats{u}{v} = \pmats{ayv}{byv}
+    \end{align*}
+    we associativity holds. Satisfying these two things we have shown that $S$ is indeed a semigroup. 
+
+    Now we will show that $S$ has a \textbf{right identity}, specifically $\pmats{0}{1}$, through the following,
+    \begin{align*}
+        \pmat \pmats{0}{1} = \pmats{a1}{b1} = \pmats{a}{b}
+    \end{align*}
+    If a left identity did exist in $S$, say $\pmats{x}{y}$, that means it serves as a left identity for all elements in $S$. Let us consider the element $\pmats{3}{5}$
+    We can see through the following that no such element can exist,
+    \begin{align*}
+        \pmats{x}{y}\pmats{3}{5} = \pmats{x5}{y3}
+    \end{align*}
+    since recall $x$ and $y$ must satisfy $\pmats{x5}{y3} = \pmats{3}{5}$. The issue is there exists no integer $x$ or $y$ such that $x5 = 3$ or $y3 =5$. Meaning there can exist no left identity since by definition it must be a left identity for all elements of $S$.
+    \newpage
+    
+    We can see through the following,
+    \begin{align*}
+        \pmat \m{0 & y \\ 0 & 1} &= \m{0 + a0 & 0y + a1 \\ 0 + b0 & 0y + b1}\\ &= \m{0 & a \\ 0 & b}
+    \end{align*}
+
+
+    that we actually have an infinite amount of right identities. The set of right identities, denoted by $I_r$ is simply,
+    \[I_r := \set{\m{0 & y \\ 0 & 1} \mid y \in \zz}\]
+
+    It's obvious that a semigroup with a left identity and no right identity is simply $\set{\m{a & 0 \\ b & 0}\mid a,b \in \zz}$
+ \end{solution}
+
+%STATEMENT OF PROBLEM 4
+\begin{tcolorbox}
+    \begin{problem}{2.3}
+        Let $G$ be a group and let $H$ be a subset of $G$. Prove the following are equivalent:
+
+        a) $H$ is a subgroup $G$.
+        
+        b) $H$ is non-empty and if $x,y\in H$ then also $xy^{-1}\in H$.
+    \end{problem}
+\end{tcolorbox}
+\begin{proof}
+    $\Rightarrow$ Given that $H$ is a subgroup, then by definition there has to exist an identity element in $H$, thus, $H$ is non-empty. Since $H$ is a subgroup it also means it is closed under group operation and every element has an inverse in $H$. So, if $x,y,\in H$ then by definition, $y^{-1}$ exists in $H$ and $xy^{-1} \in H$. 
+
+    $\Leftarrow$ Given that $H$ is nonempty and if $x,y\in H$ then also $xy^{-1}\in H$, we want to show $H$ is a subgroup. 
+
+    First we will begin by showing there exists an identity, given that if $x,y \in H$, $xy^{-1}$ is also in $H$. We can simply let $y=x$ to get $xx$ which implies that $xx^{-1}\in H$, and $xx^{-1}= e$. Therefore $H$ contains an identity.
+    
+    Now to show that every element has an inverse in $H$. Consider the element $x \in H$. We know by the given that for $ex\in H$ that $ex^{-1}$ is also in $H$ and thus $x^{-1}$ is in $H$.
+    
+    Given the elements $x$ and $y$ in $H$, we just showed that both their inverses are contained in $H$, in other words $y^{-1}\in H$. So consider $xy^{-1}$, by the given that means $x(y^{-1})^{-1}$ is also in $H$, but $(y^{-1})^{-1} = y$. Therefore $xy$ is in $H$, meaning $H$ is closed under a group operation. Making $H$ a subgroup as desired.
+\end{proof}
+
+
+%STATEMENT OF PROBLEM 5
+ \begin{tcolorbox}
+     \begin{problem}{2.4} 
+        Let $H$ and $K$ be subgroups of the group $G$. Show that $HK \leq G$ if and only if $HK = KH$ 
+     \end{problem}
+ \end{tcolorbox}
+ \begin{proof}
+     $\Rightarrow$ Given that $HK \leq G$ we want to show $HK = KH$. We begin this by letting $x$ be an element of $HK$. That means there exists and element $h$, and element $k$, in $H$ and $K$ respectively, such that, $x = hk$. Since $HK$ is a subgroup that means it contains and identity $e$, and inverses for its elements, meaning there exists $x^{-1}$ or in other words there exists $h'\in H$ and $k'\in K$ such that $x^{-1} = h'k'$. Giving us the following,
+     \begin{align*}
+         xx^{-1} &= e \\
+         hkh'k' &= e. && \text{multiply by $k'^{-1}$ on the right} \\
+         hkh' &= (k')^{-1} && \text{multiply by $h'^{-1}$ on the right} \\
+         hk &= (k')^{-1}(h')^{-1}. 
+     \end{align*}
+     Let $y = (k')^{-1}(h')^{-1}$.
+     Recall though $H$ and $K$ themselves are subgroups which is why we knew $(k')^{-1}$ and $(h')^{-1}$ are in $K$ and $H$ respectively. This proves then that for every element $x\in HK$ there exists some element $y$ in $KH$ such that $x = y$ meaning $HK \subseteq KH$. 
+
+     Now consider any element $x$ in $KH$, we know it is of the form $kh$ where $k\in K$ and $h\in H$. Given that $KH$ is a subgroup then like the same reasoning above it has inverses for each of its elements meaning there exists $x^{-1} = k'h'$. Following the same reasoning as above,
+     \begin{align*}
+        xx^{-1} &= e \\
+        khk'h' &= e. && \text{multiply by $h'^{-1}$ on the right} \\
+        khk' &= (h')^{-1} && \text{multiply by $k'^{-1}$ on the right} \\
+        kh &= (h')^{-1}(k')^{-1}.
+     \end{align*}
+     Let $y = (h')^{-1}(k')^{-1}$. Obvious that $y \in HK$. Thus for every element $x \in KH$ there exists and element $y\in HK$ such that $x = y$, meaning $KH \subseteq HK$. 
+
+     This gives us that $HK = KH$ as desired.
+     \newpage
+     $\Leftarrow$ Given that $HK = KH$, we'd like to show $HK \subseteq G$
+     Firstly we know by definition $e\in H$ and $e \in K$, therefore $ee \in HK$ which obviously serves as the identity.
+     
+     Secondly we must show that is closed under its group operation. Take elements $x,y\in HK$, so $x = hk$ and $y = h'k'$ we see through the following,
+     \begin{align*}
+         xy &= hkh'k' && \text{$KH = HK$, thus $\exists h''k''\in HK$, s.t. $kh' = h''k''$} \\
+         &= hh''k''k' 
+     \end{align*}
+     Given that $H$ and $K$ were subgroups that means $hh'' \in H$ and $k''k' \in K$ and therefore $xy\in HK$.
+
+     Finally for any $x\in HK$ the inverse of $x$ is simply,
+     \begin{align*}
+         x^{-1} &= (hk)^{-1} \\
+         &= k^{-1}h^{-1}
+     \end{align*}
+     This is obviously in $KH$, but recall $KH = HK$ so there exists some $h'k' = k^{-1}h^{-1}$. Giving us,
+     \begin{align*}
+         xx^{-1} &= hkh'k' \\
+         &= hkk^{-1}h^{-1} \\
+         &= heh^{-1} \\
+         &= hh^{-1} \\
+         &= e
+     \end{align*}
+
+     Therefore $HK$ is indeed a subgroup of $G$.
+ \end{proof}
+
+ 
 
 
 \end{document}

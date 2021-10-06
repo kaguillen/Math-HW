@@ -1,0 +1,175 @@
+\documentclass[11pt]{article}
+ 
+\usepackage[top=0.75in, bottom=1.25in, left=1in, right=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb} %this is THE math package
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{fancybox}
+\usepackage{hyperref}
+\usepackage{varwidth}
+\usepackage{mdframed}
+\usepackage{mathrsfs}
+\usepackage[most]{tcolorbox}
+%------------------------
+%Fonts I use, uncomment if you like to use them.
+%The first is the general font, and the second a math font
+\usepackage{mathpazo}
+\usepackage{eulervm}
+
+%------------------------
+%This is so that we have standard fonts for the double-stroked symbols
+%for reals, naturals etc. regardless of what font you use.
+%Don't comment
+\AtBeginDocument{
+  \DeclareSymbolFont{AMSb}{U}{msb}{m}{n}
+  \DeclareSymbolFontAlphabet{\mathbb}{AMSb}}
+%------------------------
+
+%----------------------------------------------
+%User-defined environments
+%Commented because we're not using them in this document
+%The only uncommented ones are the Problem and Solution environment
+
+% \newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{question}[2][Question]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem\!]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+%\newenvironment{sub-problem}[2][]{\begin{trivlist}
+%\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+\newenvironment{solution}{\begin{proof}[\textbf{\textit{Solution}}] }{\end{proof}}
+%----------------------------------------------
+
+%----------------------------
+%User-defined notations
+\newcommand{\zz}{\mathbb Z}   %blackboard bold Z
+\newcommand{\qq}{\mathbb Q}   %blackboard bold Q
+\newcommand{\ff}{\mathbb F}   %blackboard bold F
+\newcommand{\rr}{\mathbb R}   %blackboard bold R
+\newcommand{\nn}{\mathbb N}   %blackboard bold N
+\newcommand{\cc}{\mathbb C}   %blackboard bold C
+\newcommand{\af}{\mathbb A}   %blackboard bold A
+\newcommand{\pp}{\mathbb P}   %blackboard bold P
+\newcommand{\id}{\operatorname{id}} %for identity map
+\newcommand{\im}{\operatorname{im}} %for image of a function
+\newcommand{\dom}{\operatorname{dom}} %for domain of a function
+\newcommand{\cat}[1]{\mathscr{#1}}   %calligraphic category
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert} %for absolute value
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert} %for norm
+\newcommand{\modar}[1]{\text{ mod }{#1}} %for modular arithmetic
+\newcommand{\set}[1]{\left\{#1\right\}} %for set
+\newcommand{\setp}[2]{\left\{#1\ \middle|\ #2\right\}} %for set with a property
+\newcommand{\card}[1]{\#\,{#1}} %for cardinality of a set
+\newcommand\m[1]{\begin{pmatrix}#1\end{pmatrix}} 
+
+%Re-defined notations
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\emptyset}{\varnothing}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+%----------------------------
+
+\allowdisplaybreaks
+ 
+ 
+\begin{document}
+ 
+\title{10-4 Submission}
+\author{Kevin Guillen\\[0.5em]
+MATH 101 | Problem Solving | Fall 2021}
+\date{} 
+\maketitle
+About me: (Sorry during my last submission I didn't know we were supposed to put the about me in the LaTeX file and not in our email, so I'm leaving it here in this submission instead)  I am currently a senior doing a double major in pure math and computer science. I'm trying to do the math department's 4+1 pathway and am just waiting to hear back right now. I'd like to pursue a PhD in math, but depending on my family's situation when I graduate I might just try to work in data science or be a professor at a local community college. I'm taking this class since I hope to become more comfortable talking about math and feeling less insecure about it. I've always struggled talking about math and doing math with others, and since this class focuses on solving hard problems not only alone but as a group I feel like it would be good for me. Since through this I imagine it will make me more comfortable with language of math and communicating ideas with my peers. I also hope to mature my intuition or grow my tools for when it comes to trying to solve problems I haven't seen before, since like you mentioned in your syllabus, I imagine it will be helpful not only during my time studying math, but also anything I have to think critically about a problem.
+%Use \[...\] instead of $$...$$
+\begin{tcolorbox}
+    \begin{problem}{IC 9/27 5.}
+        Let $N$ be a sequence of 10 consecutive numbers. Prove that at least one of them is relatively prime to the others. 
+    \end{problem}    
+\end{tcolorbox}
+\begin{proof}
+    If there were no number $n\in N$ that is relatively prime to all other $m\in N$ such that $n\neq m$ then we would have gcd$(n,m) \neq 1$. Let $q$ denote $|n-m|$ which is simply the absolute difference. We know though both $n$ and $m$ are in a set of 10 consecutive numbers and not relatively prime to each other, so we have $1 < q < 10$. Recalling from elementary number theory we know the gcd of two numbers is still preserved after difference. Thus if a number existed in $N$ that was relatively prime to the rest of the set, it will have to be a number not a multiple of two prime numbers between 1 and 10, in other words 2,3,5, and 7 
+
+    Since we are in a set of $10$ consecutive numbers we know there are exactly five elements that are divisible by 2. Under the same reasoning we know there are three-four numbers divisible by 3, regardless though at most two of those numbers can be even. This means we have 7 bad numbers. Now we know there will be exactly two numbers divisible by 5 and at most 1 will be even, meaning we have 8 bad numbers. Next we know we can have one-two numbers divisible by 7 but at most 1 will be even, thus 9 bad numbers. This means even in the worst case we will always have at least 1 number that is relatively prime to the rest of the set. 
+\end{proof}
+\newpage
+\begin{tcolorbox}
+    \begin{problem}{IC 9/29 14.}
+        Let $x$ be a real number such that $x + \frac{1}{x}$ is an integer. Prove $x^n + \frac{1}{x^n}$ is an integer for all positive integers $n$
+    \end{problem}
+\end{tcolorbox}
+\begin{proof}
+    Case $n = 1$ we have $x + \frac{1}{x}$ which we know is an integer
+
+    Now assume it holds for $n < k$
+
+    We then see,
+    \begin{align*}
+        (x^{k-1} + \frac{1}{x^{k-1}})(x + \frac{1}{x}) &= x^k + \frac{1}{x^{k-2}} + x^{k-2} + \frac{1}{x^k} \\
+        &= (x^k + \frac{1}{x^k})+(x^{k-2}+\frac{1}{x^{k-2}}) \\
+        (x^{k-1} + \frac{1}{x^{k-1}})(x + \frac{1}{x}) - (x^{k-2}+\frac{1}{x^{k-2}}) &= (x^k + \frac{1}{x^k})
+    \end{align*}
+
+    We know all three terms on the LHS are integers and that the integers are closed under multiplication and subtraction. So, we have that for $n ^k$ $x^n + \frac{1}{x^k}$ is also an integer. 
+
+    Thus by induction we have shown that if $x$ is a real number such that $x + \frac{1}{x}$ is an integer then $x^n + \frac{1}{x^n}$ for all positive integers $n$ 
+\end{proof}
+
+\begin{tcolorbox}
+    \begin{problem}{IC 10/1 19.} Let $a,b \in \rr$ and define a sequence $g_1 = a$ and $g_2 = b$ and for $n \geq 3, g_n = g_{n-1} + g_{n-2}$. Find a formula for $g_n$ 
+    \end{problem}
+\end{tcolorbox}
+\begin{proof}
+    We will prove that the formula for $g_n$ when $n \geq 3$ is $g_{n} = f_{n-2}a + f_{n-1}b$. Where $f_n$ is the $n$th term in the fibonacci sequence.
+
+    Case $n=3$: We have,
+    \begin{align*}
+         g_{3} &= f_{3-2}a + f_{3-1}b\\
+         g_3 &= f_1a + f_2b \\
+         g_1 + g_2 &=  1a + 1b \\
+        a + b &= a + b
+    \end{align*}
+    
+    Assume it holds for $n < k$
+
+    We see for $n = k$,
+    \begin{align*}
+        g_k &= f_{k -2}a + f_{k -1}b \\
+        g_{k-1} + g_{k-2} &= f_{k-2}a + f_{k-1}b  && \text{We assumed it to hold for $n < k$} \\
+        f_{k -3}a + f_{k -2}b + f_{k-4}a + f_{k-3}b &= f_{k-2}a + f_{k-1}b \\
+        (f_{k-4} + f_{k-3})a + (f_{k-3}+f_{k-2})b&=f_{k-2}a + f_{k-1}b \\
+        f_{k-2}a + f_{k-1}b &= f_{k-2}a + f_{k-1}b
+    \end{align*}
+
+    Therefore by induction we have that the formula when $n\geq 3$ for $g_n$ is $g_n = f_{n-2}a + f_{n-1}b$
+    
+\end{proof}
+\newpage
+\begin{tcolorbox}
+    \begin{problem} {OC 10/1 18}
+        What is the first time the hour hand and minute hand meet after 1200?
+    \end{problem}
+\end{tcolorbox}
+
+\begin{solution}
+    Since this is after 1200, that means the minute hand will be ahead of the hour hand for the first hour. It is not until 0100 that the minute hand will be at the 12th hour (0 degrees) position and the hour hand will be at the 1st hour (30 degrees). 
+
+    Then with some simple math every minute that passes the minute hand moves 6 degrees while the hour hand moves 0.5 degrees. Using these facts we get the following,
+    \begin{align*}
+        0 + 6m &= 30 + 0.5m \\
+        5.5m &= 30
+    \end{align*}
+    Solving for $m$ we get 5.45 minutes. Recall though the hour hand started at 1 (30 degrees). That means the first time they overlap after 1200 is 0105 or more specifically 1 hour, 5 minutes, and 27 seconds. 
+\end{solution}
+
+\end{document}
