@@ -1,0 +1,186 @@
+\documentclass[10pt]{article}
+ 
+\usepackage[top=0.75in, bottom=1.25in, left=1in, right=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb} %this is THE math package
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{fancybox}
+\usepackage{hyperref}
+\usepackage{varwidth}
+\usepackage{mdframed}
+\usepackage{mathrsfs}
+\usepackage{xcolor}
+\usepackage{pagecolor}
+\usepackage{lipsum}  
+\usepackage[most]{tcolorbox}
+%------------------------
+%Fonts I use
+\usepackage{mathpazo}
+\usepackage{eulervm}
+
+%------------------------
+%   Inverting Page color. 
+\pagecolor{black}
+\color{white}
+
+%------------------------
+%This is so that we have standard fonts for the doubletracked symbols
+%for reals, naturals etc. regardless of what font you use.
+%Don't comment
+\AtBeginDocument{
+  \DeclareSymbolFont{AMSb}{U}{msb}{m}{n}
+  \DeclareSymbolFontAlphabet{\mathbb}{AMSb}}
+%------------------------
+
+%----------------------------------------------
+%User-defined environments
+%Commented because we're not using them in this document
+%The only uncommented ones are the Problem and Solution environment
+
+% \newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{question}[2][Question]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem\!]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+%\newenvironment{sub-problem}[2][]{\begin{trivlist}
+%\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+\newenvironment{solution}{\begin{proof}[\textbf{\textit{Solution}}]}{\end{proof}}
+%----------------------------------------------
+
+%----------------------------
+%User-defined notations
+\newcommand{\zz}{\mathbb Z}   %blackboard bold Z
+\newcommand{\qq}{\mathbb Q}   %blackboard bold Q
+\newcommand{\ff}{\mathbb F}   %blackboard bold F
+\newcommand{\rr}{\mathbb R}   %blackboard bold R
+\newcommand{\nn}{\mathbb N}   %blackboard bold N
+\newcommand{\cc}{\mathbb C}   %blackboard bold C
+\newcommand{\af}{\mathbb A}   %blackboard bold A
+\newcommand{\pp}{\mathbb P}   %blackboard bold P
+\newcommand{\id}{\operatorname{id}} %for identity map
+\newcommand{\im}{\operatorname{im}} %for image of a function
+\newcommand{\dom}{\operatorname{dom}} %for domain of a function
+\newcommand{\cat}[1]{\mathscr{#1}}   %calligraphic category
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert} %for absolute value
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert} %for norm
+\newcommand{\modar}[1]{\text{ mod }{#1}} %for modular arithmetic
+\newcommand{\set}[1]{\left\{#1\right\}} %for set
+\newcommand{\setp}[2]{\left\{#1\ \middle|\ #2\right\}} %for set with a property
+\newcommand{\card}[1]{\#\,{#1}} %for cardinality of a set
+
+%Re-defined notations
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\emptyset}{\varnothing}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+%----------------------------
+
+\allowdisplaybreaks
+ 
+\begin{document}
+ 
+\title{Homework 2}
+\author{Kevin Guillen\\[0.5cm]
+MATH 200 | Algebra I | Fall 2021}
+\date{} 
+\maketitle
+
+%-------------------------------PROBLEM 1 --------------------------
+\begin{tcolorbox}
+    \begin{problem}{2.6}
+        Show that for any non-empty subset $X$ of a group $G$, the normalizer of $X$, $N_G(X)$ and the centralizer of $X$, $C_G(X)$ is again a subgroup of $G$. Show also that $C_G(X)$ is contained in $N_G(X)$.
+    \end{problem}
+\end{tcolorbox}
+
+\begin{proof}
+    \textbf{Normalizer} We know the normalizer of a subset $X$ is defined as the following, \[N_G(X) = \set{g \in G \mid gXg^{-1} = X}.\]
+
+    So consider $x,y \in N_G(x)$. Let $z = xy$, we want to show that $z \in N_G(X)$. In other words we want to show $zXz^{-1} = X$, based on the above. We can see through the following that this is indeed true,
+    \begin{align*}
+        zXz^{-1} &= (xy)X(xy)^{-1} && (xy)^{-1} = y^{-1}x^{-1} \\
+        &= xyXy^{-1}x^{-1} && y \in N_G(x) \\
+        &= xXx^{-1} && x \in N_G(x) \\
+        &= X.
+    \end{align*}
+    Meaning $N_G(X)$ is closed under group operation. 
+
+    Let $y\in N_G(X)$, based on the definition of the normalizer though,
+    \begin{align*}
+        yXy^{-1} &= X && \text{taking $y$ on the right} \\
+        yX &= Xy && \text{taking $y^{-1}$ on the left} \\
+        X &= y^{-1}Xy &&y = (y^{-1})^{-1} \\
+        X &= y^{-1}X(y^{-1})^{-1}
+    \end{align*}
+    that $y^{-1}$ is indeed in $N_G(X).$
+    Thus by the subgroup criterion, $N_G(X)$ is indeed a subgroup. 
+    
+    \textbf{Centralizer:} We know the definition of the centralizer of a subset $X$ is the following, \[C_G(X) = \set{g\in G \mid gxg^{-1} = x, \forall x \in X}.\]
+
+    So consider $a,b \in C_G(X)$. Let $z = ab$, we want to show that $z \in C_G(X)$. In other words we want to show $zxz^{-1} = x$ for all $x\in X$. We see through the following that this does indeed hold.
+    \begin{align*}
+        zxz^{-1} &= (ab)x(ab)^{-1} && (ab)^{-1} = b^{-1}a^{-1} \\
+        &= (ab)x(b^{-1}a^{-1}) && \text{We know associativity holds in $G$} \\
+        &= a(bx^{-1})a^{-1}  && b \in C_G(X) \\
+        & = axa^{-1} && a \in C_G(X) \\
+        &= x
+    \end{align*}
+    Meaning $C_G(X)$ is closed under group operation. 
+
+    Let $y \in C_G(X)$. By definition that means for all $x\in X$, $yxy^{-1} = x$, but consider the following,
+    \begin{align*}
+        yxy^{-1} &= x && \text{taking $y^{-1}$ on the left} \\
+        xy^{-1} &= y^{-1}x && \text{taking $y$ on the right} \\
+        x &= y^{-1}xy && y = (y^{-1})^{-1} \\
+        x &= y^{-1}x(y^{-1})^{-1}.  
+    \end{align*}
+    This means that for any $y\in C_G(X)$, that $y^{-1}$ is also in $C_G(X)$. Thus $C_G(X)$ is a subgroup. 
+    
+    Now we want to show that the centralizer is contained in the normalizer. Expanding on the definition of the normalizer $gXg^{-1} = X \rightarrow gX = Xg$. This means there exists some $s,t\in X$ such that $gs = tg$. What we see though is that this is simply a weaker property when compared to the centralizer definition. Expanding on the definition of the centralizer, for all $x\in X$ we have $gxg^{-1} = x \rightarrow gx = xg$. Meaning any $g\in C_G(X)$ has the property that $gs = tg$ where $t = s = x$, which means it is also in $N_G(X)$, thus $C_G(X) \subset N_G(X)$
+\end{proof}
+
+%--------------------PROBLEM 2------------------------
+\begin{tcolorbox}
+    \begin{problem}{2.7}
+        Let $f:G\rightarrow H$ be a group homomorphism. 
+        \begin{itemize}
+            \item[(a)] If $U \leq G$ then $f(U)\leq H$.
+            \item[(b)] If V $\leq$ H then $f^{-1}(V) = \set{g\in G \mid f(g) \in V}$ is a subgroup of $G$.
+            \item[(c)] Show that $f$ is injective if and only if ker$(f)$ = $\set{1}$ 
+        \end{itemize}
+    \end{problem}
+\end{tcolorbox}
+\begin{proof}
+    \begin{itemize}
+        \item[(a)] Let $x,y \in f(U)$, and let $z = xy$, we want to show $z\in f(U)$. Since $x,y \in f(U)$, that means there exists $x',y' \in U$ such that $f(x') = x$ and $f(y') = y$. Giving us,
+        \begin{align*}
+            z &= xy \\
+            &= f(x')f(y') &&\text{$f$ is a homomorphism so,} \\
+            &= f(x'y') 
+        \end{align*} 
+        Because $U$ is a subgroup then $x'y' \in U$, meaning $z = f(x'y')\in f(U)$, thus $f(U)$ is closed under group operation.
+        
+        Given $x\in f(U)$, we want to show $x^{-1}\in f(U)$. By $x\in f(U)$ that means there exists $x'\in U$ such that $x = f(x')$. Since $U$ is a subgroup there exists $x'^{-1} \in U$, meaning $f(x'^{-1})\in f(U)$. Recall though $f$ is a homomorphism that means it respects inverses, thus $f(x'^{-1}) = f(x')^{-1}$, which will be $x^{-1}$. We verify through the following,
+        \begin{align*}
+            xx^{-1} &= f(x')f(x')^{-1} \\
+            &= f(x'x'^{-1}) \\
+            &= f(1) \\
+            &= 1
+        \end{align*}
+
+    \end{itemize}
+\end{proof}
+
+\newpage
+new page
+\end{document}
