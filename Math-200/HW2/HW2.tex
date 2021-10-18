@@ -21,8 +21,7 @@
 
 %------------------------
 %   Inverting Page color. 
-\pagecolor{black}
-\color{white}
+
 
 %------------------------
 %This is so that we have standard fonts for the doubletracked symbols
@@ -96,6 +95,8 @@ MATH 200 | Algebra I | Fall 2021}
 \date{} 
 \maketitle
 
+I'd like my proof for problem 3.2 (It's the last one) to be graded please, thank you. 
+
 %-------------------------------PROBLEM 1 --------------------------
 \begin{tcolorbox}
     \begin{problem}{2.6}
@@ -160,27 +161,159 @@ MATH 200 | Algebra I | Fall 2021}
         \end{itemize}
     \end{problem}
 \end{tcolorbox}
-\begin{proof}
-    \begin{itemize}
-        \item[(a)] Let $x,y \in f(U)$, and let $z = xy$, we want to show $z\in f(U)$. Since $x,y \in f(U)$, that means there exists $x',y' \in U$ such that $f(x') = x$ and $f(y') = y$. Giving us,
-        \begin{align*}
-            z &= xy \\
-            &= f(x')f(y') &&\text{$f$ is a homomorphism so,} \\
-            &= f(x'y') 
-        \end{align*} 
-        Because $U$ is a subgroup then $x'y' \in U$, meaning $z = f(x'y')\in f(U)$, thus $f(U)$ is closed under group operation.
-        
-        Given $x\in f(U)$, we want to show $x^{-1}\in f(U)$. By $x\in f(U)$ that means there exists $x'\in U$ such that $x = f(x')$. Since $U$ is a subgroup there exists $x'^{-1} \in U$, meaning $f(x'^{-1})\in f(U)$. Recall though $f$ is a homomorphism that means it respects inverses, thus $f(x'^{-1}) = f(x')^{-1}$, which will be $x^{-1}$. We verify through the following,
-        \begin{align*}
-            xx^{-1} &= f(x')f(x')^{-1} \\
-            &= f(x'x'^{-1}) \\
-            &= f(1) \\
-            &= 1
-        \end{align*}
 
+    \begin{itemize}
+        \item[(a)]
+        \begin{proof} 
+            Let $x,y \in f(U)$, and let $z = xy$, we want to show $z\in f(U)$. Since $x,y \in f(U)$, that means there exists $x',y' \in U$ such that $f(x') = x$ and $f(y') = y$. Giving us,
+            \begin{align*}
+                z &= xy \\
+                &= f(x')f(y') &&\text{$f$ is a homomorphism so,} \\
+                &= f(x'y') 
+            \end{align*} 
+            Because $U$ is a subgroup then $x'y' \in U$, meaning $z = f(x'y')\in f(U)$, thus $f(U)$ is closed under group operation.
+            
+            Given $x\in f(U)$, we want to show $x^{-1}\in f(U)$. By $x\in f(U)$ that means there exists $x'\in U$ such that $x = f(x')$. Since $U$ is a subgroup there exists $x'^{-1} \in U$, meaning $f(x'^{-1})\in f(U)$. Recall though $f$ is a homomorphism that means it respects inverses, thus $f(x'^{-1}) = f(x')^{-1}$, which will be $x^{-1}$. We verify through the following,
+            \begin{align*}
+                xx^{-1} &= f(x')f(x')^{-1} \\
+                &= f(x'x'^{-1}) \\
+                &= f(1) \\
+                &= 1.
+            \end{align*}
+            Thus we have that if $U\leq G$ then $f(U) \leq H$. 
+        \end{proof}
+        \item[(b)] 
+        \begin{proof}
+            Let $x,y \in f^{-1}(V)$, that means there exists $x',y' \in V$ such that $f(x) = x'$ and $f(y) = y'$. Recall though $V$ is a subgroup so $x'y' \in V$, but $x'y' = f(x)f(y)$ and $f$ is a homomorphism so $f(x)f(y) = f(xy) \in V$ which means $xy \in f^{-1}(V)$. 
+            
+            
+            Let $x\in f^{-1}(V)$ then $f(x) \in V$, and because $V$ is a subgroup we have $f(x)^{-1} \in V$. Recall though $f$ is a homomorphism, and so $f(x)^{-1} = f(x^{-1}) \in V$ and thus $x^{-1} \in f^{-1}(V)$. 
+        \end{proof}
+        \item[(c)] 
+        \begin{proof}
+            $\Rightarrow$ Given that $f$ is injective and a group homomorphism, that means it respects the identity element, meaning $f(1_G) = 1_H$. That also means whenever $f(x) = f(y) \rightarrow x = y$. Take an element $x\in $ ker$(f)$, by definition that means $f(x) = 1_H$, recall though $f(1_G) = 1_H$. So we have $f(x) = f(1_G)$, but by definition that means $x = 1_G$. Therefore if $f$ is injective, the kernel of $f$ is $\set{1}$
+
+            $\Leftarrow$ Given that $f$ is a group homomorphism and that $\ker(f) = \set{1}$. We want to show that $f$ is injective. Consider $x,y \in G$ such that $f(x) = f(y)$. Now consider the following,
+            \begin{align*}
+                f(xy^{-1}) = f(x)f(y^{-1}) \\
+                &= f(x)f(y)^{-1} && f(x) = f(y) \\
+                &= f(x)f(x)^{-1} \\
+                &= 1_H.
+            \end{align*}
+            Recall though $\ker(f) = \set{1_G}$, and we see $f(xy^{-1}) = 1_H$ that means $x = y$, and thus $f$ is injective.  
+        \end{proof}
     \end{itemize}
+
+
+\begin{tcolorbox}
+    \begin{problem}{2.9}
+        Let $G$ and $A$ be groups and assume that $A$ is abelian. Show that the set Hom$(G,A)$ of group homomorphisms from $G$ to $A$ is again an abelian group under the multiplication defined by
+        \begin{align*}
+            (f_1 \cdot f_2)(g):= f_1(g)f_2(g) && \text{for } f_1,f_2 \in \text{Hom}(G,A) \text{ and } g\in G 
+        \end{align*}
+    \end{problem}
+\end{tcolorbox}
+\begin{proof} From this point forward let $H = $ Hom$(G,A)$
+
+    \textbf{Closure.} Let $f_1,f_2 \in H$, let $f_3 = f_1 \cdot f_2$ we want to show that $f_3 \in H$. Now let $a,b \in G$, we have the following,
+    \begin{align*}
+        f_3(ab) = (f_1f_2)(ab) &= f_1(ab)f_2(ab) && \text{Recall though $f_1,f_2$ are group homomorphisms} \\
+        &= f_1(a)f_1(b)f_2(a)f_2(b) && \text{All these elements are in $A$, and $A$ is abelian} \\
+        &= f_1(a)f_2(a)f_1(b)f_2(b)  \\
+        &= (f_1f_2)(a)(f_1f_2)(b) \\
+        &= f_3(a)f_3(b).
+    \end{align*} 
+    We see then that $f_3$ is a group homomorphism meaning it is also in $H$. Thus $H$ is closed under the multiplication.
+
+    \textbf{Identity.} Simply let the the be the identity element be, $f_e: G\to A$, $g \mapsto 1_A$. It is obvious that this is a homomorphism, and is in $H$. We see through the following that it does indeed serve the role of the identity element. Let $f_1\in H, g \in G$
+    \begin{align*}
+        (f_ef_1f_e)(g) &= f_e(g)f_1(g)f_e(g) \\
+        &= 1_A f_1(g) 1_A && \text{Recall $f_1(g)$ is an element of $A$} \\
+        &= f_1(g)
+    \end{align*}
+
+    \textbf{Inverse.} Let $f_1\in H$. We see the inverse is simply $f_1^{-1}\in H$, we verify through the following where $g\in G$,
+    \begin{align*}
+        (f_1f_1^{-1})(g) &= f_1(g)f_1^{-1}(g) \\
+        &= f_1(g)f_1(g^{-1}) \\
+        &= f_1(gg^{-1}) \\
+        &= f_1(1_G) \\
+        &= 1_A \\
+        &= f_e(g)
+    \end{align*}
+    \newpage
+
+    \textbf{Associativity.} Let $f_1,f_2,f_2 \in H$. We see through the following that associativity holds. Let $g\in G$
+    \begin{align*}
+        ((f_1f_2)f_3)(g) &= ((f_1f_2)(g)f_3(g) \\
+        &= (f_1(g)f_2(g))f_3(g) && \text{Recall these are element in $A$, and $A$ is a group} \\
+        &= f_1(g)(f_2(g)f_2(g)) \\
+        &= f_1(g)(f_2f_3)(g) \\
+        &= (f_1(f_2f_3))(g) 
+    \end{align*}
+    as we can see associativity does indeed hold.
+
+    \textbf{Commutativity.} Let $f_1,f_2 \in H$. We see through the following commutativity holds. Let $g\in G$,
+    \begin{align*}
+        (f_1f_2)(g) = f_1(g)f_2(g) && \text{These are elements of $A$ and $A$ is abelian} \\
+        = f_2(g)f_1(g)  \\
+        = (f_2f_1)(g)
+    \end{align*}
+    as we can see commutativity does indeed hold.
+
+    With all this together that means Hom$(G,A)$ is indeed an abelian group, as desired. 
 \end{proof}
 
-\newpage
-new page
+\begin{tcolorbox}
+    \begin{problem}{3.1}
+        Let $M$ and $N$ be normal subgroups of a group $G$. Show that also $M \cap N$ and $MN$ are normal subgroups of $G$. 
+    \end{problem}
+\end{tcolorbox}
+\begin{proof}
+    To begin we know from 2.11 example (c) that the intersection of any collection of subgroups of a group is again a subgroup. Meaning $M\cap N$ is a subgroup of $G$. All that is left to show now is that it is a normal subgroup of $G$. We see immediately though that for all $k \in M\cap N$ and for all $g\in G$ that $gkg^{-1} \in M$, and $gkg^{-1} \in N$. This is because any element that is in the intersection of $M$ and $N$ must be in both those subgroups, and those subgroups were said to be normal. This means for all $k\in M\cap N$ and for all $g\in G$ that $gkg^{-1} \in M\cap N$. Therefore proving that $M\cap N$ is indeed a normal subgroup of $G$. 
+\end{proof}
+
+\begin{tcolorbox}
+    \begin{problem}{3.2}
+        Let $G$ be a group and let $X$ be a subset of $G$. Show that $C_G(X) \unlhd N_G(X)$
+    \end{problem}
+\end{tcolorbox}
+\begin{proof}
+    In this same homework we worked out from problem 2.6 that $C_G(X)$ is indeed contained in $N_G(X)$. So to solve this problem we just need to show that it is indeed a subgroup and then that it is normal. Let's begin with showing that it is a subgroup.
+
+    \textbf{Closure.} Let $a,b \in C_G(X)$, we want to show $(ab) \in C_G(X)$. For all $x\in X$ we see through the following,
+    \begin{align*}
+        (ab)x(ab)^{-1} &= (ab)x(b^{-1}a^{-1}) && \text{we know associativity holds} \\
+        &= a(bxb^{-1})a^{-1} && b \in C_G(X) \\
+        &= axa^{-1} && a \in C_G(X) \\
+        &= x
+    \end{align*}
+    that $C_G(X)$ is indeed closed under group operation. 
+
+    \textbf{Inverse.} Now for any $a\in C_G(X)$ we will show that $a^{-1}$ is also in $C_G(X)$. By definition of $a$ being in $C_G(X)$ we have for all $x\in X$,
+    \begin{align*}
+        axa^{-1} &= x \\
+        a^{-1}axa^{-1}&=a^{-1}x \\
+        xa^{-1}a  &= a^{-1}x a \\
+        x &= a^{-1}xa. 
+    \end{align*}
+    Meaning $a^{-1}$ is also in $C_G(X)$. Therefore $C_G(X) \leq N_G(X)$.
+
+    Now to show that is normal. We will use Theorem 3.1 (iii) to prove that this subgroup is indeed normal. Consider the map $f: N_G(X) \to \text{Aut}(X)$ where $n \mapsto (x \mapsto nxn^{-1})$. We know $(x\mapsto axa^{-1})$ is indeed an automorphism based on Example 2.6 (c). So first we want to show that $f$ is a homomorphism. 
+    \begin{align*}
+        f(a)f(b) &= (x\mapsto axa^{-1})(x \mapsto bxb^{-1}) \\
+                &= (x\mapsto (abxb^{-1}a^{-1}))&& (ab)^{-1} = b^{-1}a^{-1} \\
+                &= (x\mapsto (ab)x(ab)^{-1}) \\
+                &= f(ab)
+    \end{align*}
+
+    Now with that out of the way to apply the theorem stated earlier we need to show that $\ker(f) = C_G(X)$. We will do this by considering an element $a\in \ker(f)$, and for all $x\in X$, we see through the following,
+    \begin{align*}
+        x &= axa^{-1} \\
+        xa &= ax
+    \end{align*}
+    that $a\in C_G(X)$ and thus $\ker(f) = C_G(X)$. Since we see by being in the kernel of $f$ an element must satisfy the definition of being in the centralizer of the subset $X$. 
+
+\end{proof}
+
 \end{document}

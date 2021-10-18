@@ -1,0 +1,139 @@
+\documentclass[11pt]{article}
+ 
+\usepackage[top=0.75in, bottom=1.25in, left=1in, right=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb} %this is THE math package
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{fancybox}
+\usepackage{hyperref}
+\usepackage{varwidth}
+\usepackage{mdframed}
+\usepackage{mathrsfs}
+\usepackage[most]{tcolorbox}
+%------------------------
+%Fonts I use, uncomment if you like to use them.
+%The first is the general font, and the second a math font
+\usepackage{mathpazo}
+\usepackage{eulervm}
+
+%------------------------
+%This is so that we have standard fonts for the double-stroked symbols
+%for reals, naturals etc. regardless of what font you use.
+%Don't comment
+\AtBeginDocument{
+  \DeclareSymbolFont{AMSb}{U}{msb}{m}{n}
+  \DeclareSymbolFontAlphabet{\mathbb}{AMSb}}
+%------------------------
+
+%----------------------------------------------
+%User-defined environments
+%Commented because we're not using them in this document
+%The only uncommented ones are the Problem and Solution environment
+
+% \newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{question}[2][Question]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem\!]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+%\newenvironment{sub-problem}[2][]{\begin{trivlist}
+%\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+\newenvironment{solution}{\begin{proof}[\textbf{\textit{Solution}}] }{\end{proof}}
+%----------------------------------------------
+
+%----------------------------
+%User-defined notations
+\newcommand{\zz}{\mathbb Z}   %blackboard bold Z
+\newcommand{\qq}{\mathbb Q}   %blackboard bold Q
+\newcommand{\ff}{\mathbb F}   %blackboard bold F
+\newcommand{\rr}{\mathbb R}   %blackboard bold R
+\newcommand{\nn}{\mathbb N}   %blackboard bold N
+\newcommand{\cc}{\mathbb C}   %blackboard bold C
+\newcommand{\af}{\mathbb A}   %blackboard bold A
+\newcommand{\pp}{\mathbb P}   %blackboard bold P
+\newcommand{\id}{\operatorname{id}} %for identity map
+\newcommand{\im}{\operatorname{im}} %for image of a function
+\newcommand{\dom}{\operatorname{dom}} %for domain of a function
+\newcommand{\cat}[1]{\mathscr{#1}}   %calligraphic category
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert} %for absolute value
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert} %for norm
+\newcommand{\modar}[1]{\text{ mod }{#1}} %for modular arithmetic
+\newcommand{\set}[1]{\left\{#1\right\}} %for set
+\newcommand{\setp}[2]{\left\{#1\ \middle|\ #2\right\}} %for set with a property
+\newcommand{\card}[1]{\#\,{#1}} %for cardinality of a set
+\newcommand\m[1]{\begin{pmatrix}#1\end{pmatrix}} 
+
+%Re-defined notations
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\emptyset}{\varnothing}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+%----------------------------
+
+\allowdisplaybreaks
+ 
+ 
+\begin{document}
+ 
+\title{Week 3 Problems}
+\author{Kevin Guillen\\[0.5em]
+MATH 101 | Problem Solving | Fall 2021}
+\date{} 
+\maketitle
+
+%Use \[...\] instead of $$...$$
+\begin{tcolorbox}
+    \begin{problem}{10/11 IC (44.)} 
+        The numbers $1,2,\dots, 50$ are written on the blackboard. Then two numbers $a$ and $b$ are chosen and replaced by the single number $\abs{a-b}$. After 49 operations a single number is left. Prove that it is odd. 
+    \end{problem}
+\end{tcolorbox}
+
+\begin{proof}
+    If we have the numbers $1,2,\dots, 50$ that means half of them are even and half are odd. In other words we have 25 even numbers and 25 odd numbers. We know after 49 operations we will have a single number left. To determine if it is odd or even let's look at the 3 scenarios when taking the differences of even and odd numbers.
+    \begin{alignat*}{2}
+        &\text{Two even numbers: } 2k - 2l &&= 2(k-l) \\
+        &\text{Odd and even numbers: } 2k + 1 - 2l &&= 2(k-l) + 1 \\
+        &\text{Two odd numbers: } 2k + 1 - (2l + 1) &&= 2(k-l)
+    \end{alignat*}
+
+    We see the only way for the amount of odd numbers to go down is if we take the difference of two odd numbers. Note though since there are 25 odd numbers we can make 12 pairs of them to not increase the number of odd numbers. We see though we would be left with 1 odd number. Meaning the difference with the reset of the even numbers will not decrease the number of odd numbers since we see above taking the difference of an even and odd number will yield an odd number. 
+
+    Therefore the last number that is left will be odd.
+\end{proof}
+
+
+\begin{tcolorbox}
+    \begin{problem}{10/11 IC (46.)} Seven quarters are initially all heads up. On a single move you can choose any four and turn them over (change heads to tails and tails to heads). Is it possible to obtain all tails up after a sequence of such moves?
+    \end{problem}
+\end{tcolorbox}
+\begin{solution}
+    It will be impossible to have a sequence of moves that yields all tails. Consider this, after the first move we will have 3H and 4T. If we consider what the desired goal is, we know the state of quarters before the last move would have to be a situation where there is exactly 4H and 3T. This is because you would just choose to flip the 4 heads to tails and have 7 tails.
+    
+    We will show that this is impossible by showing there can never be (2k)H. In other words there can never be an even number of heads. 
+
+    We have (2k + 1) heads and (2n) tails. If we flip 1 heads and 3 tails this changes the coin state by adding 2 heads and removing 2 tails, (2(k+1) + 1) heads and (2(n-1)) tails.
+
+    If we flip 2 heads and 2 tails this does nothing.
+
+    If we flip 3 heads to 1 tails this changes the coin state by adding 2 tails and removing 2 heads, (2(k-1) + 1) heads and (2(n + 1)). 
+
+    We see the moves that could potentially help us only leave us with an odd amount of coins with heads. 
+
+    If we can flip 4 tails to heads that would give us (2(k + 2) + 1) heads which is still odd.
+
+    If we can flip 4 heads to tails that would give us (2(k-2) + 1) heads which is also still odd.
+
+    Since we can never obtain an even number of heads, we can never obtain 4 heads and 3 tails, which is the state needed before the winning move. Therefore, it is impossible. 
+\end{solution}
+
+\end{document}
