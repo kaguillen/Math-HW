@@ -17,6 +17,9 @@
 \usepackage{mathpazo}
 \usepackage{eulervm}
 
+\pagecolor{black}
+\color{white}
+
 %------------------------
 %This is so that we have standard fonts for the double-stroked symbols
 %for reals, naturals etc. regardless of what font you use.
@@ -92,6 +95,16 @@ MATH 101 | Problem Solving | Fall 2021}
 \maketitle
 
 %Use \[...\] instead of $$...$$
+
+\begin{tcolorbox}
+    \begin{problem}{10/8 OC (30.)}
+        Chose any $(n+1)$ element subset of $\set{1,2,\dots, 2n}$. Show that this subset contains two elements which are relatively prime. 
+    \end{problem}
+\end{tcolorbox}
+\begin{proof}
+    Let $S$ denote the set $\set{1,2,\dots,2n}$. To prove this we will use the pigeon hole principle and the fact that two neighboring numbers are relatively prime. This is because since we are choosing $n+1$ elements from the set of $\set{1,2,\dots, 2n}$ then there will always be at least 2 numbers that are next to each other. This is because since we have a consecutive list of numbers of length $2n$ to choose from. The max amount we can choose that will be at at least 1 apart will be $n$. An analogy to see this would consider wanting to take $n+1$ even numbers from this set $S$. Since there are $2n$ numbers, half of them must be even, meaning there are $n$ numbers. Since we have to take 1 more number, that last number will have to be odd, meaning this collection of chosen numbers will always have at least 2 numbers next to each other, meaning it always has 2 numbers that are relatively to one another. 
+\end{proof}
+
 \begin{tcolorbox}
     \begin{problem}{10/11 IC (44.)} 
         The numbers $1,2,\dots, 50$ are written on the blackboard. Then two numbers $a$ and $b$ are chosen and replaced by the single number $\abs{a-b}$. After 49 operations a single number is left. Prove that it is odd. 
@@ -134,6 +147,15 @@ MATH 101 | Problem Solving | Fall 2021}
     If we can flip 4 heads to tails that would give us (2(k-2) + 1) heads which is also still odd.
 
     Since we can never obtain an even number of heads, we can never obtain 4 heads and 3 tails, which is the state needed before the winning move. Therefore, it is impossible. 
+\end{solution}
+
+\begin{tcolorbox}
+    \begin{problem}{10/13 IC (50.)} 
+        Every room in a house has an even number of doors. Prove that there are an even number of entrance doors to the house. 
+    \end{problem}
+\end{tcolorbox}
+\begin{solution}
+    Every door serves as an entrance and an exit between two rooms, it just depends on which side one is on, because of this we can consider "outside" the house to be a room. If we sum the number of doors for all the rooms in the house, the number is even, since every room has an even number of doors. Because the doors are between 2 rooms, since there is an even number of doors, there has to be an even number of rooms. This means there is an even number of doors between the outside and some other rooms, meaning there is an even number of entrances. 
 \end{solution}
 
 \end{document}
