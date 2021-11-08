@@ -1,0 +1,171 @@
+\documentclass[11pt]{article}
+ 
+\usepackage[top=0.75in, bottom=1.25in, left=1in, right=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb} %this is THE math package
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{fancybox}
+\usepackage{hyperref}
+\usepackage{varwidth}
+\usepackage{mdframed}
+\usepackage{mathrsfs}
+\usepackage[most]{tcolorbox}
+%------------------------
+%Fonts I use, uncomment if you like to use them.
+%The first is the general font, and the second a math font
+\usepackage{mathpazo}
+\usepackage{eulervm}
+
+%------------------------
+%This is so that we have standard fonts for the double-stroked symbols
+%for reals, naturals etc. regardless of what font you use.
+%Don't comment
+\AtBeginDocument{
+  \DeclareSymbolFont{AMSb}{U}{msb}{m}{n}
+  \DeclareSymbolFontAlphabet{\mathbb}{AMSb}}
+%------------------------
+
+%----------------------------------------------
+%User-defined environments
+%Commented because we're not using them in this document
+%The only uncommented ones are the Problem and Solution environment
+
+% \newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{question}[2][Question]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem\!]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+%\newenvironment{sub-problem}[2][]{\begin{trivlist}
+%\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+\newenvironment{solution}{\begin{proof}[\textbf{\textit{Solution}}] }{\end{proof}}
+%----------------------------------------------
+
+%----------------------------
+%User-defined notations
+\newcommand{\zz}{\mathbb Z}   %blackboard bold Z
+\newcommand{\qq}{\mathbb Q}   %blackboard bold Q
+\newcommand{\ff}{\mathbb F}   %blackboard bold F
+\newcommand{\rr}{\mathbb R}   %blackboard bold R
+\newcommand{\nn}{\mathbb N}   %blackboard bold N
+\newcommand{\cc}{\mathbb C}   %blackboard bold C
+\newcommand{\af}{\mathbb A}   %blackboard bold A
+\newcommand{\pp}{\mathbb P}   %blackboard bold P
+\newcommand{\id}{\operatorname{id}} %for identity map
+\newcommand{\im}{\operatorname{im}} %for image of a function
+\newcommand{\dom}{\operatorname{dom}} %for domain of a function
+\newcommand{\cat}[1]{\mathscr{#1}}   %calligraphic category
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert} %for absolute value
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert} %for norm
+\newcommand{\modar}[1]{\text{ mod }{#1}} %for modular arithmetic
+\newcommand{\set}[1]{\left\{#1\right\}} %for set
+\newcommand{\setp}[2]{\left\{#1\ \middle|\ #2\right\}} %for set with a property
+\newcommand{\card}[1]{\#\,{#1}} %for cardinality of a set
+\newcommand{\sy}[1]{\text{Sym}(#1)}
+\newcommand{\al}[1]{\text{Alt}(#1)}
+\newcommand\m[1]{\begin{pmatrix}#1\end{pmatrix}} 
+
+%Re-defined notations
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\emptyset}{\varnothing}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+%----------------------------
+
+\allowdisplaybreaks
+ 
+ 
+\begin{document}
+ 
+\title{Homework 4}
+\author{Kevin Guillen\\[0.5em]
+MATH 200 | Algebra I | Fall 2021}
+\date{} 
+\maketitle
+
+May I please have my proof for 6.1 graded, thank you.
+
+%Use \[...\] instead of $$...$$
+\begin{tcolorbox}
+    \begin{problem}{4.1}
+        \begin{itemize}
+            \item[(a)] Show that Alt$(4)$ is the derived subgroup of Sym$(4)$.
+            \item[(b)] Find all composition series of Sym$(4)$.
+            \item[(c)] Determine the higher derived subgroups of Sym$(4)$.
+        \end{itemize}
+    \end{problem}    
+\end{tcolorbox}
+\begin{solution}
+    \begin{itemize}
+        \item[(a)] Well by definition given to us, the derived subgroup of any group is the smallest normal subgroup such that the factor group will be abelian. We know from class that $\text{Sym}(4)/\text{Alt}(4)$ is commutative. This indicates to us that the derived subgroup will be contained in Alt$(4)$. To show that the derived subgroup of $\sy{4}$ is indeed $\al{4}$ look at the following.
+        \begin{align*}
+            (ab)(ad)(ab)(ad) = (abd)
+        \end{align*} 
+        We see that every 3-cycle is a commutator. We know there are 8 3-cycles in $\sy{4}$, meaning the derived subgroup of it will be of size at least 9. Therefore its derived subgroup must be $\al{4}$. This is because the order of $\sy{4}$ is 24, so the only possible subgroups will have to divide 24, and $\al4$ is of order 12, and the derived subgroup is contained in $\al{4}$
+        \item[(b)] All composition series for $\sy4$ are the following, \[\sy4 \rhd \al4 \rhd V \rhd <a>\rhd \set{1}\] where $a$ in $\set{1, a}$ is simply any non identity element in the Klein 4 group $V$. This is because any non identity in that group has order 2, and any subgroup of $V$ is normal since $V$ is abelian. We already know from class that the composition factors of this series is indeed simple. 
+        \item[(c)]  Let $G = \sy4$. From part (a) we know that $G' = \al(4)$. So, $G'' = \al4'$. To find the derived subgroup of $\al4$ we will use the fact that we know $V$ (the Klein 4 group) is normal in $\al4$ because conjugation in $\sy4$ does not change cycle structure. Because of this we know that $al4' \leq V$. We see though that every element in $V$ is a commutator,
+        \begin{align*}
+            (14)(23) = (124)(134)(142)(143) = [(142),(143)] \\
+            (13)(24) = (123)(143)(132)(134) = [(132),(134)] \\
+            (12)(34) = (132)(142)(123)(124) = [(123),(124)]
+        \end{align*} 
+        Meaning any element in $V$ is also an element in $\al4'$. Giving us $\al4' = V$. Therefore $G'' = V$. 
+
+        Now to get $G''' = V'$. Recall though the derived subgroup of an abelian group is simply $\set{1}$. Therefore $G''' = \set{1}$. 
+
+        Putting all this together we have the following, 
+        \begin{align*}
+            G^0 &= \sy4 \\
+            G^1 &= \al4 \\
+            G^2 &= V\ (\text{Klein 4 group})\\
+            G^3 &= \set{1}
+        \end{align*}
+    \end{itemize}
+\end{solution}
+
+\begin{tcolorbox}
+    \begin{problem} {6.1}
+        Show that for every cycle $(a_1, \dots , a_k)$ in $\sy n$ and every $\sigma \in \sy n$ one has,
+        \[\sigma (a_1, \dots, a_k)\sigma^{-1} = (\sigma(a_1),\dots, \sigma(a_k))\]
+    \end{problem}
+\end{tcolorbox}
+\begin{proof}
+    This can be proved by showing that $\forall t \in \set{1,\dots,n}$ the following holds,
+    \begin{align*}
+        (\sigma (a_1, \dots, a_k)\sigma^{-1})(t) = (\sigma(a_1),\dots, \sigma(a_k))(t).
+    \end{align*}
+
+    This gives us 2 cases. The first is that $t$ is equal to $\sigma(a_i)$ for some $i\in \set{1,\dots, k}$. This means,
+    \begin{align*}
+        (\sigma \circ (a_1, \dots, a_k)\sigma^{-1})(t) &= (\sigma \circ (a_1, \dots, a_k))\sigma^{-1}(t) \\
+        &= (\sigma(a_1, \dots, a_k))\sigma^{-1}(\sigma(a_i)) \\
+        &= \sigma(a_1, \dots, a_k)(a_i) && (*) \\
+        &= \sigma(a_{i+1}) 
+    \end{align*}
+    (*) Recognizing the fact that if $i$ were to be $k$, then $i +1$ would actually be 1 and not literally $i+1$.
+
+    Now the last case is that, for any $i \in \set{1,\dots, k}$, $t \neq \sigma(a_i)$ which also implies $\sigma^{-1}(t) \neq a_i$. This means that the cycle $(a_1,\dots, a_k)$ has no effect on $\sigma^{-1}(t)$. This gives us the following,
+    \begin{align*}
+        (\sigma \circ (a_1, \dots, a_k)\sigma^{-1})(t) &= \sigma(a_1, \dots, a_k)(\sigma^{-1}(t)) \\
+        &= \sigma(\sigma^{-1}(t)) \\
+        &= t
+    \end{align*}
+
+    Meaning for any value of $t$ not in $(\sigma(a_1),\dots, \sigma(a_k))$, $\sigma(a_1,\dots, a_k)\sigma^{-1}$ leaves $t$ fixed. All this together then means,  
+    \[\sigma  (a_1, \dots, a_k)\sigma^{-1} = (\sigma(a_1),\dots, \sigma(a_k))\]
+    as desired.
+\end{proof}
+
+
+
+\end{document}

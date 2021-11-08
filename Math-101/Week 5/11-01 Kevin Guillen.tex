@@ -1,0 +1,195 @@
+\documentclass[11pt]{article}
+ 
+\usepackage[top=0.75in, bottom=1.25in, left=1in, right=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb} %this is THE math package
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{fancybox}
+\usepackage{hyperref}
+\usepackage{varwidth}
+\usepackage{mdframed}
+\usepackage{mathrsfs}
+\usepackage[most]{tcolorbox}
+%------------------------
+%Fonts I use, uncomment if you like to use them.
+%The first is the general font, and the second a math font
+\usepackage{mathpazo}
+\usepackage{eulervm}
+
+%------------------------
+%This is so that we have standard fonts for the double-stroked symbols
+%for reals, naturals etc. regardless of what font you use.
+%Don't comment
+\AtBeginDocument{
+  \DeclareSymbolFont{AMSb}{U}{msb}{m}{n}
+  \DeclareSymbolFontAlphabet{\mathbb}{AMSb}}
+%------------------------
+
+%----------------------------------------------
+%User-defined environments
+%Commented because we're not using them in this document
+%The only uncommented ones are the Problem and Solution environment
+
+% \newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{question}[2][Question]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem\!]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+%\newenvironment{sub-problem}[2][]{\begin{trivlist}
+%\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+\newenvironment{solution}{\begin{proof}[\textbf{\textit{Solution}}] }{\end{proof}}
+%----------------------------------------------
+
+%----------------------------
+%User-defined notations
+\newcommand{\zz}{\mathbb Z}   %blackboard bold Z
+\newcommand{\qq}{\mathbb Q}   %blackboard bold Q
+\newcommand{\ff}{\mathbb F}   %blackboard bold F
+\newcommand{\rr}{\mathbb R}   %blackboard bold R
+\newcommand{\nn}{\mathbb N}   %blackboard bold N
+\newcommand{\cc}{\mathbb C}   %blackboard bold C
+\newcommand{\af}{\mathbb A}   %blackboard bold A
+\newcommand{\pp}{\mathbb P}   %blackboard bold P
+\newcommand{\id}{\operatorname{id}} %for identity map
+\newcommand{\im}{\operatorname{im}} %for image of a function
+\newcommand{\dom}{\operatorname{dom}} %for domain of a function
+\newcommand{\cat}[1]{\mathscr{#1}}   %calligraphic category
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert} %for absolute value
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert} %for norm
+\newcommand{\modar}[1]{\text{ mod }{#1}} %for modular arithmetic
+\newcommand{\set}[1]{\left\{#1\right\}} %for set
+\newcommand{\setp}[2]{\left\{#1\ \middle|\ #2\right\}} %for set with a property
+\newcommand{\card}[1]{\#\,{#1}} %for cardinality of a set
+\newcommand\m[1]{\begin{pmatrix}#1\end{pmatrix}} 
+
+%Re-defined notations
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\emptyset}{\varnothing}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+%----------------------------
+
+\allowdisplaybreaks
+ 
+ 
+\begin{document}
+ 
+\title{11/01 Submission}
+\author{Kevin Guillen\\[0.5em]
+MATH 101  | Problem Solving | Fall 2021}
+\date{} 
+\maketitle
+
+%Use \[...\] instead of $$...$$
+
+\begin{tcolorbox}
+    \begin{problem} {IC - 10/22 - 81.}
+        Find a formula for the sum \[\sum_{k=1}^{n}\frac{k}{(k+1)!}.\]
+    \end{problem}
+\end{tcolorbox}
+\begin{proof}
+    The formula for the given sum will be the following,
+    \[\frac{(n+1)!-1}{(n+1)!}.\]
+    We will prove this using induction.
+
+    Case $n=1:$
+    \begin{align*}
+        \sum_{k=1}^{1}\frac{1}{(1+1)! } = \frac{1}{2} = \frac{(1+1)! -1}{(1+1)!}.
+    \end{align*}
+
+    Induction step, assume it holds for $n \leq p$.
+
+    Case $n = p+1$:
+    \begin{align*}
+        \sum_{k =1 }^{p+1}\frac{k}{(k+1)!} &= \underbrace{\sum_{k =1}^{p}\frac{k}{(k+1)!}}_{\text{true for }n=p} + \frac{p+1}{(p+1+1)!} \\
+        &= \frac{(p+1)!-1}{(p+1)!} + \frac{p+1}{(p+2)!} \\
+        &= \left(\frac{p+2}{p+2}\right)\frac{(p+1)!-1}{(p+1)!} + \frac{p+1}{(p+2)!} \\
+        &= \frac{(p+2)! -p -2}{(p+2)!} + \frac{p+1}{(p+2)!} \\
+        &= \frac{(p+2)! -1}{(p+2)!}\\
+        &= \frac{(n+1)!-1}{(n+1)!}
+    \end{align*}
+    as desired. 
+\end{proof}
+
+\newpage
+\begin{tcolorbox}
+    \begin{problem} {OC - 10/25 - 61.}
+        Show that $(n+1)^{n} \geq 2^{n}n!$
+    \end{problem}
+\end{tcolorbox}
+\begin{proof}
+    We will prove this using induction. 
+
+    Case $n = 1$: \[(1+1)^{1} \geq 2^{1}1! \rightarrow 2 \geq 2\]
+
+    Induction step, assume it holds for $n \geq k$.
+
+    Case $n = k+1$:
+    \begin{align*}
+        (k+1)^{k} &\geq 2^{k}k! && \text{multiply by } 2(k+1) \\
+        2(k+1)^{k+1} &\geq (k+1)!2^{k+1}
+    \end{align*}
+    The last thing we need is that we want to show $2(k+1)^{k+1} \leq (k+2)^{k+1}$ but this is of the form
+    \begin{align*}
+        2n^{n} &\leq (n+1)^{n} \\
+        2 &\leq (1 + \frac{1}{n})^{n}
+    \end{align*} 
+    We know by binomial expansion that this does indeed hold though since the first two terms will be $1 + \frac{n}{n}$.
+    Therefore it holds for $n = k+1$.
+\end{proof}
+\begin{tcolorbox}
+    \begin{problem} {IC - 10/27 - 99.}
+        Prove for all real numbers $x,y,z$ that $x^{2} + y^{2} + z^{2} \geq xy + yz + zx$
+    \end{problem}
+\end{tcolorbox}
+\begin{proof}
+    We that for any real numbers $x,y,z$ that the following holds, \[(x-y)^{2} + (y-z)^{2} + (x-z)^{2}\geq 0.\]
+    Expanding this inequality will yield the desired result.
+    \begin{align*}
+        (x-y)^{2} + (y-z)^{2} + (x-z)^{2}&\geq 0 \\
+        x^{2} + y^{2} -2xy + y^{2} + z^{2} -2yz + x^{2} + z^{2} -2xz &\geq 0 \\
+        2x^{2} + 2y^{2} + 2z^{2} -2xy -2yz -2xz &\geq 0 \\
+        2(x^{2} + y^{2} + z^{2}) &\geq 2(xy + yz + xz) \\
+        x^{2} + y^{2} + z^{2} &\geq xy + yz + xz
+    \end{align*}
+\end{proof}
+
+\newpage
+\begin{tcolorbox}
+    \begin{problem} {IC - 10/29 - 105.}
+        Verify algebraically the identity $\binom{n}{r} \binom{r}{k} = \binom{n}{k}\binom{n-k}{r-k}$ and then give a combinatorial proof. 
+    \end{problem}
+\end{tcolorbox}
+\begin{proof}
+    Algebraically: Recall the formula for $n$ choose $k$ is simply $\dfrac{n!}{k!(n-k)!}$. Applying this to the LHS,
+    \begin{align*}
+        \binom{n}{r} \binom{r}{k} &= \frac{n!}{r!(n-r)!}\frac{r!}{k!(r-k)!} \\
+        &= \frac{n!r!}{r!k!(n-r)!(r-k)!} \\
+        &= \frac{n!}{k!(n-r)!(r-k)!}
+    \end{align*}
+
+    Applying to the RHS,
+    \begin{align*}
+        \binom{n}{k}\binom{n-k}{r-k} &= \frac{n!}{k!(n-k)!}\frac{(n-k)!}{(r-k)!(n-k - (r-k))!} \\
+        &=\frac{n!}{k!(n-k)!}\frac{(n-k)!}{(r-k)!(n-r)!} \\
+        &= \frac{n! (n-k)!}{k!(n-k)!(r-k)!(n-r)!} \\
+        &= \frac{n!}{k!(n-r)!(r-k)!}
+    \end{align*}
+    
+    We see that the RHS does indeed equal the LHS, meaning the identity is true.
+
+    Not sure how to show combinatorially.
+\end{proof}
+
+\end{document}

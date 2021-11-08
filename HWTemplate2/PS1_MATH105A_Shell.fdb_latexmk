@@ -1,7 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1633338764 "/Users/kevinguillen/Documents/Math-HW/HWTemplate2/PS1_MATH105A_Shell.tex" "/Users/kevinguillen/Documents/Math-HW/HWTemplate2/PS1_MATH105A_Shell.pdf" "PS1_MATH105A_Shell" 1633338771
+["pdflatex"] 1633338764 "/Users/kevinguillen/Documents/Math-HW/HWTemplate2/PS1_MATH105A_Shell.tex" "/Users/kevinguillen/Documents/Math-HW/HWTemplate2/PS1_MATH105A_Shell.pdf" "PS1_MATH105A_Shell" 1635660550
   "/Users/kevinguillen/Documents/Math-HW/HWTemplate2/PS1_MATH105A_Shell.aux" 1633338765 697 d37a964b081842503b4b5534f6fdcdb6 ""
-  "/Users/kevinguillen/Documents/Math-HW/HWTemplate2/PS1_MATH105A_Shell.tex" 1633338771 3829 913314b660ce84da5cd6b9c9439dbf65 ""
+  "/Users/kevinguillen/Documents/Math-HW/HWTemplate2/PS1_MATH105A_Shell.tex" 1635660550 3829 913314b660ce84da5cd6b9c9439dbf65 ""
   "/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2020/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2020/texmf-dist/fonts/tfm/adobe/palatino/pplb7t.tfm" 1136768653 1616 371d1ee60c04b008c8fd760060cd34f1 ""
@@ -196,11 +196,11 @@
   "/usr/local/texlive/2020/texmf.cnf" 1586288231 577 d60164b4589a341208aff7a667fbbdcb ""
   "PS1_MATH105A_Shell.aux" 1633338765 697 d37a964b081842503b4b5534f6fdcdb6 "pdflatex"
   "PS1_MATH105A_Shell.out" 1633338765 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "PS1_MATH105A_Shell.tex" 1633338771 3829 913314b660ce84da5cd6b9c9439dbf65 ""
+  "PS1_MATH105A_Shell.tex" 1635660550 3829 913314b660ce84da5cd6b9c9439dbf65 ""
   (generated)
-  "PS1_MATH105A_Shell.pdf"
-  "/Users/kevinguillen/Documents/Math-HW/HWTemplate2/PS1_MATH105A_Shell.pdf"
   "PS1_MATH105A_Shell.out"
+  "PS1_MATH105A_Shell.log"
   "PS1_MATH105A_Shell.aux"
   "/Users/kevinguillen/Documents/Math-HW/HWTemplate2/PS1_MATH105A_Shell.log"
-  "PS1_MATH105A_Shell.log"
+  "/Users/kevinguillen/Documents/Math-HW/HWTemplate2/PS1_MATH105A_Shell.pdf"
+  "PS1_MATH105A_Shell.pdf"

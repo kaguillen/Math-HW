@@ -1,0 +1,198 @@
+\documentclass[11pt]{article}
+ 
+\usepackage[top=0.75in, bottom=1.25in, left=1in, right=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb} %this is THE math package
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{fancybox}
+\usepackage{hyperref}
+\usepackage{varwidth}
+\usepackage{mdframed}
+\usepackage{mathrsfs}
+\usepackage[most]{tcolorbox}
+%------------------------
+%Fonts I use, uncomment if you like to use them.
+%The first is the general font, and the second a math font
+\usepackage{mathpazo}
+\usepackage{eulervm}
+
+%------------------------
+%This is so that we have standard fonts for the double-stroked symbols
+%for reals, naturals etc. regardless of what font you use.
+%Don't comment
+\AtBeginDocument{
+  \DeclareSymbolFont{AMSb}{U}{msb}{m}{n}
+  \DeclareSymbolFontAlphabet{\mathbb}{AMSb}}
+%------------------------
+
+%----------------------------------------------
+%User-defined environments
+%Commented because we're not using them in this document
+%The only uncommented ones are the Problem and Solution environment
+
+% \newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{question}[2][Question]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem\!]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+%\newenvironment{sub-problem}[2][]{\begin{trivlist}
+%\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+\newenvironment{solution}{\begin{proof}[\textbf{\textit{Solution}}] }{\end{proof}}
+%----------------------------------------------
+
+%----------------------------
+%User-defined notations
+\newcommand{\zz}{\mathbb Z}   %blackboard bold Z
+\newcommand{\qq}{\mathbb Q}   %blackboard bold Q
+\newcommand{\ff}{\mathbb F}   %blackboard bold F
+\newcommand{\rr}{\mathbb R}   %blackboard bold R
+\newcommand{\nn}{\mathbb N}   %blackboard bold N
+\newcommand{\cc}{\mathbb C}   %blackboard bold C
+\newcommand{\af}{\mathbb A}   %blackboard bold A
+\newcommand{\pp}{\mathbb P}   %blackboard bold P
+\newcommand{\id}{\operatorname{id}} %for identity map
+\newcommand{\im}{\operatorname{im}} %for image of a function
+\newcommand{\dom}{\operatorname{dom}} %for domain of a function
+\newcommand{\cat}[1]{\mathscr{#1}}   %calligraphic category
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert} %for absolute value
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert} %for norm
+\newcommand{\modar}[1]{\text{ mod }{#1}} %for modular arithmetic
+\newcommand{\set}[1]{\left\{#1\right\}} %for set
+\newcommand{\setp}[2]{\left\{#1\ \middle|\ #2\right\}} %for set with a property
+\newcommand{\card}[1]{\#\,{#1}} %for cardinality of a set
+\newcommand\m[1]{\begin{pmatrix}#1\end{pmatrix}} 
+\newcommand{\nmeq}{{\ \unlhd\ }}
+\newcommand{\ord}[1]{{\left|#1\right|}}
+
+%Re-defined notations
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\emptyset}{\varnothing}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+%----------------------------
+
+\allowdisplaybreaks
+
+ 
+\begin{document}
+ 
+\title{Homework 5}
+\author{Kevin Guillen\\[0.5em]
+MATH 200 | Algebra I | Fall 2021}
+\date{} 
+\maketitle
+May I please have my proof for 5.3 graded, thank you.
+%Use \[...\] instead of $$...$$
+\begin{tcolorbox}
+  \begin{problem} {5.2}
+    Let $G$ be a $p$-group for a prime $p$ and let $N$ be a non-trivial normal subgroup of $G$. Show that $N \cap Z(G) > 1$.
+  \end{problem}
+\end{tcolorbox}
+\begin{proof}
+  We can consider $G$ acting on the set $N$ via conjugation. \[\alpha(g,n) = gng^{-1}\]
+  Because $N$ is given to be a non-trivial normal subgroup we know that $\alpha(g,h)\in N$. Now consider the set of fixed points under this group action,
+  \begin{align*}
+    N^{G} &= \set{n \in N \mid \alpha(g,n) = n, \forall g \in G} \\
+    &= \set{n \in N \mid gng^{-1} = n, \forall g \in G} \\
+    &= \set{n \in N \mid gn = ng, \forall g \in G} \\
+    &= N \cap Z(G)
+  \end{align*}
+
+  From the orbit equation we have,
+  \begin{align*}
+    \ord{N^{G}} = \ord{N} - \sum_{x\in \mathcal{R} \backslash X^{G}}[G : G_x] 
+  \end{align*}
+  Because $N$ was given to be non-trivial, by Lagrange, it must be of order $p^{a}$ where $a \in \set{1, \dots, k}$ ($k$ being number such that $G = p^{k}$). We know each $G_x$ is a proper subgroup meaning it has an order of $p^{z}$ for $z \in \set{1, \dots , k-1}$. This means that $p$ divides $N^{G}$, meaning $N\cap Z(G)>1$ as desired. 
+\end{proof}
+
+
+\begin{tcolorbox}
+  \begin{problem} {5.3} $ $\\
+    (a) Let $G$ be a group such that $G/Z(G)$ is cyclic. Show that $G$ is abelian.\\
+    (b) Show that if a group $G$ has order $p^{2}$, for some $p$, then $G$ is abelian.
+  \end{problem}
+\end{tcolorbox}
+\begin{itemize}
+  \item[(a)] \begin{proof}
+    Given that $G/Z(G)$ is cyclic that means there exists an element $g\in G$ such that,
+    \[G/Z(G) = \langle gZ(G)\rangle.\]
+    Now for any element $a\in G$, we know there exists some $n\in \zz$ such that $aZ(G) =(gZ(G))^{n}$. Which implies the following,
+    \begin{align*}
+      aZ(G) &= (gZ(G))^{n} \\
+       &= \underbrace{gZ(G) \cdot gZ(G) \cdot \dots \cdot gZ(G)}_n \\
+      aZ(G) &= g^{n}Z(G) && aH = bH \longleftrightarrow b^{-1}a\in H \\
+      \rightarrow(g^{n})^{-1}a &\in Z(G) \\
+      g^{-n}a &\in Z(G).
+    \end{align*}
+    This means for any element $a\in G$, there exists some $n\in \zz$, and some $z\in Z(G)$ such that,
+    \begin{align*}
+      g^{-n}a = z \\
+      a = g^{n}z
+    \end{align*}
+    So consider any two elements $a,b \in G$, they are of the form $a = g^{n}z_1$ and $b = g^{m}z_2$. So we see from the following,
+    \begin{align*}
+      ab &= g^{n}z_1g^{m}z_2 && z_1,z_2 \in Z(G) \\
+      &=g^{n}g^{m}z_1z_2 \\
+      &= g^{n + m}z_1 z_2 \\
+      &= g^{m+n}z_1z_2 \\
+      &= g^{m}g^{n}z_1z_2 \\
+      &= g^{m}z_2g^{n}z_1 \\
+      &= ba
+    \end{align*}
+    that $G$ is abelian. 
+  \end{proof}
+  \item[(b)] \begin{proof}
+    Given that $G$ is a $p$-group, that means its center is non-trivial. Because the center of any group is always a subgroup, by Lagrange the order of $Z(G)$ must be either $p^{2}$ or $p$. If it is the first case we are done since that would imply $Z(G) = G$ making $G$ abelian. If it is of order $p$, we know $Z(G)$ is normal, meaning we can take the quotient group $Z/Z(G)$, and it will have to be of order $p$, meaning it is cyclic and according to part (a) it must be abelian. 
+  \end{proof}
+\end{itemize}
+\begin{tcolorbox}
+    \begin{problem} {5.5} 
+        (Frattini Argument) Let $G$ be a finite group, $p$ a prime, $H \nmeq G$ and $P \in \text{Syl}_p(H)$. Show that $G=HN_G(P)$. (Hint: Let $g\in G$ and consider $P$ and $gPg^{-1}$. Show that both are Sylow $p$-subgroups of $H$)
+    \end{problem}
+\end{tcolorbox}
+\begin{proof}
+  Let $g\in G$. We know from the given that $P$ is a $p$-sylow subgroup of $H$, meaning $P \subseteq H$. Also since $H$ is normal if we perform conjugation on $P$ with $g$, we have that $gPg^{-1}\subseteq H$. We also know that a subgroup under conjugation will be another subgroup of the same order, in other words $gPg^{-1}$ is another $p$-sylow subgroup. Recall though by Sylow's theorem $5.12(c)$ any two $p$-sylow subgroups are conjugate. Meaning there exists some $h\in H$ such that $hPh^{-1} = gPg^{-1}$. Consider the following though,
+  \begin{align*}
+    hPh^{-1} &= gPg^{-1} \\
+    P &= h^{-1}gPg^{-1}h 
+  \end{align*} 
+  this means that $h^{-1}g\in N_G(P)$. Using this fact, we can express any element $g\in G$ as $g = h(h^{-1}g)$, where $h\in H$ and $h^{-1}g \in N_G(P)$. Giving us the desired equality, $G = HN_G(P)$.
+\end{proof}
+
+\begin{tcolorbox}
+  \begin{problem} {5.6}
+    Show that every group of order 1000 is solvable. 
+  \end{problem}
+\end{tcolorbox}
+\begin{proof}
+  Let $G$ represent a group of order 1000. Note that 1000 = $5^{3}2^{3}$. We know from class that the $\ord{\text{Syl}_5(G)} \equiv 1 \text{ mod 5}$ and $\ord{\text{Syl}_5(G)}\mid 8$. Meaning $\ord{\text{Syl}_5(G)} = 1$. Let $H$ represent this unique Sylow $5$-subgroup. Because it is unique it is normal. Meaning we can take the quotient group $G/H$ which will have order $2^{3}$ and is therefore solvable (Theorem 5.10). For the same reasoning $H$ is also solvable because it is of order $5^{3}$, this means $G$ is solvable as desired.
+\end{proof}
+
+\begin{tcolorbox}
+  \begin{problem} {6.4}
+    Show that every group of order 72 is solvable. 
+  \end{problem}
+\end{tcolorbox}
+\begin{proof}
+  Let $G$ represent a group of order 72. Note that 72's prime decomposition is $3^{2}\cdot 2^{3}$. We know that $|$Syl$_3(G)| \equiv 1 \text{ mod } 3$ and that $|$Syl$_3(G)| \mid 8$, meaning $|$Syl$_3(G)|= 1$ or $4$. In the first case that means there exists a unique Sylow $3$-subgroup and it is normal, we will refer to this subgroup as $H$. Because $H$ is of order 9, it is abelian and therefore solvable, meaning $G/H$ will also be solvable since its order is $2^{3}$ (Theorem 5.10). So in all we have that $H$ is solvable and that $G/H$ is solvable, therefore $G$ is solvable.
+
+  If $\ord{\text{Syl}_3(G) = 4}$, let $H \in \text{Syl}_3(G)$. $H$ will not be normal in this case. We know the subgroups in $\text{Syl}_3(G)$ are conjugates of $H$. So consider $G$ acting on $H$ via conjugation. Recall that $[G : N_G(H)] = \text{Syl}_3(G) = 4$. We can let $G$ act on $N_G(H)$ via right multiplication on the right cosets of $N_G(T)$. This will give us the homomorphism, 
+  \begin{align*}
+    f:G \to \text{Sym}(4)
+  \end{align*} 
+  with $\ker{(f)} \leq N_G(H)$ and we also have though $\ord{\text{Sym}(4)} < \ord{G}$, meaning $\ker{(f)} \neq 1$. All together we have, $\ker{(f)} \leq N_G(H) < G$, meaning $\ker{(f)} \neq G$. Therefore $\ker{(f)}$ is non-trivial and because the kernel of a homomorphism is a normal subgroup we have that $G$ is not simple and therefore solvable. 
+\end{proof}
+
+
+\end{document}
