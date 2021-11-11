@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.8.12)  18 OCT 2021 01:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.8.12)  8 NOV 2021 02:23
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -708,30 +708,30 @@ Package: mathpazo 2020/03/25 PSNFSS-v9.3 Palatino w/ Pazo Math (D.Puga, WaS)
 ) (c:/texlive/2021/texmf-dist/tex/latex/eulervm/eulervm.sty
 Package: eulervm 2005/01/11 v4.0 (WaS)
 )
-LaTeX Font Info:    Trying to load font information for OT1+ppl on input line 89.
+LaTeX Font Info:    Trying to load font information for OT1+ppl on input line 87.
  (c:/texlive/2021/texmf-dist/tex/latex/psnfss/ot1ppl.fd
 File: ot1ppl.fd 2001/06/04 font definitions for OT1/ppl.
 ) (./10-18_KevinGuillen.aux)
 \openout1 = `10-18_KevinGuillen.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 89.
-LaTeX Font Info:    ... okay on input line 89.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -786,7 +786,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (c:/texlive/2021/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-Package hyperref Info: Link coloring OFF on input line 89.
+Package hyperref Info: Link coloring OFF on input line 87.
  (c:/texlive/2021/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
  (c:/texlive/2021/texmf-dist/tex/latex/refcount/refcount.sty
@@ -796,9 +796,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count339
 )
-LaTeX Info: Redefining \ref on input line 89.
-LaTeX Info: Redefining \pageref on input line 89.
-LaTeX Info: Redefining \nameref on input line 89.
+LaTeX Info: Redefining \ref on input line 87.
+LaTeX Info: Redefining \pageref on input line 87.
+LaTeX Info: Redefining \nameref on input line 87.
  (./10-18_KevinGuillen.out) (./10-18_KevinGuillen.out)
 \@outlinefile=\write5
 \openout5 = `10-18_KevinGuillen.out'.
@@ -809,28 +809,28 @@ Package: inputenc 2021/02/14 v1.3d Input encoding file
 \inpenc@prehook=\toks50
 \inpenc@posthook=\toks51
 )
-LaTeX Font Info:    Redeclaring symbol font `AMSb' on input line 89.
+LaTeX Font Info:    Redeclaring symbol font `AMSb' on input line 87.
 LaTeX Font Info:    Overwriting symbol font `AMSb' in version `normal'
-(Font)                  U/msb/m/n --> U/msb/m/n on input line 89.
+(Font)                  U/msb/m/n --> U/msb/m/n on input line 87.
 LaTeX Font Info:    Overwriting symbol font `AMSb' in version `bold'
-(Font)                  U/msb/m/n --> U/msb/m/n on input line 89.
-LaTeX Font Info:    Trying to load font information for U+zeur on input line 96.
+(Font)                  U/msb/m/n --> U/msb/m/n on input line 87.
+LaTeX Font Info:    Trying to load font information for U+zeur on input line 94.
  (c:/texlive/2021/texmf-dist/tex/latex/eulervm/uzeur.fd
 File: uzeur.fd 2005/01/11 v4.0 (WaS)
 )
-LaTeX Font Info:    Trying to load font information for U+zeus on input line 96.
+LaTeX Font Info:    Trying to load font information for U+zeus on input line 94.
  (c:/texlive/2021/texmf-dist/tex/latex/eulervm/uzeus.fd
 File: uzeus.fd 2005/01/11 v4.0 (WaS)
 )
-LaTeX Font Info:    Trying to load font information for U+zeuex on input line 96.
+LaTeX Font Info:    Trying to load font information for U+zeuex on input line 94.
  (c:/texlive/2021/texmf-dist/tex/latex/eulervm/uzeuex.fd
 File: uzeuex.fd 2005/01/11 v4.0 (WaS)
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 96.
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 94.
  (c:/texlive/2021/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Trying to load font information for OT1+zplm on input line 96.
+LaTeX Font Info:    Trying to load font information for OT1+zplm on input line 94.
  (c:/texlive/2021/texmf-dist/tex/latex/psnfss/ot1zplm.fd
 File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
 ) [1
@@ -842,13 +842,13 @@ Package rerunfilecheck Info: File `10-18_KevinGuillen.out' has not changed.
 Here is how much of TeX's memory you used:
  28238 strings out of 478542
  549717 string characters out of 5854402
- 904382 words of memory out of 5000000
+ 903365 words of memory out of 5000000
  45659 multiletter control sequences out of 15000+600000
  425157 words of font info for 92 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  102i,10n,108p,1011b,476s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2021/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/euler/eurm10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/euler/eusm10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb><c:/texlive/2021/texmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb><c:/texlive/2021/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb><c:/texlive/2021/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on 10-18_KevinGuillen.pdf (2 pages, 71143 bytes).
+Output written on 10-18_KevinGuillen.pdf (2 pages, 71086 bytes).
 PDF statistics:
  92 PDF objects out of 1000 (max. 8388607)
  49 compressed objects within 1 object stream
