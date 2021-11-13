@@ -48,6 +48,8 @@
 \newenvironment{solution}{\begin{proof}[\textbf{\textit{Solution}}] }{\end{proof}}
 %----------------------------------------------
 
+
+
 %----------------------------
 %User-defined notations
 \newcommand{\zz}{\mathbb Z}   %blackboard bold Z
@@ -85,16 +87,133 @@
  
 \begin{document}
  
-\title{Assignment}
+\title{11/08 Submission}
 \author{Kevin Guillen\\[0.5em]
-MATH  | Class | Quarter}
+MATH 101 | Problem Solving | Fall 2021}
 \date{} 
 \maketitle
 
 %Use \[...\] instead of $$...$$
 
+
 \begin{tcolorbox}
-    \begin{problem}{ IC | 11/05 | 124 (Putnam)}
+    \begin{problem} {IC | 11/01 | 109.}
+        How many solutions in natural numbers are there to the equation $a + b + c + d = 12$
+    \end{problem}
+\end{tcolorbox}
+\begin{proof}
+    Well to begin we know the restriction is that $a$ and $b$ must be odd, so for $k,l \in \nn$, they are of the form $a = 2k + 1$ and $2l + 1$. This gives us the following,
+    \begin{align*}
+        (2k +1) + (2l + 1) + c + d &= 12 \\
+        2(k + l) + 2 + c + d &= 12 \\
+        2(k + l + 1) + c + d &= 12
+    \end{align*}
+
+    This means for the max sum $k$ and $l$ can yield is 5 because this will result in the following,
+    \begin{align*}
+        2(5 + 1) + c + d = 12 \\
+        2(6) + c + d = 12 && \text{Where } c=d=0
+    \end{align*}
+     
+    This gives us the restriction of $(k + l) \leq 5$. Now we want to first know how many ways $k + l = n$. Consider the case that $n = 5$. We can represent 5 the following way,
+    \[- - - - -\] where $0 + 5$ is, \[I - - - - -\] and $1 + 4$ \[- I - - - -\] basically we see there are $6$ ways to express 5 as the sum of two numbers, or $n + 1$ ways to express $n$ as the sum of two numbers where $(a,b) \neq (b, a)$.
+    
+    Since we can have $n$ range from 0 to 5 we have the following summation,
+    \[\sum_{n = 0}^5 (n + 1)\]
+    Next we need to consider how many ways we $c$ and $d$ can be expressed for each $n$. It is very similar to before in that we have $c + d = 12 - 2(k + l + 1)$ or in other words we are concerned with how to express a number as the sum of two numbers. This gives us our new summation,
+    \begin{align*}
+        \sum_{n = 0}^5 (n+1) \cdot ((12 - 2(n + 1)) + 1)
+    \end{align*}
+    Plugging in we get the total number of combinations to be 91
+
+\end{proof}
+
+
+
+\newpage
+\begin{tcolorbox}
+    \begin{problem} {OC | 11/01 | 69.}
+        A parking lot for compact cars has 12 adjacent spaces and eight are occupied. A large sport-utility vehicle arrives, needing two adjacent open spaces. What is the probability that it will be able to park?
+    \end{problem}
+\end{tcolorbox}
+\begin{proof}
+    Consider the parking spaces to be the following squares, 
+    \begin{align*}
+        \square \square \square \square \square \square \square \square \square \square \square \square
+    \end{align*}
+    and our sport utility vehicle to be,
+    \begin{align*}
+        \boxtimes \boxtimes \boxtimes 
+    \end{align*}
+    Let us refer to the the vehicle's location by the left most box. So when we say the vehicle is at parking spot 1 it is the following,
+    \begin{align*}
+        \boxtimes \boxtimes \boxtimes \square \square \square \square \square \square \square \square \square
+    \end{align*}
+    and as it moves down we see we have to stop at the 10th parking spot because we get,
+    \begin{align*}
+        \square \square \square \square \square \square \square \square \square \boxtimes \boxtimes \boxtimes.
+    \end{align*}
+
+    We see in an empty parking lot we have 10 ways to part our vehicle. Meaning if 8 other vehicles came in after us they'd have 9 choose 8 ways to park with the remaining spots. This gives us $10 \cdot \binom{9}{8} = 90 $. So to get our probability we need to divide by all the ways the 8 cars can park in the 12 parking spots, in other words 12 choose 8 which is 495. Together this gives us,
+    \begin{align*}
+        \dfrac{90}{495} = \frac{2}{11} = .1818
+    \end{align*}
+    In other words we have an $18.18\%$ chance of finding parking for our vehicle. 
+\end{proof}
+
+\begin{tcolorbox}
+    \begin{problem} {OC | 11/01 | 71.}
+        How many ways are there to arrange 5 red balls, 7 green balls, and 9 blue balls in a line?
+    \end{problem}
+\end{tcolorbox}
+\begin{proof}
+    First we can calculate the amount of ways we can put the balls in a line regardless of color, which is $21!$. Next lets consider the amount of ways we can arrange the red balls which is $5!$, then the amount of green balls which is $7!$, and finally the blue balls which is $9!$. The reason we want to do this is because we now need to take into account how many times each color appears in the line of balls to ultimately figure out how many ways we can line them up, since now all 21 balls are the same. This gives us,
+
+    \begin{align*}
+        \dfrac{21!}{5!7!9!} = 232792560
+    \end{align*}
+\end{proof}
+\newpage 
+
+\begin{tcolorbox}
+    \begin{problem} {IC | 11/03 | 122.}
+        If eight dies are rolled what is the probability that all six numbers appear?
+    \end{problem}
+\end{tcolorbox}
+\begin{proof}
+    There are 2 scenarios that result in all six numbers appearing. The first is that four numbers appear once and two numbers appear two times. 
+
+    The second scenario is that every number appears once, and that one of the numbers appears another 2 times. In other words five numbers appear once and one number appears three times. 
+
+    Let's begin by calculating the first scenario. We have 6 choose 2 ways of choosing the two numbers that will be repeated twice. Then we have 8 choose 2 ways for which throws will give us the first repeated number. Then we have 6 choose 2 ways for which throws will give us the second repeated number. Finally we have 4! ways for the remaining throws to result in all other 4 numbers. Putting this together we get,
+    \begin{align*}
+        \binom{6}{2}\binom{8}{2}\binom{6}{2}4! = 151200 
+    \end{align*}
+
+    In the second scenario we have 6 choose 1 ways for which number will be repeated thrown 3 times. Then we have 8 choose 3 ways for which throws will roll that number and finally 5! ways for the remaining numbers to be thrown. All together this gives us the following,
+    \begin{align*}
+        \binom{6}{1} \binom{8}{3} 5! = 40320
+    \end{align*}
+
+    So the total scenario with our desired out come is $151200 + 40320 = 191520$. The total number of combinations for 8 dice being thrown is $6^8$ which yields $1679616$. This gives us the following probability,
+    \begin{align*}
+        \dfrac{191520}{1679616} = .114
+    \end{align*}
+    or in other words we have an $11.4\%$ chance that we will get all 6 numbers when throwing 8 dice. 
+\end{proof}
+
+\begin{tcolorbox}
+    \begin{problem} {IC | 11/05 | 110.}
+        In how many ways can two squares be selected from an $8\times 8$ chessboard so that they are not in the same row or column.
+    \end{problem}
+\end{tcolorbox}
+\begin{proof}
+    To begin the first square has $64$ choices. Once that square is chosen it eliminates 1 row and 1 column, recall though they interest, so it only removes 15 choices for the second square, leaving it with 49 choices. This gives us $64 \cdot 49$. The issue is this is double counting because consider if the first square was chosen to be $(a,b)$ and the second square to be $(c,d)$. This is the same as the first square being $(c,d)$ and the second square being $(a,b)$. Therefore we counted every case twice so there is actually,
+    \[\frac{64\cdot 49}{2} = 1568 \text{ ways.}\]
+\end{proof}
+\newpage
+\begin{tcolorbox}
+    \begin{problem}{ IC | 11/05 | 124. (Putnam)}
         Define a selfish set to be a set which has its own cardinality as an element. FInd, with a proof, the number of subsets of $\set{1,2,\dots, n}$ which are minimal selfish sets, that is, selfish sets none of whose proper subsets is selfish. 
     \end{problem}
 \end{tcolorbox}
@@ -118,19 +237,6 @@ MATH  | Class | Quarter}
     We see for $A_1 = \set{1}$. That it only has 1 subset that is a minimal selfish set, that it $\set{1}$. Next we see for $A_2 = \set{1,2}$ that it only contains 1 subset that is a minimal selfish set at that is $\set{1}$ again. So we have $A_1 = A_2 = 1$. Notice though that these are the same starting values as the fibonacci sequence, and that we define the value of $S(A_n)$ for $n > 2$ as the sum of the previous 2 terms. Thus $S(A_n) = \text{Fib}(n)$, where $\text{Fib}(n)$ is the $n$th term in the fibonacci sequence. 
 \end{proof}
 
-\newpage
-\begin{tcolorbox}
-    \begin{problem} {IC | 11/03 | 122}
-        If eight dies are rolled what is the probability that all six numbers appear?
-    \end{problem}
-\end{tcolorbox}
-\begin{proof}
-    There are 2 scenarios that result in all six numbers appearing. The first is that four numbers appear once and two numbers appear two times. 
-
-    The second scenario is that every number appears once, and that one of the numbers appears another 2 times. In other words five numbers appear once and one number appears three times. 
-
-    Let's begin by calculating the first scenario. We have 6 choose 2 ways of 
-\end{proof}
 
 
 \end{document}
