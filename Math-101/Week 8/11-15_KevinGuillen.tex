@@ -1,0 +1,200 @@
+\documentclass[11pt]{article}
+ 
+\usepackage[top=0.75in, bottom=1.25in, left=1in, right=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb} %this is THE math package
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{fancybox}
+\usepackage{hyperref}
+\usepackage{varwidth}
+\usepackage{mdframed}
+\usepackage{mathrsfs}
+\usepackage[most]{tcolorbox}
+%------------------------
+%Fonts I use, uncomment if you like to use them.
+%The first is the general font, and the second a math font
+\usepackage{mathpazo}
+\usepackage{eulervm}
+%------------------------
+%This is so that we have standard fonts for the double-stroked symbols
+%for reals, naturals etc. regardless of what font you use.
+%Don't comment
+\AtBeginDocument{
+  \DeclareSymbolFont{AMSb}{U}{msb}{m}{n}
+  \DeclareSymbolFontAlphabet{\mathbb}{AMSb}}
+%------------------------
+
+%----------------------------------------------
+%User-defined environments
+%Commented because we're not using them in this document
+%The only uncommented ones are the Problem and Solution environment
+
+% \newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{question}[2][Question]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem\!]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+%\newenvironment{sub-problem}[2][]{\begin{trivlist}
+%\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+\newenvironment{solution}{\begin{proof}[\textbf{\textit{Solution}}] }{\end{proof}}
+%----------------------------------------------
+
+%----------------------------
+%User-defined notations
+\newcommand{\zz}{\mathbb Z}   %blackboard bold Z
+\newcommand{\qq}{\mathbb Q}   %blackboard bold Q
+\newcommand{\ff}{\mathbb F}   %blackboard bold F
+\newcommand{\rr}{\mathbb R}   %blackboard bold R
+\newcommand{\nn}{\mathbb N}   %blackboard bold N
+\newcommand{\cc}{\mathbb C}   %blackboard bold C
+\newcommand{\af}{\mathbb A}   %blackboard bold A
+\newcommand{\pp}{\mathbb P}   %blackboard bold P
+\newcommand{\id}{\operatorname{id}} %for identity map
+\newcommand{\im}{\operatorname{im}} %for image of a function
+\newcommand{\dom}{\operatorname{dom}} %for domain of a function
+\newcommand{\cat}[1]{\mathscr{#1}}   %calligraphic category
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert} %for absolute value
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert} %for norm
+\newcommand{\modar}[1]{\text{ mod }{#1}} %for modular arithmetic
+\newcommand{\set}[1]{\left\{#1\right\}} %for set
+\newcommand{\setp}[2]{\left\{#1\ \middle|\ #2\right\}} %for set with a property
+\newcommand{\card}[1]{\#\,{#1}} %for cardinality of a set
+\newcommand\m[1]{\begin{pmatrix}#1\end{pmatrix}} 
+
+%Re-defined notations
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\emptyset}{\varnothing}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+%----------------------------
+
+\allowdisplaybreaks
+ 
+ 
+\begin{document}
+ 
+\title{Nov 15 Submission}
+\author{Kevin Guillen\\[0.5em]
+MATH 101 | Problem Solving | Fall 2021}
+\date{} 
+\maketitle
+
+%Use \[...\] instead of $$...$$
+
+\begin{tcolorbox}
+  \begin{problem} {IC | 11/10 | 135.} Show if $a^{2} + b^{2} = c^{2}$ then $3| ab$
+  \end{problem}
+\end{tcolorbox}
+\begin{proof}
+  First let us figure out what the remainder of any square is modulo 3. By Fermat's theorem we have $n^{3} \equiv n \text{ mod }3$. This means $3|(n^{3}-n)\rightarrow 3|n(n^{2}-1)$. Because 3 is a prime that means it must divide one of these factors. In the case that 3 divides $n$, then it must also divide $n^{2}$. In the case that it divides $(n^{2}-1)$ that means $n^{2}\equiv 1 \text{ mod }3$. Meaning the only possible remainders are $0$ and $1$. 
+
+  If $3 \nmid ab$ that would mean neither $a$ or $b$ are divisble by $3$. Implying they are of the form $a^{2} \equiv 1\text{ mod }3$ and $b^{2} \equiv 1\text{ mod }3$. Therefore $c^{2} \equiv 2 \text{ mod } 3$, but that is impossible since the only possible remainders for a square mod 3 are 0 and 1. Therefore if the equation holds then $3|ab$.
+\end{proof}
+
+\begin{tcolorbox}
+  \begin{problem} {IC | 11/10 | 136.} If $x^{3} + y^{3} = z^{3}$ show that at least 1 of $x,y,z$ is divisible by $7$.    
+  \end{problem}
+\end{tcolorbox}
+\begin{proof}
+  First let us determine what the cubes of any integer modulo 7 would be. By Fermat's theorem we have that \[n^{7} \equiv n \text{ mod }7\]
+  Which means $7| (n^{7}-n) \rightarrow 7|n(n^{3-1})(n^{3} + 1)$. Because 7 is a prime it must divide one of these factors. In the case that 7 divides $n$ then it must divide $n^{3}$, implying $n^{3} \equiv 0 \text{ mod }7$. In the case that 7 divides $(n^{3}-1)$ then that means $n^{3} \equiv 1 \text{ mod }7 $. Finally if 7 divides $(n^{3} + 1)$ that means $n^{3} \equiv -1 \text{ mod }7$. 
+
+  Now in the case that neither $x^{3}$ or $y^{3}$ are divisible by 7. That means they have a remainder of $\pm 1$ when dividing by 7. Without loss of generality say $x^{3}$ has remainder $-1$ and $y^{3}$ has remainder $1$. Then their sum has to have reaminder 0 meaning $z^{3}$ will be divisible by 7. In the case they both have remainder 1 that would result in a contradiction because $z^{3} \equiv 2 \text{ mod }7$ is not possible. Therefoer at least one of these integers is disvisble by 7 if the given equation holds. 
+\end{proof}
+\newpage
+\begin{tcolorbox}
+  \begin{problem} {IC | 11/10 | 139.}
+    For what values of $n$ can $\set{1,2,\dots,n}$ be partitioned into three subsets with equal sums? 
+  \end{problem}
+\end{tcolorbox}
+\begin{proof}
+    If we are able to partition the set into 3 subsets that all have the same sum that would be the sum of all the terms is divisble by 3. This gives us the following requirement, \[3|\sum_{k =1}^{n}k\]
+
+    We can obtain a formula for the summation through the following,
+    \begin{align*}
+        1 + 2 + \dots + (n-1) + n = n + (n-1) + \dots + 2 + 1
+    \end{align*}
+    adding both sides to each other we get 
+    \begin{align*}
+        \underbrace{(n+1) + (n+1) + \dots + (n+1)}_{n} = n(n+1)
+    \end{align*}
+    now we have to divide by 2 to undo our addition and we get the following,
+    \begin{align*}
+        \sum_{k = 1}^{n}k = \dfrac{n(n+1)}{2}.
+    \end{align*}
+
+    This means in order to get 3 paritions that have equal sum, 3 must divide $\dfrac{n(n+1)}{2}$. Therfore $n$ must satisfy either $n \equiv 0 \text{ mod }3$ or $n \equiv 2 \text{ mod }3$. We see though in the case that $n = 3$, such a partition is not possible. Therefore there is also a lower bound for $n$. We see this lower bound is simply $n = 5$. We see this throught the following, 
+    \begin{align}
+        \set{1,4}, \set{2,3}, \set{5}.
+    \end{align}
+
+    Therfore $n >=5$ and either $n \equiv 0 \text{ mod }3$ or $n \equiv 2 \text{ mod }3$
+\end{proof}
+
+\begin{tcolorbox}
+    \begin{problem} {IC | 11/12 | 143.}
+        Find all positive integers $n$ such that $2^{4} + 2^{7} + 2^{n}$ is a perfect square. 
+    \end{problem}
+\end{tcolorbox}
+\begin{proof}
+    This is same as finding $n$ such that $n^{2} + 144 = k^{2}$. Consider the following though,
+    \begin{align*}
+        2^{n} + 144 &= k^{2} \\
+        2^{n} &= k^{2} - 144 \\
+        2^{n} &= = (k + 12)(k-12)
+    \end{align*}
+
+    Therefore we have that $(k+12)$ and $(k-12)$ must both be powers of 2 and that they must differ by 24. We can see that 8 and 32 differ by 24 and are both powers of 2. This gives us,
+    \[8 \cdot 32 = 2^{3}2^{5} = 2^{8}.\]
+
+    Thus the only integer $n$ that can satisfy this is $n = 8$. This is because the distance between powers of two is always increasing there will never be another pair of powers of 2 such that their difference is 24. 
+\end{proof}
+\newpage
+
+\begin{tcolorbox}
+    \begin{problem} {OC | 11/10 | 88.}
+        Prove that there does not exist a natural number $n$ such that $n(n+1)$ is a perfect square.
+    \end{problem}
+\end{tcolorbox}
+\begin{proof}
+    Assume $n(n+1)$ is indeed a perfect square. That means it can expressed as, $n(n+1)= k^{2}$ for some $k \in \zz$. Consider the following though,
+    \begin{align*}
+        n(n+1) &= k^{2} \\
+        n^{2} + n &= k^{2} \\
+        n^{2} + k^{2} &= -n \\
+        (n+k)(n-k) &= -n
+    \end{align*}
+
+    But either $(n+k)$ or $(n-k)$ is greater than $\abs{n}$, so this is a contradiction. Therfore $n(n+1)$ cannot be a perfect square. 
+\end{proof}
+
+\begin{tcolorbox}
+    \begin{problem} {OC | 11/12 | 90.}
+        Prove there is a unique integer $n$ such that $2^{8} + 2^{11} + 2^{n}$ is a perfect square.
+    \end{problem}
+\end{tcolorbox}
+\begin{proof}
+    This is similair to our IC class problem 143. First we see we are looking to satisfy the following,
+    \begin{align*}
+        2^{8} + 2^{11} + 2^{n} &= k^{2} \\
+        2^{n} + 2304 &= k^{2} \\
+        2^{n} &= k^{2} - 2304 \\
+        2^{n} &= (k - 48)(k+48)
+    \end{align*}
+
+    Thus there has to be two powers of 2 such that their difference is 96. Consider 128, we see $128-96 = 32$, and botb $128$ and $32$ are powers of 2. This gives us the following,
+    \[32 \cdot 128 = 2^{5} 2^{7} = 2^{12}.\]
+    Therefore $n =12$ meaning there does exist indeed exist an $n$ such that the sum given is a perfect square.
+\end{proof}
+\end{document}
