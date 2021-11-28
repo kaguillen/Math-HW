@@ -84,20 +84,26 @@
  
 \begin{document}
  
-\title{Nov 15 Submission}
+\title{Nov 15 re-Submission}
 \author{Kevin Guillen\\[0.5em]
 MATH 101 | Problem Solving | Fall 2021}
 \date{} 
 \maketitle
 
 %Use \[...\] instead of $$...$$
+Feedback:
+
+IC 135.This would be $C^{}3$ if you did no include unnecessary statements, e.g
+Fermat’s little theorem.
+
+IC 136. See IC 135.
 
 \begin{tcolorbox}
   \begin{problem} {IC | 11/10 | 135.} Show if $a^{2} + b^{2} = c^{2}$ then $3| ab$
   \end{problem}
 \end{tcolorbox}
 \begin{proof}
-  First let us figure out what the remainder of any square is modulo 3. By Fermat's theorem we have $n^{3} \equiv n \text{ mod }3$. This means $3|(n^{3}-n)\rightarrow 3|n(n^{2}-1)$. Because 3 is a prime that means it must divide one of these factors. In the case that 3 divides $n$, then it must also divide $n^{2}$. In the case that it divides $(n^{2}-1)$ that means $n^{2}\equiv 1 \text{ mod }3$. Meaning the only possible remainders are $0$ and $1$. 
+  We have $n^{3} \equiv n \text{ mod }3$, meaning $3|(n^{3}-n)\rightarrow 3|n(n^{2}-1)$. Because 3 is a prime that means it must divide one of these factors. In the case that 3 divides $n$, then it must also divide $n^{2}$. In the case that it divides $(n^{2}-1)$ that means $n^{2}\equiv 1 \text{ mod }3$. Meaning the only possible remainders are $0$ and $1$. 
 
   If $3 \nmid ab$ that would mean neither $a$ or $b$ are divisble by $3$. Implying they are of the form $a^{2} \equiv 1\text{ mod }3$ and $b^{2} \equiv 1\text{ mod }3$. Therefore $c^{2} \equiv 2 \text{ mod } 3$, but that is impossible since the only possible remainders for a square mod 3 are 0 and 1. Therefore if the equation holds then $3|ab$.
 \end{proof}
@@ -107,11 +113,15 @@ MATH 101 | Problem Solving | Fall 2021}
   \end{problem}
 \end{tcolorbox}
 \begin{proof}
-  First let us determine what the cubes of any integer modulo 7 would be. By Fermat's theorem we have that \[n^{7} \equiv n \text{ mod }7\]
-  Which means $7| (n^{7}-n) \rightarrow 7|n(n^{3-1})(n^{3} + 1)$. Because 7 is a prime it must divide one of these factors. In the case that 7 divides $n$ then it must divide $n^{3}$, implying $n^{3} \equiv 0 \text{ mod }7$. In the case that 7 divides $(n^{3}-1)$ then that means $n^{3} \equiv 1 \text{ mod }7 $. Finally if 7 divides $(n^{3} + 1)$ that means $n^{3} \equiv -1 \text{ mod }7$. 
+  We have, $n^{7} \equiv n \text{ mod }$ which means $7| (n^{7}-n) \rightarrow 7|n(n^{3-1})(n^{3} + 1)$. Because 7 is a prime it must divide one of these factors. In the case that 7 divides $n$ then it must divide $n^{3}$, implying $n^{3} \equiv 0 \text{ mod }7$. In the case that 7 divides $(n^{3}-1)$ then that means $n^{3} \equiv 1 \text{ mod }7 $. Finally if 7 divides $(n^{3} + 1)$ that means $n^{3} \equiv -1 \text{ mod }7$. 
 
-  Now in the case that neither $x^{3}$ or $y^{3}$ are divisible by 7. That means they have a remainder of $\pm 1$ when dividing by 7. Without loss of generality say $x^{3}$ has remainder $-1$ and $y^{3}$ has remainder $1$. Then their sum has to have reaminder 0 meaning $z^{3}$ will be divisible by 7. In the case they both have remainder 1 that would result in a contradiction because $z^{3} \equiv 2 \text{ mod }7$ is not possible. Therefoer at least one of these integers is disvisble by 7 if the given equation holds. 
+  Now in the case that neither $x^{3}$ or $y^{3}$ are divisible by 7. That means they have a remainder of $\pm 1$ when dividing by 7. Without loss of generality say $x^{3}$ has remainder $-1$ and $y^{3}$ has remainder $1$. Then their sum has to have reaminder 0 meaning $z^{3}$ will be divisible by 7. In the case they both have remainder 1 that would result in a contradiction because $z^{3} \equiv 2 \text{ mod }7$ is not possible. Therefore at least one of these integers is disvisble by 7 if the given equation holds. 
 \end{proof}
+
+
+
+
+
 \newpage
 \begin{tcolorbox}
   \begin{problem} {IC | 11/10 | 139.}
@@ -197,4 +207,5 @@ MATH 101 | Problem Solving | Fall 2021}
     \[32 \cdot 128 = 2^{5} 2^{7} = 2^{12}.\]
     Therefore $n =12$ meaning there does exist indeed exist an $n$ such that the sum given is a perfect square.
 \end{proof}
+
 \end{document}
