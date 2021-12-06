@@ -145,22 +145,23 @@ MATH 101 | Problem Solving | Fall 2021}
         A class with $2N$ students score $1,2, \dots, 10$. Each of these score occurred at least once, the average was 7.4. Show that the group can be divided into two groups such that the average is 7.4.
     \end{problem}
 \end{tcolorbox}
-\begin{problem}
-    First let us consider the sum of all the scores which will simply be $S = (7.4)2N$. Which we can express as,
+\begin{proof}
+    First let us consider the sum of all the scores which will simply be $S= x_1 + x_2 + \dots + x_{2N} = (7.4)2N$. Which we can express as,
     \[S = \frac{5}{5}(7.4)2N = \frac{74N}{5}.\]
-    This gives us that 5 divides $N$ and that the total sum is even. Now let $x_1, x_2, \dots x_{2N}$ be the scores of the students in increasing order. Next let us define $y_k = x_{2k} - x_{2k -1}$. We know the difference between $y_k$ will either be 1 or 0, this is because for any two consecutive scores we have that they will be equal or 1 apart, since every score occurs at least once. Let $S'$ be the sum of $y_1 + y_2 + \dots y_N$. Because $S$ is even, $S'$ must also be even. This means there is some $m < N$, such that,
+    This gives us that 5 divides $N$ and that the total sum is even. Now let $x_1, x_2, \dots x_{2N}$ be the sequence of scores in ascending order. Next let us define $y_k = x_{2k} - x_{2k -1}$. We know the $y_k$ will either be 1 or 0, this is because for any two consecutive scores we have that they will be equal or 1 apart and since every score occurs at least once. Let $S'$ be the sum of $y_1 + y_2 + \dots y_N$. Because $S$ is even, $S'$ must also be even. This means there is some $m < N$, such that,
     \[y_1 + y_2 + \dots + y_m = \frac{S'}{2}.\]
-    Now if we consider the scores of $x_2,x_4, \dots x_{2m}, x_{2m+1} , \dots,  x_{2N -1 } $ and their sum,
+    Now if we consider the scores of $x_2,x_4, \dots x_{2m}, x_{2m+1} , \dots,  x_{2N -1 } $ and their sum denoted by $T$,
     \begin{align*}
-        x_2 + x_4 + \dots + x_{2m} + x_{2m + 1} + \dots + x_{2N - 1} && y_k = x_{2k} - x_{2k -1} \\
-        (y_1 + x_1 ) + \dots (y_m + x_{2m - 1}) + x_{2m + 1} + \dots + x_{2N-1} \\
-        (y_1 + y_2 + \dots + y_m) + (x_1 + x_3 + \dots x_{2m+1} + \dots + x_{2N-1}) && \frac{S'}{2} = y_1 + \dots + y_m \\
-        \frac{1}{2}(S' + 2x_1 + 2x_3 + \dots + x_{2N-1}) && S' = y_1 + y_2 + \dots + y_N \\
-        \frac{1}{2} (((y_1 + x_2) +  \dots + (y_N + x_{2N - 1})) + (x_1 + x_3 + \dots + x_{2N-1})) \\
-        \frac{1}{2} (x_2 + \dots + x_{2N} + x_1 + x_3 \dots x_{2N-1}) \\
-        \frac{1}{2} S
+        T &=x_2 + x_4 + \dots + x_{2m} + x_{2m + 1} + \dots + x_{2N - 1} && \left(y_k = x_{2k} - x_{2k -1}\right) \\
+        T &=(y_1 + x_1 ) + \dots (y_m + x_{2m - 1}) + x_{2m + 1} + \dots + x_{2N-1} \\
+        T &=(y_1 + y_2 + \dots + y_m) + (x_1 + x_3 + \dots x_{2m+1} + \dots + x_{2N-1}) &&  \left(y_1 + \dots + y_m = \frac{S'}{2}\right) \\
+        T &=\frac{1}{2}(S' + 2x_1 + 2x_3 + \dots + x_{2N-1}) &&  \left(y_1 + y_2 + \dots + y_N = S'\right) \\
+        T &=\frac{1}{2} (((y_1 + x_1) +  \dots + (y_N + x_{2N - 1})) + (x_1 + x_3 + \dots + x_{2N-1})) && \left(y_k = x_{2k} - x_{2k -1}\right)\\
+        T &=\frac{1}{2} (x_2 + \dots + x_{2N} + x_1 + x_3 \dots x_{2N-1}) \\
+        T &= \frac{1}{2}(x_1 + x_2 + \dots + x_{2N}) \\
+        T &=\frac{1}{2} S
     \end{align*}
 
     But $\dfrac{1}{2}S$ is simply $7.4 \cdot N$. Thus the average of this collection of student scores is $7.4$ and as a consequence the average of the student's scores not in this group must also be $7.4$. Meaning we have broken the students into two groups where the average is still the same. 
-\end{problem}
+\end{proof}
 \end{document}

@@ -16,6 +16,8 @@
 %The first is the general font, and the second a math font
 \usepackage{mathpazo}
 \usepackage{eulervm}
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
 
 
 %------------------------
@@ -86,7 +88,7 @@
  
 \begin{document}
  
-\title{Week 3 Problems}
+\title{12/03 Resubmission}
 \author{Kevin Guillen\\[0.5em]
 MATH 101 | Problem Solving | Fall 2021}
 \date{} 
@@ -150,5 +152,133 @@ MATH 101 | Problem Solving | Fall 2021}
 \begin{solution}
     Let each room in the house be a vertex and outside be a vertex as well. All we have to show now is that this graph can't have exactly one vertex of odd degree. By the handshaking lemma there does not exist any such graph. So we have an even number of vertices which have odd degree. So connecting each adjacent door by an edge each entrance door has odd degree, therefore by handshaking lemma we have an even number of entrance doors. 
 \end{solution}
+
+\begin{tcolorbox}
+    \begin{problem} {OC | 11/01 | 68}
+        Imagine an $n \times n$ chessboard. How many ways is it possible to choose four squares, no three in the same row or columns which are the vertices of a rectangle?
+    \end{problem}
+\end{tcolorbox}
+\begin{proof}
+    If we have an $n\times n$ chessboard that means we have $n$ columns and $n$ rows. We can treat each row and column as sides of a rectangles. If we choose 2 unique vertical lines and 2 unique horizontal lines their intersections will generate a rectangle. There are n choose 2 ways to pick our horizontal lines, and n choose 2 ways to pick our vertical lines This means for an $n \times n$ chessboard we have, 
+    \[\binom{n}{2}\binom{n}{2}\]
+    rectangles
+
+\end{proof}
+\newpage
+\begin{tcolorbox}
+    \begin{problem} {OC | 11/10 | 86.}
+        Prove that there are no positive integers $x$, $y$ such that $x+y$, $2x + y$, and $x + 2y$ are squares. 
+    \end{problem}
+\end{tcolorbox}
+\begin{proof}
+    Assuming this were to be true, then for integers $a$, $b$, and $c$ we have,
+    \begin{align*}
+        x+y &= a^{2} \\
+        2x+y &= b^{2} \\
+        x + 2y &= c^{2}
+    \end{align*}
+    Using the 2nd equation to solve for $y$ we get, $y = b^{2} -2x$. Plugging this into the 1st equation we get, $x = b^{2} - a^{2}$. Using the 1st equation to solve for $x$ we get, $x = a^{2} -y$. Pluggin this into the 2nd equation we get $y = 2a^{2} -b^{2}$.
+
+    Now plugging in these value into the 3rd equation, we get,
+    \begin{align*}
+        a^{2}-y + 4a^{2} -2b^{2} &= c^{2} \\
+        3a^{2} &= b^{2} + c^{2}
+    \end{align*}
+
+    Thus there is only integer solutions if this diophantine equation holds. We know any integers squared mod 4 will have values 0 or 1. Therfore $b^{2} + c^{2} \in \set{0,1,2}$, and $3a^{2}\in \set{0,3}$. This together means we must have $3a^{2} \equiv 0 \text{ mod } 4$ and $(b^{2} + c^{2}) \equiv 0 \text{ mod }4$. Meaning $a$ is even and is of the form $a = 2k$, also means that $b$ and $c$ are even and of the form $b = 2l$ and $c = 2n$. Plugging this back into the equation we get,
+    \begin{align*}
+        12k^{2} & = 4l^{2} + 4n^{2}.
+    \end{align*}
+
+    This means there has to be a solution for $k$, $l$, and $n$. But this can be since $k + l + n < a + b + c$. Therefore there is no integers $x$ and $y$ such that $x +y$, $2x +y$, and $x + 2y$ are squares.
+\end{proof}
+
+\begin{tcolorbox}
+    \begin{problem} {OC | 11/10 | 88.}
+        Prove that there does not exist a natural number $n$ such that $n(n+1)$ is a perfect square.
+    \end{problem}
+\end{tcolorbox}
+\begin{proof}
+    Assume $n(n+1)$ is indeed a perfect square. That means it can expressed as, $n(n+1)= k^{2}$ for some $k \in \zz$. Consider the following though,
+    \begin{align*}
+        n(n+1) &= k^{2} \\
+        n^{2} + n &= k^{2} \\
+        n^{2} + k^{2} &= -n \\
+        (n+k)(n-k) &= -n
+    \end{align*}
+
+    We know $k > n$ meaning, $n +k  > n$. We have a contradiction now then since the equation implies $(n+k) \mid -n$ which is impossible since $n-k \in \zz$. Therefore there exists no natural number $n$ such that $n(n+1)$ is a perfect square. 
+\end{proof}
+\newpage
+\begin{tcolorbox}
+    \begin{problem} {IC | 11/01 | 109.}
+        How many solutions in natural numbers are there to the equation $a + b + c + d = 12$ where $a$ and $b$ are odd, and $c,d$ are arbitrary natural numbers?
+    \end{problem}
+\end{tcolorbox}
+\begin{proof}
+    We can solve this using generating functions and looking at the coefficient of $x^{12}$ for,
+    \begin{align*}
+        (x + x^{3} + x^{5} + x^{7} + x^{9})^{2}(x + x^{2} + \dots + x^{9})^{2}
+    \end{align*}
+    We are squaring the first term since that represents our 2 odd numbers and the second term is squared representing the arbitrary natural numbers. Which is why the first term has odd powers and the second term has every power up to 9. After calculations we will have the coefficient of $x^{12}$ to be 55. Meaning there is 55 solutions.
+    
+\end{proof}
+
+\begin{tcolorbox}
+    \begin{problem} {IC | 11/15 | 151.}
+        Is it possible for a triangle to have altitudes equal to 6, 10, and 20?
+    \end{problem}
+\end{tcolorbox}
+\includegraphics[scale=.5]{prob2}
+\begin{proof}
+    Consider the area of the triangle drawn above. It will be the following,
+    \[A = \frac{6}{2}a = \frac{10}{2}b = \frac{20}{2}c.\]
+
+    Which gives us the following equations,
+    \begin{align*}
+        a &= \frac{1}{3}A \\
+        b &= \frac{1}{5}A \\
+        c &= \frac{1}{10}A
+    \end{align*}
+
+    Recall though by the triangle inequality we have that $a < b + c$, we see through the following though,
+    \begin{align*}
+        a &< b + c \\
+        \frac{10}{30}A &< \frac{6}{30}A + \frac{3}{10}A = \frac{9}{10}A
+    \end{align*}
+    that if our altitudes were 6, 10 and 20, that would imply $\dfrac{10}{30}A < \dfrac{9}{10}A$ which is a contradiction. Therefore there can not be a triangle with those given altitudes. 
+\end{proof}
+
+
+
+
+
+
+
+\newpage
+\begin{tcolorbox}
+    \begin{problem} {OC | 11/24 | PP21}
+        A class with $2N$ students score $1,2, \dots, 10$. Each of these score occurred at least once, the average was 7.4. Show that the group can be divided into two groups such that the average is 7.4.
+    \end{problem}
+\end{tcolorbox}
+\begin{proof}
+    First let us consider the sum of all the scores which will simply be $S= x_1 + x_2 + \dots + x_{2N} = (7.4)2N$. Which we can express as,
+    \[S = \frac{5}{5}(7.4)2N = \frac{74N}{5}.\]
+    This gives us that 5 divides $N$ and that the total sum is even. Now let $x_1, x_2, \dots x_{2N}$ be the sequence of scores in ascending order. Next let us define $y_k = x_{2k} - x_{2k -1}$. We know the $y_k$ will either be 1 or 0, this is because for any two consecutive scores we have that they will be equal or 1 apart and since every score occurs at least once. Let $S'$ be the sum of $y_1 + y_2 + \dots y_N$. Because $S$ is even, $S'$ must also be even. This means there is some $m < N$, such that,
+    \[y_1 + y_2 + \dots + y_m = \frac{S'}{2}.\]
+    Now if we consider the scores of $x_2,x_4, \dots x_{2m}, x_{2m+1} , \dots,  x_{2N -1 } $ and their sum denoted by $T$,
+    \begin{align*}
+        T &=x_2 + x_4 + \dots + x_{2m} + x_{2m + 1} + \dots + x_{2N - 1} && \left(y_k = x_{2k} - x_{2k -1}\right) \\
+        T &=(y_1 + x_1 ) + \dots (y_m + x_{2m - 1}) + x_{2m + 1} + \dots + x_{2N-1} \\
+        T &=(y_1 + y_2 + \dots + y_m) + (x_1 + x_3 + \dots x_{2m+1} + \dots + x_{2N-1}) &&  \left(y_1 + \dots + y_m = \frac{S'}{2}\right) \\
+        T &=\frac{1}{2}(S' + 2x_1 + 2x_3 + \dots + x_{2N-1}) &&  \left(y_1 + y_2 + \dots + y_N = S'\right) \\
+        T &=\frac{1}{2} (((y_1 + x_1) +  \dots + (y_N + x_{2N - 1})) + (x_1 + x_3 + \dots + x_{2N-1})) && \left(y_k = x_{2k} - x_{2k -1}\right)\\
+        T &=\frac{1}{2} (x_2 + \dots + x_{2N} + x_1 + x_3 \dots x_{2N-1}) \\
+        T &= \frac{1}{2}(x_1 + x_2 + \dots + x_{2N}) \\
+        T &=\frac{1}{2} S
+    \end{align*}
+
+    But $\dfrac{1}{2}S$ is simply $7.4 \cdot N$. Thus the average of this collection of student scores is $7.4$ and as a consequence the average of the student's scores not in this group must also be $7.4$. Meaning we have broken the students into two groups where the average is still the same. 
+\end{proof}
 
 \end{document}
