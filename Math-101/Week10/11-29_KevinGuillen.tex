@@ -1,0 +1,166 @@
+\documentclass[11pt]{article}
+ 
+\usepackage[top=0.75in, bottom=1.25in, left=1in, right=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb} %this is THE math package
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{fancybox}
+\usepackage{hyperref}
+\usepackage{varwidth}
+\usepackage{mdframed}
+\usepackage{mathrsfs}
+\usepackage[most]{tcolorbox}
+%------------------------
+%Fonts I use, uncomment if you like to use them.
+%The first is the general font, and the second a math font
+\usepackage{mathpazo}
+\usepackage{eulervm}
+%------------------------
+%This is so that we have standard fonts for the double-stroked symbols
+%for reals, naturals etc. regardless of what font you use.
+%Don't comment
+\AtBeginDocument{
+  \DeclareSymbolFont{AMSb}{U}{msb}{m}{n}
+  \DeclareSymbolFontAlphabet{\mathbb}{AMSb}}
+%------------------------
+
+
+
+%----------------------------------------------
+%User-defined environments
+%Commented because we're not using them in this document
+%The only uncommented ones are the Problem and Solution environment
+
+% \newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{question}[2][Question]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem\!]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+%\newenvironment{sub-problem}[2][]{\begin{trivlist}
+%\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+\newenvironment{solution}{\begin{proof}[\textbf{\textit{Solution}}] }{\end{proof}}
+%----------------------------------------------
+
+%----------------------------
+%User-defined notations
+\newcommand{\zz}{\mathbb Z}   %blackboard bold Z
+\newcommand{\qq}{\mathbb Q}   %blackboard bold Q
+\newcommand{\ff}{\mathbb F}   %blackboard bold F
+\newcommand{\rr}{\mathbb R}   %blackboard bold R
+\newcommand{\nn}{\mathbb N}   %blackboard bold N
+\newcommand{\cc}{\mathbb C}   %blackboard bold C
+\newcommand{\af}{\mathbb A}   %blackboard bold A
+\newcommand{\pp}{\mathbb P}   %blackboard bold P
+\newcommand{\id}{\operatorname{id}} %for identity map
+\newcommand{\im}{\operatorname{im}} %for image of a function
+\newcommand{\dom}{\operatorname{dom}} %for domain of a function
+\newcommand{\cat}[1]{\mathscr{#1}}   %calligraphic category
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert} %for absolute value
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert} %for norm
+\newcommand{\modar}[1]{\text{ mod }{#1}} %for modular arithmetic
+\newcommand{\set}[1]{\left\{#1\right\}} %for set
+\newcommand{\setp}[2]{\left\{#1\ \middle|\ #2\right\}} %for set with a property
+\newcommand{\card}[1]{\#\,{#1}} %for cardinality of a set
+\newcommand\m[1]{\begin{pmatrix}#1\end{pmatrix}} 
+
+%Re-defined notations
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\emptyset}{\varnothing}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+%----------------------------
+
+\allowdisplaybreaks
+ 
+ 
+\begin{document}
+ 
+\title{11-29 Submission}
+\author{Kevin Guillen\\[0.5em]
+MATH 101 | Problem Solving | Fall 2021}
+\date{} 
+\maketitle
+
+%Use \[...\] instead of $$...$$
+
+\begin{tcolorbox}
+  \begin{problem} {IC | 11-22 | PP2}
+    Show that every positive integer is a sum of one or more numbers of the form $2^{r}3^{s}$, where $r$ and $s$ are nonnegative integers and no summand divides another. (For example 23 = 9 + 8 + 6.)
+  \end{problem}
+\end{tcolorbox}
+\begin{proof}
+    We see for 0 the set of its sums of the form $2^{r}3^{s}$, S$(0) = \emptyset$. For S$(1) = \set{1}$. 
+
+    Assume this hold for all $k < n$.
+
+    Now in the case that $k = n$, if $n$ is even, \[S(n) = \set{2a \mid a \in S(\frac{n}{2})}\] which is comprised of elements of the form $2^{r}3^{s}$ since $\frac{n}{2} < n$.
+
+    In the case that $n$ is odd, we can take the greatest $\alpha\in \nn$ such that $3^{\alpha} < n$ and we get, \[S(n) = \set{3^{\alpha}}\cup S(\dfrac{n - 3^{\alpha}}{2})\]
+    which also holds due this being true for $k < n$. 
+\end{proof}
+
+\begin{tcolorbox}
+    \begin{problem} {IC | 11-22 | PP14}
+        For which real numbers $c$ is there a straight line that intersects the curve \[x^{4} + 9x^{3} + cx^{2} + 9x + 4\]
+        in four distinct points. 
+    \end{problem}
+\end{tcolorbox}
+\begin{proof}
+    We need this function to have two inflection points for then we know there is a line that will intersect it at 4 distinct points. To do this we have to look at its 2nd derivative which is,
+    \[f''(x) = 12x^{2} + 52x + 2c.\]
+
+    Now we need to solve for when the discriminant of the 2nd derivative is greater than zero, that way we have two distinct real roots. 
+    \begin{align*}
+        b^{2} - 4ac &> 0 \\
+        54^{2} - 4\cdot12 \cdot 2c  > 0 \\
+        2916 - 96c > 0 
+    \end{align*}
+    This is only true for $c \in (-\infty,30.375)$
+
+\end{proof}
+
+\newpage
+\begin{tcolorbox}
+    \begin{problem} {IC | 11/29 | PP15}
+        A square of side $2a$, always lying in the first quadrant, moves so that two consecutive vertices are always on the $x-$ and $y-$axes. Fin the locus of the center of the square.
+    \end{problem}
+\end{tcolorbox}
+\begin{proof}
+    The locus of the center of the square is clearly on the line $y = x$. Now we just need to find the minimum part of the line. This is when both vertices are on the same axis, say the y-axis. The center in which case is $(a,a)$. Now for the maximum. Continuing with the position mentioned, if the vertex at the origin begins to move to the right, and the vertex strictly on the on the y axis, the center reaches its maximum when the restricted vertices are placed at $(0,a)$ and $(a,0)$. This means are center will be $\sqrt{a^{2} + a^{2}} = \sqrt{2a^{2}} = \sqrt{2}a$ far from the origin. Thus the locus of the center of the square is on $y=x$ for $x \in [a, \sqrt{2}a]$
+\end{proof}
+
+\begin{tcolorbox}
+    \begin{problem} {OC | 11/24 | PP21}
+        A class with $2N$ students score $1,2, \dots, 10$. Each of these score occurred at least once, the average was 7.4. Show that the group can be divided into two groups such that the average is 7.4.
+    \end{problem}
+\end{tcolorbox}
+\begin{problem}
+    First let us consider the sum of all the scores which will simply be $S = (7.4)2N$. Which we can express as,
+    \[S = \frac{5}{5}(7.4)2N = \frac{74N}{5}.\]
+    This gives us that 5 divides $N$ and that the total sum is even. Now let $x_1, x_2, \dots x_{2N}$ be the scores of the students in increasing order. Next let us define $y_k = x_{2k} - x_{2k -1}$. We know the difference between $y_k$ will either be 1 or 0, this is because for any two consecutive scores we have that they will be equal or 1 apart, since every score occurs at least once. Let $S'$ be the sum of $y_1 + y_2 + \dots y_N$. Because $S$ is even, $S'$ must also be even. This means there is some $m < N$, such that,
+    \[y_1 + y_2 + \dots + y_m = \frac{S'}{2}.\]
+    Now if we consider the scores of $x_2,x_4, \dots x_{2m}, x_{2m+1} , \dots,  x_{2N -1 } $ and their sum,
+    \begin{align*}
+        x_2 + x_4 + \dots + x_{2m} + x_{2m + 1} + \dots + x_{2N - 1} && y_k = x_{2k} - x_{2k -1} \\
+        (y_1 + x_1 ) + \dots (y_m + x_{2m - 1}) + x_{2m + 1} + \dots + x_{2N-1} \\
+        (y_1 + y_2 + \dots + y_m) + (x_1 + x_3 + \dots x_{2m+1} + \dots + x_{2N-1}) && \frac{S'}{2} = y_1 + \dots + y_m \\
+        \frac{1}{2}(S' + 2x_1 + 2x_3 + \dots + x_{2N-1}) && S' = y_1 + y_2 + \dots + y_N \\
+        \frac{1}{2} (((y_1 + x_2) +  \dots + (y_N + x_{2N - 1})) + (x_1 + x_3 + \dots + x_{2N-1})) \\
+        \frac{1}{2} (x_2 + \dots + x_{2N} + x_1 + x_3 \dots x_{2N-1}) \\
+        \frac{1}{2} S
+    \end{align*}
+
+    But $\dfrac{1}{2}S$ is simply $7.4 \cdot N$. Thus the average of this collection of student scores is $7.4$ and as a consequence the average of the student's scores not in this group must also be $7.4$. Meaning we have broken the students into two groups where the average is still the same. 
+\end{problem}
+\end{document}
