@@ -1,0 +1,265 @@
+\documentclass[11pt]{article}
+ 
+\usepackage[top=0.75in, bottom=1.25in, left=1in, right=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb} %this is THE math package
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{fancybox}
+\usepackage{hyperref}
+\usepackage{varwidth}
+\usepackage{mdframed}
+\usepackage{mathrsfs}
+\usepackage[most]{tcolorbox}
+%------------------------
+%Fonts I use, uncomment if you like to use them.
+%The first is the general font, and the second a math font
+\usepackage{mathpazo}
+\usepackage{eulervm}
+%------------------------
+%This is so that we have standard fonts for the double-stroked symbols
+%for reals, naturals etc. regardless of what font you use.
+%Don't comment
+\AtBeginDocument{
+  \DeclareSymbolFont{AMSb}{U}{msb}{m}{n}
+  \DeclareSymbolFontAlphabet{\mathbb}{AMSb}}
+%------------------------
+
+%----------------------------------------------
+%User-defined environments
+%Commented because we're not using them in this document
+%The only uncommented ones are the Problem and Solution environment
+
+% \newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{question}[2][Question]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem\!]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+%\newenvironment{sub-problem}[2][]{\begin{trivlist}
+%\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+\newenvironment{solution}{\begin{proof}[\textbf{\textit{Solution}}] }{\end{proof}}
+%----------------------------------------------
+
+%----------------------------
+%User-defined notations
+\newcommand{\zz}{\mathbb Z}   %blackboard bold Z
+\newcommand{\qq}{\mathbb Q}   %blackboard bold Q
+\newcommand{\ff}{\mathbb F}   %blackboard bold F
+\newcommand{\rr}{\mathbb R}   %blackboard bold R
+\newcommand{\nn}{\mathbb N}   %blackboard bold N
+\newcommand{\cc}{\mathbb C}   %blackboard bold C
+\newcommand{\af}{\mathbb A}   %blackboard bold A
+\newcommand{\pp}{\mathbb P}   %blackboard bold P
+\newcommand{\id}{\operatorname{id}} %for identity map
+\newcommand{\im}{\operatorname{im}} %for image of a function
+\newcommand{\dom}{\operatorname{dom}} %for domain of a function
+\newcommand{\cat}[1]{\mathscr{#1}}   %calligraphic category
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert} %for absolute value
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert} %for norm
+\newcommand{\modar}[1]{\text{ mod }{#1}} %for modular arithmetic
+\newcommand{\set}[1]{\left\{#1\right\}} %for set
+\newcommand{\setp}[2]{\left\{#1\ \middle|\ #2\right\}} %for set with a property
+\newcommand{\card}[1]{\#\,{#1}} %for cardinality of a set
+\newcommand\m[1]{\begin{pmatrix}#1\end{pmatrix}} 
+
+%Re-defined notations
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\emptyset}{\varnothing}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+%----------------------------
+
+\allowdisplaybreaks
+ 
+ 
+\begin{document}
+ 
+\title{Homework 8}
+\author{Kevin Guillen\\[0.5em]
+MATH 200 | Algebra I | Fall 2021}
+\date{} 
+\maketitle
+
+May I have my proof for 11.3 graded please, thank you.
+
+\begin{tcolorbox}
+  \begin{problem} {11.1} Prove the statements in Remark 11.2.
+  \end{problem}
+\end{tcolorbox}
+\begin{proof}
+    \begin{itemize}
+        \item[(a)] $a \mid a$ and $a \mid 0$.
+        \begin{proof}
+            Given $a \in R$. We can consider the multiplicative identity $1\in R$, we know that it satisfies $a1 = a$. Which by definition means $a \mid a$
+
+            Now consider $0 \in R$, by definition it satisfies for $a \in R$, that $a0 = 0$. Meaning $a \mid 0$.
+        \end{proof} 
+        \item[(b)] $0 \mid a$ if and only if $a = 0$.
+        \begin{proof}
+            If $0 \mid a$ that means there exists $c \in R$ such that $0c = a$, but by definition $a$ must be 0. 
+
+            If $a = 0$ then from (a) we know $0 \mid 0$. 
+        \end{proof} 
+        \item[(c)] $u \mid a$.
+        \begin{proof}
+            Because $u$ is a unit of $R$ that means there exists $u^{-1}\in R$. We also know $R$ is closed under multiplication therefore $u^{-1}a \in R$. Now consider the following,
+            \begin{align*}
+                u(u^{-1}a) = (uu^{-1})a = 1a = a
+            \end{align*} 
+            therefore $u\mid a$.
+        \end{proof} 
+        \item[(d)] $a \mid u$ if and only if $a \in R^{\times}$.
+        \begin{proof}
+            Given $a\mid u$, it means there exists $b \in R$ such that $ab = u$. Since $u$ is a unit there exists $u^{-1}\in R$ such that $uu^{-1} = 1$. Now consider the following,
+            \begin{align*}
+                uu^{-1} &= 1 \\
+                (ab)(ab)^{-1} &= 1 \\
+                (ab)(b^{-1}a^{-1}f &= 1 \\
+                aa^{-1} &=1 \\
+                1 &= 1. 
+            \end{align*}
+            Therefore if $a \mid u$ then $a \in R^{\times}$. 
+
+            Given $a \in R^{\times}$, then it follows from (c) that $a \mid u$.
+        \end{proof} 
+        \item[(e)] If $a \mid b$ and $b \mid c$ then $a \mid c$.
+        \begin{proof}
+            Given that $a \mid b$ that means there exists $a' \in R$ such that $aa' = b$. Now given $b\mid c$ that means there exists $b' \in R$ such that $bb' = c$. Now consider the following,
+            \begin{align*}
+                bb' &= c \\
+                aa'b' &= c\\
+                a(a'b')&= c && a'b' \in R
+            \end{align*}
+            therefore $a \mid c$.
+        \end{proof} 
+        \item[(f)] If $a \mid b_1, \dots, a \mid b_n$ then $a\mid r_1b_1 + \dots + r_n b_n$.
+        \begin{proof}
+            Given that $a \mid b_1, \dots, a\mid b_n$, then we know there exists $c_i\in R$ for $i \in \set{1, \dots, n}$ such that $ac_i = b_i$. Therfore,
+            \begin{align*}
+                 r_1b_1 + \dots + r_nb_n = r_1(ac_1) + \dots + r_n(ac_n) 
+            \end{align*} 
+            and by definition of being in a ring we have distribution so therefore,
+            \begin{align*}
+                r_1b_1 + \dots + r_nb_n =a(r_1c_1 + \dots +r_nc_n). 
+            \end{align*}
+            Because $(r_1c_1 + \dots + r_nc_n) \in R$, that means $a \mid r_1b_1 + \dots + r_nb_n$
+        \end{proof} 
+        \item[(g)] $a\mid b$ if and only if $bR \subseteq aR$.
+        \begin{proof}
+            Given that $a\mid b$, that means there exists $c \in R$ such that $ac = b$. Therefore for all $r \in R$ we have,
+            \begin{align*}
+                br = (ac)r &= a(cr) && cr = r' \in R \\
+                &= ar'\in aR
+            \end{align*}
+            Therefore $bR \subseteq aR$.
+
+            Given that $bR \subseteq aR$, it means that for any $r \in R$ then there exists some $r' \in R$ such that $br = ar'$. Now consider the case where $r =1$, then $b = ar'$ which means $a\mid b$.
+        \end{proof} 
+        \item[(h)] $\thicksim$ is an equivalance relation on $R$.
+        \begin{proof}
+            First we see if $a \thicksim a$ that means $a\mid a$ and $a \mid a$ which follows from  (a).
+
+            Next we see if $a \thicksim b $ and $b \thicksim c$ that means $a\mid b$ and $b \mid c$. From (e) we know then that $a \mid c$. Next we know it means that $b \mid a$ and $c \mid b$, but it also follows from (e) that $c \mid a$. Meaning $a \thicksim c$.
+
+            Finally the symmetric follows trivially since $a \thicksim b$ implies $a\mid b$ AND $b \mid a$ which means $b \thicksim a$.
+        \end{proof} 
+    \end{itemize}
+\end{proof}
+\newpage
+\begin{tcolorbox}
+    \begin{problem} {11.3}
+        Show that the ideal $(X)$ of $\zz[X]$ is a prime ideal but not a maximal ideal. 
+    \end{problem}
+\end{tcolorbox}
+\begin{proof}
+    Every $f(x) \in \zz[X]$ is of the form $\sum_{k = 0}^{n}a_kx^{k}$ where $a_0$ is the constant term which is an integer. Now consider the following map,
+    \begin{align*}
+        \pi: \zz[X] &\to \zz \\
+        f(X) &\mapsto f(0) = a_0
+    \end{align*}
+    This simply takes a polynomial and evaluates it at 0 which we know then is a ring homomorphism. This just leaves the constant term, $a_0$. Now we want to show that this map is surjective so let $b \in \zz$ be an arbitrary integer. We want to show that there exists a polynomial $f\in \zz[X]$ such that $\pi(f) = f(0) = b$. We know this $f$ exists simply consider $f(X) = X + b$, 
+    \begin{align*}
+        f(0) = 0 + b = b.     
+    \end{align*}
+    This shows that $\pi$ is surective meaning $\im(\pi) = \zz$.
+    Now if we consider the kernel of $\pi$ it is simply \[\ker(\pi) = \set{f \mid f\in \zz[X], f(0) = 0}\]
+
+    If $f \in \ker(\pi)$ that means then $f \in (X)$. As a matter of fact $\ker(\pi) = (X)$. This is because $(X)$ is all polynomials with integer coefficients where every polynomial's constant term is 0. Therefore by the fundamental theorem of ring homomorphisms $\zz[X]/\ker(\pi)=\zz[X]/(X) \cong \im(\pi) = \zz$. Note though that $\zz$ is an integeral domain, and therefore so is $\zz[X]/(X)$ meaning $(X)$ is a prime ideal. The reason it is not maximal is because $\zz$ is not a field, meaning $\zz[X]/(X)$ is not a field, so $(X)$ cannot be maximal as we've proved in class.
+\end{proof}
+
+\begin{tcolorbox}
+    \begin{problem} {12.6}
+        Let $R =\zz[i] = \set{a + bi \mid a,b\in \zz}$. Computer the greatest common divisor of $\alpha = 10$ and $\beta = 1 - 5i$.
+    \end{problem}
+\end{tcolorbox}
+\begin{solution}
+    Let's consider the following,
+    \begin{align*}
+        10 &= (2i)(1-5i) -2i && N(-2i) = 4 < N(1-5i) = 26\\
+        1-5i & = 2(-2i) + 1-i && N(1-i) = 2 < N(-2i) = 4\\
+        -2i &= (1-i)(1-i) + 0
+    \end{align*}
+
+    Thus $1-i$ and its associates are the GCD of $\alpha$ and $\beta$
+\end{solution}
+
+\begin{tcolorbox}
+    \begin{problem} {12.9} 
+        Show that the ring $R$ = $\zz[\sqrt2] = \set{a +b \sqrt2 \mid a,b \zz}$ is a Euclidean domain. 
+    \end{problem}
+\end{tcolorbox}
+
+\begin{proof}
+    We already know that this ring forms an integral domain. Now let us consider the map given to us by,
+    \begin{align*}
+        N: R &\to \nn_0 \\
+        a +b\sqrt2&\mapsto \abs{a^{2} - 2b^{2}} 
+    \end{align*}
+
+    First we see that for $0 \in R$, $N(0) = 0^{2} -2\cdot0^{2} = 0$. Now we want to show that this norm has a divison algorithm.  Let $\alpha$, $\beta \in \zz[\sqrt2]$, where $\beta \neq 0$. Then they are of the form $\alpha = x + y \sqrt2$, $\beta = w + z\sqrt2$. Consider the following,
+    \begin{align*}
+        \frac{\alpha}{\beta} = \frac{x + y\sqrt2}{w + z \sqrt2} = \frac{xw - 2yz + (yw - xz)\sqrt2}{w^{2} - 2z^{2}}.
+    \end{align*}
+
+    Now let $j,k \in \qq$, where $j = \frac{xw-2yz}{w^{2}-2z^{2}}$ and $k = \frac{(yw - xz)}{w^{2}-2z^{2}}$. Now let $n,m\in \zz$ be the smallest integers such that,
+    \begin{align*}
+        \abs{j -n} \leq \frac{1}{2} \\
+        \abs{k -m} \leq \frac{1}{2}
+    \end{align*}
+    Now let $\gamma$ be defined as the following,
+    \begin{align*}
+        \gamma = (j - n) + (k -m)\sqrt2 = j + k\sqrt2 -n -m\sqrt2 = \frac{\alpha}{\beta} - (n+m\sqrt2)
+    \end{align*}.
+
+    We then get the following,
+    \begin{align*}
+        \gamma &= \frac{\alpha}{\beta} - (n+m\sqrt2) \\
+        \beta\gamma &= \alpha - \beta(n+m\sqrt2) \\
+        \beta\gamma + \beta(n+m\sqrt2) &= \alpha
+    \end{align*}
+    where $(n+m\sqrt2)$ and $\beta\gamma \in \zz[\sqrt2]$.
+
+
+    Now consider the norm of $\gamma$, which will be $\abs{(j-n)^{2} -2(k-m)^{2}}$, using the triangle inequality and how we chose $n$ and $m$ we get the following,
+    \begin{align*}
+        \abs{(j-n)^{2} -2(k-m)^{2}} \leq \abs{j-n}^{2} + 2\abs{k-m}^{2} \leq \frac{1}{4} + 2\frac{1}{4} = \frac{3}{4}
+    \end{align*}
+
+    This is useuful to us because by definition we need $N(\beta\gamma) < N(\beta)$, where $\beta\gamma$ is the remainder when dividing $\alpha$ by $\beta$. We see this is true because consider the following, 
+    \begin{align*}
+        N(\beta\gamma) = N(\beta)N(\gamma) \leq N(\beta)\frac{3}{4}
+    \end{align*}
+    which is obviously less than $N(\beta)$. This means then that $\zz\sqrt2$ is indeed a Euclidean Domain since all together we have $\alpha = \beta(n+m\sqrt2) + \beta\gamma$ where $N(\beta\gamma) < N(\beta)$, and $(n+m\sqrt2),\beta\gamma \in \zz[\sqrt2]$ 
+\end{proof}
+
+\end{document}
