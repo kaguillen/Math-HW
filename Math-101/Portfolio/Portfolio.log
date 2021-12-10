@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.8.12)  10 DEC 2021 08:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.8.12)  10 DEC 2021 10:51
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -848,7 +848,7 @@ File: ./images//prob3.png Graphic file (type png)
 Package pdftex.def Info: ./images//prob3.png  used on input line 413.
 (pdftex.def)             Requested size: 220.82445pt x 143.03403pt.
  [9 <./images//prob3.png>] [10] [11] [12] [13] [14] [15] [16]
-Underfull \hbox (badness 1112) in paragraph at lines 765--766
+Underfull \hbox (badness 1112) in paragraph at lines 766--767
 []\OT1/ppl/m/n/10.95 Basketball star Shanille O'Keal's team statis-ti-cian keeps
  []
 
@@ -856,22 +856,22 @@ Underfull \hbox (badness 1112) in paragraph at lines 765--766
 <./images//diagram.png, id=146, 851.18pt x 625.33624pt>
 File: ./images//diagram.png Graphic file (type png)
 <use ./images//diagram.png>
-Package pdftex.def Info: ./images//diagram.png  used on input line 815.
+Package pdftex.def Info: ./images//diagram.png  used on input line 816.
 (pdftex.def)             Requested size: 425.58894pt x 312.66736pt.
  [18 <./images//diagram.png>] [19] [20] (./Portfolio.aux)
 Package rerunfilecheck Info: File `Portfolio.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 28375 strings out of 478542
- 551457 string characters out of 5854402
+ 28374 strings out of 478542
+ 551438 string characters out of 5854402
  908329 words of memory out of 5000000
- 45741 multiletter control sequences out of 15000+600000
+ 45740 multiletter control sequences out of 15000+600000
  433272 words of font info for 118 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  102i,15n,108p,778b,476s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2021/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/euler/euex10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/euler/eufm7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/euler/eurm10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/euler/eurm7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/euler/eusm10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb><c:/texlive/2021/texmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb><c:/texlive/2021/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb><c:/texlive/2021/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on Portfolio.pdf (20 pages, 485587 bytes).
+Output written on Portfolio.pdf (20 pages, 486355 bytes).
 PDF statistics:
  234 PDF objects out of 1000 (max. 8388607)
  150 compressed objects within 2 object streams

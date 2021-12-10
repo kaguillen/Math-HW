@@ -1,0 +1,12 @@
+\contentsline {section}{\numberline {1}$C^{3}$ Solutions Submitted for Portfolio}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}I.C. Solutions}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}O.C. Solutions}{3}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Putnam Solutions}{3}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}I.C. Solutions being Resubmitted}{4}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}O.C. Solutions being Resubmitted}{4}{subsection.1.5}%
+\contentsline {subsection}{\numberline {1.6}New I.C. Submissions}{4}{subsection.1.6}%
+\contentsline {section}{\numberline {2}Resubmissions}{4}{section.2}%
+\contentsline {section}{\numberline {3}New Submissions}{6}{section.3}%
+\contentsline {section}{\numberline {4}Strategies}{7}{section.4}%
+\contentsline {section}{\numberline {5}Tactics and techniques}{7}{section.5}%
+\contentsline {section}{\numberline {6}Tools and mathematical content}{7}{section.6}%

@@ -1,9 +1,9 @@
 # Fdb version 3
-["pdflatex"] 1639154693 "c:/Users/kevin/Documents/Math-HW/Math-101/Portfolio/Portfolio.tex" "Portfolio.pdf" "Portfolio" 1639154696
-  "Portfolio.aux" 1639154696 722 909dfda60acff6128fd9705c46804d10 "pdflatex"
-  "Portfolio.out" 1639154695 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "Portfolio.tex" 1639154692 50651 3696d4e0bd793b9404b9eaa5f6203457 ""
-  "c:/Users/kevin/Documents/Math-HW/Math-101/Portfolio/Portfolio.tex" 1639154692 50651 3696d4e0bd793b9404b9eaa5f6203457 ""
+["pdflatex"] 1639162289 "c:/Users/kevin/Documents/Math-HW/Math-101/Portfolio/Portfolio.tex" "Portfolio.pdf" "Portfolio" 1639162291
+  "Portfolio.aux" 1639162291 722 909dfda60acff6128fd9705c46804d10 "pdflatex"
+  "Portfolio.out" 1639162290 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "Portfolio.tex" 1639162288 51091 2f87891db4fc0d11004397c68c1f0abd ""
+  "c:/Users/kevin/Documents/Math-HW/Math-101/Portfolio/Portfolio.tex" 1639162288 51091 2f87891db4fc0d11004397c68c1f0abd ""
   "c:/texlive/2021/texmf-dist/fonts/enc/dvips/base/8r.enc" 1628824547 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "c:/texlive/2021/texmf-dist/fonts/map/fontname/texfonts.map" 1628824999 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2021/texmf-dist/fonts/tfm/adobe/palatino/pplb7t.tfm" 1628826719 1616 371d1ee60c04b008c8fd760060cd34f1 ""
@@ -252,7 +252,7 @@
   "images//prob1.png" 1638139824 224264 af406964a2ec3023a858c612f1a84702 ""
   "images//prob3.png" 1638139824 110000 3f4690383ce0c904af48005b0bcd2d27 ""
   (generated)
-  "Portfolio.pdf"
   "Portfolio.log"
   "Portfolio.aux"
   "Portfolio.out"
+  "Portfolio.pdf"
