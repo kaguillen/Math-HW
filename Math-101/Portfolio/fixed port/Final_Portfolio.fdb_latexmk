@@ -1,9 +1,9 @@
 # Fdb version 3
-["pdflatex"] 1639156538 "c:/Users/kevin/Documents/Math-HW/Math-101/Portfolio/fixed port/Final_Portfolio.tex" "Final_Portfolio.pdf" "Final_Portfolio" 1639156540
-  "Final_Portfolio.aux" 1639156539 1077 a41bde7571e3e9c4185eb263de66c890 "pdflatex"
-  "Final_Portfolio.out" 1639156539 369 391b96e5c95860b5dcdebd87d96940f5 "pdflatex"
-  "Final_Portfolio.tex" 1639156537 4571 42bcb252bf1b5a2b684768b527b621e1 ""
-  "c:/Users/kevin/Documents/Math-HW/Math-101/Portfolio/fixed port/Final_Portfolio.tex" 1639156537 4571 42bcb252bf1b5a2b684768b527b621e1 ""
+["pdflatex"] 1639156748 "c:/Users/kevin/Documents/Math-HW/Math-101/Portfolio/fixed port/Final_Portfolio.tex" "Final_Portfolio.pdf" "Final_Portfolio" 1639156750
+  "Final_Portfolio.aux" 1639156750 1077 a41bde7571e3e9c4185eb263de66c890 "pdflatex"
+  "Final_Portfolio.out" 1639156750 369 391b96e5c95860b5dcdebd87d96940f5 "pdflatex"
+  "Final_Portfolio.tex" 1639156748 4598 6f621f6742a42b82261078170eeccfb2 ""
+  "c:/Users/kevin/Documents/Math-HW/Math-101/Portfolio/fixed port/Final_Portfolio.tex" 1639156748 4598 6f621f6742a42b82261078170eeccfb2 ""
   "c:/texlive/2021/texmf-dist/fonts/enc/dvips/base/8r.enc" 1628824547 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "c:/texlive/2021/texmf-dist/fonts/map/fontname/texfonts.map" 1628824999 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2021/texmf-dist/fonts/tfm/adobe/palatino/pplb7t.tfm" 1628826719 1616 371d1ee60c04b008c8fd760060cd34f1 ""
@@ -208,7 +208,7 @@
   "c:/texlive/2021/texmf-var/web2c/pdftex/pdflatex.fmt" 1628828791 2801564 96ee99b7930c0aca3c8f1f40880f406e ""
   "c:/texlive/2021/texmf.cnf" 1628828694 713 e69b156964470283e0530f5060668171 ""
   (generated)
-  "Final_Portfolio.log"
   "Final_Portfolio.out"
-  "Final_Portfolio.pdf"
+  "Final_Portfolio.log"
   "Final_Portfolio.aux"
+  "Final_Portfolio.pdf"
