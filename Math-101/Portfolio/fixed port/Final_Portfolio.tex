@@ -91,37 +91,34 @@ MATH  | Class | Quarter}
 \maketitle
 
 %Use \[...\] instead of $$...$$
-\begin{tcolorbox}
-\begin{problem}{1}
-Find the sum of:
-\[\frac{1}{1 \cdot 2\cdot 3} + \frac{1}{2 \cdot 3 \cdot 4} + \dots + \frac{1}{100 \cdot 101 \cdot 102}\]
-\end{problem}
-\end{tcolorbox}
-\begin{solution}
-    If we look at this as a summation we can describe each term as, 
-    \[\frac{1}{i \cdot (i +1) \cdot (i+2)} \] 
-    for $i\in \set{1, \dots, n}$. Giving us,
-    \[\sum_{i=1}^n \frac{1}{i \cdot (i +1) \cdot (i+2)}\]
-    Doing some algebra we can obtain the following,
-    \begin{align*}
-        \sum_{i=1}^n \frac{1}{i \cdot (i +1) \cdot (i+2)} &= \sum_{i=1}^n \frac{1}{2}\cdot \frac{2}{i \cdot (i +1) \cdot (i+2)} \\
-        &= \frac{1}{2} \cdot \sum_{i=1}^n \frac{i + 2 - i}{i \cdot (i +1) \cdot (i+2)} \\
-        &= \frac{1}{2} \cdot\sum_{i=1}^n  \frac{(i + 2)}{i \cdot (i +1) \cdot (i+2)} - \frac{i}{i \cdot (i +1) \cdot (i+2)} \\
-        &= \frac{1}{2} \cdot\sum_{i=1}^n  \frac{1}{i \cdot (i +1)} - \frac{1}{(i +1) \cdot (i+2)}
-    \end{align*}
+\section{$C^{3}$ Solutions Submitted for Portfolio}
+\subsection{IC}
+\begin{itemize}
+    \item[\text{Oct 4}] \begin{itemize}
+        \item[(14)] 
+        \item[(19)] 
+    \end{itemize}
+    \item[\text{Nov 1}] \begin{itemize}
+        \item[(81)] 
+        \item[(99)] 
+    \end{itemize}
+    \item[\text{Nov 8}] \begin{itemize}
+        \item[(122)] 
+        \item[(110)] 
+    \end{itemize}
+\end{itemize}
 
-    \noindent Finally when we expand the summation out we can see something important,
-    \[\frac{1}{2}\left(\frac{1}{1 \cdot (2)} - \frac{1}{(2)\cdot(3)} + \frac{1}{2\cdot(3)} - \frac{1}{(3)\cdot(4)}+ \dots + \frac{1}{n \cdot(n+1)}-\frac{1}{(n +1)\cdot(n + 2)}\right)\]
-    that the middle terms cancel out giving us,
-    \[\frac{1}{2} \cdot \left(\frac{1}{1\cdot(1+1)} - \frac{1}{(n+1)\cdot(n+2)}\right)\]
-    Now plugging in our desired value for the problem, $n = 100$, we get,
-    \begin{align*}
-        \frac{1}{2} \cdot \left(\frac{1}{2} - \frac{1}{101 \cdot 102} \right) &= \frac{1}{4} - \frac{1}{20604} \\ 
-        &= \frac{5151}{20604} - \frac{1}{20604}  \\
-        &= \frac{5150}{20604}
-    \end{align*}
-\end{solution}
-
+\subsection{OC}
+\begin{itemize}
+    \item[\text{Sept 27}] (1)
+    \item[\text{Oct 4}] \begin{itemize}
+        \item[(18)]
+    \end{itemize}
+    \item[\text{Nov 8}] \begin{itemize}
+        \item[(69)] 
+        \item[(71)] 
+    \end{itemize}
+\end{itemize}
 
 
 \end{document}

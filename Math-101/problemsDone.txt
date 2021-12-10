@@ -1,34 +1,46 @@
 PREFECT
 
 OUT OF CLASS -------------------------
-18
-46
-61
-69
-71
-72
-77
-90
-83
+18-
+46-
+61-
+68-
+69-
+71-
+72-
+77-
+90-
+83-
 
 IN CLASS --------------------------
-14
-19
-68
-81
-99
-109
-110
-122
-135
-136
-143
-148
-153
+14-
+19-
+46-
+81-
+99-
+109-
+110-
+122-
+124 **
+135-
+136-
+143-
+148-
+153-
 
 PUTNAM
 4
-15
+15-
+19-
+20-
+28-
+36 EDIT this one-
+40-
+41-
+42-
+
+
+37-
 
 NEED TO ATTEMPT AGAIN
 
@@ -49,4 +61,44 @@ IN CLASS ------------------------------------
 PUTNAM
 2
 21
+
+Relax Conditions 
+You need to relax your vision and get ideas from the periphery.
+Like Pólya’s mouse, constantly be on the lookout for twists and turns and tricks. Don’t get locked into
+one method. Try to consciously break or bend the rules
+
+GET YOUR HANDS DIRTY 
+This is easy and fun to do. Stay loose and experiment. Plug in lots of num-
+bers. Keep playing around until you see a pattern. Then play around some more, and try to
+figure out why the pattern you see is happening. It is a well-kept secret that much high-level
+mathematical research is the result of low-tech “plug and chug” methods. The great Carl Gauss,
+widely regarded as one of the greatest mathematicians in history (see page 64), was a big fan of
+this method. In one investigation, he painstakingly computed the number of integer solutions to
+𝑥2 + 𝑦2 ≤ 90,000.3
+
+WISHFUL THINKING
+These strategies combine psychology and mathematics to
+help break initial impasses in your work. Ask yourself, “What is it about the problem that makes
+it hard?” Then, make the difficulty disappear! You may not be able to do this legally, but who
+cares? Temporarily avoiding the hard part of a problem will allow you to make progress and may
+shed light on the difficulties. For example, if the problem involves big, ugly numbers, make them
+small and pretty. If a problem involves complicated algebraic fractions or radicals, try looking
+at a similar problem without such terms. At best, pretending that the difficulty isn’t there will
+lead to a bold solution, as in Example 2.1.1 on page 14. At worst, you will be forced to focus
+on the key difficulty of your problem, and possibly formulate an intermediate question, whose
+answer will help you with the problem at hand. And eliminating the hard part of a problem, even
+temporarily, will allow you to have some fun and raise your confidence. If you cannot solve the
+problem as written, at least you can make progress with its easier cousin!
+
+FIND A PENULMATE STEP 
+Once you know what the desired conclusion is, ask yourself, “What will yield
+the conclusion in a single step?” Sometimes a penultimate step is “obvious,” once you start
+looking for one. And the more experienced you are, the more obvious the steps are. For example,
+suppose that 𝐴 and 𝐵 are weird, ugly expressions that seem to have no connection, yet you must
+show that 𝐴 = 𝐵. One penultimate step would be to argue separately that 𝐴 ≥ 𝐵 AND 𝐵 ≥ 𝐴.
+Perhaps you want to show instead that 𝐴 ≠ 𝐵. A penultimate step would be to show that 𝐴 is
+always even, while 𝐵 is always odd. Always spend some time thinking very explicitly about
+possible penultimate steps. Of course, sometimes, the search for a penultimate step fails, and
+sometimes it helps one instead to plan a proof strategy (see Section 2.3 below
+
 

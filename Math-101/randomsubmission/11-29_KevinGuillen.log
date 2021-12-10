@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.8.12)  3 DEC 2021 04:26
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.8.12)  10 DEC 2021 04:13
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**c:/Users/kevin/Documents/Math-HW/Math-101/Week10/11-29_KevinGuillen.tex
-(c:/Users/kevin/Documents/Math-HW/Math-101/Week10/11-29_KevinGuillen.tex
+**c:/Users/kevin/Documents/Math-HW/Math-101/randomsubmission/11-29_KevinGuillen.tex
+(c:/Users/kevin/Documents/Math-HW/Math-101/randomsubmission/11-29_KevinGuillen.tex
 LaTeX2e <2021-06-01> patch level 1
 L3 programming layer <2021-07-12> (c:/texlive/2021/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2021/02/12 v1.4n Standard LaTeX document class
@@ -841,12 +841,12 @@ Package rerunfilecheck Info: File `11-29_KevinGuillen.out' has not changed.
  ) 
 Here is how much of TeX's memory you used:
  28245 strings out of 478542
- 549730 string characters out of 5854402
+ 549760 string characters out of 5854402
  905365 words of memory out of 5000000
  45657 multiletter control sequences out of 15000+600000
  427076 words of font info for 100 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,10n,108p,766b,476s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 102i,10n,108p,776b,476s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2021/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/euler/euex10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/euler/eufm7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/euler/eurm10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/euler/eurm7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/euler/eusm10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb><c:/texlive/2021/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb><c:/texlive/2021/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
 Output written on 11-29_KevinGuillen.pdf (3 pages, 106601 bytes).
 PDF statistics:

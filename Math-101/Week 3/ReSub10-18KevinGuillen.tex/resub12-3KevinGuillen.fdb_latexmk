@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1638561647 "c:/Users/kevin/Documents/Math-HW/Math-101/Week 3/ReSub10-18KevinGuillen.tex/resub12-3KevinGuillen.tex" "resub12-3KevinGuillen.pdf" "resub12-3KevinGuillen" 1638762563
-  "c:/Users/kevin/Documents/Math-HW/Math-101/Week 3/ReSub10-18KevinGuillen.tex/resub12-3KevinGuillen.tex" 1638762562 15668 cf2fb4568404a4a3a52618c18c7b22f5 ""
+["pdflatex"] 1639143727 "c:/Users/kevin/Documents/Math-HW/Math-101/Week 3/ReSub10-18KevinGuillen.tex/resub12-3KevinGuillen.tex" "resub12-3KevinGuillen.pdf" "resub12-3KevinGuillen" 1639143729
+  "c:/Users/kevin/Documents/Math-HW/Math-101/Week 3/ReSub10-18KevinGuillen.tex/resub12-3KevinGuillen.tex" 1639143726 14169 869f899f728021a6dcfff66be7c13ff4 ""
   "c:/texlive/2021/texmf-dist/fonts/enc/dvips/base/8r.enc" 1628824547 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "c:/texlive/2021/texmf-dist/fonts/map/fontname/texfonts.map" 1628824999 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2021/texmf-dist/fonts/tfm/adobe/palatino/pplb7t.tfm" 1628826719 1616 371d1ee60c04b008c8fd760060cd34f1 ""
@@ -237,11 +237,11 @@
   "c:/texlive/2021/texmf-var/web2c/pdftex/pdflatex.fmt" 1628828791 2801564 96ee99b7930c0aca3c8f1f40880f406e ""
   "c:/texlive/2021/texmf.cnf" 1628828694 713 e69b156964470283e0530f5060668171 ""
   "images//prob2.png" 1638139824 107197 199ed3bab172d425e45851c05eeb3170 ""
-  "resub12-3KevinGuillen.aux" 1638561648 721 eb0293590aa1afe42810b48bd8f3a401 "pdflatex"
-  "resub12-3KevinGuillen.out" 1638561648 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "resub12-3KevinGuillen.tex" 1638762562 15668 cf2fb4568404a4a3a52618c18c7b22f5 ""
+  "resub12-3KevinGuillen.aux" 1639143728 721 eb0293590aa1afe42810b48bd8f3a401 "pdflatex"
+  "resub12-3KevinGuillen.out" 1639143728 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "resub12-3KevinGuillen.tex" 1639143726 14169 869f899f728021a6dcfff66be7c13ff4 ""
   (generated)
+  "resub12-3KevinGuillen.aux"
+  "resub12-3KevinGuillen.out"
   "resub12-3KevinGuillen.log"
   "resub12-3KevinGuillen.pdf"
-  "resub12-3KevinGuillen.out"
-  "resub12-3KevinGuillen.aux"

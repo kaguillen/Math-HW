@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.8.12)  10 DEC 2021 01:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.8.12)  10 DEC 2021 08:44
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"c:/Users/kevin/Documents/Math-HW/Math-101/9-24 Problems/9-24 Problems.tex"
-(c:/Users/kevin/Documents/Math-HW/Math-101/9-24 Problems/9-24 Problems.tex
+**c:/Users/kevin/Documents/Math-HW/Math-101/Portfolio/Portfolio.tex
+(c:/Users/kevin/Documents/Math-HW/Math-101/Portfolio/Portfolio.tex
 LaTeX2e <2021-06-01> patch level 1
 L3 programming layer <2021-07-12> (c:/texlive/2021/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2021/02/12 v1.4n Standard LaTeX document class
@@ -708,30 +708,30 @@ Package: mathpazo 2020/03/25 PSNFSS-v9.3 Palatino w/ Pazo Math (D.Puga, WaS)
 ) (c:/texlive/2021/texmf-dist/tex/latex/eulervm/eulervm.sty
 Package: eulervm 2005/01/11 v4.0 (WaS)
 )
-LaTeX Font Info:    Trying to load font information for OT1+ppl on input line 85.
+LaTeX Font Info:    Trying to load font information for OT1+ppl on input line 87.
  (c:/texlive/2021/texmf-dist/tex/latex/psnfss/ot1ppl.fd
 File: ot1ppl.fd 2001/06/04 font definitions for OT1/ppl.
-) (./9-24 Problems.aux)
-\openout1 = `"9-24 Problems.aux"'.
+) (./Portfolio.aux)
+\openout1 = `Portfolio.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 85.
-LaTeX Font Info:    ... okay on input line 85.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 85.
-LaTeX Font Info:    ... okay on input line 85.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 85.
-LaTeX Font Info:    ... okay on input line 85.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 85.
-LaTeX Font Info:    ... okay on input line 85.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 85.
-LaTeX Font Info:    ... okay on input line 85.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 85.
-LaTeX Font Info:    ... okay on input line 85.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 85.
-LaTeX Font Info:    ... okay on input line 85.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 85.
-LaTeX Font Info:    ... okay on input line 85.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 85.
-LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -786,7 +786,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (c:/texlive/2021/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-Package hyperref Info: Link coloring OFF on input line 85.
+Package hyperref Info: Link coloring OFF on input line 87.
  (c:/texlive/2021/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
  (c:/texlive/2021/texmf-dist/tex/latex/refcount/refcount.sty
@@ -796,12 +796,12 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count339
 )
-LaTeX Info: Redefining \ref on input line 85.
-LaTeX Info: Redefining \pageref on input line 85.
-LaTeX Info: Redefining \nameref on input line 85.
- (./9-24 Problems.out) (./9-24 Problems.out)
+LaTeX Info: Redefining \ref on input line 87.
+LaTeX Info: Redefining \pageref on input line 87.
+LaTeX Info: Redefining \nameref on input line 87.
+ (./Portfolio.out) (./Portfolio.out)
 \@outlinefile=\write5
-\openout5 = `"9-24 Problems.out"'.
+\openout5 = `Portfolio.out'.
 
 \c@lstlisting=\count340
  (c:/texlive/2021/texmf-dist/tex/latex/base/inputenc.sty
@@ -809,49 +809,72 @@ Package: inputenc 2021/02/14 v1.3d Input encoding file
 \inpenc@prehook=\toks50
 \inpenc@posthook=\toks51
 )
-LaTeX Font Info:    Redeclaring symbol font `AMSb' on input line 85.
+LaTeX Font Info:    Redeclaring symbol font `AMSb' on input line 87.
 LaTeX Font Info:    Overwriting symbol font `AMSb' in version `normal'
-(Font)                  U/msb/m/n --> U/msb/m/n on input line 85.
+(Font)                  U/msb/m/n --> U/msb/m/n on input line 87.
 LaTeX Font Info:    Overwriting symbol font `AMSb' in version `bold'
-(Font)                  U/msb/m/n --> U/msb/m/n on input line 85.
-LaTeX Font Info:    Trying to load font information for U+zeur on input line 92.
+(Font)                  U/msb/m/n --> U/msb/m/n on input line 87.
+LaTeX Font Info:    Trying to load font information for U+zeur on input line 95.
  (c:/texlive/2021/texmf-dist/tex/latex/eulervm/uzeur.fd
 File: uzeur.fd 2005/01/11 v4.0 (WaS)
 )
-LaTeX Font Info:    Trying to load font information for U+zeus on input line 92.
+LaTeX Font Info:    Trying to load font information for U+zeus on input line 95.
  (c:/texlive/2021/texmf-dist/tex/latex/eulervm/uzeus.fd
 File: uzeus.fd 2005/01/11 v4.0 (WaS)
 )
-LaTeX Font Info:    Trying to load font information for U+zeuex on input line 92.
+LaTeX Font Info:    Trying to load font information for U+zeuex on input line 95.
  (c:/texlive/2021/texmf-dist/tex/latex/eulervm/uzeuex.fd
 File: uzeuex.fd 2005/01/11 v4.0 (WaS)
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 92.
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 95.
  (c:/texlive/2021/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Trying to load font information for OT1+zplm on input line 92.
+LaTeX Font Info:    Trying to load font information for OT1+zplm on input line 95.
  (c:/texlive/2021/texmf-dist/tex/latex/psnfss/ot1zplm.fd
 File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
 ) [1
 
-{c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] (./9-24 Problems.aux)
-Package rerunfilecheck Info: File `"9-24 Problems".out' has not changed.
+{c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4] [5] [6]
+<./images//prob1.png, id=82, 884.30376pt x 402.50375pt>
+File: ./images//prob1.png Graphic file (type png)
+<use ./images//prob1.png>
+Package pdftex.def Info: ./images//prob1.png  used on input line 380.
+(pdftex.def)             Requested size: 442.1508pt x 201.25137pt.
+ [7] [8 <./images//prob1.png>]
+<./images//prob3.png, id=94, 441.65pt x 286.06876pt>
+File: ./images//prob3.png Graphic file (type png)
+<use ./images//prob3.png>
+Package pdftex.def Info: ./images//prob3.png  used on input line 413.
+(pdftex.def)             Requested size: 220.82445pt x 143.03403pt.
+ [9 <./images//prob3.png>] [10] [11] [12] [13] [14] [15] [16]
+Underfull \hbox (badness 1112) in paragraph at lines 765--766
+[]\OT1/ppl/m/n/10.95 Basketball star Shanille O'Keal's team statis-ti-cian keeps
+ []
+
+[17]
+<./images//diagram.png, id=146, 851.18pt x 625.33624pt>
+File: ./images//diagram.png Graphic file (type png)
+<use ./images//diagram.png>
+Package pdftex.def Info: ./images//diagram.png  used on input line 815.
+(pdftex.def)             Requested size: 425.58894pt x 312.66736pt.
+ [18 <./images//diagram.png>] [19] [20] (./Portfolio.aux)
+Package rerunfilecheck Info: File `Portfolio.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 28246 strings out of 478542
- 549705 string characters out of 5854402
- 907341 words of memory out of 5000000
- 45657 multiletter control sequences out of 15000+600000
- 428179 words of font info for 102 fonts, out of 8000000 for 9000
+ 28375 strings out of 478542
+ 551457 string characters out of 5854402
+ 908329 words of memory out of 5000000
+ 45741 multiletter control sequences out of 15000+600000
+ 433272 words of font info for 118 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,9n,108p,534b,476s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/texlive/2021/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/euler/euex10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/euler/eufm7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/euler/eurm10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/euler/eurm7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/euler/eusm10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb><c:/texlive/2021/texmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb><c:/texlive/2021/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb><c:/texlive/2021/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on "9-24 Problems.pdf" (2 pages, 82362 bytes).
+ 102i,15n,108p,778b,476s stack positions out of 5000i,500n,10000p,200000b,80000s
+{c:/texlive/2021/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/euler/euex10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/euler/eufm7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/euler/eurm10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/euler/eurm7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/euler/eusm10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb><c:/texlive/2021/texmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb><c:/texlive/2021/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb><c:/texlive/2021/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
+Output written on Portfolio.pdf (20 pages, 485587 bytes).
 PDF statistics:
- 117 PDF objects out of 1000 (max. 8388607)
- 64 compressed objects within 1 object stream
- 3 named destinations out of 1000 (max. 500000)
- 157 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 234 PDF objects out of 1000 (max. 8388607)
+ 150 compressed objects within 2 object streams
+ 33 named destinations out of 1000 (max. 500000)
+ 172 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.8.12)  10 DEC 2021 01:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.8.12)  10 DEC 2021 09:15
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"c:/Users/kevin/Documents/Math-HW/Math-101/9-24 Problems/9-24 Problems.tex"
-(c:/Users/kevin/Documents/Math-HW/Math-101/9-24 Problems/9-24 Problems.tex
+**"c:/Users/kevin/Documents/Math-HW/Math-101/Portfolio/fixed port/Final_Portfolio.tex"
+(c:/Users/kevin/Documents/Math-HW/Math-101/Portfolio/fixed port/Final_Portfolio.tex
 LaTeX2e <2021-06-01> patch level 1
 L3 programming layer <2021-07-12> (c:/texlive/2021/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2021/02/12 v1.4n Standard LaTeX document class
@@ -711,8 +711,8 @@ Package: eulervm 2005/01/11 v4.0 (WaS)
 LaTeX Font Info:    Trying to load font information for OT1+ppl on input line 85.
  (c:/texlive/2021/texmf-dist/tex/latex/psnfss/ot1ppl.fd
 File: ot1ppl.fd 2001/06/04 font definitions for OT1/ppl.
-) (./9-24 Problems.aux)
-\openout1 = `"9-24 Problems.aux"'.
+) (./Final_Portfolio.aux)
+\openout1 = `Final_Portfolio.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 85.
 LaTeX Font Info:    ... okay on input line 85.
@@ -799,9 +799,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 85.
 LaTeX Info: Redefining \pageref on input line 85.
 LaTeX Info: Redefining \nameref on input line 85.
- (./9-24 Problems.out) (./9-24 Problems.out)
+ (./Final_Portfolio.out) (./Final_Portfolio.out)
 \@outlinefile=\write5
-\openout5 = `"9-24 Problems.out"'.
+\openout5 = `Final_Portfolio.out'.
 
 \c@lstlisting=\count340
  (c:/texlive/2021/texmf-dist/tex/latex/base/inputenc.sty
@@ -833,25 +833,38 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 LaTeX Font Info:    Trying to load font information for OT1+zplm on input line 92.
  (c:/texlive/2021/texmf-dist/tex/latex/psnfss/ot1zplm.fd
 File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
-) [1
+)
 
-{c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] (./9-24 Problems.aux)
-Package rerunfilecheck Info: File `"9-24 Problems".out' has not changed.
-(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 94.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `superscript' on input line 94.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 94.
+
+[1
+
+{c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./Final_Portfolio.aux)
+Package rerunfilecheck Info: File `Final_Portfolio.out' has not changed.
+(rerunfilecheck)             Checksum: 391B96E5C95860B5DCDEBD87D96940F5;369.
  ) 
 Here is how much of TeX's memory you used:
- 28246 strings out of 478542
- 549705 string characters out of 5854402
- 907341 words of memory out of 5000000
- 45657 multiletter control sequences out of 15000+600000
- 428179 words of font info for 102 fonts, out of 8000000 for 9000
+ 28204 strings out of 478542
+ 548886 string characters out of 5854402
+ 893369 words of memory out of 5000000
+ 45627 multiletter control sequences out of 15000+600000
+ 424930 words of font info for 91 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,9n,108p,534b,476s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/texlive/2021/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/euler/euex10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/euler/eufm7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/euler/eurm10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/euler/eurm7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/euler/eusm10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb><c:/texlive/2021/texmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb><c:/texlive/2021/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb><c:/texlive/2021/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on "9-24 Problems.pdf" (2 pages, 82362 bytes).
+ 102i,6n,108p,543b,329s stack positions out of 5000i,500n,10000p,200000b,80000s
+{c:/texlive/2021/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/euler/eurm10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb><c:/texlive/2021/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb>
+Output written on Final_Portfolio.pdf (1 page, 39342 bytes).
 PDF statistics:
- 117 PDF objects out of 1000 (max. 8388607)
- 64 compressed objects within 1 object stream
- 3 named destinations out of 1000 (max. 500000)
- 157 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 81 PDF objects out of 1000 (max. 8388607)
+ 47 compressed objects within 1 object stream
+ 5 named destinations out of 1000 (max. 500000)
+ 181 words of extra memory for PDF output out of 10000 (max. 10000000)
 
