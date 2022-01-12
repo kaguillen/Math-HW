@@ -1,0 +1,258 @@
+\documentclass[12pt]{article}
+ 
+\addtolength{\textheight}{2.7in}
+\addtolength{\topmargin}{-1.25in}
+\addtolength{\textwidth}{1.0in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\oddsidemargin}{-0.65in}
+\setlength{\parskip}{0.1in}
+\setlength{\parindent}{0.0in}
+
+\usepackage{ multirow }
+\usepackage[top=0.75in, bottom=1.25in, left=1in, right=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb} %this is THE math package
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{fancybox}
+\usepackage{hyperref}
+\usepackage{varwidth}
+\usepackage{mdframed}
+\usepackage{mathrsfs}
+\usepackage[most]{tcolorbox}
+
+\newcommand{\given}{\, | \,}
+
+\newenvironment{solution}{\begin{proof}[\textbf{\textit{Solution}}] }{\end{proof}}
+
+\pagestyle{empty}
+
+\raggedbottom
+ 
+\begin{document}
+
+\vspace*{-0.3in}
+
+\begin{flushleft}
+
+Prof.~David Draper \\
+Department of Statistics \\
+University of California, Santa Cruz
+
+\end{flushleft}
+
+\begin{center}
+
+\textbf{\large STAT 206: Quiz 1 \textit{[90 total points]}}
+
+\end{center}
+
+\begin{flushleft}
+
+Name: Kevin Guillen \underline{\hspace*{5.85in}}
+
+\end{flushleft}
+
+Here is Your background information, translatable into $\mathcal{ B }$, for this problem.
+
+\begin{itemize}
+
+\item
+
+\textit{(Fact 1)} As a broad generalization (which you can verify empirically), statisticians tend to have shy personalities more often than economists do --- let's quantify this observation by assuming (based on previous psychological studies) that 84\% of statisticians are shy but the corresponding percentage among economists is only 10\%. 
+
+\item
+
+\textit{(Fact 2)} Conferences on the topic of \textit{econometrics} are almost exclusively attended by economists and statisticians, with the majority of participants being economists --- let's approximately quantify this fact by assuming (based on data from previous conferences) that 95\% of the attendees are economists (and the rest statisticians, except for a tiny proportion of people from other professions, which can be ignored). 
+
+\end{itemize}
+
+Suppose that you (a physicist, say) go to an econometrics conference --- you strike up a conversation with the first person you (haphazardly) meet, and find that this person is shy. The point of this problem is to show that the (conditional) probability $p$ that you're talking to a statistician, given this data and the above background information, is only about 31\%, which most people find surprisingly low, and to understand why this is the right answer. Let $St$ = (person is statistician), $E$ = (person is economist), and $Sh$ = (person is shy).
+
+\begin{itemize}
+
+% -----------------------PART A---------------------------
+
+\item[(a)]
+
+Identify (in the form of a proposition $B_1$, one of the elements of $\mathcal{ B }$) the most important assumption needed in this problem to permit  its solution to be probabilistic; explain briefly. \textit{[5 points]}
+\begin{solution}
+    Our most important assumption is that we haphazardly meet a person. Since translating this requirement to math language our $B_1$ is taking a random sample of 1 from the population, which is all conference attendees.
+\end{solution}
+
+\vspace*{0.75in}
+
+% -----------------------PART B---------------------------
+\item[(b)]
+ 
+Using the $St$, $E$ and $Sh$ notation, express the three numbers (84\%, 10\%, 95\%) above, and the probability we're solving for, in conditional probability terms, remembering to condition appropriately on $\mathcal{ B }$. \textit{[5 points]}
+\begin{solution}
+    \begin{align}
+        84\% &= P(Sh \given St, \mathcal{ B}) \\
+        10\% &= P(Sh \given  E, \mathcal{B}) \\
+        95\% &= P(E \given \mathcal{B})
+    \end{align}
+    we also obtain the following,
+    \begin{align}
+        5\% = P(St \given \mathcal{B})
+    \end{align}
+\end{solution}
+
+\vspace*{0.75in}
+
+% -----------------------PART C---------------------------
+\item[(c)]
+
+Briefly explain why calculating the desired probability is a good job for Bayes's Theorem. \textit{[5 points]}
+\begin{solution}
+    Well, we are trying to calculate $P(St \given Sh, \mathcal{B} )$ and we see that probability (1) from above is just the reverse ordering of conditioning of what we are trying to solve for, which is perfect for Bayes' Theorem. 
+    \begin{align*}
+        P(St \given Sh, \mathcal{B}) = \dfrac{P(St \given \mathcal{B}) P(Sh \given St, \mathcal{B})}{P(Sh \given \mathcal{B})}
+    \end{align*}
+\end{solution}
+
+\vspace*{0.7in}
+
+\end{itemize}
+
+
+
+The goal in the rest of the problem is for you to use all three of the methods developed in class --- the 2 by 2 table cross-tabulating truth against data, Bayes's Theorem in odds ratio form, and calculating the denominator using the \textit{Law of Total Probability}, by partitioning over the unknown truth --- to compute $P ( St \given Sh, \mathcal{ B } )$, the posterior probability that the haphazard person is a statistician given that this person is shy (and given $\mathcal{ B }$).
+
+\begin{table}[t!]
+
+\centering
+
+\caption{\textit{2 by 2 table cross-tabulating truth (statistician, economist) against data (shy, not shy) for the people at the conference, assuming a total number of attendees of 1,000.}}
+
+\label{t:basic-table-1}
+
+\bigskip
+
+\begin{tabular}{cc|c|c|c}
+
+& \multicolumn{1}{c}{} & \multicolumn{2}{c}{\textbf{Truth}} \\
+
+& \multicolumn{1}{c}{} & \multicolumn{1}{c}{Statistician} & \multicolumn{1}{c}{Economist}  & Total \\ \cline{3-4}
+
+\multirow{2}{*}{\textbf{Data}} & Shy & --- & --- & --- \\ \cline{3-4}
+
+& Not Shy & --- & --- & --- \\ \cline{3-4}
+
+& \multicolumn{1}{c}{Total} & \multicolumn{1}{c}{---} & \multicolumn{1}{c}{---} & 1,000
+
+\end{tabular}
+
+\end{table}
+
+\begin{itemize}
+
+\item[(d)]
+
+Use the three numerical facts (84\%, 10\%, 95\%) given at the beginning of the quiz to fill in all 8 of the entries marked `---' in Table \ref{t:basic-table-1}, taking the total number of attendees at the conference to be 1,000 (\textit{Hint:} All of these numbers are integers), thereby showing that $P ( St \given Sh, \mathcal{ B } ) = \frac{ 42 }{ 137 } \doteq$ 30.7\%; show your work \textit{[20 points]}.
+
+\begin{solution}
+    First we can obtain the total number of economists and statisticians using (3) and (4) from part (b),
+    \begin{align*}
+        |E| &= P(E \given \mathcal{B}) \cdot 1000 = 0.95 \cdot 1000 = 950 \\
+        |St| &= P(St \given \mathcal{B}) \cdot 1000 = 0.05 \cdot 1000 = 50.
+    \end{align*}
+    Now with (1) and (2) we can get how many of these statisticians and economists are shy,
+    \begin{align*}
+        |Sh, St| &= P(Sh \given St, \mathcal{B}) \cdot |St| = .84 \cdot 50 = 42 \\
+        |Sh, E| &= P(E \given E, \mathcal{B}) \cdot |E| = .10 \cdot 950 = 95
+    \end{align*}
+    now knowing the total of economists and statisticians alongside of many of each are shy we can obtain how many of them are not shy,
+    \begin{align*}
+        |\neg Sh, St| &= |St| - |Sh, St| = 50 - 42 = 8
+    \end{align*}
+\end{solution}
+
+\vspace*{1.5in}
+
+\item[(e)]
+
+Briefly explain why the following expression is a correct use of Bayes's Theorem on the odds ratio scale in this problem. \textit{[5 points]} \vspace*{-0.1in}
+
+\begin{center}
+
+\Large
+
+\[
+\begin{array}{ccccc}
+\left[ \frac{ P ( St \given Sh, \, \mathcal{ B } ) }{ P ( E \given Sh, \, \mathcal{ B } ) } \right] & = & \left[ \frac{ P ( St \given \mathcal{ B } ) }{ P ( E \given \mathcal{ B } ) } \right] & \cdot & \left[ \frac{ P ( Sh \given St, \, \mathcal{ B } ) }{ P ( Sh \given E, \, \mathcal{ B } ) } \right] \\( 1 ) & = & ( 2 ) & \cdot & ( 3 )
+\end{array}
+\]
+
+\normalsize
+
+\end{center}
+
+\vspace*{0.5in}
+
+\item[(f)]
+
+Here are three terms that are relevant to the quantities in part (e) above:
+
+\begin{itemize}
+
+\item
+
+(Prior odds ratio in favor of $St$ over $E$, given $\mathcal{ B }$)
+
+\item
+
+(Bayes factor in favor of $St$ over $E$, given $\mathcal{ B }$)
+
+\item
+
+(Posterior odds ratio in favor of $St$ over $E$, given $\mathcal{ B }$)
+
+\end{itemize}
+
+Match these three terms with the numbers $( 1 ), ( 2 ), ( 3 )$ in the second line of the equation in part (e). \textit{[5 points]}
+
+\vspace*{0.5in}
+
+\item[(g)]
+
+Compute the three ratios in part (e), briefly explaining your reasoning, thereby demonstrating that the posterior odds ratio $o$ in favor of $St$ over $E$ (given $\mathcal{ B }$) is $o = \frac{ 42 }{ 95 } \doteq 0.442$. \textit{[15 points]}
+
+\vspace*{1.0in}
+
+\item[(h)]
+
+Use the expression $p = \frac{ o }{ 1 + o }$ to show that the desired probability in this problem --- the conditional probability that you're talking to a statistician (given $\mathcal{ B }$) --- is $p = \frac{ 42 }{ 137 } \doteq 0.307$. \textit{[5 points]}
+
+\vspace*{0.75in}
+
+\item[(i)]
+
+Briefly explain why the following expression is a correct use of Bayes's Theorem on the probability scale in this problem. \textit{[5 points]}
+\begin{equation} \label{e:bayes-1}
+P ( St \given Sh, \, \mathcal{ B } ) = \frac{ P ( St \given \mathcal{ B } ) \, P ( Sh \given St, \, \mathcal{ B } ) }{ P ( Sh \given \mathcal{ B } ) } \, .
+\end{equation}
+
+\vspace*{0.5in}
+
+\item[(j)]
+
+Notice as usual that you know both of the numerator probabilities in equation (\ref{e:bayes-2}) but you don't (yet) know the denominator $P ( Sh \given \mathcal{ B } )$. Use the \textit{Law of Total Probability}, partitioning over the unknown truth, to show that
+\begin{equation} \label{e:bayes-2}
+P ( Sh \given \mathcal{ B } ) = \frac{ 137 }{ 1000 } = 0.137 \, ,
+\end{equation}
+and use this to show that
+\begin{equation} \label{e:bayes-3}
+P ( St \given Sh, \, \mathcal{ B } ) = \frac{ ( 0.05 ) ( 0.84 ) }{ 0.137 } = \frac{ 42 }{ 137 } \doteq 0.307 \, .
+\end{equation}
+\textit{[15 points]}
+
+\vspace*{1.0in}
+
+\item[(k)]
+
+Someone says, ``That 30.7\% probability can't be right: 84\% of statisticians are shy, versus 10\% for economists, so your probability $p$ of talking to a statistician has to be over 50\%.'' Briefly explain why this line of reasoning is wrong, and why $p$ should indeed be less than 50\%. \textit{[5 points]}
+
+\end{itemize}
+
+\end{document}

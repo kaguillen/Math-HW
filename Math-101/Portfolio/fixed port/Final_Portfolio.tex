@@ -95,7 +95,48 @@ MATH 101 | Problem Solving | Fall 2021}
 
 \tableofcontents
 \newpage
-%Use \[...\] instead of $$...$$
+\section{Strategies}
+\begin{description}
+    \item[Generalization]
+    \item[Specialization] IC 122, OC 68, PP14
+    \item[Relax conditions] OC 18, 68
+    \item[Get your hands dirty] IC: 14, 46 OC: 71, 72, 77, 90 Putnam: 19, 20, 41
+    \item[Wishful thinking] IC: 148 OC: 69 Putnam: 15, 20, 41 
+    \item[Find a penultimate step] IC: 143, 153, 46 Putnam: 20, 37
+    \item[Formulate intermediate goals] IC: 122, 110     
+\end{description}
+
+\section{Tactics and techniques}
+\begin{description}
+    \item[External principle]
+    \item[Find and exploit symmetries] Putnam: 15
+    \item[Invariance principle] IC: 44
+    \item[Pigeon hole principle] OC: 30
+    \item[Counting in two different ways] IC 110
+\end{description}
+
+
+\section{Tools and mathematical content}
+\begin{description}
+    \item[Graph Theory] IC: 50 OC: 68
+    \item[Complex numbers]
+    \item[Generating functions] IC: 109
+    \item[Factor tactic]IC: 99, 135 OC: 90 Putnam: 19, 29,37, 41, 412 
+    \item[Arithmetic and geometric sequences and series] IC: 81, OC sept 27 Putnam: 29
+    \item[Polynomials] Putnam: 14
+    \item[Inequalities] IC:99 Putnam: 29
+    \item[Pascal's triangle and the binomial theorem] OC: 1
+    \item[Partitions and bijections] OC: 69
+    \item[Principle of inclusions-exclusion]
+    \item[Recurrence relations] IC: 19, OC: 83
+    \item[Primes and divisibility] IC: 143, 135, 136 OC: 83 Putnam: 42
+    \item[Congruence] IC: 143, 135, 136 Putnam: 19, 29
+    \item[Diophantine equations] Putnam: 42
+    \item[Geometry] IC 148, 151, 153 Putnam: 40         
+\end{description}
+
+Overall I feel satisfied with the diversity of my problems and the diversity of problems presented to us in class. Maybe there is tendency towards certain types of problems for me but even in the areas where I didn't have many submissions I feel good with those because those are generally what I struggled with more. It felt like intuitively I could see it and understand why, but since some of these areas (graph theory) are completely new to me it was difficult to express in a rigorous manner. If the subject wasn't new then it might have been very old to me (Geometry) so even though on paper I should be familiar with terms and ideas from that area of math it was still a struggle.  
+\newpage
 \section{$C^{3}$ Solutions Submitted for Portfolio}
 \subsection{I.C. Solutions}
 \begin{itemize}
@@ -190,8 +231,24 @@ MATH 101 | Problem Solving | Fall 2021}
 \begin{itemize}
     \item[124] Partitions and Bijections, Wishful thinking
 \end{itemize}
-
+\newpage
 \section{Resubmissions}
+\subsection{I.C. Solutions being Resubmitted} 
+\begin{itemize}
+    \item[\text{Dec 3 ReSub. }]\begin{itemize}
+        \item[44] Invariance Principle
+    \item[50] Graph Theory
+    \item[151] Geometry
+    \end{itemize}
+\end{itemize}
+\subsection{O.C. Solutions being Resubmitted}
+\begin{itemize}
+    \item[\text{Dec 3 ReSub.}] \begin{itemize}
+        \item[30] Pigeon Hole Principle
+    \end{itemize}
+\end{itemize}
+
+
 \begin{tcolorbox}
     \begin{problem}{10/11 IC (44.)} 
         The numbers $1,2,\dots, 50$ are written on the blackboard. Then two numbers $a$ and $b$ are chosen and replaced by the single number $\abs{a-b}$. After 49 operations a single number is left. Prove that it is odd. 
@@ -208,7 +265,7 @@ MATH 101 | Problem Solving | Fall 2021}
 
     Therefore the number of odd numbers removed by using any operation will be either 0 or 2, meaning the parity of the number of odd numbers is invariant
 \end{proof}
-\newpage
+
 \begin{tcolorbox}
     \begin{problem}{10/13 IC (50.)} 
         Every room in a house has an even number of doors. Prove that there are an even number of entrance doors to the house. 
@@ -218,6 +275,7 @@ MATH 101 | Problem Solving | Fall 2021}
     Let each room in the house be a vertex and outside be a vertex as well. All we have to show now is that this graph can't have exactly one vertex of odd degree. By the handshaking lemma there does not exist any such graph. Meaning the vertex corresponding to the outside is also even. 
 \end{solution}
 
+\newpage
 \begin{tcolorbox}
     \begin{problem} {IC | 11/15 | 151.}
         Is it possible for a triangle to have altitudes equal to 6, 10, and 20?
@@ -254,6 +312,10 @@ MATH 101 | Problem Solving | Fall 2021}
 \end{proof}
 
 \section{New Submissions}
+\subsection{New I.C. Submissions}
+\begin{itemize}
+    \item[124] Partitions and Bijections, Wishful thinking
+\end{itemize}
 \begin{tcolorbox}
     \begin{problem}{ IC | 11/05 | 124. (Putnam)}
         Define a selfish set to be a set which has its own cardinality as an element. FInd, with a proof, the number of subsets of $\set{1,2,\dots, n}$ which are minimal selfish sets, that is, selfish sets none of whose proper subsets is selfish. 
@@ -279,48 +341,7 @@ MATH 101 | Problem Solving | Fall 2021}
     We see for $A_1 = \set{1}$. That it only has 1 subset that is a minimal selfish set, that it $\set{1}$. Next we see for $A_2 = \set{1,2}$ that it only contains 1 subset that is a minimal selfish set at that is $\set{1}$ again. So we have $A_1 = A_2 = 1$. Notice though that these are the same starting values as the fibonacci sequence, and that we define the value of $S(A_n)$ for $n > 2$ as the sum of the previous 2 terms. Thus $S(A_n) = \text{Fib}(n)$, where $\text{Fib}(n)$ is the $n$th term in the fibonacci sequence. 
 \end{proof}
 
-\newpage
-\section{Strategies}
-\begin{description}
-    \item[Generalization]
-    \item[Specialization] IC 122, OC 68, PP14
-    \item[Relax conditions] OC 18, 68
-    \item[Get your hands dirty] IC: 14, 46 OC: 71, 72, 77, 90 Putnam: 19, 20, 41
-    \item[Wishful thinking] IC: 148 OC: 69 Putnam: 15, 20, 41 
-    \item[Find a penultimate step] IC: 143, 153, 46 Putnam: 20, 37
-    \item[Formulate intermediate goals] IC: 122, 110     
-\end{description}
 
-\section{Tactics and techniques}
-\begin{description}
-    \item[External principle]
-    \item[Find and exploit symmetries] Putnam: 15
-    \item[Invariance principle] IC: 44
-    \item[Pigeon hole principle] OC: 30
-    \item[Counting in two different ways] IC 110
-\end{description}
-
-
-\section{Tools and mathematical content}
-\begin{description}
-    \item[Graph Theory] IC: 50 OC: 68
-    \item[Complex numbers]
-    \item[Generating functions] IC: 109
-    \item[Factor tactic]IC: 99, 135 OC: 90 Putnam: 19, 29,37, 41, 412 
-    \item[Arithmetic and geometric sequences and series] IC: 81, OC sept 27 Putnam: 29
-    \item[Polynomials] Putnam: 14
-    \item[Inequalities] IC:99 Putnam: 29
-    \item[Pascal's triangle and the binomial theorem] OC: 1
-    \item[Partitions and bijections] OC: 69
-    \item[Principle of inclusions-exclusion]
-    \item[Recurrence relations] IC: 19, OC: 83
-    \item[Primes and divisibility] IC: 143, 135, 136 OC: 83 Putnam: 42
-    \item[Congruence] IC: 143, 135, 136 Putnam: 19, 29
-    \item[Diophantine equations] Putnam: 42
-    \item[Geometry] IC 148, 151, 153 Putnam: 40         
-\end{description}
-
-Overall I feel satisfied with the diversity of my problems and the diversity of problems presented to us in class. Maybe there is tendency towards certain types of problems for me but even in the areas where I didn't have many submissions I feel good with those because those are generally what I struggled with more. It felt like intuitively I could see it and understand why, but since some of these areas (graph theory) are completely new to me it was difficult to express in a rigorous manner. If the subject wasn't new then it might have been very old to me (Geometry) so even though on paper I should be familiar with terms and ideas from that area of math it was still a struggle.  
 
 
 

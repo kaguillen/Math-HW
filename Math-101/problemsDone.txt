@@ -90,7 +90,7 @@ answer will help you with the problem at hand. And eliminating the hard part of 
 temporarily, will allow you to have some fun and raise your confidence. If you cannot solve the
 problem as written, at least you can make progress with its easier cousin!
 
-FIND A PENULMATE STEP 
+FIND A PENULTIMATE STEP 
 Once you know what the desired conclusion is, ask yourself, “What will yield
 the conclusion in a single step?” Sometimes a penultimate step is “obvious,” once you start
 looking for one. And the more experienced you are, the more obvious the steps are. For example,
