@@ -20,9 +20,12 @@
 \usepackage{mdframed}
 \usepackage{mathrsfs}
 \usepackage[most]{tcolorbox}
+\usepackage{pagecolor}
 
 \newcommand{\given}{\, | \,}
 
+\pagecolor{black}
+\color{white}
 \newenvironment{solution}{\begin{proof}[\textbf{\textit{Solution}}] }{\end{proof}}
 
 \pagestyle{empty}
@@ -115,7 +118,7 @@ Briefly explain why calculating the desired probability is a good job for Bayes'
 
 \end{itemize}
 
-
+\newpage
 
 The goal in the rest of the problem is for you to use all three of the methods developed in class --- the 2 by 2 table cross-tabulating truth against data, Bayes's Theorem in odds ratio form, and calculating the denominator using the \textit{Law of Total Probability}, by partitioning over the unknown truth --- to compute $P ( St \given Sh, \mathcal{ B } )$, the posterior probability that the haphazard person is a statistician given that this person is shy (and given $\mathcal{ B }$).
 
@@ -135,11 +138,11 @@ The goal in the rest of the problem is for you to use all three of the methods d
 
 & \multicolumn{1}{c}{} & \multicolumn{1}{c}{Statistician} & \multicolumn{1}{c}{Economist}  & Total \\ \cline{3-4}
 
-\multirow{2}{*}{\textbf{Data}} & Shy & --- & --- & --- \\ \cline{3-4}
+\multirow{2}{*}{\textbf{Data}} & Shy & 42 & 95 & 137 \\ \cline{3-4}
 
-& Not Shy & --- & --- & --- \\ \cline{3-4}
+& Not Shy & 8 & 855 & 863 \\ \cline{3-4}
 
-& \multicolumn{1}{c}{Total} & \multicolumn{1}{c}{---} & \multicolumn{1}{c}{---} & 1,000
+& \multicolumn{1}{c}{Total} & \multicolumn{1}{c}{50} & \multicolumn{1}{c}{950} & 1,000
 
 \end{tabular}
 
@@ -164,11 +167,17 @@ Use the three numerical facts (84\%, 10\%, 95\%) given at the beginning of the q
     \end{align*}
     now knowing the total of economists and statisticians alongside of many of each are shy we can obtain how many of them are not shy,
     \begin{align*}
-        |\neg Sh, St| &= |St| - |Sh, St| = 50 - 42 = 8
+        |\neg Sh, St| &= |St| - |Sh, St| = 50 - 42 = 8 \\
+        |\neg Sh, E| &= |E| - |Sh, E| =  950 - 95  = 855.
+    \end{align*}
+
+    Which means given that the person we haphazardly meet at this convention is shy, the probability that they are a statistician is,
+    \begin{align*}
+        P( St \given Sh, \mathcal{B}) = \dfrac{42}{137} = 30.7\%
     \end{align*}
 \end{solution}
 
-\vspace*{1.5in}
+\newpage
 
 \item[(e)]
 
