@@ -1,0 +1,133 @@
+\documentclass[12pt]{article}
+
+% This first part of the file is called the PREAMBLE. It includes customizations and command definitions. The preamble is everything between \documentclass and \begin{document}.
+\usepackage[top=0.75in, bottom=1.25in, left=1in, right=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb} %this is THE math package
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{fancybox}
+\usepackage{hyperref}
+\usepackage{varwidth}
+\usepackage{mdframed}
+\usepackage{mathrsfs}
+\usepackage[most]{tcolorbox}
+%------------------------
+%Fonts I use, uncomment if you like to use them.
+%The first is the general font, and the second a math font
+\usepackage{mathpazo}
+\usepackage{eulervm}
+%------------------------
+%This is so that we have standard fonts for the double-stroked symbols
+%for reals, naturals etc. regardless of what font you use.
+%Don't comment
+\AtBeginDocument{
+  \DeclareSymbolFont{AMSb}{U}{msb}{m}{n}
+  \DeclareSymbolFontAlphabet{\mathbb}{AMSb}}
+%------------------------
+
+%----------------------------------------------
+%User-defined environments
+%Commented because we're not using them in this document
+%The only uncommented ones are the Problem and Solution environment
+
+% \newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{question}[2][Question]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem\!]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+%\newenvironment{sub-problem}[2][]{\begin{trivlist}
+%\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+\newenvironment{solution}{\begin{proof}[\textbf{\textit{Solution}}] }{\end{proof}}
+%----------------------------------------------
+
+%----------------------------
+%User-defined notations
+\newcommand{\zz}{\mathbb Z}   %blackboard bold Z
+\newcommand{\qq}{\mathbb Q}   %blackboard bold Q
+\newcommand{\ff}{\mathbb F}   %blackboard bold F
+\newcommand{\rr}{\mathbb R}   %blackboard bold R
+\newcommand{\nn}{\mathbb N}   %blackboard bold N
+\newcommand{\cc}{\mathbb C}   %blackboard bold C
+\newcommand{\af}{\mathbb A}   %blackboard bold A
+\newcommand{\pp}{\mathbb P}   %blackboard bold P
+\newcommand{\id}{\operatorname{id}} %for identity map
+\newcommand{\im}{\operatorname{im}} %for image of a function
+\newcommand{\dom}{\operatorname{dom}} %for domain of a function
+\newcommand{\cat}[1]{\mathscr{#1}}   %calligraphic category
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert} %for absolute value
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert} %for norm
+\newcommand{\modar}[1]{\text{ mod }{#1}} %for modular arithmetic
+\newcommand{\set}[1]{\left\{#1\right\}} %for set
+\newcommand{\setp}[2]{\left\{#1\ \middle|\ #2\right\}} %for set with a property
+\newcommand{\card}[1]{\#\,{#1}} %for cardinality of a set
+\newcommand\m[1]{\begin{pmatrix}#1\end{pmatrix}} 
+
+%Re-defined notations
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\emptyset}{\varnothing}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+%----------------------------
+
+\allowdisplaybreaks
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{mydef}[thm]{Definition}
+
+\begin{document}
+
+
+\title{P-adic Numbers}
+
+\author{Kevin Guillen \\ 
+Department of Mathematics \\
+University of California at Santa Cruz \\
+Santa Cruz, CA 95064 USA}
+
+\maketitle
+
+\begin{abstract}
+This paper will begin by introducing some of the prerequisite knowledge needed to begin defining $p$-adic numbers and their applications. Then give a brief history of p-adic numbers to then explain how one goes from the rationals to $p$-adic numbers. Then to highlight the differences from the real numbers. Then take an algebraic look through $\qq_p$ and what it means to be a completion of the rationals, and definitions and examples of  $p$-adic analysis
+\end{abstract}
+
+\section{Introduction}
+Talk about basic real analysis with how one goes from the natural number to integers through the introduction of subtraction and the integers to rationals through division. Go into discussion of the reals and Euclidean norm, and start explaining algebra in different bases. 
+
+\section{History}
+Talk about Kurt Hensel very briefly. Zone in on his analogy between the rings of integers $\zz$ with its field of fractions $\qq$ and the ring $\cc[X]$ of polynomials with complex coefficients togethers with its field of fractions $\cc(X)$.
+
+\section{What is a $p$-adic number?}
+Define $p$-adic numbers, show computations with $p$-adic numbers. Try to show the difference of them with the reals and how these are kind of like infinite expansion to the left while reals are infinite expansions to the right ($...1234.0 $ vs $3.14...$). Basic properties of $p$-adic numbers
+
+\section{$\qq_p$, completion of $\qq$ }
+Go over some algebra examples, to ultimately construct the $p$-adic field $\qq_p$. Explore $\qq_p$, talk about the ring of $p$-adic integers, density, and Hensel's Lemma. 
+
+\section{Elementary analysis with $\qq_p$}
+Normal analysis topics like Sequences and Series, Integrals, and Power Series. (Need to read more)
+\newpage
+\begin{thebibliography}{9}
+    \bibitem{texbook}
+    Fernando Gouvea (2003) \emph{p-adic Numbers: An Introduction}, Springer Science \& Business Media, 2003.
+    
+    \bibitem{texbook}
+    Alain M. Robert (2000) \emph{A Course in p-adic Analysis}, Springer; 2000th edition
+
+    \bibitem{texbook}
+    Svetlana Katok (2007) \emph{P-adic Analysis Compared With Real (Student Mathematical Library)}, American Mathematical Society
+    \end{thebibliography}
+\end{document}
