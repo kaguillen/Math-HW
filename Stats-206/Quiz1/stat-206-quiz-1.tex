@@ -24,8 +24,6 @@
 
 \newcommand{\given}{\, | \,}
 
-\pagecolor{black}
-\color{white}
 \newenvironment{solution}{\begin{proof}[\textbf{\textit{Solution}}] }{\end{proof}}
 
 \pagestyle{empty}
@@ -150,6 +148,7 @@ The goal in the rest of the problem is for you to use all three of the methods d
 
 \begin{itemize}
 
+% -----------------------PART D---------------------------
 \item[(d)]
 
 Use the three numerical facts (84\%, 10\%, 95\%) given at the beginning of the quiz to fill in all 8 of the entries marked `---' in Table \ref{t:basic-table-1}, taking the total number of attendees at the conference to be 1,000 (\textit{Hint:} All of these numbers are integers), thereby showing that $P ( St \given Sh, \mathcal{ B } ) = \frac{ 42 }{ 137 } \doteq$ 30.7\%; show your work \textit{[20 points]}.
@@ -160,18 +159,18 @@ Use the three numerical facts (84\%, 10\%, 95\%) given at the beginning of the q
         |E| &= P(E \given \mathcal{B}) \cdot 1000 = 0.95 \cdot 1000 = 950 \\
         |St| &= P(St \given \mathcal{B}) \cdot 1000 = 0.05 \cdot 1000 = 50.
     \end{align*}
-    Now with (1) and (2) we can get how many of these statisticians and economists are shy,
+    Now with (1) and (2) from part (b) we can get how many of these statisticians and economists are shy,
     \begin{align*}
         |Sh, St| &= P(Sh \given St, \mathcal{B}) \cdot |St| = .84 \cdot 50 = 42 \\
         |Sh, E| &= P(E \given E, \mathcal{B}) \cdot |E| = .10 \cdot 950 = 95
     \end{align*}
-    now knowing the total of economists and statisticians alongside of many of each are shy we can obtain how many of them are not shy,
+    now knowing the total number of economists and statisticians alongside of many of each are shy we can obtain how many of them are not shy,
     \begin{align*}
         |\neg Sh, St| &= |St| - |Sh, St| = 50 - 42 = 8 \\
         |\neg Sh, E| &= |E| - |Sh, E| =  950 - 95  = 855.
     \end{align*}
 
-    Which means given that the person we haphazardly meet at this convention is shy, the probability that they are a statistician is,
+    Which means given that the person we haphazardly meet at this convention is shy, we see from the table the probability that they are a statistician is,
     \begin{align*}
         P( St \given Sh, \mathcal{B}) = \dfrac{42}{137} = 30.7\%
     \end{align*}
@@ -179,6 +178,7 @@ Use the three numerical facts (84\%, 10\%, 95\%) given at the beginning of the q
 
 \newpage
 
+% -----------------------PART E---------------------------
 \item[(e)]
 
 Briefly explain why the following expression is a correct use of Bayes's Theorem on the odds ratio scale in this problem. \textit{[5 points]} \vspace*{-0.1in}
@@ -197,8 +197,32 @@ Briefly explain why the following expression is a correct use of Bayes's Theorem
 
 \end{center}
 
-\vspace*{0.5in}
+\begin{solution}
+    Well we know the odds that the person we met is a statistician given they are shy and $\mathcal{B}$ is the ratio between the probability they are a statistician given they are shy and $\mathcal{B}$ versus the probability they are not a statistician given they are shy and $\mathcal{B}$, but to say not a statistician in this case is the same as saying they are an economist. In mathematical terms it is the following, 
+    \begin{align}
+        o_{St \given Sh, \mathcal{B}} = \dfrac{P(St \given Sh, \mathcal{B})}{P(E \given Sh, \mathcal{B})}.
+    \end{align}
 
+    We know though $P(St \given Sh, \mathcal{B})$ to be,
+    \begin{align*}
+        P(St \given Sh, \mathcal{B}) = \dfrac{P(St \given \mathcal{B}) P(Sh \given St, \mathcal{B})}{P(Sh \given \mathcal{B})}
+    \end{align*}
+    and $P(E \given Sh, \mathcal{B})$ to be,
+    \begin{align*}
+        P(E \given Sh, \mathcal{B}) = \dfrac{P(E \given \mathcal{B}) P(Sh \given E, \mathcal{B})}{P(Sh \given \mathcal{B})}.
+    \end{align*}
+    Using this to expand equation (5) we get,
+    \begin{align*}
+        o_{St \given Sh, \mathcal{B}} = \dfrac{P(St \given Sh, \mathcal{B})}{P(E \given Sh, \mathcal{B})} &= \dfrac{P(St \given \mathcal{B}) P(Sh \given St, \mathcal{B})}{P(Sh \given \mathcal{B})} \cdot \dfrac{P(Sh \given \mathcal{B})}{P(E \given \mathcal{B}) P(Sh \given E, \mathcal{B})} \\
+        &= \dfrac{P(St \given \mathcal{B}) P(Sh \given St, \mathcal{B})}{P(E \given \mathcal{B}) P(Sh \given E, \mathcal{B})} \\
+        &= \left[\dfrac{P(St \given \mathcal{B})}{P(E \given \mathcal{B})}\right] \cdot \left[\dfrac{P(Sh \given St, \mathcal{B})}{P(Sh \given E, \mathcal{B})}\right]
+    \end{align*}
+    which is the same as the expression give, which is why it is a correct use of Bayes' Theorem on the odds ratio scale in this problem. 
+\end{solution}
+
+\vspace*{0.5in}
+ \newpage
+% -----------------------PART F---------------------------
 \item[(f)]
 
 Here are three terms that are relevant to the quantities in part (e) above:
@@ -220,30 +244,91 @@ Here are three terms that are relevant to the quantities in part (e) above:
 \end{itemize}
 
 Match these three terms with the numbers $( 1 ), ( 2 ), ( 3 )$ in the second line of the equation in part (e). \textit{[5 points]}
+\begin{solution}
+    \begin{align*}
+        (1) &- \text{(Posterior odds ratio in favor of $St$ over $E$, given $\mathcal{ B }$)} \\
+        (2) &- \text{(Prior odds ratio in favor of $St$ over $E$, given $\mathcal{ B }$)}\\
+        (3) &- \text{(Bayes factor in favor of $St$ over $E$, given $\mathcal{ B }$)}
+    \end{align*}
+\end{solution}
 
 \vspace*{0.5in}
 
+% -----------------------PART G---------------------------
 \item[(g)]
 
 Compute the three ratios in part (e), briefly explaining your reasoning, thereby demonstrating that the posterior odds ratio $o$ in favor of $St$ over $E$ (given $\mathcal{ B }$) is $o = \frac{ 42 }{ 95 } \doteq 0.442$. \textit{[15 points]}
+\begin{solution}
+    Let us first solve for (2), this is simply the probability of haphazardly meeting a statistician given $\mathcal{B}$ over the probability of haphazardly meeting an economist given $\mathcal{B}$. We know 5 percent of the attendees are statisticians which means,
+    \[P(St \given \mathcal{B}) = \dfrac{50}{1000} = \dfrac{1}{20}\]
+    then we know 95 percent of the attendees are economists,
+    \[P(E \given \mathcal{B}) = \dfrac{950}{1000} = \dfrac{19}{20}.\]
+    Now solving for (2),
+    \[\dfrac{P(St \given \mathcal{B})}{P(E \given \mathcal{B})} = \dfrac{1}{20} \cdot \dfrac{20}{19} = \dfrac{1}{19}\]
+    Which means there is a 19 to 1 prior odds ratio against $St$ given $\mathcal{B}$
+
+    Now solving for (3) this is the probability of the a person you haphazardly meet is shy given they are a statistician and $\mathcal{B}$ over the the same thing except they are an economist. We know though 84 percent of statisticians are shy and only 10 percent of economists are shy, which gives us,
+    \begin{align*}
+        \dfrac{P(Sh \given St, \mathcal{B})}{P(Sh \given E, \mathcal{B})} = \dfrac{0.84}{0.10} = \dfrac{42}{5}
+    \end{align*}
+    Which means we have a $\frac{42}{5}$ Bayes factor in favor of $St$ given $\mathcal{B}$
+
+    These two together will let us solve for (1),
+    \begin{align*}
+        \dfrac{P(St \given Sh, \mathcal{B})}{P(E \given Sh, \mathcal{B})} = \dfrac{1}{19} \cdot \dfrac{42}{5} = \dfrac{42}{95} = o
+    \end{align*}
+    which means we have a 95 to 42 posterior odds against $St$ given the data and the background statement, which matches the problem statement. 
+\end{solution}
 
 \vspace*{1.0in}
 
+% -----------------------PART H---------------------------
 \item[(h)]
 
 Use the expression $p = \frac{ o }{ 1 + o }$ to show that the desired probability in this problem --- the conditional probability that you're talking to a statistician (given $\mathcal{ B }$) --- is $p = \frac{ 42 }{ 137 } \doteq 0.307$. \textit{[5 points]}
 
+\begin{solution}
+    We know $o = \frac{42}{95}$ so plugging in we get,
+    \begin{align*}
+        p = \dfrac{\frac{42}{95}}{1 + \frac{42}{95}} = \frac{42}{95} \cdot\frac{95}{137} = \frac{42}{137}
+    \end{align*}
+    matching the problem statement. 
+\end{solution}
+
 \vspace*{0.75in}
 
+% -----------------------PART I---------------------------
 \item[(i)]
 
 Briefly explain why the following expression is a correct use of Bayes's Theorem on the probability scale in this problem. \textit{[5 points]}
 \begin{equation} \label{e:bayes-1}
 P ( St \given Sh, \, \mathcal{ B } ) = \frac{ P ( St \given \mathcal{ B } ) \, P ( Sh \given St, \, \mathcal{ B } ) }{ P ( Sh \given \mathcal{ B } ) } \, .
 \end{equation}
+\begin{solution}
+    Well we know from CS1 in class that,
+    \[P(\theta = 1 \given y_1 = 1, \mathcal{B}) = \dfrac{P(\theta =1 \given \mathcal{B}) P(y_1 =1 \given \theta = 1, \mathcal{B}))}{P(y_1 = 1 \given \mathcal{B})}\]
+    which is analogous to for the unknown we are trying to solve for now, which we can see through the table below, 
+    \begin{align*}
+        \begin{tabular} { |c|c|c|}
+            \hline
+            (truth) unknown & data & problem \\
+            \hline
+            $St$ or $E$ & $Sh$ or $\neg Sh$ & Quiz 1  \\
+            \hline
+            $\theta =1$ or $\theta = 0$ & $y_1 = 1$ or $y_1 = 0$ & CS1 \\
+            \hline
+        \end{tabular}    
+    \end{align*}
+    By analogy then, we have,
+    \begin{align*}
+        P ( St \given Sh, \, \mathcal{ B } ) = \frac{ P ( St \given \mathcal{ B } ) \, P ( Sh \given St, \, \mathcal{ B } ) }{ P ( Sh \given \mathcal{ B } ) }
+    \end{align*}
+    
+\end{solution}
 
 \vspace*{0.5in}
 
+% -----------------------PART J---------------------------
 \item[(j)]
 
 Notice as usual that you know both of the numerator probabilities in equation (\ref{e:bayes-2}) but you don't (yet) know the denominator $P ( Sh \given \mathcal{ B } )$. Use the \textit{Law of Total Probability}, partitioning over the unknown truth, to show that
@@ -255,12 +340,37 @@ and use this to show that
 P ( St \given Sh, \, \mathcal{ B } ) = \frac{ ( 0.05 ) ( 0.84 ) }{ 0.137 } = \frac{ 42 }{ 137 } \doteq 0.307 \, .
 \end{equation}
 \textit{[15 points]}
+\begin{solution}
+    Given that a person from the conference is shy we know they MUST either be and economist or a statistician but NOT both. So using the law of total probability (and rules for and/or when taking probability) we can express the denominator as,
+    \begin{align*}
+        P(Sh \given \mathcal{B}) &= P((Sh \text{ and }St) \text{ or } (Sh\text{ and }E) \given \mathcal{B}) \\
+        &= P((Sh\text{ and }St) \given \mathcal{B}) + P((Sh\text{ and } E) \given \mathcal{B}) \\
+        &= P(St \given \mathcal{B}) \cdot P(Sh \given St, \mathcal{B}) + P(E \given \mathcal{B}) \cdot P(Sh \given E, \mathcal{B})
+    \end{align*}
+    in this form though we know all these probabilities, so plugging in we get the denominator to be,
+    \begin{align*}
+        P(Sh \given \mathcal{B}) &= \dfrac{1}{20} \cdot \dfrac{21}{25} +  \dfrac{19}{20} \cdot \dfrac{1}{10} \\
+        &= \dfrac{21}{500} + \dfrac{19}{200} \\
+        &= \dfrac{137}{1000} \\
+        &= 0.137
+    \end{align*}
+    Now using this in Bayes' Theorem we get,
+    \begin{align*}
+        P(St \given Sh, \mathcal{B}) = P ( St \given Sh, \, \mathcal{ B } ) &= \frac{ P ( St \given \mathcal{ B } ) \, P ( Sh \given St, \, \mathcal{ B } ) }{ P ( Sh \given \mathcal{ B } ) } \\
+        &= \dfrac{(0.05)(0.84)}{0.137} \\
+        &= \dfrac{42}{137} = 0.307
+    \end{align*}
+    which matches the problem statement as desired. 
+\end{solution}
 
-\vspace*{1.0in}
-
+% -----------------------PART K---------------------------
 \item[(k)]
 
 Someone says, ``That 30.7\% probability can't be right: 84\% of statisticians are shy, versus 10\% for economists, so your probability $p$ of talking to a statistician has to be over 50\%.'' Briefly explain why this line of reasoning is wrong, and why $p$ should indeed be less than 50\%. \textit{[5 points]}
+\begin{solution}
+    While it is true a higher percent of statisticians are shy compared the percent of economists that are shy, but at this event there is a higher number of shy economists than there are shy statisticians. This is due to the large proportion of economists at this event versus the small proportion of statisticians (95 percent and 5 percent respectively). More specifically this person is focusing on the Bayes factor in favor of the person being a shy statistician and ignoring the prior odds ratio, which is 19:1 against the person being a statistician which is why they think it should be over 50 percent, but when one accounts for the prior odds ratio it should indeed be less than 50 percent.
+\end{solution}
+
 
 \end{itemize}
 

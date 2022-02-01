@@ -1,0 +1,236 @@
+    \documentclass[11pt]{article}
+ 
+\usepackage[top=0.75in, bottom=1.25in, left=1in, right=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb} %this is THE math package
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{fancybox}
+\usepackage{hyperref}
+\usepackage{varwidth}
+\usepackage{mdframed}
+\usepackage{mathrsfs}
+\usepackage[most]{tcolorbox}
+%------------------------
+%Fonts I use, uncomment if you like to use them.
+%The first is the general font, and the second a math font
+\usepackage{mathpazo}
+\usepackage{eulervm}
+%------------------------
+%This is so that we have standard fonts for the double-stroked symbols
+%for reals, naturals etc. regardless of what font you use.
+%Don't comment
+\AtBeginDocument{
+  \DeclareSymbolFont{AMSb}{U}{msb}{m}{n}
+  \DeclareSymbolFontAlphabet{\mathbb}{AMSb}}
+%------------------------
+
+%----------------------------------------------
+%User-defined environments
+%Commented because we're not using them in this document
+%The only uncommented ones are the Problem and Solution environment
+
+% \newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{question}[2][Question]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem\!]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+%\newenvironment{sub-problem}[2][]{\begin{trivlist}
+%\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+\newenvironment{solution}{\begin{proof}[\textbf{\textit{Solution}}] }{\end{proof}}
+%----------------------------------------------
+
+%----------------------------
+%User-defined notations
+\newcommand{\zz}{\mathbb Z}   %blackboard bold Z
+\newcommand{\qq}{\mathbb Q}   %blackboard bold Q
+\newcommand{\ff}{\mathbb F}   %blackboard bold F
+\newcommand{\rr}{\mathbb R}   %blackboard bold R
+\newcommand{\nn}{\mathbb N}   %blackboard bold N
+\newcommand{\cc}{\mathbb C}   %blackboard bold C
+\newcommand{\af}{\mathbb A}   %blackboard bold A
+\newcommand{\pp}{\mathbb P}   %blackboard bold P
+\newcommand{\id}{\operatorname{id}} %for identity map
+\newcommand{\im}{\operatorname{im}} %for image of a function
+\newcommand{\dom}{\operatorname{dom}} %for domain of a function
+\newcommand{\cat}[1]{\mathscr{#1}}   %calligraphic category
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert} %for absolute value
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert} %for norm
+\newcommand{\modar}[1]{\text{ mod }{#1}} %for modular arithmetic
+\newcommand{\set}[1]{\left\{#1\right\}} %for set
+\newcommand{\setp}[2]{\left\{#1\ \middle|\ #2\right\}} %for set with a property
+\newcommand{\card}[1]{\#\,{#1}} %for cardinality of a set
+\newcommand\m[1]{\begin{pmatrix}#1\end{pmatrix}} 
+
+%Re-defined notations
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\emptyset}{\varnothing}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+%----------------------------
+
+\allowdisplaybreaks
+ 
+ 
+\begin{document}
+ 
+\title{Homework 1}
+\author{Kevin Guillen\\[0.5em]
+MATH 201 | Algebra II | Winter 2022}
+\date{} 
+\maketitle
+
+%Use \[...\] instead of $$...$$
+
+\begin{tcolorbox}
+  \begin{problem} {P1}
+    Let $M$ be a left $R-$module.
+    \begin{itemize}
+        \item[(a)] Let $N_1 \subseteq N_2 \subseteq N_3 \subseteq \dots$ be an ascending chan of $R-$submodules in $M$. Prove that the union $\bigcup_{j =1 }^{\infty}N_j$ is an $R-$submodule of $M$.
+        \item[(b)] Let $R = \mathcal{C}(\rr)$ denote the ring of (real-valued) continuous functions on $\rr$, with pointwise addition and multiplication (as in class). defined
+        \begin{align*}
+            \mathcal{C}_c(\rr) = \set{f \in \mathcal{C}(\rr) : \exists N = N(f) \in \nn \text{ such that }f(x) = 0 \text{ for all } |x| > N}
+        \end{align*} 
+        Prove that $\mathcal{C}_C(\rr)$ is an $R-$submodule of $R$. Is it a subring?
+    \end{itemize}
+  \end{problem}
+\end{tcolorbox}
+\begin{itemize}
+    \item [(a)]
+    \begin{proof}
+        First we will define $N$ to be the following,
+        \begin{align*}
+            N = \bigcup_{j =1}^{\infty}N_j.
+        \end{align*}
+        Now we must show that $N$ is a subgroup of $M$ under addition and that it is closed under scalar operation for it to be a submodule. So we will show that it is non-empty, closed under addition, and closed under scalars. Inverses is handled through the proof of scalars since $-1_R \in R$.
+
+        We know $N$ is non-empty since it is a union of non-empty sets (because $N_j$ is given to be a submodule). So let $x,y \in N$ we know then there exists some $a, b \in \nn$ such that $x\in N_{a}$ and $y \in N_{b}$. We can then let $k = \text{max}\set{a,b}$. Which means $N_a \subseteq N_k$ and $N_b \subseteq N_k$ and therefore $x,y \in N_k$. 
+
+        Now because we know $N_k$ to be a submodule of $M$ (since $k$ is either equal to $a$ or $b$), we have the following
+        \[x + y \in N_k\]
+        and because $N_k \subseteq N$ we have,
+        \[x + y \in N\]
+        as desired.
+
+        Now let $r \in R$ and $x \in N$. Like before this means that there exists some $a \in \nn$ such that $x \in N_a$. Where $N_a$ is a submodule of $M$. So we know the following
+        \[rx \in N_a\]
+        and because $N_a \subseteq N$ we have,
+        \[rx \in N\]
+        as desired.
+
+        All this together then means that $\bigcup_{j = 1}^{\infty}N_j$ is indeed a submodule of $M$.
+    \end{proof}
+
+    \item [(b)]
+    \begin{proof}
+        In order to show that $\mathcal{C}_C(\rr)$ is an $R-$submodule we will show that it is non-empty, closed under addition, and closed under scalars. 
+
+        First consider the zero function, which we will denote as $o$, that maps everything to $0_\rr$. Since we know 
+        \[o(x) = 0, \ \forall x \in \rr\]
+        then we know it must be in $\mathcal{C}_C(\rr)$ since for $N = 1$ we have 
+        \[o(x) = 0, \ \forall \abs{x} > 1.\]
+
+        Now let $f,g \in \mathcal{C}_C(\rr)$. Then we know there exists $N_f, N_g \in \nn$ such that the following hold,
+        \begin{align}
+            f(x) &= 0, \ \forall \abs{x} > N_f \\
+            g(x) &= 0, \ \forall \abs{x} > N_g
+        \end{align}
+        Now we want to show that $(f + g) \in \mathcal{C}_C(\rr)$. We know addition is defined pointwise so,
+        \[(f+g)(x) = f(x) + g(x)\]
+        And we know the addition of continuous function is again continuous. Now let $N_{f+g} = \text{max}\set{N_f, N_g}$, we know then that the following holds,
+        \begin{align}
+            f(x) + g(x) = 0,\ \forall \abs{x} > N_{f+g}.
+        \end{align}
+        This is because,
+        \begin{align*}
+            f(x) &= 0, \ \forall \abs{x} > N_{f+g} \geq N_f && \text{by (1)} \\
+            g(x) &= 0, \ \forall \abs{x} > N_{f+g} \geq N_g && \text{by (2)}\\
+        \end{align*}
+        and $0 + 0 = 0$. Since $N_{f+g} \in \nn$ we have then that $(f+g) \in \mathcal{C}_C(\rr)$ as desired.
+
+        Now we will show that $\mathcal{C}_C(\rr)$ is closed under scalars. Let $r \in R = \mathcal{C}(\rr)$ and $f \in \mathcal{C}_C(\rr)$. We know then there exists $N_f \in \nn$ such that,
+        \[f(x) = 0, \ \forall \abs{x} > N_f.\]
+        We know then that the following holds,
+        \[(rf)(x) = r(x)f(x) = 0, \ \forall \abs{x} > N_f.\]
+        This is because $r(x)$ will evaluate to some real number and we know $f(x) = 0$ for all $\abs{x} > N_f$. Any real number times $0$ will again be $0$, and the product of continuous functions is again continuous, meaning $(rf) \in \mathcal{C}_C(\rr)$ as desired.
+
+        From this we can quickly see that $\mathcal{C}_C(\rr)$ is not a subring of $\mathcal{C}(\rr)$. This is because $\mathcal{C}(\rr)$ contains a multiplicative identity which is the constant function that maps everything to $1$. This function is not in the set $\mathcal{C}_C(\rr)$ and therefore $\mathcal{C}_C(\rr)$ cannot be a subring of $\mathcal{C}(\rr)$ since it can't share the same multiplicative identity. 
+        
+    \end{proof}
+
+    \begin{tcolorbox}
+        \begin{problem} {P2} Let $M$ be a left $R-$module. The $\textit{annihlator}$ of $M$ in $R$ is defined as:
+            \[\textit{Ann}_R(M) = \set{r \in R: rm = 0 \text{ for all } m\in M}\]
+            \begin{itemize}
+                \item [(a)] Prove that $\textit{Ann}_R(M)$ is a bilateral ideal of $R$.
+                \item [(b)] If $M_1$ and $M_2$ are two left $R-$modules, prove that
+                \[\textit{Ann}_R(M_1 \times M_2) = \textit{Ann}_R(M_1)\cap \textit{Ann}_R(M_2)\]
+                \item [(c)] Compute $\textit{Ann}_R(M)$ when $R=\zz$ and $M = (\zz/112\zz)^{\times}$ is the multiplicative abelian group of units in $\zz/112\zz$
+            \end{itemize}
+        \end{problem}
+    \end{tcolorbox}
+
+    \begin{itemize}
+        \item[(a)]
+        \begin{proof}
+            Let $\textit{Ann}_R(M)$ be denoted as $I$. We know this $I$ is non-empty since $0\in R$ and $0m = 0 $ for all $m \in M$. So now let $a,b \in I$, we will show that $a+b \in I$. Let $m \in M$. Consider the following,
+            \begin{align*}
+                (a+b)m &= am + bm && \text{by definition} \\
+                &= 0 + 0 && \text{since $a,b \in I$}
+            \end{align*}
+            and since $m$ was arbitrary we have then that $(a+b)m = 0$ for all $m \in M$, meaning $(a+b) \in I $.
+
+            Let $r \in R$ and $a \in I$. We want to show $ra \in I$, so let $m \in M$. We see through the following,
+            \begin{align*}
+                (ra)m &= r(am) && a \in I \\
+                &= r0 \\
+                &= 0
+            \end{align*}
+            $ra$ is in $I$. Now we want to show that $ar \in I$,
+            \begin{align*}
+                (ar)m &= a(rm) && \text{$M$ is closed under scalars so $rm \in M$, and $a \in I$} \\
+                &= 0
+            \end{align*}
+            Now with all this together we have that $\textit{Ann}_R(M)$ is a bilateral ideal of $R$
+        \end{proof}  
+        \item[(b)]
+        \begin{proof}
+            Let $r \in \textit{Ann}_R(M_1 \times M_2)$. That means then for all $(m_1,m_2) \in M_1 \times M_2$,
+            \[r(m_1, m_2) = (rm_1, rm_2) = (0,0)\]
+             since scalar multiplication is done component wise when working with the cross product of $R$-modules, $rm_1 = 0$ and $rm_2 = 0$ for all $m_1\in M_1$ and for all $m_2 \in M_2 $ therefore, $r \in \textit{Ann}_R(M_1) \cap \textit{Ann}_R(M_2)$. \\ Because $r$ was arbitrary, $\textit{Ann}_R(M_1 \times M_2 )\subseteq \textit{Ann}_R(M_1) \cap \textit{Ann}_R(M_2) $
+
+            Now consider $r\in \textit{Ann}_R(M_1)\cap \textit{Ann}_R(M_2)$. Let $(m_1, m_2) \in M_1 \times M_2$, we have the following,
+            \begin{align*}
+                r(m_1,m_2) &= (rm_1, rm_2) && r \in \textit{Ann}_R(M_1)  \text{ and } r\in \textit{Ann}_R(M_2) \\
+                &= (0,0)
+            \end{align*}
+            which means $r \in \textit{Ann}_R(M_1 \times M_2)$ and since $r$ was arbitrary we have $\textit{Ann}_R(M_1)\cap \textit{Ann}_R(M_2) \subseteq \textit{Ann}_R(M_1 \times M_2)$.
+
+            Together we then have that $\textit{Ann}_R(M_1 \times M_2) = \textit{Ann}_R(M_1)\cap \textit{Ann}_R(M_2)$ as desired. 
+        \end{proof} 
+        \item[(c)]  
+        Let $z\in \zz$ and $\overline{m}\in (\zz/112\zz)^{\times}$. For $z$ to be an element of the annihilator of $M$ in $\zz$ we must have
+        \[z\overline{m} = 0\]
+        for all $\overline{m}\in (\zz/112\zz)^{\times}$. This means then that $112\mid z$, because $\overline{m} \neq 0$, but 
+        \[112\mid z \Longleftrightarrow 7\mid z \land  2 \mid z\]
+        giving us the following congruencies,
+        \begin{align*}
+            z \equiv 0 \text{ mod 7} \\
+            z \equiv 0 \text{ mod 2}
+        \end{align*}
+        and by CRT the solution is $z \equiv 0 \text{ mod 14}$ which is to say $z \in 14\zz$. Therefore the annihilator of $(\zz/112\zz)^{\times}$ in $\zz$ is $14\zz$.
+    \end{itemize}
+
+\end{itemize}
+
+\end{document}
