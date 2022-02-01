@@ -1,0 +1,292 @@
+\documentclass[11pt]{article}
+ 
+\usepackage[top=0.75in, bottom=1.25in, left=1in, right=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb} %this is THE math package
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{fancybox}
+\usepackage{hyperref}
+\usepackage{varwidth}
+\usepackage{mdframed}
+\usepackage{mathrsfs}
+\usepackage[most]{tcolorbox}
+%------------------------
+%Fonts I use, uncomment if you like to use them.
+%The first is the general font, and the second a math font
+\usepackage{mathpazo}
+\usepackage{eulervm}
+%------------------------
+%This is so that we have standard fonts for the double-stroked symbols
+%for reals, naturals etc. regardless of what font you use.
+%Don't comment
+\AtBeginDocument{
+  \DeclareSymbolFont{AMSb}{U}{msb}{m}{n}
+  \DeclareSymbolFontAlphabet{\mathbb}{AMSb}}
+%------------------------
+
+%----------------------------------------------
+%User-defined environments
+%Commented because we're not using them in this document
+%The only uncommented ones are the Problem and Solution environment
+
+% \newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{question}[2][Question]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem\!]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+%\newenvironment{sub-problem}[2][]{\begin{trivlist}
+%\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+\newenvironment{solution}{\begin{proof}[\textbf{\textit{Solution}}] }{\end{proof}}
+%----------------------------------------------
+
+%----------------------------
+%User-defined notations
+\newcommand{\zz}{\mathbb Z}   %blackboard bold Z
+\newcommand{\qq}{\mathbb Q}   %blackboard bold Q
+\newcommand{\ff}{\mathbb F}   %blackboard bold F
+\newcommand{\rr}{\mathbb R}   %blackboard bold R
+\newcommand{\nn}{\mathbb N}   %blackboard bold N
+\newcommand{\cc}{\mathbb C}   %blackboard bold C
+\newcommand{\af}{\mathbb A}   %blackboard bold A
+\newcommand{\pp}{\mathbb P}   %blackboard bold P
+\newcommand{\id}{\operatorname{id}} %for identity map
+\newcommand{\im}{\operatorname{im}} %for image of a function
+\newcommand{\dom}{\operatorname{dom}} %for domain of a function
+\newcommand{\cat}[1]{\mathscr{#1}}   %calligraphic category
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert} %for absolute value
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert} %for norm
+\newcommand{\modar}[1]{\text{ mod }{#1}} %for modular arithmetic
+\newcommand{\set}[1]{\left\{#1\right\}} %for set
+\newcommand{\setp}[2]{\left\{#1\ \middle|\ #2\right\}} %for set with a property
+\newcommand{\card}[1]{\#\,{#1}} %for cardinality of a set
+\newcommand\m[1]{\begin{pmatrix}#1\end{pmatrix}} 
+\newcommand*{\putunder}[2]{%
+  {\mathop{#1}_{\textstyle #2}}%
+}
+
+%Re-defined notations
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\emptyset}{\varnothing}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+%----------------------------
+
+\allowdisplaybreaks
+ 
+ 
+\begin{document}
+ 
+\title{Homework 2}
+\author{Kevin Guillen\\[0.5em]
+MATH 201  | Algebra II | Winter 2022}
+\date{} 
+\maketitle
+
+%Use \[...\] instead of $$...$$
+
+\begin{tcolorbox}
+  \begin{problem} {P1}
+    Let $F$ be any field , $n \geq 0 $ an integer, $V$ and $n-$dimensional $F-$vector space.
+
+    For any integer $k$ such that $0 \leq k \leq n$, let $G_k$ denote the set of $k-dimensional$ $F-$subspaces $W$ of $V$
+
+    Prove that the action of $GL_F(V)$ on $G_k$ given by
+    \[g.W = \set{g(w): w \in W} \in G_k\]
+    for all $g \in GL_F(V)$, is transitive.
+  \end{problem}
+\end{tcolorbox}
+
+\begin{proof}
+  We defined in class $GL_F(V)$ as,
+  \[GL_F(V) = \set{f: V \rightarrow V \mid F-\text{linear isomorphisms}}\]
+  To show that the provided action is transitive we want to show that for any subspace $W,W' \in G_k$ there exists some $f \in GL_F(V)$ that satisfies:
+  \[f.W = W'\]
+
+  Since both $W$ and $W'$ are in $G_k$ we know they are of dimension $k$. Meaning they their bases can be expressed as $\set{a_1, \dots , a_k}$ and $\set{b_1, \dots ,b_k}$ for $W$ and $W'$ respectively. We know that linear transformations map subspaces to subspaces and there exists $f\in GL_F(V)$ such that,
+  \[f(\alpha_1a_1 + \dots + \alpha_ka_k) = \alpha_1b_1 + \dots +\alpha_kb_k\]
+  we know this is indeed in $GL_F(V)$ because we can see it is a linear transformation through the following, for any $w_1,w_2 \in W $ we have,
+ \begin{align*}
+  f((\alpha_1a_1 + \dots + \alpha_ka_k) + (\gamma_1a_1 + \dots + \gamma_ka_k )) &= f((\alpha_1 + \gamma_1)a_1 + \dots + (\alpha_k + \gamma_k)a_k) \\
+  &= (\alpha_1 + \gamma_1)b_1 + \dots + (\alpha_k + \gamma_k)b_k \\
+  &=(\alpha_1b_1 + \dots + \alpha_kb_k) + (\gamma_1b_1 + \dots + \gamma_kb_k ) \\
+  &= f(\alpha_1a_1 + \dots + \alpha_ka_k) + f(\gamma_1a_1 + \dots + \gamma_ka_k)
+ \end{align*}
+ and for $c \in F$,
+ \begin{align*}
+   cf(\alpha_1a_1 + \dots + \alpha_ka_k) = c(\alpha_1a_1 + \dots + \alpha_ka_k) &= c\alpha_1b_1 + \dots + c\alpha_1b_1 \\
+   &= f(c(\alpha_1a_1 + \dots + \alpha_ka_k))
+ \end{align*}
+ meaning we have $f(W) = W' = f.W$.
+ then from our corollary we proved in class (Jan 18), we have that $f$ is an isomorphism and thereby must be in $GL_F(V)$. Showing that the action is transitive.
+\end{proof}
+
+\newpage
+\begin{tcolorbox}
+  \begin{problem} {P2}
+    Let $F = \mathbb{F}_{17}$ be the field with 17 elements. For any integer $n$, we will denote still by $n$ its image in $F$.
+
+    Apply Gaussian elimination to find all the solutions to the linear system
+    \begin{align*}
+      2x + 3y + 5z &= 10 \\
+      4x + 5y + 8z &= 11 \\
+      2x + 4y + 7z &= 2
+    \end{align*}
+  \end{problem}
+\end{tcolorbox}
+\begin{proof}
+  We begin by writing our system of equations in matrix form,
+  \[\begin{bmatrix}
+    2 & 3 & 5 & 10 \\
+    4 & 5 & 8 & 11 \\
+    2 & 4 & 7 & 2 
+  \end{bmatrix}\]
+  Next we will label under each matrix the operation we will be performing,
+  \begin{align*}
+    \putunder{\begin{bmatrix}
+      2 & 3 & 5 & 10 \\
+      4 & 5 & 8 & 11 \\
+      2 & 4 & 7 & 2 
+    \end{bmatrix}}{R2 = R2 - 2R3} &\rightarrow  \putunder{\begin{bmatrix}
+      2 & 3 & 5 & 10 \\
+      0 & 14 & 11 & 7 \\
+      2 & 4 & 7 & 2 
+    \end{bmatrix}}{R3 = R3 - R1} \rightarrow \putunder{\begin{bmatrix}
+      2 & 3 & 5 & 10 \\
+      0 & 14 & 11 & 7 \\
+      0 & 1 & 2 & 9 
+    \end{bmatrix}}{R3 = 14R3 - R2} \rightarrow \putunder{\begin{bmatrix}
+      2 & 3 & 5 & 10 \\
+      0 & 14 & 11 & 7 \\
+      0 & 0 & 0 & 0 
+    \end{bmatrix}}{R2 = 4R2} \\ \rightarrow \putunder{\begin{bmatrix}
+      2 & 3 & 5 & 10 \\
+      0 & 5 & 10 & 11 \\
+      0 & 0 & 0 & 0 
+    \end{bmatrix}}{R1 = 5R1 - 3R2} 
+    &\rightarrow \putunder{\begin{bmatrix}
+      10 & 0 & 12 & 10 \\
+      0 & 5 & 10 & 11 \\
+      0 & 0 & 0 & 0 
+    \end{bmatrix}}{R1 = 12R1} \rightarrow \putunder{\begin{bmatrix}
+      1 & 0 & 8 & 0 \\
+      0 & 5 & 10 & 11 \\
+      0 & 0 & 0 & 0 
+    \end{bmatrix}}{R2 = 7R2} \rightarrow \putunder{\begin{bmatrix}
+      1 & 0 & 8 & 0 \\
+      0 & 1 & 2 & 9 \\
+      0 & 0 & 0 & 0 
+    \end{bmatrix}}{R2 = 7R2}
+  \end{align*}
+  This then gives us,
+  \begin{align*}
+    x + 8z &= 0 \\
+    y + 2z &= 9
+  \end{align*}
+  solving for our leading variables, we get all solutions in terms of $z$ for any $z \in \mathbb{F}_{17}$
+  \begin{align*}
+    x &= 9z \\
+    y &= 9 + 15z
+  \end{align*}
+  
+
+\end{proof}
+
+\newpage
+\begin{tcolorbox}
+  \begin{problem} {P3}
+    Consider the positively oriented orthonormal vectors in $V = \rr^{3}$:
+    \[v_1 = \frac{1}{\sqrt{2}}(1,-1,0), \ v_2 = \frac{1}{\sqrt{3}}(1,1,1), \text{ and } v_3 = v_1 \times v_2\]
+    (the vector, or cross, product)
+
+    Let $T$ be the rotation of $V = \rr^{3}$ about the axis $v_3$ by $90^{\circ}$
+
+    \begin{itemize}
+      \item[(1)] Computer the matrix $[T]_{\mathcal{B}'} = [T]_{\mathcal{B}'}^{\mathcal{B}'}$ with respect to the basis 
+      \[\mathcal{B'} = (v_1, v_2, v_3)\]
+      \item[(2)] Compute the matrix of $T$ with respect to the standard basis $\mathcal{B} = (e_1, e_2, e_3)$ 
+    \end{itemize}
+  \end{problem}
+\end{tcolorbox}
+
+\begin{proof}
+  First we must compute $v_3$ which evaluates to be,
+  \[v_3 = (-\frac{1}{\sqrt{6}}, -\frac{1}{\sqrt{6}}, \sqrt{\frac{2}{3}}) = \frac{1}{\sqrt{6}}(-1,-1,2)\]
+  Now because we are rotating only 90 degrees about $v_3$, we know $v_3$ should remain unchanged after our rotation. While $T(v_1) = v_2$ and $T(v_2) = -v_1$, putting this together we have,
+  \begin{align*}
+    T(v_1) = 1v_2 \\
+    T(v_2) = -1v_1 \\
+    T(v_3) = 1v_3
+  \end{align*}
+  which means we have $[T]_{\mathcal{B}'^{\mathcal{B}'}} = \begin{bmatrix}
+    0 & -1 & 0 \\
+    1 & 0 & 0 \\
+    0 & 0 & 1
+  \end{bmatrix}$
+
+  Now let $P:V \to V$ be $P(v) = v$. Wow we need to calculate $[P]_{\mathcal{B}'}^{\mathcal{B}}$, 
+  \begin{align*}
+    P(v_1) &= \frac{1}{\sqrt(2)}(1,-1,0) = \frac{1}{\sqrt{2}}e_1 -\frac{1}{\sqrt{2}}e_2  \\
+    P(v_2) &= \frac{1}{\sqrt{3}}(1,1,1) = \frac{1}{\sqrt{3}}e_1 + \frac{1}{\sqrt{3}}e_2 + \frac{1}{\sqrt{3}}e_3 \\
+    P(v_3) &= \frac{1}{\sqrt{6}}(-1,-1,2) = -\frac{1}{\sqrt{6}}e_1 -\frac{1}{\sqrt{6}}e_2 + \frac{2}{\sqrt{6}}e_3 
+  \end{align*}
+  all together gives us,
+  \[[P]_{\mathcal{B}'}^{\mathcal{B}} = \begin{bmatrix}
+    \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{3}} & -\frac{1}{\sqrt{6}} \\
+    - \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{3}} & -\frac{1}{\sqrt{6}} \\
+    0 & \frac{1}{\sqrt{3}} & \frac{2}{\sqrt{6}}
+  \end{bmatrix}\]
+  which then means,
+  \[\frac{1}{[P]_{\mathcal{B}'}^{\mathcal{B}}}= \begin{bmatrix}
+    \frac{1}{\sqrt{2}} & -\frac{1}{2} & 0 \\
+    \frac{1}{\sqrt{3}} & \frac{1}{\sqrt{3}} & \frac{1}{\sqrt{3}} \\
+    -\frac{1}{\sqrt{6}} & -\frac{1}{\sqrt{6}} & \frac{2}{\sqrt{6}}.
+  \end{bmatrix}\]
+
+  We know then to compute the matrix of $T$ with respect to the standard basis $\mathcal{B}$, recall though
+  \[[T]_{\mathcal{B}'}^{\mathcal{B}'} = \frac{1}{[P]_{\mathcal{B}'}^{\mathcal{B}}} [T]_{\mathcal{B}}^{\mathcal{B}} [P]_{\mathcal{B}'}^{\mathcal{B}}\]
+  so solving for $[T]_{\mathcal{B}}^{\mathcal{B}}$ we get,
+  \[[T]_{\mathcal{B}}^{\mathcal{B}} = [P]_{\mathcal{B}'}^{\mathcal{B}} [T]_{\mathcal{B}'}^{\mathcal{B}'} \frac{1}{[P]_{\mathcal{B}'}^{\mathcal{B}}}\]
+  Plugging in what we know we get,
+  \begin{align*}
+    [T]_{\mathcal{B}}^{\mathcal{B}} &= \begin{bmatrix}
+      \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{3}} & -\frac{1}{\sqrt{6}} \\
+      - \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{3}} & -\frac{1}{\sqrt{6}} \\
+      0 & \frac{1}{\sqrt{3}} & \frac{2}{\sqrt{6}}
+    \end{bmatrix} \begin{bmatrix}
+      0 & -1 & 0 \\
+      1 & 0 & 0 \\
+      0 & 0 & 1
+    \end{bmatrix}\begin{bmatrix}
+      \frac{1}{\sqrt{2}} & -\frac{1}{2} & 0 \\
+      \frac{1}{\sqrt{3}} & \frac{1}{\sqrt{3}} & \frac{1}{\sqrt{3}} \\
+      -\frac{1}{\sqrt{6}} & -\frac{1}{\sqrt{6}} & \frac{2}{\sqrt{6}}.
+    \end{bmatrix} \\
+    &= \begin{bmatrix}
+      \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{3}} & -\frac{1}{\sqrt{6}} \\
+      - \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{3}} & -\frac{1}{\sqrt{6}} \\
+      0 & \frac{1}{\sqrt{3}} & \frac{2}{\sqrt{6}}
+    \end{bmatrix} \begin{bmatrix}
+      -\frac{1}{\sqrt{3}} & -\frac{1}{\sqrt{3}} & -\frac{1}{\sqrt{3}} \\
+      \frac{1}{2} & -\frac{1}{2} & 0 \\
+      -\frac{1}{\sqrt{6}} & -\frac{1}{\sqrt{6}} & \frac{2}{\sqrt{6}}
+    \end{bmatrix} \\
+    &= \begin{bmatrix}
+      \frac{1}{6} & \frac{-2\sqrt{6} + 1}{6} & \frac{-\sqrt{6} -3}{3\sqrt{6}} \\
+      \frac{2\sqrt(6) + 1}{6} & \frac{1}{6} & \frac{3- \sqrt{6}}{3\sqrt{6}} \\
+      \frac{3-\sqrt{6}}{3\sqrt{6}} & \frac{-\sqrt{6} -3}{3\sqrt{6}} &\frac{2}{3}
+    \end{bmatrix}.
+  \end{align*}
+\end{proof}
+
+\end{document}
