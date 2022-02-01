@@ -1,8 +1,8 @@
 # Fdb version 3
-["pdflatex"] 1643727181 "HW2.tex" "HW2.pdf" "HW2" 1643727186
-  "HW2.aux" 1643727183 721 9fcd139f5c606f26d5bae1aa0c991848 "pdflatex"
-  "HW2.out" 1643727182 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "HW2.tex" 1643727180 12524 2bf85e537cc75e2264ba687a21b1fbd7 ""
+["pdflatex"] 1643727386 "HW2.tex" "HW2.pdf" "HW2" 1643727388
+  "HW2.aux" 1643727388 721 9fcd139f5c606f26d5bae1aa0c991848 "pdflatex"
+  "HW2.out" 1643727387 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "HW2.tex" 1643727385 12647 ea75c8853b5c2d1d6a75423b1d2259a9 ""
   "c:/texlive/2021/texmf-dist/fonts/enc/dvips/base/8r.enc" 1628824547 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "c:/texlive/2021/texmf-dist/fonts/map/fontname/texfonts.map" 1628824999 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2021/texmf-dist/fonts/tfm/adobe/palatino/pplb7t.tfm" 1628826719 1616 371d1ee60c04b008c8fd760060cd34f1 ""
@@ -237,7 +237,7 @@
   "c:/texlive/2021/texmf-var/web2c/pdftex/pdflatex.fmt" 1628828791 2801564 96ee99b7930c0aca3c8f1f40880f406e ""
   "c:/texlive/2021/texmf.cnf" 1628828694 713 e69b156964470283e0530f5060668171 ""
   (generated)
+  "HW2.log"
   "HW2.aux"
   "HW2.pdf"
-  "HW2.log"
   "HW2.out"

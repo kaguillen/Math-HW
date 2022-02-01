@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.8.12)  1 FEB 2022 06:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.8.12)  1 FEB 2022 06:56
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -846,9 +846,9 @@ Here is how much of TeX's memory you used:
  45655 multiletter control sequences out of 15000+600000
  427768 words of font info for 103 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,16n,108p,466b,476s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 102i,16n,108p,466b,468s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2021/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/euler/eufm7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/euler/eurm10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/euler/eurm7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/euler/eusm10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/euler/eusm7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb><c:/texlive/2021/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb><c:/texlive/2021/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on HW2.pdf (4 pages, 118638 bytes).
+Output written on HW2.pdf (4 pages, 119049 bytes).
 PDF statistics:
  135 PDF objects out of 1000 (max. 8388607)
  76 compressed objects within 1 object stream
