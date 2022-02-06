@@ -1,0 +1,311 @@
+\documentclass[12pt]{article}
+
+\usepackage{ multirow, amsmath, amssymb }
+\usepackage{amsmath,amsthm,amssymb} %this is THE math package
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{fancybox}
+\usepackage{hyperref}
+\usepackage{varwidth}
+\usepackage{mdframed}
+\usepackage{mathrsfs}
+\usepackage[most]{tcolorbox}
+\newenvironment{solution}{\begin{proof}[\textbf{\textit{Solution}}] }{\end{proof}}
+
+
+\addtolength{\textheight}{2.0in}
+\addtolength{\topmargin}{-1.15in}
+\addtolength{\textwidth}{1.45in}
+\addtolength{\evensidemargin}{-0.85in}
+\addtolength{\oddsidemargin}{-0.85in}
+\setlength{\parskip}{0.1in}
+\setlength{\parindent}{0.0in}
+
+\pagestyle{empty}
+
+\raggedbottom
+ 
+\newcommand{\given}{\, | \,}
+
+ 
+\begin{document}
+
+\begin{flushleft}
+
+Prof.~David Draper \\
+Department of Statistics \\
+University of California, Santa Cruz
+Winter 2022
+
+\end{flushleft}
+
+\begin{center}
+
+\textbf{\large STAT 206: Quiz 2 \textit{[145 total points]}}
+
+\end{center}
+
+\begin{tabular}{ll}
+
+\hspace*{-0.14in} Name: \underline{Kevin Guillen\hspace*{6.0in}} \\
+
+\end{tabular}
+
+\vspace*{0.1in}
+
+You're an economist interested in patterns of unemployment of U.S.~adults over time. As part of this interest, You decide to take a sample from the population $\mathcal{ P }$ of people 18 years of age or older who were living in Santa Cruz (city, not county) as of time $T =$ (1 Jan 2022). The most recent U.S.~census, extrapolated to the beginning of 2022, estimates the total population of the city of Santa Cruz at that time as approximately 64,500, and data sets from the website \texttt{suburbanstats.org} lead to an estimate of $N \doteq $ 54,300 as the approximate total number of those people whose age was at least 18 at time $T$. You decide to take a representative sample of $n = 921$ people from $\mathcal{ P }$ and ask each sampled person ``Do you consider yourself fully employed at the time of this survey?'', with possible responses \{\textit{yes, no, other} (e.g., refuse to answer)\}. 
+
+Let $\theta$ be the proportion of the 54,300 people who would have answered \textit{yes} to this question, if You had been able to survey the entire population $\mathcal{ P }$, and let $s$ (an integer between 0 and $n$, inclusive) be the number of people in Your sample who actually do answer \textit{yes}. By way of context, the latest national estimate of the percentage of people 18 years old or older who regard themselves as fully employed is about 75\% (lots of American adults who want full employment can only find part-time jobs).
+
+\begin{itemize}
+%-------------------------------QUESTION 1------------------------------------
+\item[(1)]
+
+\textbf{\textit{How should You choose Your sample?}}
+
+\begin{itemize}
+
+\item[(a)]
+
+In class we agreed that the simplest method for obtaining a \textit{representative} sample from a (finite) population is \textit{random sampling}. However, given that there's no list of \{all $N$ people, with their addresses and other contact information\} from which You could draw a random sample (which is true; for one thing, what about homeless people?), in practice would it be easy, hard, or in between for You to construct a sample that You and other reasonable people would agree is representative (\textit{like} a random sample) from the population $\mathcal{ P }$? Explain briefly. \textit{[10 points]} 
+\begin{tcolorbox}
+    \begin{solution}
+        It would be hard to construct a sample that is representative of from the population. Since it would be hard to take a like IID random sample since we have no list (as defined in the problem statement) in which we draw a random sample from. Even if we did have said list, it would still be hard because there can be cases where we repeatedly try to contact individuals drawn from the list and they repeatedly don't reply to us.  
+    \end{solution}
+\end{tcolorbox}
+
+
+\vspace*{1.0in}
+
+\item[(b)]
+
+Describe (e.g., continuing on another sheet of paper, if You're writing Your answers in longhand) how You personally would attempt to obtain an arguably representative sample from $\mathcal{ P }$. \textit{Hint:} There's a part of the U.S.~government devoted to representing the entire population; how could public data from that agency help here? \textit{[10 points]}
+
+\end{itemize}
+
+\vspace*{0.8in}
+
+\end{itemize}
+
+For the rest of this problem, let's assume that You have indeed been able to create a sample that's similar to what You would have obtained with IID random sampling, and that Your results were as follows: $n_{ yes } = s = 728$ people said \textit{yes}, $n_{ no } = 174$ said \textit{no}, and $n_{ other } = 19$ were recorded as \textit{other}.
+
+\begin{itemize}
+%-------------------------------QUESTION 2------------------------------------
+\item[(2)]
+
+Before You get Your sampled data, is the logical status of $\theta$ known or unknown? What about $s$? Answer both questions at a moment in time after Your sample data has arrived. \textit{[10 points]}
+\begin{tcolorbox}
+    \begin{solution}
+        The logical status of $\theta$ and $s$ before we get our sampled data is unknown. The reason for $\theta$ being unknown is because that would imply we took a complete census of the entire population which we haven't. Since $s$ depends on our data we of course can't calculate it before our data arrives. 
+
+        After our data, $\theta$ is still unknown since our sample, $n$, is less than $N$. However we do know $s$ since we can now perform that calculation since it depended on our sample.  
+    \end{solution}
+\end{tcolorbox}
+
+\vspace*{0.5in}
+%-------------------------------QUESTION 3------------------------------------
+\item[(3)]
+
+In class we saw that calculations relevant to uncertainty quantification were of two types --- \textit{probability} and \textit{statistics} --- and that statistical activities in turn were of six types --- \textit{optimal design of data-gathering}, \textit{data curation}, \textit{description}, \textit{inference}, \textit{prediction}, and \textit{decision-making} --- making a total of seven classes of methods (\textit{\textbf{Pillars of Statistical Data Science}}) relevant to STAT 206. For each of the following (\textit{[5 point each]}), identify the activity or calculation as one of these seven classes, and briefly explain Your choice.
+
+\begin{itemize}
+
+\item[(a)]
+
+After the data are available, You estimate that a future sample survey of size $n_{ future } = 614$ from $\mathcal{ P }$ in early 2023 would contain about $\hat{ n }_{ yes } = 485$ \textit{yes} responses.
+
+\begin{tcolorbox}
+    \begin{solution}
+        This would be \textit{prediction} since it is an estimation of new data. 
+    \end{solution}
+\end{tcolorbox}
+
+\vspace*{0.6in}
+
+\item[(b)]
+
+Before the data set arrives, and temporarily pretending that $\theta$ is known, under IID random sampling the sampling distribution (probability mass function) of $s$ given $\theta$ (and $n$) is $( s \given n \, \theta \, \mathcal{ B } ) \sim \textrm{Binomial} ( n, \theta )$, where $\mathcal{ B }$ summarizes the background context of Your sample survey.
+
+\begin{tcolorbox}
+    \begin{solution}
+        This would be \textit{probability} since we're working in a moment in time before the data is known and pretending we know $\theta$. We know from Stats 131 that a sum of IID bernoulli $\theta$'s has a binomial distribution. We know they are bernoulli since we have our data as 1 or 0 for desired employment and not desired employment.  
+    \end{solution}
+\end{tcolorbox}
+
+\vspace*{0.6in}
+
+\item[(c)]
+
+In consultation with You and on the basis of Your survey, the Santa Cruz City Council votes (5 in favor, 2 opposed) to allocate \$57,300 in the fiscal year 2022--2023 budget to be distributed to winning grant proposals for ways to reduce unemployment in the city.
+
+\begin{tcolorbox}
+    \begin{solution}
+        This would be \textit{decision}, since an action is being taken based on an analysis. 
+    \end{solution}
+\end{tcolorbox}
+
+\vspace*{0.6in}
+
+\item[(d)]
+
+You and Your assistants have been interviewing the sampled people to obtain Your data set, and You've found that the people You interview are less intimidated by You if You record their answers on paper, to be transcribed later into a computer file for analysis. On the resulting sheets of paper, during the transcription process You discover that 11 of the ``data'' responses are illegible. You're now thinking about what to do about this problem.
+
+\begin{tcolorbox}
+    \begin{solution}
+        This would be \textit{data curation} since we are figuring out how to cope with the errors in our data, and imputation problem.  
+    \end{solution}
+\end{tcolorbox}
+
+\vspace*{0.6in}
+
+\item[(e)]
+
+After the data set has been collected, assuming no bias in Your sampling method and using frequentist inference, You estimate that $\theta$ is about $\hat{ \theta } = \frac{ s }{ n } = \frac{ 728 }{ 921 } \doteq$ 79.0\%, with a give-or take of about 1.3\% and a 99.9\% interval estimate of about $( 74.6\%, 83.5\% )$.
+
+\begin{tcolorbox}
+    \begin{solution}
+        This would be \textit{inference} since we are infering about $\theta$ based on $\hat{theta}$, and after some calculations it is indeed a correct inference. 
+    \end{solution}
+\end{tcolorbox}
+
+\vspace*{0.6in}
+
+\item[(f)]
+
+You summarize Your data set with the vector $( n_{ yes }, n_{ no }, n_{ other } ) = ( 728, 174, 19 )$.
+\begin{tcolorbox}
+    \begin{solution}
+        This would be \textit{description} because it a numerical summary of existing data. 
+    \end{solution}
+\end{tcolorbox}
+\vspace*{0.6in}
+
+\item[(g)] 
+
+Before the survey is conducted, You work out that $n = 921$ people sampled in a like-at-random manner will be sufficient to estimate $\theta$ with a small enough level of uncertainty to support good decisions about how to decrease unemployment in Santa Cruz.
+
+\begin{tcolorbox}
+    \begin{solution}
+        This would be a \textit{optimal design of data-gathering} since it is under sample size determination. 
+    \end{solution}
+\end{tcolorbox}
+
+
+\vspace*{0.6in}
+ 
+\end{itemize}
+
+\newpage
+In estimating the unemployment rate in $\mathcal{ P }$ at time $T$, You have to decide what to do about the $n_{ other } = 19$ people who answered \textit{other} (their lack of yes--no responses plays the role of \textit{missing data} in this problem). During the \textbf{\textit{data curation}} step of Your analysis, the standard approach to coping with missing data is something called \textit{imputation}; this is an attempt to \textit{predict} what the missing data values would have been if they had not been missing. Here are four natural ways to perform the imputation in this problem.
+
+\begin{itemize}
+
+\item[(A)]
+
+At one extreme You could imagine that all 19 of those people would have answered \textit{yes} if they had given a \textit{yes}/\textit{no} answer;
+
+\item[(B)]
+
+At the other extreme You could imagine them all answering \textit{no};
+
+\item[(C)]
+
+You could just remove them from the data set (some statistical computing packages make this choice for You without necessarily telling You that they did so); or
+
+\item[(D)]
+
+You could spread the \textit{other} people out proportionately across the \textit{yes} and \textit{no} categories, based on the observed \textit{yes} and \textit{no} prevalences.
+
+\end{itemize}
+
+Table \ref{t:imputation-1} summarizes these four imputation methods in this case study; in the table, $\hat{ \theta }_I$ is the imputed estimate of $\theta$ with the indicated method, $n_{ total } = ( n_{ yes } + n_{ no } + n_{ other } ) = n$, $\hat{ n }_{ total } = ( \hat{ n }_{ yes } + \hat{ n }_{ no } + \hat{ n }_{ other } )$, and the $\hat{ n }_{ no }$ value with method (D) is as follows:
+\begin{equation} \label{e:proportional-1}
+\hat{ n }_{ no }^D \triangleq n_{ no } + \left( \frac{ n_{ no } }{ n_{ yes } + n_{ no } } \right) \cdot n_{ other } \, .
+\end{equation}
+
+\begin{table}[t!]
+
+\centering
+
+\caption{\textit{Four imputation methods in the unemployment case study; see text for definitions of $n_{ total }$, $\hat{ n }_{ total }$, $\hat{ \theta }_I$, and $\hat{ n }_{ no }^D$.}}
+
+\label{t:imputation-1}
+
+\bigskip
+
+\begin{tabular}{c||ccccc||cc}
+
+& \multicolumn{5}{c||}{Imputed} & \multicolumn{2}{c}{Numerical Value} \\ \cline{2-8}
+
+\rule{0pt}{3ex} Method & $\hat{ n }_{ yes }$ & $\hat{ n }_{ no }$ & $\hat{ n }_{ other }$ & $\hat{ n }_{ total }$ & $\hat{ \theta }_I$ & $\hat{ \theta }_I$ & $\hat{ n }_{ total }$ \\ \hline 
+
+\rule{0pt}{3ex} (A) & $( n_{ yes } + n_{ other } )$ & $n_{ no }$ & 0 & $n_{ total }$ & & 0.8111 & 921 \\
+
+\rule{0pt}{3ex} (B) & & $( n_{ no } + n_{ other } )$ & & $n_{ total }$ & $\frac{ n_{ yes } }{ n_{ total } }$ & & 921 \\
+
+\rule{0pt}{3ex} (C) & $n_{ yes }$ & & 0 & & & 0.8071 & \\
+
+\rule{0pt}{3ex} (D) & & $\hat{ n }_{ no }^D$ & & $( \hat{ n }_{ yes }^D + \hat{ n }_{ no }^D )$ & $\frac{ \hat{ n }_{ yes }^D }{ \hat{ n }_{ yes }^D + \hat{ n }_{ no }^D }$ &
+
+\end{tabular}
+
+\end{table}
+%-------------------------------QUESTION 4------------------------------------
+\item[(4)]
+
+\begin{itemize}
+
+\item[(a)]
+
+Complete (impute?) the missing (blank) entries in Table \ref{t:imputation-1}, briefly explaining your reasoning in each case. \textit{[30 points]}
+
+\vspace*{1.5in}
+
+\item[(b)]
+
+How do the $\hat{ \theta }_I$ numerical values compare with each other and with Your $\hat{ \theta }$ in problem 3(e) above? Explain briefly. \textit{[10 points]}
+
+\vspace*{1.0in}
+
+\item[(c)]
+
+Someone says, ``There were only 19 \textit{other} responses out of almost 1,000 people in Your sample, so it doesn't matter what You do with them in Your analysis.'' Looking at the range of $\hat{ \theta }_I$ values, from smallest to largest, across the four imputation methods, would you agree with that statement? Explain briefly. \textit{[10 points]}
+
+\vspace*{1.0in}
+
+\item[(d)]
+
+In what ways, if any, do the results from imputation methods (C) and (D) differ? Explain briefly. \textit{[10 points]}
+
+\vspace*{1.0in}
+
+\end{itemize}
+
+To figure out which of the imputation methods is best, it turns out (this should make good sense to You, based on the \textit{No Free Lunch} principle) that You need a probability model for the missing data that quantifies Your judgments about \textit{why} the missing data values are missing. In the imputation literature the simplest such model is called \textbf{\textit{Missing Completely At Random (MCAR)}}; this model assumes that the missing subjects are themselves like an IID random sample from the population of interest to You.
+
+\begin{itemize}
+
+\item[(e)]
+
+Considering the set of five estimates of $\theta$ formed by collecting together the four 
+$\hat{ \theta }_I$ values and $\hat{ \theta }$ in problem 3(e), choose the estimation method that is best under MCAR, and briefly justify Your choice. \textit{[10 points]}
+
+\end{itemize}
+
+\newpage
+
+\begin{itemize}
+
+\item[(f)]
+
+Some people find the conclusion in (e) initially surprising. Is it still surprising after a bit of careful thought? Explain briefly. \textit{[10 points]}
+
+\vspace*{1.0in}
+
+\end{itemize}
+
+\end{itemize}
+
+\end{document}
+
