@@ -110,28 +110,30 @@ Note: I used Symbolab to help do the matrix multiplication for P3 so, I apologiz
 \begin{proof}
   We defined in class $GL_F(V)$ as,
   \[GL_F(V) = \set{f: V \rightarrow V \mid F-\text{linear isomorphisms}}\]
-  To show that the provided action is transitive we want to show that for any subspace $W,W' \in G_k$ there exists some $f \in GL_F(V)$ that satisfies:
-  \[f.W = W'\]
+  To show that the provided action is transitive we want to show that for any two subspaces $W,W' \in G_k$ there exists some $f \in GL_F(V)$ that satisfies:
+  \[f.W = f(W) =  W'\]
 
-  Since both $W$ and $W'$ are in $G_k$ we know they are of dimension $k$. Meaning they their bases can be expressed as $\set{a_1, \dots , a_k}$ and $\set{b_1, \dots ,b_k}$ for $W$ and $W'$ respectively. We know that linear transformations map subspaces to subspaces and there exists $f\in GL_F(V)$ such that,
+  Since both $W$ and $W'$ are in $G_k$ we know they are of dimension $k$. Meaning that their bases can be expressed as $\set{a_1, \dots , a_k}$ and $\set{b_1, \dots ,b_k}$ for $W$ and $W'$ respectively. We know that linear transformations map subspaces to subspaces and there exists $f\in GL_F(V)$ such that,
   \[f(\alpha_1a_1 + \dots + \alpha_ka_k) = \alpha_1b_1 + \dots +\alpha_kb_k\]
-  we know this is indeed in $GL_F(V)$ because we can see it is a linear transformation through the following, for any $w_1,w_2 \in W $ we have,
+  we know this is indeed in $GL_F(V)$ because we can see it is a linear transformation through the following. For any $w_1,w_2 \in W $, where $w_1 = (\alpha_1a_1 + \dots + \alpha_ka_k)$ and $w_2 = (\gamma_1a_1 + \dots + \gamma_ka_k )$ and $\alpha_i$ and $\gamma_i$ are scalars, we have
  \begin{align*}
-  f((\alpha_1a_1 + \dots + \alpha_ka_k) + (\gamma_1a_1 + \dots + \gamma_ka_k )) &= f((\alpha_1 + \gamma_1)a_1 + \dots + (\alpha_k + \gamma_k)a_k) \\
+  f(w_1 + w_2) &= f((\alpha_1a_1 + \dots + \alpha_ka_k) + (\gamma_1a_1 + \dots + \gamma_ka_k )) \\&= f((\alpha_1 + \gamma_1)a_1 + \dots + (\alpha_k + \gamma_k)a_k) \\
   &= (\alpha_1 + \gamma_1)b_1 + \dots + (\alpha_k + \gamma_k)b_k \\
   &=(\alpha_1b_1 + \dots + \alpha_kb_k) + (\gamma_1b_1 + \dots + \gamma_kb_k ) \\
-  &= f(\alpha_1a_1 + \dots + \alpha_ka_k) + f(\gamma_1a_1 + \dots + \gamma_ka_k)
+  &= f(\alpha_1a_1 + \dots + \alpha_ka_k) + f(\gamma_1a_1 + \dots + \gamma_ka_k) \\
+  &= f(w_1) + f(w_2)
  \end{align*}
  and for $c \in F$,
  \begin{align*}
-   cf(\alpha_1a_1 + \dots + \alpha_ka_k) = c(\alpha_1a_1 + \dots + \alpha_ka_k) &= c\alpha_1b_1 + \dots + c\alpha_1b_1 \\
-   &= f(c(\alpha_1a_1 + \dots + \alpha_ka_k))
+   cf(w_1) =cf(\alpha_1a_1 + \dots + \alpha_ka_k) = c(\alpha_1a_1 + \dots + \alpha_ka_k) &= c\alpha_1b_1 + \dots + c\alpha_1b_1 \\
+   &= f(c(\alpha_1a_1 + \dots + \alpha_ka_k)) \\
+   &= f(cw_1)
  \end{align*}
  meaning we have $f(W) = W' = f.W$.
- then from our corollary we proved in class (Jan 18), we have that $f$ is an isomorphism and thereby must be in $GL_F(V)$. Showing that the action is transitive.
+ then from our corollary we proved in class (Jan 18), we have that $f$ is an isomorphism, since it maps all subspaces to subspaces, and thereby must be in $GL_F(V)$. Showing that the action is transitive.
 \end{proof}
 
-\newpage
+
 \begin{tcolorbox}
   \begin{problem} {P2}
     Let $F = \mathbb{F}_{17}$ be the field with 17 elements. For any integer $n$, we will denote still by $n$ its image in $F$.
@@ -151,13 +153,13 @@ Note: I used Symbolab to help do the matrix multiplication for P3 so, I apologiz
     4 & 5 & 8 & 11 \\
     2 & 4 & 7 & 2 
   \end{bmatrix}\]
-  Next we will label under each matrix the operation we will be performing,
+  Next we will label under each matrix the operation we will be performing ($Rn$ represents the $n$th row, where $x\cdot Rn$ is to mean multiply the $n$th row by $x$),
   \begin{align*}
     \putunder{\begin{bmatrix}
       2 & 3 & 5 & 10 \\
       4 & 5 & 8 & 11 \\
       2 & 4 & 7 & 2 
-    \end{bmatrix}}{R2 = R2 - 2R3} &\rightarrow  \putunder{\begin{bmatrix}
+    \end{bmatrix}}{R2 = R2 - 2\cdot R3} &\rightarrow  \putunder{\begin{bmatrix}
       2 & 3 & 5 & 10 \\
       0 & 14 & 11 & 7 \\
       2 & 4 & 7 & 2 
@@ -165,39 +167,42 @@ Note: I used Symbolab to help do the matrix multiplication for P3 so, I apologiz
       2 & 3 & 5 & 10 \\
       0 & 14 & 11 & 7 \\
       0 & 1 & 2 & 9 
-    \end{bmatrix}}{R3 = 14R3 - R2} \rightarrow \putunder{\begin{bmatrix}
+    \end{bmatrix}}{R3 = 14\cdot R3 - R2} \rightarrow \putunder{\begin{bmatrix}
       2 & 3 & 5 & 10 \\
       0 & 14 & 11 & 7 \\
       0 & 0 & 0 & 0 
-    \end{bmatrix}}{R2 = 4R2} \\ \rightarrow \putunder{\begin{bmatrix}
+    \end{bmatrix}}{R2 = 4\cdot R2} \\ \rightarrow \putunder{\begin{bmatrix}
       2 & 3 & 5 & 10 \\
       0 & 5 & 10 & 11 \\
       0 & 0 & 0 & 0 
-    \end{bmatrix}}{R1 = 5R1 - 3R2} 
+    \end{bmatrix}}{R1 = 5\cdot R1 - 3\cdot R2} 
     &\rightarrow \putunder{\begin{bmatrix}
       10 & 0 & 12 & 10 \\
       0 & 5 & 10 & 11 \\
       0 & 0 & 0 & 0 
-    \end{bmatrix}}{R1 = 12R1} \rightarrow \putunder{\begin{bmatrix}
+    \end{bmatrix}}{R1 = 12\cdot R1} \rightarrow \putunder{\begin{bmatrix}
       1 & 0 & 8 & 0 \\
       0 & 5 & 10 & 11 \\
       0 & 0 & 0 & 0 
-    \end{bmatrix}}{R2 = 7R2} \rightarrow \putunder{\begin{bmatrix}
+    \end{bmatrix}}{R2 = 7\cdot R2} \rightarrow \putunder{\begin{bmatrix}
       1 & 0 & 8 & 0 \\
       0 & 1 & 2 & 9 \\
       0 & 0 & 0 & 0 
-    \end{bmatrix}}{R2 = 7R2}
+    \end{bmatrix}}{R2 = 7\cdot R2}
   \end{align*}
   This then gives us,
   \begin{align*}
     x + 8z &= 0 \\
     y + 2z &= 9
   \end{align*}
-  solving for our leading variables, we get all solutions in terms of $z$ for any $z \in \mathbb{F}_{17}$
+  solving for our leading variables in terms of $z$
   \begin{align*}
     x &= 9z \\
-    y &= 9 + 15z
+    y &= 9 + 15z.
   \end{align*}
+  Which means the set of all solutions for the linear system is the following,
+  \[\set{(9z, 9 + 15z, z) \mid z\in \mathbb{F}_{17}}\]
+
   
 
 \end{proof}
@@ -212,7 +217,7 @@ Note: I used Symbolab to help do the matrix multiplication for P3 so, I apologiz
     Let $T$ be the rotation of $V = \rr^{3}$ about the axis $v_3$ by $90^{\circ}$
 
     \begin{itemize}
-      \item[(1)] Computer the matrix $[T]_{\mathcal{B}'} = [T]_{\mathcal{B}'}^{\mathcal{B}'}$ with respect to the basis 
+      \item[(1)] Compute the matrix $[T]_{\mathcal{B}'} = [T]_{\mathcal{B}'}^{\mathcal{B}'}$ with respect to the basis 
       \[\mathcal{B'} = (v_1, v_2, v_3)\]
       \item[(2)] Compute the matrix of $T$ with respect to the standard basis $\mathcal{B} = (e_1, e_2, e_3)$ 
     \end{itemize}
@@ -222,7 +227,7 @@ Note: I used Symbolab to help do the matrix multiplication for P3 so, I apologiz
 \begin{proof}
   First we must compute $v_3$ which evaluates to be,
   \[v_3 = (-\frac{1}{\sqrt{6}}, -\frac{1}{\sqrt{6}}, \sqrt{\frac{2}{3}}) = \frac{1}{\sqrt{6}}(-1,-1,2)\]
-  Now because we are rotating only 90 degrees about $v_3$, we know $v_3$ should remain unchanged after our rotation. While $T(v_1) = v_2$ and $T(v_2) = -v_1$, putting this together we have,
+  Now because we are rotating only 90 degrees about $v_3$ with positively oriented orthonormal vectors, we know $v_3$ should remain unchanged after our rotation. While $T(v_1) = v_2$ and $T(v_2) = -v_1$, putting this together we have,
   \begin{align*}
     T(v_1) = 1v_2 \\
     T(v_2) = -1v_1 \\
@@ -232,9 +237,9 @@ Note: I used Symbolab to help do the matrix multiplication for P3 so, I apologiz
     0 & -1 & 0 \\
     1 & 0 & 0 \\
     0 & 0 & 1
-  \end{bmatrix}$
+  \end{bmatrix}$.
 
-  Now let $P:V \to V$ be $P(v) = v$. Wow we need to calculate $[P]_{\mathcal{B}'}^{\mathcal{B}}$, 
+  Now let $P:V \to V$ be $P(v) = v$. Now we need to calculate $[P]_{\mathcal{B}'}^{\mathcal{B}}$, 
   \begin{align*}
     P(v_1) &= \frac{1}{\sqrt(2)}(1,-1,0) = \frac{1}{\sqrt{2}}e_1 -\frac{1}{\sqrt{2}}e_2  \\
     P(v_2) &= \frac{1}{\sqrt{3}}(1,1,1) = \frac{1}{\sqrt{3}}e_1 + \frac{1}{\sqrt{3}}e_2 + \frac{1}{\sqrt{3}}e_3 \\
@@ -250,14 +255,14 @@ Note: I used Symbolab to help do the matrix multiplication for P3 so, I apologiz
   \[\frac{1}{[P]_{\mathcal{B}'}^{\mathcal{B}}}= \begin{bmatrix}
     \frac{1}{\sqrt{2}} & -\frac{1}{2} & 0 \\
     \frac{1}{\sqrt{3}} & \frac{1}{\sqrt{3}} & \frac{1}{\sqrt{3}} \\
-    -\frac{1}{\sqrt{6}} & -\frac{1}{\sqrt{6}} & \frac{2}{\sqrt{6}}.
-  \end{bmatrix}\]
+    -\frac{1}{\sqrt{6}} & -\frac{1}{\sqrt{6}} & \frac{2}{\sqrt{6}}
+  \end{bmatrix}.\]
 
-  We know then to compute the matrix of $T$ with respect to the standard basis $\mathcal{B}$, recall though
+  Recall though that,
   \[[T]_{\mathcal{B}'}^{\mathcal{B}'} = \frac{1}{[P]_{\mathcal{B}'}^{\mathcal{B}}} [T]_{\mathcal{B}}^{\mathcal{B}} [P]_{\mathcal{B}'}^{\mathcal{B}}\]
   so solving for $[T]_{\mathcal{B}}^{\mathcal{B}}$ we get,
   \[[T]_{\mathcal{B}}^{\mathcal{B}} = [P]_{\mathcal{B}'}^{\mathcal{B}} [T]_{\mathcal{B}'}^{\mathcal{B}'} \frac{1}{[P]_{\mathcal{B}'}^{\mathcal{B}}}\]
-  Plugging in what we know we get,
+  which is what we want to compute, so now we can plug in what we know to get,
   \begin{align*}
     [T]_{\mathcal{B}}^{\mathcal{B}} &= \begin{bmatrix}
       \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{3}} & -\frac{1}{\sqrt{6}} \\
