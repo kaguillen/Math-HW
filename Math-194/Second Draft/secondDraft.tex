@@ -1,0 +1,181 @@
+\documentclass[12pt]{article}
+
+% This first part of the file is called the PREAMBLE. It includes customizations and command definitions. The preamble is everything between \documentclass and \begin{document}.
+\usepackage[top=0.75in, bottom=1.25in, left=1in, right=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb} %this is THE math package
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{fancybox}
+\usepackage{hyperref}
+\usepackage{varwidth}
+\usepackage{mdframed}
+\usepackage{mathrsfs}
+\usepackage[most]{tcolorbox}
+%------------------------
+%Fonts I use, uncomment if you like to use them.
+%The first is the general font, and the second a math font
+\usepackage{mathpazo}
+\usepackage{eulervm}
+%------------------------
+%This is so that we have standard fonts for the double-stroked symbols
+%for reals, naturals etc. regardless of what font you use.
+%Don't comment
+\AtBeginDocument{
+  \DeclareSymbolFont{AMSb}{U}{msb}{m}{n}
+  \DeclareSymbolFontAlphabet{\mathbb}{AMSb}}
+%------------------------
+
+%----------------------------------------------
+%User-defined environments
+%Commented because we're not using them in this document
+%The only uncommented ones are the Problem and Solution environment
+
+% \newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{question}[2][Question]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem\!]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+%\newenvironment{sub-problem}[2][]{\begin{trivlist}
+%\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+\newenvironment{solution}{\begin{proof}[\textbf{\textit{Solution}}] }{\end{proof}}
+%----------------------------------------------
+
+%----------------------------
+%User-defined notations
+\newcommand{\zz}{\mathbb Z}   %blackboard bold Z
+\newcommand{\qq}{\mathbb Q}   %blackboard bold Q
+\newcommand{\ff}{\mathbb F}   %blackboard bold F
+\newcommand{\rr}{\mathbb R}   %blackboard bold R
+\newcommand{\nn}{\mathbb N}   %blackboard bold N
+\newcommand{\cc}{\mathbb C}   %blackboard bold C
+\newcommand{\af}{\mathbb A}   %blackboard bold A
+\newcommand{\pp}{\mathbb P}   %blackboard bold P
+\newcommand{\id}{\operatorname{id}} %for identity map
+\newcommand{\im}{\operatorname{im}} %for image of a function
+\newcommand{\dom}{\operatorname{dom}} %for domain of a function
+\newcommand{\cat}[1]{\mathscr{#1}}   %calligraphic category
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert} %for absolute value
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert} %for norm
+\newcommand{\modar}[1]{\text{ mod }{#1}} %for modular arithmetic
+\newcommand{\set}[1]{\left\{#1\right\}} %for set
+\newcommand{\setp}[2]{\left\{#1\ \middle|\ #2\right\}} %for set with a property
+\newcommand{\card}[1]{\#\,{#1}} %for cardinality of a set
+\newcommand\m[1]{\begin{pmatrix}#1\end{pmatrix}} 
+
+%Re-defined notations
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\emptyset}{\varnothing}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+%----------------------------
+
+\allowdisplaybreaks
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{mydef}[thm]{Definition}
+
+\begin{document}
+
+
+\title{P-adic Numbers}
+
+\author{Kevin Guillen \\ 
+Department of Mathematics \\
+University of California at Santa Cruz \\
+Santa Cruz, CA 95064 USA}
+
+\maketitle
+
+\begin{abstract}
+This paper will begin by introducing some of the prerequisite knowledge needed to begin defining $p$-adic numbers and their applications. Then give a brief history of p-adic numbers to then explain how one goes from the rationals to $p$-adic numbers. Then to highlight the differences from the real numbers. Then take an algebraic look through $\qq_p$ and what it means to be a completion of the rationals, and definitions and examples of  $p$-adic analysis
+\end{abstract}
+
+\section{Introduction}
+Talk about basic real analysis with how one goes from the natural number to integers through the introduction of subtraction and the integers to rationals through division. Go into discussion of the reals and Euclidean norm, and start explaining algebra in different bases. Finally give a formal definition of $p-$adic numbers to be a sort of "spoiler" for the next section, since the definition on its own is quite obscure. 
+
+\section{Hensel's Analogy}
+This definition/construction of $p-$adic numbers may seem a bit aimless and random, but once we see what was going through the mind of Hensel, we will see that this number system is indeed well motivated and natural. 
+
+Kurt Hensel (29 December 1861 - 1 June 1941) was a German mathematician born in Konigsberg, who studied under Leopold Kronecker and Karl Weierstrass. At the time Hensel was interested in the analogy between,
+\begin{align*}
+  \zz \text{ with its fraction field } \qq \longleftrightarrow \cc[X] \text{ with its fraction field }\cc(X).
+\end{align*}
+
+Hensel learned of this analogy from his doctoral advisor Kronecker, who believed there could be a single theory covering both of them. Kronecker never was able to create this theory, but Hensel was very interested in this analogy between the two. 
+
+We can see how this interest through the following explanations. Taking a function $f(X)$ from $\cc(X)$ we know it is a rational function or in other words the quotient of two functions,
+\begin{align*}
+  f(X) = \frac{P(X)}{Q(X)}, \ P(X),Q(X) \in \cc[X].
+\end{align*}
+Taking a rational number $x$ from $\qq$ we know that it is rational, as the name suggests, more specifically a quotient of two integers,
+\begin{align*}
+  x = \frac{p}{q}, \ p,q \in \zz.
+\end{align*}
+
+The next parallel is that we know both the rings $\zz$ and $\cc[X]$ are unique factorization domains, meaning every non-zero non-unit element in them can be written uniquely as a product of prime elements in the ring (up order and units). More explicitly for $x \in \zz$ non-zero and not $\pm 1$ we can express it uniquely for $n \in \nn$ as,
+\begin{align*}
+  x = p_1^{e_1} p_2^{e_2}\dots p_n^{e_n}, \ p_1\dots p_n \text{  are prime integers}, \ e_1\dots e_n \in \nn
+\end{align*}
+And for $P(X) \in \cc[X]$ where $P(X)$ is non-zero and not a unit, we can express it uniquely, for some $n \in \nn$, as,
+\begin{align*}
+  P(X) = a(X - \alpha_1)(X-\alpha_2)\dots (X - \alpha_n), \ a,\alpha_1\dots\alpha_n \in \cc.
+\end{align*}
+From here one might be able to see what the point of Hensel's analogy was. It's that primes,$p$, in $\zz$ are analogous to linear polynomials, $(X-\alpha)$, in $\cc[X]$
+
+Extending this into solutions for equations. If we take a polynomial with integer coefficients, we call its roots \textit{algebraic numbers}. Now something similar is said when we take a polynomial with coefficients in $\cc[X]$, its roots will be called \textit{algebraic functions}.
+
+\textbf{Example}: Consider the polynomial $Y^{2}-2$, we know $\sqrt{2}$ is a root of it, and therefore $\sqrt{2}$ is an algebraic number. 
+
+Now for the polynomial with coefficients in $\cc[X]$, $Y^{2} - (X^{3}-3X - 1)$ the function $\sqrt{X^{3}-3X -1}$ is a root of it, and therefore and algebraic function. 
+
+Going back to Hensel's analogy now, Hensel was working on a specific problem about algebraic numbers, so he considered the analogous problem in terms of algebraic functions. This problem that Hensel was working on turned out to be relatively easy to solve under algebraic functions by expanding functions into its power series. Explicitly this means, given $P(X) \in \cc[X]$ and $\alpha \in \cc$ we have the following,
+\begin{align*}
+  P(X) &= a_0 + a_1(X -\alpha)^{1} + a_2(X-\alpha)^{2} + \dots + a_n(X-\alpha)^{n} \\
+  &= \sum_{i = o}^{n}a_i(X-\alpha)^{i}.
+\end{align*}
+Which gives us information of how $P(X)$ behaves around $\alpha$. Now if only we had this sort of expansion for integers. In a way we do though! Consider the number $245$, we can expand it out as follows,
+\begin{align*}
+  245 = 5\cdot 10^{0} + 4\cdot 10^{1} + 2 \cdot 10^{2}
+\end{align*}
+which is nothing new, we do it all the time we just stop thinking about it. The issue for Hensel though was that $10$ is not a prime in $\zz$ while $(X-\alpha)$ is a prime in $\cc[X]$. Knowing the definition of $p-$adic numbers we know what comes next. Hensel considered taking a base 10 integer and expressing it a number in base $p$. So we see our $245$ becomes,
+\begin{align*}
+  245 &= 1 \cdot 2^{0} + 1\cdot 2^{1} + 1 \cdot 2^{2} + 1\cdot 2^{3} + 0\cdot 2^{4} + 1 \cdot 2^{5} + 0 \cdot 2^{6} + 1\cdot 2^{7} \\
+  &= 11110101_2
+\end{align*}
+which we see is analogous to the power series for functions since $2$ is a prime element in $\zz$
+
+\section{Properties $p$-adic numbers}
+Define $p$-adic numbers, show computations with $p$-adic numbers. Try to show the difference of them with the reals and how these are kind of like infinite expansion to the left while reals are infinite expansions to the right ($...1234.0 $ vs $3.14...$). Basic properties of $p$-adic numbers
+
+\section{$\qq_p$, completion of $\qq$ }
+Go over some algebra examples, to ultimately construct the $p$-adic field $\qq_p$. Explore $\qq_p$, talk about the ring of $p$-adic integers, density, and Hensel's Lemma. 
+
+\section{Elementary analysis with $\qq_p$}
+Normal analysis topics like Sequences and Series, Integrals, and Power Series. (Need to read more)
+\newpage
+\begin{thebibliography}{9}
+    \bibitem{texbook}
+    Fernando Gouvea (2003) \emph{p-adic Numbers: An Introduction}, Springer Science \& Business Media, 2003.
+    
+    \bibitem{texbook}
+    Alain M. Robert (2000) \emph{A Course in p-adic Analysis}, Springer; 2000th edition
+
+    \bibitem{texbook}
+    Svetlana Katok (2007) \emph{P-adic Analysis Compared With Real (Student Mathematical Library)}, American Mathematical Society
+    \end{thebibliography}
+\end{document}
