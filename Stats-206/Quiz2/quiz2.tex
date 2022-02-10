@@ -81,7 +81,11 @@ In class we agreed that the simplest method for obtaining a \textit{representati
 \item[(b)]
 
 Describe (e.g., continuing on another sheet of paper, if You're writing Your answers in longhand) how You personally would attempt to obtain an arguably representative sample from $\mathcal{ P }$. \textit{Hint:} There's a part of the U.S.~government devoted to representing the entire population; how could public data from that agency help here? \textit{[10 points]}
-
+\begin{tcolorbox}
+    \begin{solution}
+        The most recent data avaiable from the US Census isn't too helpful here since their latest data is from 2020, while we are trying to work with a sample from the population in 2022. One thing we might be able to do is take the trends from older data up to 2022 and predict how the population might look now in 2022 to help obtain a represntative sample from $\mathcal{P}$, but this would then be another thing we would have to try to calculate/assume. 
+    \end{solution}
+\end{tcolorbox}
 \end{itemize}
 
 \vspace*{0.8in}
@@ -158,7 +162,7 @@ You and Your assistants have been interviewing the sampled people to obtain Your
 \end{tcolorbox}
 
 \vspace*{0.6in}
-
+\newpage
 \item[(e)]
 
 After the data set has been collected, assuming no bias in Your sampling method and using frequentist inference, You estimate that $\theta$ is about $\hat{ \theta } = \frac{ s }{ n } = \frac{ 728 }{ 921 } \doteq$ 79.0\%, with a give-or take of about 1.3\% and a 99.9\% interval estimate of about $( 74.6\%, 83.5\% )$.
@@ -252,6 +256,7 @@ Table \ref{t:imputation-1} summarizes these four imputation methods in this case
 
 \end{table}
 %-------------------------------QUESTION 4------------------------------------
+\newpage
 \item[(4)]
 
 \begin{itemize}
@@ -273,28 +278,54 @@ Complete (impute?) the missing (blank) entries in Table \ref{t:imputation-1}, br
         this is because we are spreading the \textit{other} responses out proportionally across the \textit{yes} and \textit{no} responses, based on their prevalences. 
         Now for $\hat{\theta}_I$ we have the following,
         \[\hat{\theta}_I = \frac{743.3348}{743.3348 + 177.6652} = 0.8071 \]
-        and our new total we simply be $\hat{n}_{yes}^{D} + \hat{n}_{no}^{D} = 921$
+        and our new total we simply be $\hat{n}_{yes}^{D} + \hat{n}_{no}^{D} = 921.$
     \end{solution}
 \end{tcolorbox}
-\vspace*{1.0in}
+\vspace*{0.5in}
 
 \item[(b)]
 
 How do the $\hat{ \theta }_I$ numerical values compare with each other and with Your $\hat{ \theta }$ in problem 3(e) above? Explain briefly. \textit{[10 points]}
+\begin{tcolorbox}
+    \begin{solution}
+        Well right away we see,
+        \[ \hat{\theta} =0.7904 =  \hat{\theta}_B < \hat{\theta}_C = 0.8071 =\hat{\theta}_D < \hat{\theta}_A = 0.8111\]
+        which means under method (B), simply changing all the \textit{other} responses to \textit{no} yields the same $\hat{\theta}$ as our estimate from 3(e). 
 
-\vspace*{1.0in}
+        We also see that two different methods, (C) and (D), will yield the same result as one another. Specifically disregarding the \textit{other} responses or spreading out the \textit{other} responses in a proptional manner will give the same value for $\hat{\theta}$.
 
+        Finally we see the largest $\hat{\theta}_i$ is when we change all the \textit{other} responses to \textit{yes} responses, which could likely mean there could be a bias in favor of \textit{yes} here. By similar reasoning method (B) might be bias towards the \textit{no} responses. 
+        
+        Meaning method (D) and (C) are a good compromise, but method (D) exaggerates effective sample size. Meaning method (C) seems to be the best, dropping the \textit{other} responses. 
+    \end{solution}
+\end{tcolorbox}
+
+\vspace*{0.5in}
+\newpage
 \item[(c)]
 
 Someone says, ``There were only 19 \textit{other} responses out of almost 1,000 people in Your sample, so it doesn't matter what You do with them in Your analysis.'' Looking at the range of $\hat{ \theta }_I$ values, from smallest to largest, across the four imputation methods, would you agree with that statement? Explain briefly. \textit{[10 points]}
 
-\vspace*{1.0in}
+\begin{tcolorbox}
+    \begin{solution}
+        Well we see from $\hat{\theta}_A - \hat{\theta}_B = .0207$ or about 2 percentage point difference. Recall though our standard error from 3(e) is about 1.3 percentage points, meaning 2 percentage points is about 1.5 standard deviations. So I would disagree with this statement, since how we treat the \textit{other} responses can yield big differences. 
+    \end{solution}
+\end{tcolorbox}
+
+\vspace*{0.5in}
 
 \item[(d)]
 
 In what ways, if any, do the results from imputation methods (C) and (D) differ? Explain briefly. \textit{[10 points]}
+\begin{tcolorbox}
+    \begin{solution}
+        Well firstly we as noted before we see that $\hat{\theta}_C = \hat{\theta}_D$, but we see, 
+        \[902 = \hat{n}_{total}^C < \hat{n}_{total}^D = 921 \] but the total for (D) is too high since it is claiming the same sample size as if we have seen all the 19 people, while (C)'s total is just disregarding the responses we don't know. 
+    \end{solution}
+\end{tcolorbox}
 
-\vspace*{1.0in}
+
+\vspace*{0.5in}
 
 \end{itemize}
 
@@ -309,13 +340,23 @@ $\hat{ \theta }_I$ values and $\hat{ \theta }$ in problem 3(e), choose the estim
 
 \end{itemize}
 
-\newpage
+\begin{tcolorbox}
+    \begin{solution}
+        Under MCAR the missing 19 people are like IID just in the same way the non-missing 902 people are like IID from the population, meaning there it is unbiased. Which means it is okay to drop the 19 missing people from our sample, which matches with method (C)
+    \end{solution}
+\end{tcolorbox}
 
+\newpage
 \begin{itemize}
 
 \item[(f)]
 
 Some people find the conclusion in (e) initially surprising. Is it still surprising after a bit of careful thought? Explain briefly. \textit{[10 points]}
+\begin{tcolorbox}
+    \begin{solution}
+        After careful thought you realize after you assume MCAR, then it's the best thing to do. Method (D) may seem nice because it assums the proportion of \textit{yes} and \textit{no}'s in the missing peoples responses will be similar to that of the non-missing people, but it assumes that about data we don't actually know. While under MCAR since the missing people are like IID the sameway the non-missing people are, then it's safe to just drop them and thereby assuming nothing about data we don't know. 
+    \end{solution}
+\end{tcolorbox}
 
 \vspace*{1.0in}
 
