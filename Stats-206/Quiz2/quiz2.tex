@@ -242,11 +242,11 @@ Table \ref{t:imputation-1} summarizes these four imputation methods in this case
 
 \rule{0pt}{3ex} (A) & $( n_{ yes } + n_{ other } )$ & $n_{ no }$ & 0 & $n_{ total }$ & $\frac{\hat{n}_{yes}}{\hat{n}_{total}}$& 0.8111 & 921 \\
 
-\rule{0pt}{3ex} (B) & & $( n_{ no } + n_{ other } )$ & & $n_{ total }$ & $\frac{ n_{ yes } }{ n_{ total } }$ & & 921 \\
+\rule{0pt}{3ex} (B) & $n_{yes}$ & $( n_{ no } + n_{ other } )$ & 0 & $n_{ total }$ & $\frac{ n_{ yes } }{ n_{ total } }$ &  0.7904& 921 \\
 
-\rule{0pt}{3ex} (C) & $n_{ yes }$ & & 0 & & & 0.8071 & \\
+\rule{0pt}{3ex} (C) & $n_{ yes }$ &  $n_{ no }$& 0 & 902 & $\frac{n_{ yes}}{902}$ & 0.8071 & 902\\
 
-\rule{0pt}{3ex} (D) & & $\hat{ n }_{ no }^D$ & & $( \hat{ n }_{ yes }^D + \hat{ n }_{ no }^D )$ & $\frac{ \hat{ n }_{ yes }^D }{ \hat{ n }_{ yes }^D + \hat{ n }_{ no }^D }$ &
+\rule{0pt}{3ex} (D) & $\hat{n}_{yes}^{D}$ & $\hat{ n }_{ no }^D$ & 0 & $( \hat{ n }_{ yes }^D + \hat{ n }_{ no }^D )$ & $\frac{ \hat{ n }_{ yes }^D }{ \hat{ n }_{ yes }^D + \hat{ n }_{ no }^D }$ & 0.8071 & 921
 
 \end{tabular}
 
@@ -260,7 +260,23 @@ Table \ref{t:imputation-1} summarizes these four imputation methods in this case
 
 Complete (impute?) the missing (blank) entries in Table \ref{t:imputation-1}, briefly explaining your reasoning in each case. \textit{[30 points]}
 
-\vspace*{1.5in}
+\begin{tcolorbox}
+    \begin{solution}
+         Under method (A) the responses with \textit{other} get treated as \textit{yes} responses. Which is why $\hat{n}_{yes}$ is equal to $(n_{yes} + n_{other})$ which means we have to recalculate $\hat{\theta}_{A}$ as $\frac{\hat{n}_{yes}}{\hat{n}_{total}}$ since we have a different number $n_{yes}$ now. 
+        
+         Under method (B) $\hat{n}_{yes} = n_{yes}$ since in this case we imagine all the responses of \textit{other} to be changed to \textit{no} leaving the total responses of yes unchanged. Our numerical value for $\hat{\theta_B}$ is simply calculated by $\frac{728}{921}$.
+         
+         Under method (C) since we are simply removing the \textit{other} responses the number of \textit{no} responses remains unchanged, therefore $\hat{n}_{no} = n_{no}  = 174$. Because though we are removing the \textit{other} responses our total number of responses decreases, $\hat{n}_{total} = n_{total} - n_{other} = 921 - 19 = 902$. 
+
+         Under method (D) we can calculate $\hat{n}_{yes}$ in a similar fashion to $\hat{n}_{no}$ by the given equation,
+         \[\hat{n}_{yes} = \hat{n}_{yes}^{D} = n_{yes} + \frac{n_{yes}}{n_{yes} + n_{no}} \cdot n_{other} = 743.3348 \]
+        this is because we are spreading the \textit{other} responses out proportionally across the \textit{yes} and \textit{no} responses, based on their prevalences. 
+        Now for $\hat{\theta}_I$ we have the following,
+        \[\hat{\theta}_I = \frac{743.3348}{743.3348 + 177.6652} = 0.8071 \]
+        and our new total we simply be $\hat{n}_{yes}^{D} + \hat{n}_{no}^{D} = 921$
+    \end{solution}
+\end{tcolorbox}
+\vspace*{1.0in}
 
 \item[(b)]
 
