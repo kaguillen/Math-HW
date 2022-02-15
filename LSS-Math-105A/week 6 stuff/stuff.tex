@@ -1,0 +1,155 @@
+\documentclass[11pt]{article}
+ 
+\usepackage[top=0.75in, bottom=1.25in, left=1in, right=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb} %this is THE math package
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{fancybox}
+\usepackage{hyperref}
+\usepackage{varwidth}
+\usepackage{mdframed}
+\usepackage{mathrsfs}
+\usepackage[most]{tcolorbox}
+%------------------------
+%Fonts I use, uncomment if you like to use them.
+%The first is the general font, and the second a math font
+\usepackage{mathpazo}
+\usepackage{eulervm}
+%------------------------
+%This is so that we have standard fonts for the double-stroked symbols
+%for reals, naturals etc. regardless of what font you use.
+%Don't comment
+\AtBeginDocument{
+  \DeclareSymbolFont{AMSb}{U}{msb}{m}{n}
+  \DeclareSymbolFontAlphabet{\mathbb}{AMSb}}
+%------------------------
+
+%----------------------------------------------
+%User-defined environments
+%Commented because we're not using them in this document
+%The only uncommented ones are the Problem and Solution environment
+
+% \newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{question}[2][Question]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem\!]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+%\newenvironment{sub-problem}[2][]{\begin{trivlist}
+%\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+\newenvironment{solution}{\begin{proof}[\textbf{\textit{Solution}}] }{\end{proof}}
+%----------------------------------------------
+@Vcs1924monk3
+%----------------------------
+%User-defined notations
+\newcommand{\zz}{\mathbb Z}   %blackboard bold Z
+\newcommand{\qq}{\mathbb Q}   %blackboard bold Q
+\newcommand{\ff}{\mathbb F}   %blackboard bold F
+\newcommand{\rr}{\mathbb R}   %blackboard bold R
+\newcommand{\nn}{\mathbb N}   %blackboard bold N
+\newcommand{\cc}{\mathbb C}   %blackboard bold C
+\newcommand{\af}{\mathbb A}   %blackboard bold A
+\newcommand{\pp}{\mathbb P}   %blackboard bold P
+\newcommand{\id}{\operatorname{id}} %for identity map
+\newcommand{\im}{\operatorname{im}} %for image of a function
+\newcommand{\dom}{\operatorname{dom}} %for domain of a function
+\newcommand{\cat}[1]{\mathscr{#1}}   %calligraphic category
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert} %for absolute value
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert} %for norm
+\newcommand{\modar}[1]{\text{ mod }{#1}} %for modular arithmetic
+\newcommand{\set}[1]{\left\{#1\right\}} %for set
+\newcommand{\setp}[2]{\left\{#1\ \middle|\ #2\right\}} %for set with a property
+\newcommand{\card}[1]{\#\,{#1}} %for cardinality of a set
+\newcommand\m[1]{\begin{pmatrix}#1\end{pmatrix}} 
+
+%Re-defined notations
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\emptyset}{\varnothing}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+%----------------------------
+
+\allowdisplaybreaks
+ 
+ 
+\begin{document}
+ 
+\title{HW5 Ideas}
+
+\date{} 
+\maketitle
+
+%Use \[...\] instead of $$...$$
+
+Remainder that I'm not guaranteeing that these will lead to full points on the homework, this is just to give you all ideas and you should expand on them if you are stuck. 
+\begin{tcolorbox}
+  \begin{problem} {12.2}
+    Give examples of where $\Sigma_{k=1}^{\infty} a_k$ converge and that $\Sigma_{k=1}^{\infty} b_k$ converge so that $\Sigma_{k=1}^{\infty}a_kb_k$. Can this be true if one is absolutely convergent?
+  \end{problem} 
+\end{tcolorbox}
+\begin{solution}
+    Well there is for sure a lot of examples we can come up with, but if you're struggling with this consider,
+    \begin{align*}
+        a_k = \frac{(-1)^{k}}{\sqrt{k}} && b_k = \frac{(-1)^{k}}{\sqrt{k}}
+    \end{align*}
+    these converge, if you have any doubt consider applying the alternating series test to see for yourselves. Finally when we take the product we get,
+    \begin{align*}
+        \Sigma_{k=1}^{\infty} a_k b_k = \Sigma_{k=1}^{\infty}\frac{1}{k}
+    \end{align*}
+    which is indeed divergent. 
+
+    This proof should be pretty short so this should help motivate the main thing you should be going for. Let's assume that $\Sigma_{k=1}^{\infty}$ is the absolutely convergent one and that $\Sigma_{k =1 }^{\infty}b_k$ is convergent. Recall one property that is implied by convergence of $b_k$... it must be bounded. This means there exists $M \in \rr$ such that $|b_k| \leq M $ for all $ k \in \nn$. This is useful because it gives us an inequality we can form about the product of $a_kb_k$,
+    \[\abs{a_kb_k} \leq ? \abs{a_k}\]
+    Now we should be able to apply one of our tests, specifically the comparison/term test (you should work this out), and you'll see that $\Sigma_{k=1}^{\infty}a_kb_k$ is absolutely convergent since $a_k$ is absolutely convergent. Once you worked this out it'll imply that $\Sigma_{k =1 }^{\infty}$ cannot possibly be divergent under the assumed conditions. 
+\end{solution}
+
+\begin{tcolorbox}
+     \begin{problem} {12.3}
+        Give an example of  $s_n = \Sigma_{k = 0}^{n}a_k$ where $\set{s_n}$ is divergent and $\set{s_n}$ is bounded
+     \end{problem}
+\end{tcolorbox}
+
+\begin{solution}
+  You can construct a lot of these, but if you can't think of one maybe consider showing it for\[a_k = sin(k)(-1)^{k}\]. There's a lot of these that you can form revolving around trig functions. In the case of $sin$ the main idea comes from the fact that $sin(k)$ doesn't head towards 0 as $k$ goes to infinity which will be useful for the proof (if you have to prove it?). Another hint is consider the geometric series. 
+\end{solution}
+
+
+\begin{tcolorbox}
+  \begin{problem} {13.1}
+    Prove that $sup(A \cup B) \geq sup(A)$ and $sup(A \cap B) \leq sup(A)$
+  \end{problem}
+\end{tcolorbox}
+\begin{solution}
+  I'm not going to be totally rigorous with this one since the proof kind of follows from the logic here. We know that $A \subseteq A\cup B$. We also know that $sup(A\cup B)$ is the least upper bound for all the terms in $A\cup B$. Because though $A \subseteq A\cup B$ it means it also an upper bound for the set $A$ (note the lack of  the word least). What is $sup(A)$ defined to be though? (the LEAST upper bound). Therefore we have that $sup(A) \leq sup(A\cup B)$. This proof mostly follows/hinges on set theory and the definition of supremum, but hopefully this illuminated what you should be going for, but there are many ways to go about it. 
+
+  The second part follows in a very similar fashion just "reversing" the ordering. Since we are taking the intersection instead of union we swap the ordering around $\subseteq$. Meaning we have $A\cap B \subseteq A$ and by definition of supremum etc...  
+\end{solution}
+
+\begin{tcolorbox}
+  \begin{problem} {13.3}
+    notes
+  \end{problem}
+\end{tcolorbox}
+\begin{solution}
+  To be honest I'm not sure how to prove this using the Archimedean property and I'm not sure if you're required to prove it that way. I'll just leave you all with the way I would solve this. For the first part if $r \in S$ that means $r^{2} < 2$. We want to show there exists an $r'\in S$ such that $r < r'$. If you're stuck on this, from my experience these are usually proven defining the bigger "thing" in terms of the smaller "thing". In other words try to define $r'$ in terms of $r$. 
+
+  If you are stuck then consider $r' = r + \frac{2 - r^{2}}{2 + r}$. Right away we have that $r' > r$ (It's $r$ plus something that is positive). Now we just need to show that $r' \in S$, but thats just showing that $(r')^{2} < 2$. First simplify $r'$ into one fraction, and see if you can solve it from there. 
+  
+  If not you should see that $r' = \frac{2r + r^{2}}{2 + r} + \frac{2-r^{2}}{2+r} = \frac{2r + 2}{2 + r} = 2\frac{r + 1}{r + 2}$. So squaring that we get, 
+  \[( 2 \frac{r +1}{r +2} )^{2} = 4 \frac{ (r+1)^{2} }{(r+2)^{2}}\]
+  which is what we want, but why? It's because the fraction alongside the 4 is less than a half meaning this whole thing will be less than 2, but try to show why ($r^{2} < 2$). In a sense this is an algorithm to always generate an element a bigger element in $S$. Hopefully this helps in someway. 
+  
+  The second part follows similarly to the above in that you want to define a new $q$ in terms of a supposed least upper bound $q$.
+\end{solution}
+
+\end{document}

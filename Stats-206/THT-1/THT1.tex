@@ -1,17 +1,7 @@
 \documentclass[12pt]{article}
 
 \usepackage{ amsmath, amssymb, graphicx, psfrag, bm, multirow }
-
-\addtolength{\textheight}{1.8in}
-\addtolength{\topmargin}{-1.15in}
-\addtolength{\textwidth}{1.5in}
-\addtolength{\oddsidemargin}{-0.8in}
-\addtolength{\evensidemargin}{-0.8in}
-\setlength{\parskip}{0.1in}
-\setlength{\parindent}{0.0in}
-\usepackage{ multirow }
-\usepackage[top=0.75in, bottom=1.25in, left=1in, right=1in]{geometry} 
-\usepackage{amsmath,amsthm,amssymb} %this is THE math package
+\usepackage{amsmath,amsthm,amssymb}
 \usepackage{mathtools}
 \usepackage{tikz}
 \usepackage{graphicx}
@@ -21,22 +11,27 @@
 \usepackage{mdframed}
 \usepackage{mathrsfs}
 \usepackage[most]{tcolorbox}
-\usepackage{pagecolor}
 
-\newcommand{\given}{\, | \,}
-
-\newenvironment{solution}{\begin{proof}[\textbf{\textit{Solution}}] }{\end{proof}}
+\addtolength{\textheight}{1.8in}
+\addtolength{\topmargin}{-1.15in}
+\addtolength{\textwidth}{1.5in}
+\addtolength{\oddsidemargin}{-0.8in}
+\addtolength{\evensidemargin}{-0.8in}
+\setlength{\parskip}{0.1in}
+\setlength{\parindent}{0.0in}
 
 \pagestyle{plain}
 
 \raggedbottom
  
 \newcommand{\given}{\, | \,}
- 
+\newenvironment{solution}{\begin{proof}[\textbf{\textit{Solution}}] }{\end{proof}}
+\allowdisplaybreaks
 \begin{document}
 
 \begin{flushleft}
 
+Prof.~David Draper \\
 University of California, Santa Cruz \\
 Department of Statistics \\
 Baskin School of Engineering \\
@@ -67,8 +62,7 @@ consists of two problems (true/false and calculation); \textbf{each of the 12
 true/false questions is worth 10 points, and the calculation problem is
 worth 230 total points, for a total of 350 points}.
 
-Some advice on style as you write up your solutions: pretend that you're sitting next to the grader, having a conversation about problem $( x )$ part $( y )$. You say, ``The answer is $z$,'' and the grader says, ``Why?'' You then give your explanation, as succinctly as possible to get your idea across. The right answer with no reasoning to support it, or incorrect reasoning, will get \textbf{half credit}, so try to make a serious effort on each part
-of each problem (this will ensure you at least half credit). In an AMS graduate class I taught in 2012, on a take-home test like this one there were 15 true/false questions, worth a total of 150 points; one student got a score of 92 out of 150 (61\%, a D$-$, in a graduate class where B$-$ is the lowest passing grade) on that part of the test, for repeatedly answering just ``true" or ``false" with no explanation. Don't let that happen to you.  
+Some advice on style as you write up your solutions: pretend that you're sitting next to the grader, having a conversation about problem $( x )$ part $( y )$. You say, ``The answer is $z$,'' and the grader says, ``Why?'' You then give your explanation, as succinctly as possible to get your idea across. The right answer with no reasoning to support it, or incorrect reasoning, will get \textbf{half credit}, so try to make a serious effort on each part of each problem (this will ensure you at least half credit). In an AMS graduate class I taught in 2012, on a take-home test like this one there were 15 true/false questions, worth a total of 150 points; one student got a score of 92 out of 150 (61\%, a D$-$, in a graduate class where B$-$ is the lowest passing grade) on that part of the test, for repeatedly answering just ``true" or ``false" with no explanation. Don't let that happen to you.  
 
 On non-extra-credit problems, the graders and I mentally start everybody out at $-0$ (i.e., with a perfect score), and then you accumulate negative points for
 incorrect answers and/or reasoning, or parts of problems left blank. On
@@ -114,7 +108,7 @@ Those of You who are using \texttt{LaTeX} or some other word-processing environm
 \textit{[120 total points: 10 points each]} For each statement below, say whether it's true or false; if true without further assumptions, briefly explain why it's true (and what its implications are for statistical inference); if it's sometimes true, give the extra conditions necessary to make it true; if it's false, briefly explain how to change it so that it's true and/or give an example of why it's false. If the statement consists of two or more sub-statements and two or more of them are false, you need to explicitly address all of the false sub-statements in your answer.
 
 \begin{itemize}
-%------------------------------- 1A ------------------------------------
+
 \item[(A)]
 
 You're about to spin a roulette wheel, which will result in a metal ball
@@ -125,28 +119,21 @@ that all 38 elemental outcomes in $\Omega$ are equipossible. Under Your
 assumption of fairness, the classical (Pascal-Fermat) probability of
 getting a red number on the next spin exists, is unique, and equals $\frac{
 18 }{ 38 }$.
-\begin{solution}
-    
-\end{solution}
 
-%------------------------------- 1B ------------------------------------
 \item[(B)]
 
 Under the same conditions as (A), the Kolmogorov (frequentist) probability
 of getting a red number on the next spin exists, is unique, and equals
 $\frac{ 18 }{ 38 }$.
 
-%------------------------------- 1C ------------------------------------
 \item[(C)]
 
 Repeat (A) and (B) but removing the assumption that the wheel-spinning is fair, and not replacing it with any other assumption about the nature of the data-generating process (taking the outcomes of the wheel spins as data).
 
-%------------------------------- 1D ------------------------------------
 \item[(D)]
 
 In the Bernoulli sampling model, in which $( Y_i \given \theta \, \mathcal B ) \stackrel{ \textrm{\tiny IID} }{ \sim } \textrm{ Bernoulli} ( \theta )$ for $i = 1, \dots, n$ (here $n$ is a finite positive integer and $0 < \theta < 1$), the sum $s_n = \sum_{ i = 1 }^n y_i$ of the observed data values $\bm{ y } = ( y_1, \dots, y_n )$ is sufficient for inference about $\theta$, and this means that in this model You can throw away the data vector $\bm{ y }$ and focus only on $s_n$ without any loss of information whatsoever. (Note that, as usual, we're implicitly conditioning on the known value of $n$.)
 
-%------------------------------- 1E ------------------------------------
 \item[(E)]
 
 In learning how to do a good job on the task of uncertainty quantification,
@@ -157,7 +144,6 @@ good calibration, and (b) the frequentist approach to probability provides
 a natural framework in which to see if Your Bayesian answer \textit{is}
 well-calibrated.
 
-%------------------------------- 1F ------------------------------------
 \item[(F)]
 
 The Beta$( \theta \given \alpha, \beta )$ parametric family of distributions is
@@ -165,13 +151,11 @@ useful as a source of prior distributions when the sampling model is as in
 (D), because all distributional shapes (symmetric, skewed, multimodal, ...)
 on $( 0, 1 )$ are realizable by single members of this family.
 
-%------------------------------- 1G ------------------------------------
 \item[(G)]
 
 Specifying the ingredients $\{ p ( \theta \given { \mathcal B } ), p ( D \given
 \theta \, { \mathcal B } ), ( { \mathcal A \given { \mathcal B } } ), U ( a, \theta \given { \mathcal B } ) \}$ in Your model for Your uncertainty about an unknown $\theta$ (in light of background information $\mathcal B$ and data $D$) is typically easy, because in any given problem there will typically be one and only one way to specify each of these ingredients; an example is the Bernoulli sampling distribution $p ( D \given \theta \, { \mathcal B } )$ arising uniquely, under exchangeability, from de Finetti's Theorem for binary outcomes.
 
-%------------------------------- 1H ------------------------------------
 \item[(H)]
 
 In trying to construct a good uncertainty assessment of the form $P ( A \given
@@ -181,7 +165,6 @@ B_k )$, You should try hard not to condition on any propositions $B_i$ that
 are false, because that would be the probabilistic equivalent of dividing
 by zero.  
 
-%------------------------------- 1I ------------------------------------
 \item[(I)]
 
 The kind of objectivity in probability assessment sought by people like
@@ -191,12 +174,10 @@ on the (1) assumptions, (2) judgments and (3) background information of the
 person making the probability assessment, and different reasonable people
 can differ along any of those three dimensions.
 
-%------------------------------- 1J ------------------------------------
 \item[(J)]
 
 When making a decision in the face of uncertainty about an unknown $\theta$, after specifying Your action space $( { \cal A } \given { \cal B } )$ and utility function $U ( a, \theta \given { \cal B } )$ and agreeing on the convention that large utility values are to be preferred over small ones, the optimal decision is found by maximizing $U ( a, \theta \given { \cal B } )$ over all $a \in ( { \cal A } \given { \cal B } )$.
 
-%------------------------------- 1K ------------------------------------
 \item[(K)]
 
 One reason that Bayesian inference was not widely used in the early and middle parts of
@@ -204,7 +185,6 @@ the 20th century was that approximating the (potentially high-dimensional)
 integrals arising from this approach was difficult in an era when computing
 was slow and the Laplace-approximation technique had been forgotten.
 
-%------------------------------- 1L ------------------------------------
 \item[(L)]
 
 Jaynes (2003, pp.~21--22) makes a useful distinction between
@@ -219,12 +199,11 @@ knowledge about the world\} changes.
 
 \begin{itemize}
 
- %------------------------------- 2A ------------------------------------   
 \item[(A)]
 
-\textit{[100 total points]} Consider the HIV screening example we looked at in Case Study (CS) 1, in which $( \theta = 1 )$ = (the patient is HIV positive) and $( y_1 = 1 )$ = (the blood test says the patient is HIV positive), but now let's make two changes: the time is now 1985, when the first \textit{enzyme-linked immunosorbent assay (ELISA)} blood test was approved in the U.S.~for use in detecting HIV, and You now work for the Red Cross (RC), which maintains a blood bank (from which units of blood for surgeries in hospitals are drawn) and which is extremely interested in not letting HIV into their blood supply. Continuing to use CS 1 notation, let $\alpha = P ( \theta = 1 \given \mathcal{ B } )$ be the prevalence of HIV in people whose background risk factors are summarized in $\mathcal{ B }$; and let $\beta = P ( y_1 = 1 \given \theta = 1 , \, \mathcal{ B } )$ and $\gamma = P ( y_1 = 0 \given \theta = 0 , \, \mathcal{ B })$ be the sensitivity and specificity, respectively, of the first \textit{ELISA} test (let's call it $E_1$). According to Chappel, Wilson and Dax (2009, \textit{Future Microbiology}, \textbf{8}, 963--982), $( \beta, \gamma ) = ( 0.99, 0.95 )$ for $E_1$, so the first test had decent sensitivity but did not reach the same performance level in specificity. Poking around on \texttt{www.census.gov}, You'll find that the population of the United States in 1985 consisted of about 238 million people, of whom about $N = 175$ million people were 18 years old or older; let's assume that HIV is concentrated entirely in the 18+ subpopulation (which is true to a good approximation). 
+\textit{[100 total points]} Consider the HIV screening example we looked at in Case Study (CS) 1, in which $( \theta = 1 )$ = (the patient is HIV positive) and $( y_1 = 1 )$ = (the blood test says the patient is HIV positive), but let's make two changes: the time is now 1985, when the first \textit{enzyme-linked immunosorbent assay (ELISA)} blood test was approved in the U.S.~for use in detecting HIV, and You now work for the Red Cross (RC), which maintains a blood bank (from which units of blood for surgeries in hospitals are drawn) and which is extremely interested in not letting HIV into their blood supply. Continuing to use CS 1 notation, let $\alpha = P ( \theta = 1 \given \mathcal{ B } )$ be the prevalence of HIV in people whose background risk factors are summarized in $\mathcal{ B }$; and let $\beta = P ( y_1 = 1 \given \theta = 1 , \, \mathcal{ B } )$ and $\gamma = P ( y_1 = 0 \given \theta = 0 , \, \mathcal{ B })$ be the sensitivity and specificity, respectively, of the first \textit{ELISA} test (let's call it $E_1$). According to Chappel, Wilson and Dax (2009, \textit{Future Microbiology}, \textbf{8}, 963--982), $( \beta, \gamma ) = ( 0.99, 0.95 )$ for $E_1$, so the first test had decent sensitivity but did not reach the same performance level in specificity. Poking around on \texttt{www.census.gov}, You'll find that the population of the United States in 1985 consisted of about 238 million people, of whom about $N = 175$ million people were 18 years old or older; let's assume that HIV is concentrated entirely in the 18+ subpopulation (which is true to a good approximation). 
 
-The basic $( 2 \times 2 )$ table for disease screening, in the notation of this problem, is given in Table \ref{t:basic-screening-table}. \textbf{Warning:} many published sources use the rows-and-columns convention in Table \ref{t:basic-screening-table}, but some reverse this, with rows for truth and columns for what the screening test says; an example of the latter convention is at 
+The basic $( 2 \times 2 )$ table for disease screening, in the notation of this problem, is given in Table \ref{t:basic-screening-table}. \textbf{Warning:} Many published sources use the rows-and-columns convention in Table \ref{t:basic-screening-table}, but some reverse this, with rows for truth and columns for what the screening test says; an example of the latter convention is at 
 
 \hspace*{0.25in} \texttt{https://en.wikipedia.org/wiki/Sensitivity\_and\_specificity} . 
 
@@ -257,32 +236,89 @@ The definitions of the four probabilities in the body of the table are as follow
 \end{table}
 
 \begin{itemize}
-
+%--------------------------------------------------------2A-------------------------------------------------------------------
 \item[(i)]
 
-Where did the four entries in the body of Table \ref{t:basic-screening-table} (not the margins) come from? As an example, by making an easy calculation, briefly explain why the upper-left entry is  $\alpha \, \beta$; why the same logic applies to the lower-right entry; and how the other entries are then immediately calculated. \textit{[15 points]}
+Where did the four entries in the body of Table \ref{t:basic-screening-table} (not the margins) come from? As an example, by making an easy probability calculation, briefly explain why the upper-left entry is  $\alpha \, \beta$; why the same logic applies to the lower-right entry; and how the other entries are then immediately calculated. \textit{[15 points]}
+\begin{tcolorbox}
+    \begin{solution}
+        In terms of probability the \textbf{top left corner} is saying,
+        \[P(\theta = 1, y_1 = 1 \given \mathcal{B})\]
+        which is an \textit{and} probability and we know the form for caclulating it would be the following,
+        \begin{align}
+            P(\theta = 1, y_1 = 1 \given \mathcal{B}) = P(\theta = 1 \given \mathcal{B}) \cdot P(y_1 = 1 \given \theta = 1, \mathcal{B}) 
+        \end{align}
+        Now recall we calculate the prevelance $\alpha$, as,
+        \[\alpha = P(\theta = 1\given \mathcal{B})\]
+        which we see is needed in the first part of (1). We also calculate sensitivity $\beta$, as,
+        \[\beta = P(y_1 = 1 \given \theta = 1, \mathcal{B})\]
+        which is also needed in (1). All this together means,
+        \[P(\theta = 1, y_1 = 1 \given \mathcal{B}) =  P(\theta = 1 \given \mathcal{B}) \cdot P(y_1 = 1 \given \theta = 1, \mathcal{B}) = \alpha \beta\]
+        demonstrating why the upper left entry is calculated as $\alpha\beta$.
 
+        Now for the \textbf{bottom right corner}, in terms of probability calculations it is saying,
+        \[P(\theta = 0, y_1 = 1 \given \mathcal{B})\]
+        which like before can be calculated as,
+        \begin{align}
+            P(\theta = 0, y_1 = 1 \given \mathcal{B}) = P(\theta = 0 \given \mathcal{B})\cdot P(y_1 = 0\given \theta = 0, \mathcal{B})
+        \end{align}
+        We see then that $P(\theta = 0 \given \mathcal{B})$ is the opposite of prevlance, meaning under law of total probability we have $P(\theta = 0 \given \mathcal{B}) = (1 - \alpha) $. Now recall how specificity is defined,
+        \[\gamma = p(y_1 = 0\given \theta = 0, \mathcal{B})\]
+        which is the last thing we need for (2). So putting it all together we get,
+        \[P(\theta = 0, y_1 = 1 \given \mathcal{B}) = P(\theta = 0 \given \mathcal{B})\cdot P(y_1 = 0\given \theta = 0, \mathcal{B}) = (1-\alpha)\gamma\] 
+        demonstrating why the bottom right entry is calculated as $(1-\alpha)\gamma$
+
+        For the \textbf{bottom left} and \textbf{top right} boxes they follow immediately from what they are asking based on the above and under the law of total probability. Like for example the left column is based on truly HIV+ people, which is why we need $\alpha$ (prevelance) in each box, therefore the right column must have $(1-\alpha)$. Then similarly for the rows we can easily fill in the rest of the cells.
+    \end{solution}
+\end{tcolorbox}
+\newpage
 \item[(ii)]
 
-Use this table to write down explicit formulas in terms of $( \alpha, \beta, \gamma )$ for two frequently-used quantities in disease screening that we haven't looked at yet: the \textit{positive predictive value} (PPV, also known as the \textit{precision}), $P ( \theta = 1 \given y_1 = 1 )$, and the \textit{negative predictive value} (NPV, with a similar interpretation for negative test results), $P ( \theta = 0 \given y_1 = 0 )$, of screening tests such as $E_1$. How do the PPV and NPV relate to the \textit{false discovery} and \textit{false omission rates} (FDR = $\frac{ FP }{ FP + TP }$, FOR = $\frac{ FN }{ FN + TN }$)? Explain briefly. \textit{[20 points]}
+Use this table to write down explicit formulas in terms of $( \alpha, \beta, \gamma )$ for two frequently-used quantities in disease screening that we haven't looked at yet: the \textit{positive predictive value} (PPV, also known as the \textit{precision}), $P ( \theta = 1 \given y_1 = 1, \, \mathcal{ B })$, and the \textit{negative predictive value} (NPV, with a similar interpretation for negative test results), $P ( \theta = 0 \given y_1 = 0, \, \mathcal{ B } )$, of screening tests such as $E_1$. How do the PPV and NPV relate to the \textit{false discovery} and \textit{false omission rates} (FDR = $\frac{ FP }{ FP + TP }$, FOR = $\frac{ FN }{ FN + TN }$)? Explain briefly. \textit{[20 points]}
 
+\begin{tcolorbox}
+    \begin{solution}
+        We see PPV is the probability the person is HIV+ given the test is positive and the background, and similarly NPV is the probability the person is HIV- given the test is negative and the background. Which means form PPV we are working the the top row, since the top row is the blood test reporting positive. Then to get the probability the person is HIV+ is simply taking the top left cell and dividing it by the total for the top row,
+        \[\text{PPV} = P(\theta = 1 \given y_1 =1 , \mathcal{B}) = \frac{\alpha\beta}{\alpha\beta + (1-\alpha)(1-\gamma)}.\]
+
+        By similar reasoning NPV is working with the bottom row, and we will divide the the bottom right cell by the bottom row total since the right column is the person being HIV-. Giving us,
+        \[\text{NPV} = P(\theta = 0 \given y_1 = 0, \mathcal{B})= \frac{\alpha(1-\beta)}{\alpha(1-\beta) + (1-\alpha)\gamma}.\]
+
+        Now with how FDR and FOR relate to PPV and NPV respectively. Looking at PPV and FDR we see they are complements of one another. This is because we see for calculating denominator in the FDR we have,
+        \[FP + TP = \alpha\beta + (1-\alpha)(1-\gamma)\]
+        which matches the denominator of the PPV. Now the reason they are complements of one another is because for the numerator of FDR we are taking the top right cell (HIV- / FP) and PPV is taking the top left cell (HIV+ / TP), but they're both over the same row total (conditioning on the same thing). In other words we can define them in terms of one another (push \& pull),
+        \[PPV = 1 - FDR.\]
+        By similar reasoning we have the same relation for NPV and FOR,
+        \[NPV = 1 - FOR.\]
+
+
+    \end{solution}
+\end{tcolorbox}
+\newpage
 \item[(iii)]
 
-The Centers for Disease Control and Prevention (CDC, not CDCP, for some reason) estimated in 2016 that the U.S.~prevalence of HIV in 1985 was based on about 500,000 cases, for a prevalence rate in the 18+ subpopulation of $\frac{ 500000 }{ 175000000 } = \alpha^* \doteq 0.00286$, about 0.3\% (roughly the same as the U.S.~prevalence rate today). The Red Cross (RC) would not have been privy to this information in 1985, but assuming that HIV status and the blood-donation choice mechanism are independent, which is almost certainly upper-bounding for $\alpha$, would give $\alpha^*$ as the RC prevalence. Use this value for $\alpha$ and the $( \beta, \gamma )$ values for $E_1$ to compute the PPV, NPV, FPR and FNR values defining the blood-screening real-world environment facing the RC in 1985. Would You say that $E_1$ was highly successful at keeping HIV out of the RC blood supply in 1985? Explain briefly. \textit{[25 points]}
+The Centers for Disease Control and Prevention (CDC, not CDCP, for some reason) estimated in 2016 that the U.S.~prevalence of HIV in 1985 was based on about 500,000 cases, for a prevalence rate in the 18+ subpopulation of $\frac{ 500000 }{ 175000000 } = \alpha^* \doteq 0.00286$, about 0.3\% (roughly the same as the U.S.~prevalence rate today). The Red Cross (RC) would not have been privy to this information in 1985, but assuming that HIV status and the blood-donation choice mechanism are independent, which is almost certainly upper-bounding for $\alpha$, would give $\alpha^*$ as the RC prevalence. Use this value for $\alpha$ and the $( \beta, \gamma )$ values for $E_1$ to compute the PPV, NPV, FDR and FOR values defining the blood-screening real-world environment facing the RC in 1985. Would You say that $E_1$ was highly successful at keeping HIV out of the RC blood supply in 1985? Explain briefly. \textit{[25 points]}
+
+\begin{tcolorbox}
+    \begin{solution}
+        Calculating with $(\alpha, \beta, \gamma ) = (0.00286, 0.99, 0.95)$. Using these values, the equations from the previous values and calculating them in R we get,
+        \begin{center}
+            \begin{tabular}{ |c|c| } 
+             \hline
+             PPV &  \\
+             \hline
+             cell4 & cell5 \\ 
+             \hline
+             cell7 & cell8 \\ 
+             \hline
+            \end{tabular}
+            \end{center}
+    \end{solution}
+\end{tcolorbox}
 
 \item[(iv)]
 
 Holding $( \beta, \gamma )$ at the $E_1$ values and varying $\alpha$ from 0 to (say) $10 \, \alpha^*$, plot the PPV and NPV as functions of $\alpha$. How sensitive were each of these quantities to prevalence in the 1985 RC environment? Explain briefly. \textit{[15 points]}
-
-\end{itemize}
-
-Shortly after $E_1$ was approved in 1985, a member of the U.S.~Congress made a speech on the floor of the House of Representatives expressing the opinion that HIV was such a serious public health threat that everyone 18+ years old should be tested with $E_1$. The goal in this final part of the problem is to fill out a new version of Table \ref{t:basic-screening-table} with numbers quantifying what would have happened to the $N = 175$ million Americans under this Congressperson's plan. If we knew for sure that $\alpha = \alpha^*$, we could just use that value of $\alpha$ and the already-established values of $( \beta, \gamma )$, and multiply all of the resulting entries in Table \ref{t:basic-screening-table} by $N$, but we don't know that for sure. Consider $\alpha$ an unknown quantity (in STAT 131 we would have called it a random variable) with expected value $E ( \alpha \given \mathcal{ B } ) = \alpha^*$. 
-
-\begin{itemize}
-
-\item[(v)] 
-
-By looking at the form of all 9 of the entries in Table \ref{t:basic-screening-table} (including the margins) as functions of $\alpha$ (and remembering basic properties of expectation from STAT 131), briefly explain why we can obtain a table of \textit{expected} cell and margin counts just by multiplying all of the entries in Table \ref{t:basic-screening-table} by $N$ and then substituting in $( \alpha, \beta, \gamma ) = \left( \frac{ 500000 }{ 175000000 }, 0.99, 0.95 \right)$. Complete Table \ref{t:congressperson-table} by filling in the empty cells and margins; I've given You a headstart on some of them. Briefly summarize the likely good and bad outcomes of the Congressperson's plan, when viewed as an instance of national health policy. (\textit{Hint:} The first Western Blot test for HIV, which was more accurate than $E_1$, was not developed until 1987.) In Your view, would the good outcomes outweigh the bad, or the other way around, or is it hard to come to a clear judgment? Explain briefly. (Note that we're not doing a complete \textit{cost-benefit} analysis here, since we've not taken into account how much administering 175,000,000 $E_1$ tests would cost in time and money.) \textit{[25 points]}
 
 \end{itemize}
 
@@ -311,6 +347,16 @@ By looking at the form of all 9 of the entries in Table \ref{t:basic-screening-t
 \end{tabular}
 
 \end{table}
+
+Shortly after $E_1$ was approved in 1985, a member of the U.S.~Congress made a speech on the floor of the House of Representatives expressing the opinion that HIV was such a serious public health threat that everyone 18+ years old should be tested with $E_1$. The goal in this final part of the problem is to fill out a new version of Table \ref{t:basic-screening-table} with numbers quantifying what would have happened to the $N = 175$ million Americans under this Congressperson's plan. If we knew for sure that $\alpha = \alpha^*$, we could just use that value of $\alpha$ and the already-established values of $( \beta, \gamma )$, and multiply all of the resulting entries in Table \ref{t:basic-screening-table} by $N$, but we don't know that for sure. Consider $\alpha$ an unknown quantity (in STAT 131 we would have called it a random variable) with expected value $E ( \alpha \given \mathcal{ B } ) = \alpha^*$. 
+
+\begin{itemize}
+
+\item[(v)] 
+
+By looking at the form of all 9 of the entries in Table \ref{t:basic-screening-table} (including the margins) as functions of $\alpha$ (and remembering basic properties of expectation from STAT 131), briefly explain why we can obtain a table of \textit{expected} cell and margin counts just by multiplying all of the entries in Table \ref{t:basic-screening-table} by $N$ and then substituting in $( \alpha, \beta, \gamma ) = \left( \frac{ 1 }{ 350 }, 0.99, 0.95 \right)$. Complete Table \ref{t:congressperson-table} by filling in the symbolic cells and margins with the appropriate integers; I've given You a headstart on some of them. Briefly summarize the likely good and bad outcomes of the Congressperson's plan, when viewed as an instance of national health policy. (\textit{Hint:} The first Western Blot test for HIV, which was quite a bit more accurate than $E_1$, was not developed until 1987.) In Your view, would the good outcomes outweigh the bad, or the other way around, or is it hard to come to a clear judgment? Explain briefly. (Note that we're not doing a complete \textit{cost-benefit} analysis here, since we've not taken into account how much administering 175,000,000 $E_1$ tests would cost in time and money.) \textit{[25 points]}
+
+\end{itemize}
 
 \item[(B)]
 
@@ -437,7 +483,7 @@ Make a plot of the prior, likelihood and posterior distributions on the same gra
 
 \item[(d)] 
 
-Compute the observed information with this data set, and use this to compute an estimated standard error for the MLE and construct an approximate 99.9\% frequentist confidence interval for $\lambda$. Use the \texttt{qgamma} function in \texttt{R} (or some other numerical integration routine of Your choice) to work out the left and right endpoints of the 99.9\% central posterior interval for $\lambda$ (\textit{Hint:} remember the \textbf{NB} in 2(B)(ii)), and compare with the frequentist interval. Give two reasons why they're so different in this problem. Is one of them ``right'' and the other one ``wrong','' or are they trying to summarize different amounts and types of information, or what? Explain briefly. \textit{[25 points]}
+Compute the observed information with this data set, and use this to compute an estimated standard error for the MLE and construct an approximate 99.9\% frequentist confidence interval for $\lambda$. Use the \texttt{qgamma} function in \texttt{R} (or some other numerical integration routine of Your choice) to work out the left and right endpoints of the 99.9\% central posterior interval for $\lambda$ (\textit{Hint:} Remember the \textbf{NB} in 2(B)(ii)), and compare with the frequentist interval. Give two reasons why they're so different in this problem. Is one of them ``right'' and the other one ``wrong','' or are they trying to summarize different amounts and types of information, or what? Explain briefly. \textit{[25 points]}
 
 \end{itemize}
 
