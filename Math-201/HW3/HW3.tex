@@ -119,16 +119,44 @@ MATH 201 | Algebra II | Winter 2022}
 \begin{itemize}
   \item[(a)]
   \begin{proof}
-    Let $v \in Hom_\zz(M,\zz)$ be as follows,
-    \[v\left(\begin{bmatrix}
+    Any $v_A\in Hom_\zz(M,\zz)$ is of the form,
+    \[v_A\left(\begin{bmatrix}
       x \\ y
-    \end{bmatrix}\right) = \begin{bmatrix}
-      -1 & 1 
-    \end{bmatrix}\begin{bmatrix}
-      x \\y
+    \end{bmatrix}\right) = ax + by = \begin{bmatrix}
+      a & b
+    \end{bmatrix} \begin{bmatrix}
+      x \\ y
     \end{bmatrix}\]
+    where $A = \begin{bmatrix}
+      a & b
+    \end{bmatrix}$
+    Now let's consider the following,
+    \begin{align*}
+      v_A\left(\begin{bmatrix}
+        120 \\ 240
+      \end{bmatrix}\right) = 120a + 240b &= 60(2a + 4b) \\
+      v_A\left(\begin{bmatrix}
+        360 \\ -300
+      \end{bmatrix}\right) = 360a -300b &= 60(6a-5b)
+    \end{align*}
+    Let $A = \begin{bmatrix}
+      1 & 1
+    \end{bmatrix}$. We see then that $v_A(N) = (60)$ and is indeed maximal. This is because there is no element $y\in N$ and $v_A\in Hom(M,\zz)$ that can map $y$ to a factor of 60 that is not 60. This is because 60 is the GCD of all 4 numbers in the given matrices. 
   \end{proof} 
   \item[(b)]
+  \begin{proof}
+    First we want a $y \in N$ that under $v_A$ maps to the generator of $v_A(N)$. In other words $v_A(y) = 60$. So we can simply let $y = \begin{bmatrix}
+      360 \\ -300
+    \end{bmatrix}$ we see this holds since,
+    \[v_A\left(\begin{bmatrix}
+      360 \\ -300
+    \end{bmatrix}\right) = 360 - 300 = 60.\] Now we can let our $y_1$ be the divisor of $y$ such that $a_vy_1 = y$,
+    \[60y_1 = \begin{bmatrix}
+      360 \\ -300
+    \end{bmatrix} \rightarrow y_1 = \begin{bmatrix}
+      6 \\ -5
+    \end{bmatrix} \]    
+  \end{proof} 
   \item[(c)]
   \item[(d)]   
 \end{itemize}

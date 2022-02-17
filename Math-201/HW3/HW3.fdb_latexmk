@@ -1,8 +1,8 @@
 # Fdb version 3
-["pdflatex"] 1645064565 "/home/kev/Documents/Math-HW/Math-201/HW3/HW3.tex" "/home/kev/Documents/Math-HW/Math-201/HW3/HW3.pdf" "HW3" 1645064565
+["pdflatex"] 1645092170 "/home/kev/Documents/Math-HW/Math-201/HW3/HW3.tex" "/home/kev/Documents/Math-HW/Math-201/HW3/HW3.pdf" "HW3" 1645092171
   "/etc/texmf/web2c/texmf.cnf" 1644457560 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/kev/Documents/Math-HW/Math-201/HW3/HW3.aux" 1645064565 697 d37a964b081842503b4b5534f6fdcdb6 ""
-  "/home/kev/Documents/Math-HW/Math-201/HW3/HW3.tex" 1645064564 5104 f8037722afcc7f5bbfa5eb7a6bc40de0 ""
+  "/home/kev/Documents/Math-HW/Math-201/HW3/HW3.aux" 1645092170 697 d37a964b081842503b4b5534f6fdcdb6 ""
+  "/home/kev/Documents/Math-HW/Math-201/HW3/HW3.tex" 1645092170 6326 e344828d0e49810ef773bcdd2176c885 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/palatino/pplb7t.tfm" 1136768653 1616 371d1ee60c04b008c8fd760060cd34f1 ""
@@ -224,13 +224,13 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1581979058 38841 ce3692aa899bb693b90b87eaa5d4d84e ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1644998096 4770781 1ed1abab22da9c3e2cc82e4db562318b ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1644998124 8268165 19158372730b970eedfcd9762af3f27e ""
-  "HW3.aux" 1645064565 697 d37a964b081842503b4b5534f6fdcdb6 "pdflatex"
-  "HW3.out" 1645064565 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "HW3.tex" 1645064564 5104 f8037722afcc7f5bbfa5eb7a6bc40de0 ""
+  "HW3.aux" 1645092170 697 d37a964b081842503b4b5534f6fdcdb6 "pdflatex"
+  "HW3.out" 1645092170 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "HW3.tex" 1645092170 6326 e344828d0e49810ef773bcdd2176c885 ""
   (generated)
-  "HW3.log"
-  "/home/kev/Documents/Math-HW/Math-201/HW3/HW3.pdf"
   "HW3.out"
+  "HW3.aux"
   "HW3.pdf"
   "/home/kev/Documents/Math-HW/Math-201/HW3/HW3.log"
-  "HW3.aux"
+  "/home/kev/Documents/Math-HW/Math-201/HW3/HW3.pdf"
+  "HW3.log"
