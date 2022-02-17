@@ -141,7 +141,7 @@ MATH 201 | Algebra II | Winter 2022}
     \end{align*}
     Let $A = \begin{bmatrix}
       1 & 1
-    \end{bmatrix}$. We see then that $v_A(N) = (60)$ and is indeed maximal. This is because there is no element $y\in N$ and $v_A\in Hom(M,\zz)$ that can map $y$ to a factor of 60 that is not 60. This is because 60 is the GCD of all 4 numbers in the given matrices. 
+    \end{bmatrix}$. We see then that $v_A(N) = (60)$ and is indeed maximal. This is because there is no element $y\in N$ and $v_A\in Hom(M,\zz)$ that can map $y$ to a factor of 60 that is not 60. This is because 60 is the GCD of all 4 numbers in the given matrices. Meaning $a_1 = a_v = 60$ 
   \end{proof} 
   \item[(b)]
   \begin{proof}
@@ -156,6 +156,43 @@ MATH 201 | Algebra II | Winter 2022}
     \end{bmatrix} \rightarrow y_1 = \begin{bmatrix}
       6 \\ -5
     \end{bmatrix} \]    
+
+    \[\ker(v_A) = \set{\begin{bmatrix}
+      x \\ y
+    \end{bmatrix} \in \zz^{2} \mid x + y = 0} = \zz \begin{bmatrix}
+      1 \\ -1
+    \end{bmatrix}\] We also have $\ker(v_A) \cap N$ to be,
+    \[\ker(v_A) \cap N= \set{a \begin{bmatrix}
+      120 \\ 240
+    \end{bmatrix} + b \begin{bmatrix}
+      360 \\ -300
+    \end{bmatrix} \mid a,b \in \zz}\]
+    Writing $a$ in terms of $b$ we get $a = 5.5b$ so,
+    \begin{align*}
+      \ker(v_A) \cap N &= \set{(5.5b)\begin{bmatrix}
+        120 \\ 240
+      \end{bmatrix}  + b \begin{bmatrix}
+        360 \\ -300
+      \end{bmatrix} \mid b \in \zz} \\
+      \ker(v_A) \cap N &=\set{\begin{bmatrix}
+        1020b \\ 1020b
+      \end{bmatrix} \mid b \in \zz}
+    \end{align*}
+    Now let $a_2 = gcd(1020,1020) = 1020$ and $y_2 = \begin{bmatrix}
+      1 \\ -1
+    \end{bmatrix}$ we have then that,
+    \begin{align*}
+      M &= \zz\begin{bmatrix}
+        360 \\ -300
+      \end{bmatrix} \bigoplus \zz \begin{bmatrix}
+        1 \\ -1
+      \end{bmatrix} \\
+      N &= \zz 60 \begin{bmatrix}
+        360 \\ -300
+      \end{bmatrix} \bigoplus \zz 1020 \begin{bmatrix}
+        1 \\ -1
+      \end{bmatrix}
+    \end{align*}
   \end{proof} 
   \item[(c)]
   \item[(d)]   
