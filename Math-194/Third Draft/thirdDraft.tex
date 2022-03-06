@@ -1,0 +1,238 @@
+\documentclass[12pt]{article}
+
+% This first part of the file is called the PREAMBLE. It includes customizations and command definitions. The preamble is everything between \documentclass and \begin{document}.
+\usepackage[top=0.75in, bottom=1.25in, left=1in, right=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb} %this is THE math package
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{fancybox}
+\usepackage{hyperref}
+\usepackage{varwidth}
+\usepackage{mdframed}
+\usepackage{mathrsfs}
+\usepackage[most]{tcolorbox}
+%------------------------
+%Fonts I use, uncomment if you like to use them.
+%The first is the general font, and the second a math font
+\usepackage{mathpazo}
+\usepackage{eulervm}
+%------------------------
+%This is so that we have standard fonts for the double-stroked symbols
+%for reals, naturals etc. regardless of what font you use.
+%Don't comment
+\AtBeginDocument{
+  \DeclareSymbolFont{AMSb}{U}{msb}{m}{n}
+  \DeclareSymbolFontAlphabet{\mathbb}{AMSb}}
+%------------------------
+
+\usepackage[english]{babel}
+\usepackage{mathtools}
+\usepackage{tikz-cd}
+
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{mydef}[thm]{Definition}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+%----------------------------------------------
+%User-defined environments
+%Commented because we're not using them in this document
+%The only uncommented ones are the Problem and Solution environment
+
+% \newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{question}[2][Question]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem\!]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+%\newenvironment{sub-problem}[2][]{\begin{trivlist}
+%\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+\newenvironment{solution}{\begin{proof}[\textbf{\textit{Solution}}] }{\end{proof}}
+%----------------------------------------------
+
+%----------------------------
+%User-defined notations
+\newcommand{\zz}{\mathbb Z}   %blackboard bold Z
+\newcommand{\qq}{\mathbb Q}   %blackboard bold Q
+\newcommand{\ff}{\mathbb F}   %blackboard bold F
+\newcommand{\rr}{\mathbb R}   %blackboard bold R
+\newcommand{\nn}{\mathbb N}   %blackboard bold N
+\newcommand{\cc}{\mathbb C}   %blackboard bold C
+\newcommand{\af}{\mathbb A}   %blackboard bold A
+\newcommand{\pp}{\mathbb P}   %blackboard bold P
+\newcommand{\id}{\operatorname{id}} %for identity map
+\newcommand{\im}{\operatorname{im}} %for image of a function
+\newcommand{\dom}{\operatorname{dom}} %for domain of a function
+\newcommand{\cat}[1]{\mathscr{#1}}   %calligraphic category
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert} %for absolute value
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert} %for norm
+\newcommand{\modar}[1]{\text{ mod }{#1}} %for modular arithmetic
+\newcommand{\set}[1]{\left\{#1\right\}} %for set
+\newcommand{\setp}[2]{\left\{#1\ \middle|\ #2\right\}} %for set with a property
+\newcommand{\card}[1]{\#\,{#1}} %for cardinality of a set
+\newcommand\m[1]{\begin{pmatrix}#1\end{pmatrix}} 
+
+%Re-defined notations
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\emptyset}{\varnothing}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+%----------------------------
+
+\newcommand{\lrp}[1]{\left(#1\right)}
+\newcommand{\lrb}[1]{\left[#1\right]}
+\newcommand{\lrc}[1]{\left\{#1\right\}}
+
+\allowdisplaybreaks
+
+
+
+\begin{document}
+
+
+\title{P-adic Numbers}
+
+\author{Kevin Guillen \\ 
+Department of Mathematics \\
+University of California at Santa Cruz \\
+Santa Cruz, CA 95064 USA}
+
+\maketitle
+
+\begin{abstract}
+This paper will begin by introducing some of the prerequisite knowledge needed to begin defining $p$-adic numbers and their applications. Then give a brief history of p-adic numbers to then explain how one goes from the rationals to $p$-adic numbers. Then to highlight the differences from the real numbers. Then take an algebraic look through $\qq_p$ and what it means to be a completion of the rationals, and definitions and examples of  $p$-adic analysis
+\end{abstract}
+
+\section{Introduction}
+The real numbers are a number system we should all be familiar with, since it is what appears most natural in our day to day lives. For one to construct the reals from the rationals though, it turns out to be difficult due to one needing more machinery than when going from the natural numbers $\nn$, to the integers $\zz$ and finally to the rationals $\qq$. In these two "jumps" one simply needed to introduce one more algebraic operation to get the next. For example one got the integers from the natural numbers through the introduction of subtraction, and the rationals from the integers through the introduction of division. The new machinery one needed to jump from the discrete $\qq$ to the continuous $\rr$ was the introduction of a limit $\lrb{4}$ . The standard definition of a limit in the real numbers depends on the standard notion of distance, the Euclidean absolute value, which is a \textit{metric} or a \textit{distance function}$\lrb{5}$. That's the key though, the Euclidean absolute value is \textit{a} metric, so while this paper is not on measure theory, this will be important for what comes next. We know that $\qq$ was a field and through the Euclidean absolute value we were able to obtain the reals, which now leads us to define the general notion of absolute value for an arbitrary field $\ff$.
+\newpage
+\begin{definition}[Absolute Value]
+  An \textbf{absolute value} on a field $\ff$ is a function $\abs{\cdot}$ from $\ff$ to $\rr_{\geq 0}$ that satisfies the following properties for all $a,b \in \ff$:
+  \begin{itemize}
+    \item[(1)]Positive-definiteness: $\abs{a} = 0 \Longleftrightarrow a = 0$  
+    \item[(2)]Multiplicativity: $\abs{ab} = \abs{a} \abs{b}$ 
+    \item[(3)]Triangle Inequality: $\abs{a + b} \leq \abs{a} + \abs{y}$    
+  \end{itemize}
+  and if an absolute value satisfies,
+  \begin{itemize}
+    \item[(4)] Strong Triangle Inequality: $\abs{a + b} \leq \max\lrc{\abs{a}, \abs{b}}$
+  \end{itemize}
+  it is called \textit{non-Archimedean}.
+\end{definition}
+We also define a metric as follows,
+\begin{definition}[Metric]
+  A \textbf{metric} on $\ff$ is defined by a distance function $d: \ff \times \ff \to \rr_{\leq 0}$. We see then that an absolute value induces a metric by,
+  \[d(a,b) = \abs{a - b}\]
+  for all $a,b \in \ff$
+  A set where a metric is defined is called a \textit{metric space}, and a set with a metric is induced by a non-Archimedean absolute value is called a \textit{ultrametric space}
+\end{definition}
+
+We see then that $(\rr, d)$ where $d$ is the usual Euclidean absolute value, we have a metric space that we all naturally know. 
+
+What was the point of all this, why did we review these definitions and constructions? Well, there is a different number system one can obtain from the rationals that is just as, if not more, fascinating than the reals, and that is the \textit{p-adic} number system. 
+
+\begin{definition} [p-adic integer]
+  Let $p \in \zz$ be a prime number. Then a \textbf{$p$-integer} $x$ is the base $p$ expansion of some integer $a\in \zz$, that is,
+  \begin{align*}
+    a &= a_1p^{0} + a_2p^{1} + \dots + a_np^{n}  && a_1,a_2, \dots a_n \in \zz/p\zz\\
+    x &= a_1a_2\dots a_n
+  \end{align*}
+\end{definition}
+where we will define p-adic integers to be "closer" to one another based on how many powers of $p$ we can fit into their difference. This number system, even though unnatural, will prove to be a useful toolset and yield a number of fascinating and unintuitive results. We will touch on many familiar topics relating to the reals, and how those topics look like in this number system. We stop here since it will be good to see why how anyone would think of a number system and see the motivation behind its discovery.  
+
+\section{Hensel's Analogy}
+This definition/construction of $p-$adic numbers may seem a bit aimless and random, but once we see what was going through the mind of Hensel, we will see that this number system is indeed well motivated and natural. 
+
+Kurt Hensel (29 December 1861 - 1 June 1941) was a German mathematician born in Konigsberg, who studied under Leopold Kronecker and Karl Weierstrass. At the time Hensel was interested in the analogy between,
+\begin{align*}
+  \zz \text{ with its fraction field } \qq \longleftrightarrow \cc[X] \text{ with its fraction field }\cc(X).
+\end{align*}
+
+Hensel learned of this analogy from his doctoral advisor Kronecker, who believed there could be a single theory covering both of them. Kronecker never was able to create this theory, but Hensel was very interested in this analogy between the two $\lrb{1}$. 
+
+We can see how this interest through the following explanations. Taking a function $f(X)$ from $\cc(X)$ we know it is a rational function or in other words the quotient of two functions,
+\begin{align*}
+  f(X) = \frac{P(X)}{Q(X)}, \ P(X),Q(X) \in \cc[X].
+\end{align*}
+Taking a rational number $x$ from $\qq$ we know that it is rational, as the name suggests, more specifically a quotient of two integers,
+\begin{align*}
+  x = \frac{p}{q}, \ p,q \in \zz.
+\end{align*}
+
+The next parallel is that we know both the rings $\zz$ and $\cc[X]$ are unique factorization domains, meaning every non-zero non-unit element in them can be written uniquely as a product of prime elements in the ring (up order and units). More explicitly for $x \in \zz$ non-zero and not $\pm 1$ we can express it uniquely for $n \in \nn$ as,
+\begin{align*}
+  x = p_1^{e_1} p_2^{e_2}\dots p_n^{e_n}, \ p_1\dots p_n \text{  are prime integers}, \ e_1\dots e_n \in \nn
+\end{align*}
+And for $P(X) \in \cc[X]$ where $P(X)$ is non-zero and not a unit, we can express it uniquely, for some $n \in \nn$, as,
+\begin{align*}
+  P(X) = a(X - \alpha_1)(X-\alpha_2)\dots (X - \alpha_n), \ a,\alpha_1\dots\alpha_n \in \cc.
+\end{align*}
+From here one might be able to see what the point of Hensel's analogy was. It's that primes,$p$, in $\zz$ are analogous to linear polynomials, $(X-\alpha)$, in $\cc[X]$
+
+Extending this into solutions for equations. If we take a polynomial with integer coefficients, we call its roots \textit{algebraic numbers}. Now something similar is said when we take a polynomial with coefficients in $\cc[X]$, its roots will be called \textit{algebraic functions}.
+
+\textbf{Example}: Consider the polynomial $Y^{2}-2$, we know $\sqrt{2}$ is a root of it, and therefore $\sqrt{2}$ is an algebraic number. 
+
+Now for the polynomial with coefficients in $\cc[X]$, $Y^{2} - (X^{3}-3X - 1)$ the function $\sqrt{X^{3}-3X -1}$ is a root of it, and therefore and algebraic function. 
+
+Going back to Hensel's analogy now, Hensel was working on a specific problem about algebraic numbers, so he considered the analogous problem in terms of algebraic functions. This problem that Hensel was working on turned out to be relatively easy to solve under algebraic functions by expanding functions into its power series $\lrb{1}$. Explicitly this means, given $P(X) \in \cc[X]$ and $\alpha \in \cc$ we have the following,
+\begin{align*}
+  P(X) &= a_0 + a_1(X -\alpha)^{1} + a_2(X-\alpha)^{2} + \dots + a_n(X-\alpha)^{n} \\
+  &= \sum_{i = o}^{n}a_i(X-\alpha)^{i}.
+\end{align*}
+Which gives us information of how $P(X)$ behaves around $\alpha$. Now if only we had this sort of expansion for integers. In a way we do though! Consider the number $245$, we can expand it out as follows,
+\begin{align*}
+  245 = 5\cdot 10^{0} + 4\cdot 10^{1} + 2 \cdot 10^{2}
+\end{align*}
+which is nothing new, we do it all the time we just stop thinking about it. The issue for Hensel though was that $10$ is not a prime in $\zz$ while $(X-\alpha)$ is a prime in $\cc[X]$. Knowing the definition of $p-$adic numbers we know what comes next. Hensel considered taking a base 10 integer and expressing it a number in base $p$. So we see our $245$ becomes,
+\begin{align*}
+  245 &= 1 \cdot 2^{0} + 1\cdot 2^{1} + 1 \cdot 2^{2} + 1\cdot 2^{3} + 0\cdot 2^{4} + 1 \cdot 2^{5} + 0 \cdot 2^{6} + 1\cdot 2^{7} \\
+  &= 11110101_2
+\end{align*}
+which we see is analogous to the power series for functions since $2$ is a prime element in $\zz$
+
+\section{Properties of $p$-adic numbers}
+Now that we see how Hensel arrived at $p$-adic numbers let us expand on some of the definitions given during the introduction and dive deeper into the world of $p-$adic numbers. We know from previously that we can simply take a base 10 integer and express it in base $p$, where $p$ is a prime number, and have its $p$-adic equivalent, but the $p$-adic numbers are supposed to be an extension of the rational numbers so let's consider a rational number $x$. We know that it is of the form $\frac{a}{b}$. To follow from the work of the previous section let $a = 245$ and lets work in the $2$-adic system. 
+
+\section{$\qq_p$, completion of $\qq$ }
+Go over some algebra examples, to ultimately construct the $p$-adic field $\qq_p$. Explore $\qq_p$, talk about the ring of $p$-adic integers, density, and Hensel's Lemma. 
+
+\section{Elementary analysis with $\qq_p$}
+Normal analysis topics like Sequences and Series, Integrals, and Power Series. (Need to read more)
+\newpage
+\begin{thebibliography}{9}
+    \bibitem{texbook}
+    Fernando Gouvea (2003) \emph{p-adic Numbers: An Introduction}, Springer Science \& Business Media, 2003.
+    
+    \bibitem{texbook}
+    Alain M. Robert (2000) \emph{A Course in p-adic Analysis}, Springer; 2000th edition
+
+    \bibitem{texbook}
+    Svetlana Katok (2007) \emph{P-adic Analysis Compared With Real (Student Mathematical Library)}, American Mathematical Society
+    
+    \bibitem{texbook}
+    Terence Tao (2016) \emph{Analysis I: Third Edition}, Hindustan Book Agency, 1st ed. 2016 edition
+
+    \bibitem{texbook}
+    James Munkres (2000) \emph{Topology}, Pearson College Div; 2nd edition (January 7, 2000)
+  \end{thebibliography}
+\end{document}
