@@ -1,0 +1,15 @@
+model {
+
+  mu.gaussian ~ dnorm( 0.0, 1.0E-6 )
+  sigma.gaussian ~ dunif( 0.0, 10.0 )
+ 
+  for ( i in 1:n ) {
+
+    y[ i ] ~ dnorm( mu.gaussian, tau.gaussian )
+ 
+  }
+
+  tau.gaussian <- 1 / ( sigma.gaussian * sigma.gaussian )
+  y.new ~ dnorm( mu.gaussian, tau.gaussian )
+ 
+}

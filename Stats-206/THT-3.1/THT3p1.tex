@@ -1,0 +1,121 @@
+\documentclass[12pt]{article}
+
+\usepackage{ amsmath, amssymb, graphicx, psfrag, bm }
+
+\addtolength{\textheight}{2.1in}
+\addtolength{\topmargin}{-1.25in}
+\addtolength{\textwidth}{1.965in}
+\addtolength{\oddsidemargin}{-1.0in}
+\addtolength{\evensidemargin}{-1.1in}
+\setlength{\parskip}{0.1in}
+\setlength{\parindent}{0.0in}
+
+\pagestyle{plain}
+
+\raggedbottom
+ 
+\newcommand{\given}{\, | \,}
+\newcommand{\bi}[1]{\textbf{\textit{#1}}}
+\renewcommand\labelitemi{$\blacktriangleright$}
+ 
+\begin{document}
+
+\begin{flushleft}
+
+Prof.~David Draper \\
+Department of Statistics \\
+Baskin School of Engineering \\
+University of California, Santa Cruz \\
+Winter 2022
+
+\end{flushleft}
+
+\Large
+
+\begin{center}
+
+STAT 206 (\textsf{Applied Bayesian Statistics})
+
+\fbox{\textbf{Take-Home Test 3: Part 1 (\textit{Revised} 17 Mar 2022)}}
+
+\large
+
+\textbf{Absolute due date}: Uploaded to \texttt{canvas.ucsc.edu} by 11.59pm on \textbf{20 Mar 2022}
+
+\end{center}
+
+\normalsize
+
+Here are the \bi{revised} ground rules: this test is open-book and open-notes, and has three parts. Part 1 consists of 7 true/false questions, each worth 10 points, for a total of 70 points; this part is \bi{mandatory for all STAT 206 students}. Part 2 has a single calculation question in it, worth 220 points; this part is also \bi{mandatory for all STAT 206 students}. Part 3 is entirely \bi{optional for all STAT 206 students} and acts as a source of \bi{extra credit} (up to 220 additional points): any points earned here will be added to the numerator, but not the denominator, in computing your course percentage correct 
+
+\hspace*{0.5in}\bi{( total points achieved ) / ( total points assigned )} .
+
+Undergraduates who wish to gain full mastery of all of the material presented this quarter are strongly encouraged to participate in office hour sessions from now through Sun 20 Mar 2022.
+
+Some advice on style as you write up your solutions: pretend that you're sitting next to the grader, having a conversation about problem $( x )$ part $( y )$. You say, ``The answer is $z$,'' and the grader says, ``Why?'' You then give your explanation, as succinctly as possible to get your idea across. The right answer with no reasoning to support it, or incorrect reasoning, will get \textbf{half credit}, so try to make a serious effort on each part of each problem (this will ensure you at least half credit). In an AMS graduate class I taught in 2012, on a take-home test like this one there were 15 true/false questions, worth a total of 150 points; one student got a score of 92 out of 150 (61\%, a D$-$, in a graduate class where B$-$ is the lowest passing grade) on that part of the test, for repeatedly answering just ``true" or ``false" with no explanation. Don't let that happen to you.  
+
+On each problem, the graders and I mentally start everybody out at $-0$ (i.e., with a perfect score), and then you accumulate negative points for incorrect answers and/or reasoning, or parts of problems left blank.
+
+This test is to be entirely your own efforts; do not collaborate with
+anyone or get help from anyone but me or our TA (Jacob Fontana). The intent is that the course lecture notes and readings should be sufficient to provide you with all the guidance you need to solve the problems posed below, but you may use other written materials (e.g., the web, journal articles, and books other than those already mentioned in the readings),
+\textbf{provided that you cite your sources thoroughly and accurately}; you
+will lose (substantial) credit for, e.g., lifting blocks of text directly
+from \texttt{wikipedia} and inserting them into your solutions without full
+attribution.
+
+If it's clear that (for example) two people have worked together on a part
+of a problem that's worth 20 points, and each answer would have earned 16
+points if it had not arisen from a collaboration, then each person will
+receive 8 of the 16 points collectively earned (for a total score of 8 out
+of 20), and I reserve the right to impose additional penalties at my
+discretion. If you solve a problem on your own and then share your solution
+with anyone else, you're just as guilty of illegal collaboration as
+the person who took your solution from you, and both of you will receive
+the same penalty. This sort of thing is necessary on behalf of the many
+people who do not cheat, to ensure that their scores are meaningfully
+earned. In the AMS graduate class in 2012 mentioned above, five people failed the class because of illegal collaboration; don't let that happen to you.
+
+Those of You who are using \texttt{LaTeX} or some other word-processing environment to prepare Your solutions can stick quote blocks below each question, into which You can type Your answers (I suggest that You use \textbf{bold} or \textit{italic} font to distinguish Your solutions from the questions). If You're submitting Your answers in longhand, which is perfectly acceptable, You can just write them out on separate sheets of paper, making sure that the grader can easily figure out which chunk of text is the solution to which part of which problem.
+\begin{quote}
+
+\end{quote}
+
+\section*{Part 1:~True/False}
+
+\bi{[70 total points:~10 points each]} For each statement below, say whether it's true or false; if true without further assumptions, briefly explain why it's true; if it's sometimes true, give the extra conditions necessary to make it true; if it's false, briefly explain how to change it so that it's true and/or give an example of why it's false. If the statement consists of two or more sub-statements and two or more of them are false, you need to explicitly address all of the false sub-statements in your answer.
+
+In answering these questions you may find it helpful to consult Gelman et al.~(2014) Chapter 11.
+
+\begin{itemize}
+
+\item[(A)]
+
+If You can figure out how to do IID sampling from the posterior distribution of interest to You, this will often be more Monte-Carlo efficient than MCMC sampling from the same posterior, especially when the number $k$ of unknown quantities is small.
+
+\item[(B)]
+
+A (first-order) Markov chain is a particularly simple stochastic process: to simulate where the chain goes next, You only need to know (i) where it is now and (ii) where it was one iteration ago.
+
+\item[(C)]
+
+The bootstrap is a frequentist simulation-based computational method (with ties to Bayesian nonparametrics) that can be used to create approximate confidence intervals for population summaries even when the population distribution of the outcome variable $y$ of interest is not known; for example, if (by exchangeability, implied by the problem context) all You know is that Your observations $\bm{ y } = ( y_1, \dots, y_n )$ are IID from \textit{some} distribution with finite mean $\mu$ and finite SD $\sigma$, You can use the bootstrap to build an approximate confidence interval for $\mu$ even though You don't know what the population distribution is.
+
+\item[(D)]
+
+In MCMC sampling from a posterior distribution, You have to be really careful to use a monitoring period of just the right length, because if the monitoring goes on for too long the Markov chain may drift out of equilibrium.
+
+\item[(E)]
+
+Simulation-based computational methods are needed in Bayesian data science (inference, prediction and decision-making) because conjugate priors don't always exist and high-dimensional probability distributions are difficult to summarize algebraically.
+
+\item[(F)]
+
+In MCMC sampling from a posterior distribution, You have to be really careful to use a burn-in period of just the right length, because if the burn-in goes on for too long the Markov chain will have missed its chance to find the equilibrium distribution.
+
+\item[(G)]
+
+You're MCMC sampling from a posterior distribution for a vector $\bm{ \theta } = ( \theta_1, \dots, \theta_k )$, in which $k \ge 1$ is a finite integer. During the monitoring period, the column in the MCMC data set for a component of $\theta$ ($\theta_j$, say) behaves like an autoregressive time series of order 1 ($AR_\rho ( 1 )$) with estimated first-order autocorrelation $\hat{ \rho }_j = 0.992$. As usual, You'll use the sample mean $\bar{ \theta }_j^*$ of the monitored draws $\theta_{ ij }^*$ as Your Monte Carlo estimate of the posterior mean of $\theta_j$. To achieve the same estimated Monte Carlo standard error for $\bar{ \theta }_j^*$ that You would have been able to attain if You could have done IID sampling, Your MCMC monitoring sample size would have to be about 250 times bigger than the length of the IID monitoring run.
+
+\end{itemize}
+
+\end{document}

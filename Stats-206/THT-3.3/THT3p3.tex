@@ -1,0 +1,410 @@
+\documentclass[12pt]{article}
+
+\usepackage{ amsmath, amssymb, graphicx, psfrag, bm }
+
+\addtolength{\textheight}{2.1in}
+\addtolength{\topmargin}{-1.25in}
+\addtolength{\textwidth}{1.965in}
+\addtolength{\oddsidemargin}{-1.1in}
+\addtolength{\evensidemargin}{-1.1in}
+\setlength{\parskip}{0.1in}
+\setlength{\parindent}{0.0in}
+
+\pagestyle{plain}
+
+\raggedbottom
+ 
+\newcommand{\given}{\, | \,}
+\newcommand{\bi}[1]{\textbf{\textit{#1}}}
+\renewcommand\labelitemi{$\blacktriangleright$}
+ 
+\begin{document}
+
+\begin{flushleft}
+
+Prof.~David Draper \\
+Department of Statistics \\
+Baskin School of Engineering \\
+University of California, Santa Cruz \\
+Winter 2022
+
+\end{flushleft}
+
+\Large
+
+\begin{center}
+
+STAT 206 (\textsf{Applied Bayesian Statistics})
+
+\fbox{\textbf{Take-Home Test 3: Part 3 (\textit{Revised} 17 Mar 2022)}}
+
+\large
+
+\textbf{Absolute due date}: uploaded to \texttt{canvas.ucsc.edu} by 11.59pm on \textbf{20 Mar 2022}
+
+\end{center}
+
+\normalsize
+
+Here are the \bi{revised} ground rules: this test is open-book and open-notes, and has three parts. Part 1 consists of 7 true/false questions, each worth 10 points, for a total of 70 points; this part is \bi{mandatory for all STAT 206 students}. Part 2 has a single calculation question in it, worth 220 points; this part is also \bi{mandatory for all STAT 206 students}. Part 3 is entirely \bi{optional for all STAT 206 students} and acts as a source of \bi{extra credit} (up to 220 additional points): any points earned here will be added to the numerator, but not the denominator, in computing your course percentage correct 
+
+\hspace*{0.5in}\bi{( total points achieved ) / ( total points assigned )} .
+
+Undergraduates who wish to gain full mastery of all of the material presented this quarter are strongly encouraged to participate in office hour sessions from now through Sun 20 Mar 2022.
+
+Some advice on style as you write up your solutions: pretend that you're sitting next to the grader, having a conversation about problem $( x )$ part $( y )$. You say, ``The answer is $z$,'' and the grader says, ``Why?'' You then give your explanation, as succinctly as possible to get your idea across. The right answer with no reasoning to support it, or incorrect reasoning, will get \textbf{half credit}, so try to make a serious effort on each part of each problem (this will ensure you at least half credit). In an AMS graduate class I taught in 2012, on a take-home test like this one there were 15 true/false questions, worth a total of 150 points; one student got a score of 92 out of 150 (61\%, a D$-$, in a graduate class where B$-$ is the lowest passing grade) on that part of the test, for repeatedly answering just ``true" or ``false" with no explanation. Don't let that happen to you.  
+
+On each problem, the graders and I mentally start everybody out at $-0$ (i.e., with a perfect score), and then you accumulate negative points for incorrect answers and/or reasoning, or parts of problems left blank.
+
+This test is to be entirely your own efforts; do not collaborate with
+anyone or get help from anyone but me or our TA (Jacob Fontana). The intent is that the course lecture notes and readings should be sufficient to provide you with all the guidance you need to solve the problems posed below, but you may use other written materials (e.g., the web, journal articles, and books other than those already mentioned in the readings),
+\textbf{provided that you cite your sources thoroughly and accurately}; you
+will lose (substantial) credit for, e.g., lifting blocks of text directly
+from \texttt{wikipedia} and inserting them into your solutions without full
+attribution.
+
+If it's clear that (for example) two people have worked together on a part
+of a problem that's worth 20 points, and each answer would have earned 16
+points if it had not arisen from a collaboration, then each person will
+receive 8 of the 16 points collectively earned (for a total score of 8 out
+of 20), and I reserve the right to impose additional penalties at my
+discretion. If you solve a problem on your own and then share your solution
+with anyone else, you're just as guilty of illegal collaboration as
+the person who took your solution from you, and both of you will receive
+the same penalty. This sort of thing is necessary on behalf of the many
+people who do not cheat, to ensure that their scores are meaningfully
+earned. In the AMS graduate class in 2012 mentioned above, five people failed the class because of illegal collaboration; don't let that happen to you.
+
+In class I've demonstrated numerical work in \texttt{R}; you can (of course) make the calculations and plots requested in the problems below in any environment you prefer (e.g., \texttt{Matlab}, ...). To avoid plagiarism, if you end up using any of the code I post on the course web page or generate during office hours, at the beginning of your Appendix (see below) you can say something like the following: \vspace*{-0.1in} 
+
+\begin{quote}
+
+\bi{I used some of Prof.~Draper's \texttt{R} code in this assignment, adapting it as needed.} \vspace*{-0.25in} 
+
+\end{quote}
+
+Those of You who are using \texttt{LaTeX} or some other word-processing environment to prepare Your solutions can stick quote blocks below each question, into which You can type Your answers (I suggest that You use \textbf{bold} or \textit{italic} font to distinguish Your solutions from the questions). If You're submitting Your answers in longhand, which is perfectly acceptable, You can just write them out on separate sheets of paper, making sure that the grader can easily figure out which chunk of text is the solution to which part of which problem.
+\begin{quote}
+
+\bi{Please collect \{all of the code you used in answering the questions  below\} into an Appendix at the end of your document, so that (if you do something wrong) the grader can more accurately give you part credit.} 
+
+\end{quote}
+
+Parts 2 and 3 of this test are similar to problem 2(B) in Take-Home Test 2, in that they look really long but don't actually have that much for You to do: just read the problems carefully, run my code (sometimes You'll need to modify it a bit), and figure how to interpret the output.
+
+\section*{Part 3:~Calculation}
+
+\bi{[220 total points for this problem]} Email has been around since 29 Oct 1969, when a researcher named Ray Tomlinson sent the first email message over a network called \texttt{ARPANET}. It appears that the first email \textit{spam} message --- \texttt{Google dictionary} defines spam as ``irrelevant or inappropriate messages sent on the Internet to a large number of recipients'' --- was sent on 1 May 1978 (it was an advertisement for a presentation by the now-defunct \texttt{Digital Equipment Corporation} (DEC), sent by a \texttt{DEC} marketer to several hundred \texttt{ARPANET} users). It was reliably estimated\footnote{\texttt{https://www.statista.com/statistics/420391/spam-email-traffic-share}, accessed on 13 Mar 2022.} in Mar 2021 that about \textbf{71\%} of all email messages worldwide as of Apr 2014 were spam, and --- while that figure declined to about 45\% in Jan 2021 --- it's still a major problem today. What can You, as an email user, do to minimize the amount of spam You receive in Your inbox?
+
+One idea would be to construct a type of algorithm called a \textit{spam filter}: a program that inputs an email message and outputs a tentative classification of that message as spam or not-spam (which is sometimes whimsically referred to as \textit{ham}). This problem is about an attempt by researchers at Hewlett-Packard Labs (HPL) in 1999 to construct a spam filter that was \textit{personalized} to a single individual named George Forman, the HPL postmaster at the time. George collected a representative sample of 1,813 messages that were certified as spam by him and by other HPL researchers, and he also obtained a representative sample of 2,788 email messages from HPL employees that were certified to be non-spam, yielding a data set with $n =$ 4,601 messages. 
+
+\begin{quote}
+
+\bi{The file \texttt{stat-206-spam-data-context.txt} on the course web page contains additional contextual information; please make a directory that will hold all of the files in this case study, and download and study the context file carefully before continuing.}
+
+\end{quote}
+
+Our data sets this quarter have all had the same structure: a matrix with one row for each \textit{subject} of study (e.g., people, strands of copper wire, mushrooms,~...) and one column for each \textit{variable} measured on the subjects. The HPL spam case study poses an interesting data-science problem: how do You summarize Your information when the 4,601 subjects You're studying are \textit{documents}?
+
+\begin{itemize}
+
+\item[(a)]
+
+\bi{[20 total points for this sub-problem]} By answering questions (a)(i) and (a)(ii), briefly (but fully) describe the methods used by the HPL researchers to extract what they judged to be relevant information from the documents for the purpose of spam detection, and suggest new ideas for additional relevant information extraction (no points awarded for this paragraph; points given for your answers to (i) and (ii) below):
+
+\begin{itemize}
+
+\item[(i)]
+
+Succinctly summarize section 7 in the context \texttt{.txt} file, listing all of the types of variables the HPL people defined (e.g., \textbf{48 continuous real [0,100] attributes of type~...}) and commenting on whether (in your view) their choices were reasonable. \bi{[10 points]}
+
+\item[(ii)]
+
+If You wanted to go beyond what the HPL researchers did in extracting spam-relevant information from their email messages, in what other ways would You data-mine the texts in these messages to obtain additional spam-predictive signal? Please suggest at least two additional methods, explaining briefly. \bi{[10 points]} 
+
+\end{itemize}
+
+\item[(b)]
+
+\bi{[10 total points for this sub-problem]} The following statement is made in the context file: \textit{False positives (marking good mail as spam) are very undesirable.} Do You agree with this statement? Explain briefly. Do You agree with the following natural companion statement? \textit{In this problem, false positives are worse than false negatives.} Explain briefly. \bi{[10 points]}
+
+\end{itemize}
+
+\textbf{The HPL data set is on the course web page in the file} \texttt{stat-206-spam-raw-data.txt} . \textbf{I've written \texttt{R} code that helps You analyzes these data, in two files that are also on the course page ---} 
+
+\hspace*{0.5in} \texttt{stat-206-spam-data-analysis-R.txt}  \\
+\hspace*{0.5in} \texttt{stat-206-spam-analysis-helper-functions-R.txt} 
+
+\textbf{--- and there's a third file --- \texttt{stat-206-spam-data-analysis-variable-summary.txt} --- that contains some of the output You'll produce. Please download all of these files into Your directory for this case study before going on with the rest of the problem.}
+
+Our first task is to understand the scales on which the predictor and outcome variables currently live, by making graphical and numerical summaries of them, both one by one and by examining the bivariate relationships between each predictor and the outcome. We'll be using the 2--way cross-validation \textit{(2--CV)} method in this analysis to guard against overfitting:
+
+\begin{quote}
+
+\textbf{Note that, toward the beginning of the first code block, the code uses the already-defined variable \texttt{testid} to randomly partition the dataset $D$ containing the $n = 4601$ email messages into a \textit{Modeling} subset $D_M$ (consisting of almost exactly $\frac{ 2 }{ 3 }$ \vspace*{0.025in} ($n_M = 3065$) rows) and a \textit{Validation} subset $D_V$ (containing almost exactly $\frac{ 1 }{ 3 }$ ($n_V = 1536$) rows). The strategy will be (a) to fit various models using only the data in $D_M$ and (b) to see how well they predict the outcome variable $y$ in $D_V$.}
+
+\end{quote}
+
+\begin{itemize}
+
+\item[(c)]
+
+\bi{[15 total points for this sub-problem]} Run the first code block in the file 
+
+\hspace*{0.5in} \texttt{stat-206-spam-data-analysis-R.txt} 
+
+and examine the output. With reference to the results from the \texttt{summary( raw.data.modeling )} command, what's the minimum value taken on by each of the 57 predictors? \bi{[5 points]} What's the relationship between the median and the mean for each predictor? \bi{[5 points]} What do these two aspects of the data set imply about the histogram shapes of the predictors? Explain briefly. \bi{[5 points]}
+
+\item[(d)]
+
+\bi{[10 total points for this sub-problem]} To obtain the histograms mentioned in part (c), run the second code block in three steps: run plotting code block 1 and examine the results; repeat with plotting code block 2; and repeat with plotting code block 3, this time making a PDF file of the resulting plot and including it in Your solutions \bi{[5 points]}. Did the histograms come out as You expected them to? Explain briefly. \bi{[5 points]}
+
+\end{itemize}
+
+The usual descriptive tools for examining the way quantitative predictors $x$ and quantitative outcomes $y$ relate to each other are scatterplots (graphical) and correlations (numerical). These methods were created for Bivariate Normal situations, which we emphatically do not have here, but they're useful anyway as long as we don't interpret their results inappropriately. For example, correlations are \textit{attenuated} (diminished in absolute value) when $x$ or $y$ is binary; what would ordinarily be a mediocre correlation of (say) $+0.36$ with Bivariate Normal data is actually quite strong when $y$ is dichotomous.
+
+\begin{itemize}
+
+\item[(e)]
+
+\bi{[10 total points for this sub-problem]} Run the third code block and examine the full output, which is truncated in the \texttt{.txt} file containing the code. Bearing in mind that $y$ is coded 1 for spam and 0 for non-spam, and that the emails were chosen so that the result is a personal spam filter for George Forman, do the magnitudes and $+/-$ signs of any of the following correlations of $y$ with predictors $x$ surprise You? $x =$ \{ `ch..4', `hp', `credit', `george', `ch..5', `crl.long' \} Explain briefly. \bi{[10 points]}
+
+\end{itemize}
+
+I bring up the issue of distributional shape of the predictors because research has shown that predictive signal is maximized (if the outcome is dichotomous) when the histogram of a quantitative predictor $x$ is close to Normal. If this is not true of $x$ on the original scale on which the data values were collected, You can often increase predictive power by \textit{transforming} $x$ to a new scale of measurement, using one of two approaches:
+
+\begin{itemize}
+
+\item[(I)]
+
+You can look for an invertible function $g$ such that the distribution of $g ( x )$ is closer to Normality, or
+
+\item[(II)]
+
+You can create a set of indicator variables from $x$ by partitioning it at its quantiles, and model $x$ as a \textit{factor} instead of as a continuous predictor. If the sample size $n$ is large, a reasonable choice is to cut $x$ into 10 groups at its \textit{deciles} (the 0th, 10th, 20th,~...~and 100th percentiles); when $n$ is smaller, you may have to settle for only (say) 4 or 5 groups (again cut at the corresponding quantiles). The goal is for all of the indicator variables to have about the same number of subjects (here, email messages) for which the indicator takes the value 1; in other words, the cuts for predictor $x$ are \textit{not} equally spaced on the scale of $x$.
+
+\end{itemize}
+
+All of the models we'll fit in this problem are instances of \textit{logistic regression}, which has the general form (for $i = 1, \dots n$)
+\begin{eqnarray} \label{e:logit-model}
+( Y_i \given p_i \, \mathcal{ B } ) & \stackrel{ \text{\footnotesize I} }{ \sim } & \text{Bernoulli} ( p_i ) \nonumber \\
+\text{logit} ( p_i ) \triangleq \log \left( \frac{ p_i }{ 1 - p_i } \right) & = & \sum_{ j = 1 }^k \beta_j \, x_{ ij } = ( X \, \bm{ \beta } )_j \, ;
+\end{eqnarray}
+here $\stackrel{ \text{\footnotesize I} }{ \sim }$ means \textit{are independently distributed as}, $X$ is an $( n \times k )$ matrix whose first column is all 1s to accommodate the intercept term and all of whose other columns are vectors $x_j$ containing the values of the predictor variables, and $\bm{ \beta }$ is a $( k \times 1 )$ vector of (unknown) regression coefficients $\beta_j$. This model is a special case of the class of methods known as \textit{generalized linear models} (GLMs); here the \textit{link function} that connects the $p_i$ to $X$ is logit$( p_i )$. \textbf{NB} With the notation in equation (\ref{e:logit-model}) above, the intercept is called $\beta_1$, not $\beta_0$ as in Part 2 of this test; the length of the resulting $\bm{ \beta }$ vector is then $k$ (the number of unknown parameters in the model), not $( k + 1 )$ as in Part 2.
+
+\texttt{R} has a built-in function called \texttt{glm} that performs maximum-likelihood fitting of model (\ref{e:logit-model}) and other GLMs; with $\bm{ y } = ( y_1, \dots, y_n )$ as the observed vector of binary outcomes and \texttt{x.1} and \texttt{x.2} as vectors containing the values of two of the predictor variables, the command \texttt{glm( y $\sim$ x.1, family = binomial( link = `logit' ) )} fits the logistic regression model in which the only predictor is \texttt{x.1}, and \texttt{glm( y $\sim$ x.1 + x.2, family = binomial( link = `logit' ) )} fits the corresponding model in which \texttt{x.1} and \texttt{x.2} are both included as predictors.
+
+In logistic regression there's no closed-form expression for $\hat{ \bm{ \beta } }_{ MLE }$; iterative numerical methods have to be used to fit the model. \texttt{R} uses a natural and efficient method called \textit{Fisher scoring}, which is just an application of the Newton-Raphson method to the logistic regression log likelihood function. Large-sample estimated standard errors for the components of $\hat{ \bm{ \beta } }_{ MLE }$ are then based as usual on the observed information matrix, and \texttt{R} calculates signal-to-noise ratios
+\begin{equation} \label{signal-to-noise-1}
+ \hat{ z }_j = \left( \hat{ \bm{ \beta } }_{ MLE } \right)_j / \widehat{ SE } \left[ \left( \hat{ \bm{ \beta } }_{ MLE } \right)_j \right]
+\end{equation}
+to help in identifying which predictors (after adjusting for all the other predictors) make the strongest predictive contributions.
+
+As with all statistical models, we need a method for judging when one logistic regression model is better than another. The \texttt{glm} function has the frequentist method \textit{AIC} built into it that goes hand-in-hand with maximum-likelihood fitting of a GLM; as we discussed in class, \textit{AIC} is similar to \textit{BIC} in that they both trade off goodness-of-fit of a model against its complexity, but \textit{AIC} and \textit{BIC} have different complexity penalties. For any parametric model $\mathbb{ M }$ containing a $( k \times 1 )$ vector $\bm{ \theta }$ of unknown quantities (parameters) and no random effects, it turns out that the complexity of $\mathbb{ M }$ (on the log likelihood scale) is meaningfully defined simply to be $k$, and goodness of fit can be measured by calculating the maximum value attained by the log-likelihood function $\ell \ell ( \bm{ \theta } \given \bm{ y } \, \mathbb{ M } \, \mathcal{ B } )$ in model $\mathbb{ M }$. With this in mind, \textit{AIC} is computed as follows:
+\begin{equation} \label{e:aic}
+AIC ( \mathbb{ M } \given \bm{ y } \, \mathcal{ B } ) = - 2 \, \ell \ell ( \hat{ \bm{ \theta } }_{ MLE } \given \bm{ y } \, \mathbb{ M } \, \mathcal{ B } ) + 2 \, k \, . 
+\end{equation}
+Because we want the maximum log-likelihood value of a model to be big as an indication of its goodness of fit, the multiplication of $\ell \ell ( \hat{ \bm{ \theta } }_{ MLE } \given \bm{ y } \, \mathbb{ M } \, \mathcal{ B } )$ by $- 2$ means that models with \textit{small} values of \textit{AIC} are preferred (where by the phrase ``\textit{AIC}$_1$ is \textit{smaller than} \textit{AIC}$_2$'' I mean that \textit{AIC}$_1$ is \textit{to the left of} \textit{AIC}$_2$ \textit{on the number line}, not that \textit{AIC}$_1$ is \textit{closer to 0} than \textit{AIC}$_2$).
+
+\begin{itemize}
+
+\item[(f)]
+
+\bi{[10 total points for this sub-problem]} Run the fourth code block, stopping and starting as recommended; study the logic behind the commands and examine the output. This chunk of code implements an instance of method (I) mentioned above, with a transformation of the form $x \rightarrow \log ( x + C )$ on the predictor variable \texttt{make} plus an indicator variable for \texttt{( make = 0 )}. Two logistic regressions are run in this code block: \texttt{spam} predicted by \texttt{make}, and \texttt{spam} predicted by \texttt{log( make + C )} and \texttt{make.is.0}. Identify the \textit{AIC} values for these two models \bi{[5 points]}. Has this transformation succeeded in extracting additional predictive signal from \texttt{make}? Explain briefly. \bi{[5 points]}
+
+\end{itemize}
+
+The fifth code block implements an instance of method (II) mentioned above (creating categorical indicators from a continuous predictor $x$ and using them instead of $x$ itself), and also creates a diagnostic plot that helps to see how a predictor might optimally enter the modeling. If a predictor $x$ has a non-linear relationship with logit$( p )$, the simplest form of non-linearity is quadratic, so people often create a new variable \texttt{x.squared <- x * x} and logistically regress $y$ on both \texttt{x} and \texttt{x.squared} to explore this possibility. The function I've written for You does six things with a predictor \texttt{x}: 
+
+\begin{itemize}
+
+\item[(\textit{1})]
+
+It creates the categorical variable \texttt{x.cut} from \texttt{x} by partitioning \texttt{x} at a user-specified number of quantiles, and runs the function \texttt{tab.sum} (from Part 2 of this test) to examine the resulting predictive signal; 
+
+\item[(\textit{2})]
+
+It logistically regresses \texttt{y} on \texttt{x} and harvests the \textit{AIC} value; 
+
+\item[(\textit{3})]
+
+It repeats (\textit{2}) with the predictors \texttt{x} and \texttt{x.squared} and grabs the resulting \textit{AIC}; 
+
+\item[(\textit{4})]
+
+It repeats (\textit{2}) with the predictor \texttt{x.cut} and takes note of the \textit{AIC} value that results; 
+
+\item[(\textit{5})]
+
+It prints a summary table of the three \textit{AIC} values to help You see which modeling approach is best; and 
+
+\item[(\textit{6})] 
+
+It creates an interesting plot. 
+
+\end{itemize}
+
+The red dots in the plot are the observed \texttt{x} and \texttt{y} values, so that You can see where most of the data is concentrated as You scan from left to right; it computes the predicted \texttt{p.hat} values based on \texttt{x}, transforms them to the logit scale, and plots a \texttt{lowess} smooth\footnote{\texttt{lowess} (\underline{Lo}cally \underline{We}ighted \underline{S}catterplot \underline{S}moother) is an extremely useful frequentist nonparametric method for estimating the conditional mean of an outcome variable $y$ as a function of a predictor variable $x$.} of the transformed \texttt{p.hat} values against \texttt{x}, together with a user-specified number of bootstrap replicate \texttt{lowess} curves, to give You an idea both of the the relationship between \texttt{x} and logit( \texttt{p.hat} ) and the uncertainty in that relationship. (I've truncated the plot at $\hat{ p } = 0.999$ and 0.001, to keep it from going so wide vertically that the information in the plot for $0.001 < \hat{ p } < 0.999$ is harder to absorb.)
+\begin{itemize}
+
+\item[(g)]
+
+\bi{[45 total points for this sub-problem]} Run the fifth code block, stopping after each call to the function \texttt{logistic.regression.univariate.exploration} to examine the output before going on to the next call.
+
+\begin{itemize}
+
+\item[(i)]
+
+Examine the \texttt{tab.sum} results for the predictor \texttt{make} with 10 requested categories. Is there predictive signal in \texttt{x.cut} with this choice of $x$? Explain briefly \bi{[5 points]}.
+
+\item[(ii)]
+
+Looking at the \textit{AIC} summary table for \texttt{make} with \texttt{n.cutpoints} = 10, which of the three approaches to bringing this $x$ into the modeling is most successful? Explain briefly \bi{[5 points]}.
+
+\item[(iii)]
+
+Does the diagnostic plot for the predictor \texttt{make} exhibit curvature in the relationship between \texttt{make} and logit$( p )$? Is this confirmed in the logistic regression results when $y$ is modeled as a function of \texttt{make} and \texttt{make.squared}? (\textit{Hint:} Look at the table of estimated coefficients for the quadratic regression model.) Explain briefly \bi{[10 points]}.
+
+\item[(iv)]
+
+Is there noticeably more predictive signal in \texttt{make} when \texttt{n.cutpoints} = 20 is specified than with \texttt{n.cutpoints} = 10? If we try to go on with \texttt{n.cutpoints} = 30 or 40 or~..., what do You expect will eventually happen?  Explain briefly \bi{[10 points]}.
+
+\item[(v)]
+
+In part (e) of this question You probably noticed that the word \texttt{your} 
+had the strongest univariate predictive signal. Is this fact reflected in the diagnostic plot for this predictor? Explain briefly \bi{[5 points]}.
+
+\item[(vi)]
+
+Is there more predictive signal in \texttt{x.cut} based on \texttt{make} with \texttt{n.cutpoints} = 10 (method (II)) than the corresponding signal in \{\texttt{log( make + C )} + \texttt{make.is.0}\} (method (I))? Explain briefly \bi{[5 points]}.
+
+\end{itemize}
+
+\item[(h)]
+
+\bi{[10 total points for this sub-problem]} Run the sixth code block; study the logic behind the commands and examine the full output of the \texttt{glm( )} function call, which is truncated in the \texttt{R} code file but available in full in the file \texttt{stat-206-spam-data-analysis-glm-results.txt} on the course web page. 
+
+\begin{itemize}
+
+\item[(i)]
+
+As explained in the \texttt{R} code file, run the function 
+
+\begin{quote}
+
+\texttt{logistic.regression.effect.of.adding.a.new.variable} 
+
+\end{quote}
+
+three times, with \texttt{beta.x} = $0$, then $-3$, then $+3$. Would you say that the predicted probabilities of $( y = 1 )$ (the \texttt{p.hat} values in the function call) change dramatically as \texttt{beta.x} goes from $-3$ to $+3$? Explain briefly \bi{[5 points]}. 
+
+\item[(ii)]
+
+Given your answer to (i), are there any predictors in the output of the \texttt{glm( )} function call with coefficients that would qualify as \textit{large}? How about \textit{extremely large}? Explain briefly \bi{[10 points]}.
+
+\item[(iii)]
+
+Find the five predictor variables with the largest absolute $\hat{ z }_j$ values in the \texttt{glm( )} output, and compare that list (in order) with the five predictor variables in code block 3 having the highest correlations with the outcome variable \texttt{spam}. Should it worry us that these lists are not the same? Explain briefly \bi{[5 points]}.  
+
+\end{itemize}
+
+\item[(i)]
+
+\bi{[10 total points for this sub-problem]} Run the seventh code block, stopping and starting as recommended; study the logic behind the commands and examine the output. 
+
+\begin{itemize}
+
+\item[(i)]
+
+What value of the predictive separation index (PSI) from problem 2(A) does the logistic regression model with all 57 predictors achieve, when the model fit to the \textsf{Modeling} subset of data is evaluated on the same subset? Where would you regard these predictions on the scale \{terrible, not great, okay, good, terrific\}? Explain briefly \bi{[5 points]}. 
+
+\item[(ii)]
+
+How much did the PSI change when the model (fit to the \textsf{Modeling} subset) was required to predict the email messages in the \textsf{Validation} data set? Does this mean that the logistic regression model is guilty of a \{large, moderate, small\} amount of over-fitting? Explain briefly \bi{[5 points]}.
+
+\end{itemize}
+
+\item[(j)]
+
+\bi{[35 total points for this sub-problem]} Run the eighth code block, stopping and starting as recommended; study the logic behind the commands and examine the output. The point of this code block is to fit a Bayesian logistic regression model, to the \textsf{Modeling} subset, that shrinks unstable maximum-likelihood regression coefficients toward 0 to stabilize the prediction process; a carefully constructed prior called the \textit{horseshoe} prior is used to accomplish this shrinkage.
+
+\begin{itemize}
+
+\item[(i)]
+
+The \textit{ESS (effective sample size)} value for a logistic regression coefficient is an estimate of the equivalent \textit{Monte Carlo (MC)} sample size for that parameter if \textit{IID} sampling had been available instead of MCMC. If the Markov chain is mixing well, all of these values should be at or near Your choice for the number of MCMC monitoring iterations. Would you say that the chain created by \texttt{bayesreg} is mixing well, poorly, or in between? Explain briefly \bi{[10 points]}.
+
+\item[(ii)]
+
+The predictors with the largest standardized regression coefficients in absolute value in the maximum likelihood logistic regression are \texttt{george} and \texttt{cs}. Has the Bayesian model succeeded in stabilizing the maximum likelihood estimation process, at least to some extent, for those two predictors? What percentage of the $k = 57$ coefficients have been shrunken toward 0 in the Bayesian fitting process? Explain briefly \bi{[10 points]}.
+
+\item[(iii)]
+
+Are the Bayesian predictions dramatically more accurate than the maximum likelihood results? Is the Bayesian fitting process guilty of more over-fitting than maximum likelihood, or less, or about the same? Explain briefly \bi{[10 points]}.
+
+\item[(iv)]
+
+Examine the tables, at the end of code block 8, that include uncertainty bands for the \texttt{p.hat} values from the Bayesian fitting. Would you say that, even with 3,065 email messages in the \textsf{Modeling} subset, there is substantial uncertainty in the prediction process? Explain briefly \bi{[5 points]}.
+
+\end{itemize}
+
+\end{itemize}
+
+\begin{quote}
+
+\bi{The last few parts of this problem are intended to whet your appetite for continued data science study: you'll be using tools that were only developed in the past 10 years or so.}
+
+\end{quote}
+
+\begin{itemize}
+
+\item[(k)]
+
+\bi{[20 total points for this sub-problem]} Run the ninth code block; study the logic behind the commands and examine the output. This chunk of code fits (via maximum likelihood) a logistic regression model in which we include not only all $k = 57$ predictors but also all \textit{two-way interactions} between those variables. To create an interaction predictor between (say) $x_1$ and $x_2$, we just form the product $( x_1 \cdot x_2 )$, and interacting a variable $x_1$ with itself adds the quadratic term $( x_1 )^2$ to the modeling; this brings in \textit{non-linear} predictive information, which can greatly improve the predictive process. Let's call the model with all \textit{main effects} (the information in the $k = 57$ predictors) and all two-way interactions $\mathbb{ M }_{ big }$.
+
+\begin{itemize}
+
+\item[(i)]
+
+Compare the typical magnitudes of the logistic regression coefficients in $\mathbb{ M }_{ big }$ with the corresponding values in the earlier regression with only the 57 main effects. Do you agree with the statement \textit{It looks like maximum-likelihood logistic regression has gone crazy}? Explain briefly \bi{[5 points]}.
+
+\item[(ii)]
+
+How do the predictions from $\mathbb{ M }_{ big }$ appear to compare in quality (e.g., PSI) with those from the earlier model that included only the main effects, when $\mathbb{ M }_{ big }$ is used to predict the $y$ values for the rows of the data matrix that are in the modeling subset? Explain briefly \bi{[5 points]}. 
+
+\item[(iii)]
+
+How much of a fall-off is there from the PSI in (ii) to the PSI when $\mathbb{ M }_{ big }$ (fit to the modeling subset) is forced to predict the \texttt{spam} outcomes on the validation subset? Does this indicate a small, medium, or large amount of over-fitting by maximum likelihood logistic regression with 1,654 predictors and 3,065 (modeling subset) observations? Explain briefly \bi{[10 points]}.
+
+\end{itemize}
+
+\item[(l)]
+
+\bi{[20 total points for this sub-problem]} Run the tenth code block; study the logic behind the commands and examine the output. This chunk of code uses a modification of maximum likelihood fitting of \textit{Generalized Linear Models (GLMs)}, of which logistic regression is a special case; in this modification, which is called the \textit{lasso}, the deviance of a model is \textit{penalized} in such a way that maximum likelihood's tendency to over-fit GLMs when $k$ (the number of predictors) is a substantial fraction of $n$ (the number of subjects in the data set) is greatly diminished.
+
+\begin{itemize}
+
+\item[(i)]
+
+This code block contains a summary of the estimated coefficients in the main-effects-only model fit to the modeling subset using three different fitting methods: maximum likelihood, Bayesian regression with the horseshoe prior, and the lasso. Succinctly summarize any differences you see among the coefficient estimates from the three methods. \bi{[10 points]}.
+
+\item[(ii)]
+
+This chunk of code also contains a summary of the PSI attained by the three methods mentioned in part (i) immediately above. Are there striking differences among the methods in this measure of predictive accuracy? 
+Explain briefly \bi{[5 points]}.
+
+\item[(iii)]
+
+The output at the end of this code block summarizes the degree of fall-off of predictive accuracy achieved by ordinary maximum likelihood and the lasso in moving from the (modeling subset fit, modeling subset predicted) to the (modeling subset fit, validation subset predicted) scenarios. We've already seen that unpenalized maximum likelihood badly fails this test with $( k, n ) = ( 1654, 3065 )$; is the lasso completely successful in this case study when viewed in this way? Explain briefly \bi{[5 points]}.
+
+\end{itemize}
+
+\item[(m)]
+
+\bi{[5 total points for this sub-problem]} And finally, run code block 11; study the logic behind the commands and examine the output. This code chunk implements a highly successful machine learning predictive technique with statistical roots called \textit{gradient boosting (GB)}, which I'll explain in office hours. Simply treating GB as a black box (for lack of time), has the implementation of it in \texttt{R} called \texttt{xgboost} outperformed the lasso in the (modeling subset fit, validation subset predicted) scenario? Explain briefly \bi{[5 points]}.
+
+\end{itemize}
+
+There's lots more to do in this rich-with-ideas case study, but let's stop here for now.
+
+\end{document}
