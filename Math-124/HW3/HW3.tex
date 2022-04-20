@@ -1,0 +1,58 @@
+\documentclass[12pt]{article}
+%------------------------------- BEGIN PREAMBLE
+% packages used
+\usepackage{amssymb,amsmath,amsfonts,mathrsfs,pgffor,marvosym,amsthm, mathrsfs, mathtools}
+\DeclarePairedDelimiter\set\{\}
+% macros
+\newcommand      {\Nm}         {{\mathbb N}}
+\newcommand      {\Zm}         {{\mathbb Z}}
+\newcommand      {\Qm}         {{\mathbb Q}}
+\newcommand      {\Rm}         {{\mathbb R}}
+\newcommand      {\Cm}         {{\mathbb C}}
+\newcommand      {\vb}        {\mathbf}
+\newcommand      {\PP}        {{\mathscr P}}
+\newcommand      {\BB}        {{\mathscr B}}
+\newcommand {\lines}[1] {\foreach \n in {1,...,#1}{ \vspace{9mm} \hrule height 
+0.2pt  }\vspace{2mm} }
+
+% adjustment of page dimensions
+\textwidth=7in
+\textheight=9.8in
+\topmargin= -0.8in
+\oddsidemargin= -0.3in
+\evensidemargin= 0.0in
+\setlength{\parskip}{1ex plus0.5ex minus0.2ex}
+\setlength{\jot}{10pt}
+%-------------------------------- END PREAMBLE
+\begin{document}
+\begin{flushright}
+    
+    
+\end{flushright}
+\begin{center}
+    {\bf Topology - Summer Session 1 - HW3 - 7/16/2021}
+\end{center}
+
+% STATEMENT OF PROBLEM 1
+\noindent {\bf (5.2)}
+Let $S=\set{a, b, c, d}$ with the discrete topology and let $T=\set{a, b, c, d}$ with the indiscrete topology. Define $f:S\to T$ to be the identitymap. Is $f$ a homeomorphism?
+\begin{proof}
+    By defintion the discrete topology on $S$ is simply, $\mathcal{T}_S = \mathcal{P}(S) $. While the indiscrete topology for $T$ is $\mathcal{T}_T = \set{\emptyset, T}$. Meaning the topology $\mathcal{T}_S$ is strictly finer than the topology $\mathcal{T}_T$. This is key since a homeomorphism requires a biijection which is a 1-1 correspondence between the two topologies, and since they are of different size no bijectiction can exist. 
+\end{proof}
+
+\vspace*{1.5cm}
+
+% STATEMENT OF PROBLEM 2
+\noindent{\bf(5.7)} Show that the annulus $A=\set{(x, y)\in R^2:1\leq x^2+y^2\leq 4}$ is homeomorphic to the cylinder $C=\set{(x, y, z)\in R^3:x^2+y^2=1,0
+\leq z\leq 1}$
+
+% STATEMENT OF PROBLEM 3
+
+
+% STATEMENT OF PROBLEM 4
+
+% STATEMENT OF PROBLEM 5
+
+% STATEMENT OF PROBLEM 6
+
+\end{document}

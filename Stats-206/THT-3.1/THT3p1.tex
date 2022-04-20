@@ -1,7 +1,9 @@
 \documentclass[12pt]{article}
 
 \usepackage{ amsmath, amssymb, graphicx, psfrag, bm }
-
+\usepackage[most]{tcolorbox}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{mathtools}
 \addtolength{\textheight}{2.1in}
 \addtolength{\topmargin}{-1.25in}
 \addtolength{\textwidth}{1.965in}
@@ -13,9 +15,18 @@
 \pagestyle{plain}
 
 \raggedbottom
- 
 \newcommand{\given}{\, | \,}
+\newcommand{\lrp}[1]{\left(#1\right)}
+\newcommand{\lrb}[1]{\left[#1\right]}
+\newcommand{\lrc}[1]{\left\{#1\right\}}
+\newenvironment{solution}{\begin{tcolorbox}[breakable]\begin{proof}[\textbf{\textit{Solution}}] }{\end{proof}\end{tcolorbox}}
 \newcommand{\bi}[1]{\textbf{\textit{#1}}}
+\renewcommand\labelitemi{$\blacktriangleright$}
+\newcommand{\bb}{\mathcal{B}}
+\newcommand{\btheta}{\bm{\theta}}
+\newcommand{\by}{\bm{y}}
+\newcommand{\tcr}[1]{\textcolor{red}{#1}}
+
 \renewcommand\labelitemi{$\blacktriangleright$}
  
 \begin{document}
@@ -45,6 +56,8 @@ STAT 206 (\textsf{Applied Bayesian Statistics})
 \end{center}
 
 \normalsize
+
+\textbf{Name:} Kevin Guillen
 
 Here are the \bi{revised} ground rules: this test is open-book and open-notes, and has three parts. Part 1 consists of 7 true/false questions, each worth 10 points, for a total of 70 points; this part is \bi{mandatory for all STAT 206 students}. Part 2 has a single calculation question in it, worth 220 points; this part is also \bi{mandatory for all STAT 206 students}. Part 3 is entirely \bi{optional for all STAT 206 students} and acts as a source of \bi{extra credit} (up to 220 additional points): any points earned here will be added to the numerator, but not the denominator, in computing your course percentage correct 
 
@@ -91,30 +104,59 @@ In answering these questions you may find it helpful to consult Gelman et al.~(2
 \item[(A)]
 
 If You can figure out how to do IID sampling from the posterior distribution of interest to You, this will often be more Monte-Carlo efficient than MCMC sampling from the same posterior, especially when the number $k$ of unknown quantities is small.
+\begin{solution}
+    This is \textbf{True}. With IID Monte Carlo the autocorrelations in the column of the Monte Carlo data set are all going to be 0, this leads to the Monte Carlo Standard Error values to be smaller. On the other hand though, when $k$ is large and using IID Monte Carlo sampling, it can be difficult to find a Monte Carlo efficient envelope function. 
+\end{solution}
 
 \item[(B)]
 
 A (first-order) Markov chain is a particularly simple stochastic process: to simulate where the chain goes next, You only need to know (i) where it is now and (ii) where it was one iteration ago.
 
+\begin{solution}
+    This is \textbf{False}. This is because as we have learned, to simulate where the chain is going, we only have to know where it is now. So to make it \textbf{True}, we just remove the need for the 2nd condition. 
+\end{solution}
+
 \item[(C)]
 
 The bootstrap is a frequentist simulation-based computational method (with ties to Bayesian nonparametrics) that can be used to create approximate confidence intervals for population summaries even when the population distribution of the outcome variable $y$ of interest is not known; for example, if (by exchangeability, implied by the problem context) all You know is that Your observations $\bm{ y } = ( y_1, \dots, y_n )$ are IID from \textit{some} distribution with finite mean $\mu$ and finite SD $\sigma$, You can use the bootstrap to build an approximate confidence interval for $\mu$ even though You don't know what the population distribution is.
+
+\begin{solution}
+    This is \textbf{True} based on what we covered in lecture on 2/16. We also have seen through the bootstrap example on case study 2, we only needed the sufficient statistics, 403 and 72, to make an approximate confidence interval without having to assume a sampling model!
+\end{solution}
 
 \item[(D)]
 
 In MCMC sampling from a posterior distribution, You have to be really careful to use a monitoring period of just the right length, because if the monitoring goes on for too long the Markov chain may drift out of equilibrium.
 
+\begin{solution}
+    This is \textbf{False}. This is obviously false because it is a contradiction on the definition of equilibrium. Once equilibrium is reached it stays there indefinitely, meaning it can't drift out of it. 
+\end{solution}
+
 \item[(E)]
 
 Simulation-based computational methods are needed in Bayesian data science (inference, prediction and decision-making) because conjugate priors don't always exist and high-dimensional probability distributions are difficult to summarize algebraically.
+
+\begin{solution}
+    This is \textbf{True}. Since as we've seen in class, when $k > 2$ conjugate priors are pretty rare. We've also seen that it is indeed the case that when $k$ is large, PDF's will become very difficult to work with algebraically. Which is why roughly around 1760-1990 doing Bayesian computation was extremely difficult. 
+\end{solution}
 
 \item[(F)]
 
 In MCMC sampling from a posterior distribution, You have to be really careful to use a burn-in period of just the right length, because if the burn-in goes on for too long the Markov chain will have missed its chance to find the equilibrium distribution.
 
+\begin{solution}
+    This is \textbf{False}. We are able to burn in as long as we'd like and won't lose any information. This follows similarly to what we discussed in THT 2 2B-g. Once we begin the chain at iteration 0, even with a bad starting value, the chain will reach equilibrium and stay in there by definition. Which means it's impossible to burn in for so long that we "miss" the equilibrium period. So what this might want to say is that we should concern ourselves with burn in periods that are too short, since we might not yet have reached equilibrium, and thereby might include draws in our monitoring that are not from the correct equilibrium distribution. 
+\end{solution}
+
 \item[(G)]
 
 You're MCMC sampling from a posterior distribution for a vector $\bm{ \theta } = ( \theta_1, \dots, \theta_k )$, in which $k \ge 1$ is a finite integer. During the monitoring period, the column in the MCMC data set for a component of $\theta$ ($\theta_j$, say) behaves like an autoregressive time series of order 1 ($AR_\rho ( 1 )$) with estimated first-order autocorrelation $\hat{ \rho }_j = 0.992$. As usual, You'll use the sample mean $\bar{ \theta }_j^*$ of the monitored draws $\theta_{ ij }^*$ as Your Monte Carlo estimate of the posterior mean of $\theta_j$. To achieve the same estimated Monte Carlo standard error for $\bar{ \theta }_j^*$ that You would have been able to attain if You could have done IID sampling, Your MCMC monitoring sample size would have to be about 250 times bigger than the length of the IID monitoring run.
+
+\begin{solution}
+    This is \textbf{True}. As we have seen in class the monitoring sample size works out to be,
+    \[M^{*}_{MCMC} = M^{*}_{IID}\lrp{\dfrac{1 + \hat{\rho_j}}{1 - \hat{\rho_j}}}\]
+    and plugging this into a calculator for $\hat{\rho} = 0.992$, we get, 249. Which aligns with the problem statement. 
+\end{solution}
 
 \end{itemize}
 

@@ -1,0 +1,427 @@
+\documentclass[11pt]{article}
+ 
+\usepackage[top=0.75in, bottom=1.25in, left=1.25in, right=1.25in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb} %this is THE math package
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{fancybox}
+\usepackage{hyperref}
+\usepackage{varwidth}
+\usepackage{mdframed}
+\usepackage{mathrsfs}
+\usepackage[most]{tcolorbox}
+\usepackage{enumitem}
+%------------------------
+%Fonts I use, uncomment if you like to use them.
+%The first is the general font, and the second a math font
+\usepackage{mathpazo}
+\usepackage{eulervm}
+%------------------------
+%This is so that we have standard fonts for the double-stroked symbols
+%for reals, naturals etc. regardless of what font you use.
+%Don't comment
+\AtBeginDocument{
+  \DeclareSymbolFont{AMSb}{U}{msb}{m}{n}
+  \DeclareSymbolFontAlphabet{\mathbb}{AMSb}}
+%------------------------
+
+%----------------------------------------------
+%User-defined environments
+%Commented because we're not using them in this document
+%The only uncommented ones are the Problem and Solution environment
+
+% \newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{question}[2][Question]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem\!]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+%\newenvironment{sub-problem}[2][]{\begin{trivlist}
+%\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+\newenvironment{solution}{\begin{proof}[\textbf{\textit{Solution}}] }{\end{proof}}
+%----------------------------------------------
+
+%----------------------------
+%User-defined notations
+\newcommand{\zz}{\mathbb Z}   %blackboard bold Z
+\newcommand{\qq}{\mathbb Q}   %blackboard bold Q
+\newcommand{\ff}{\mathbb F}   %blackboard bold F
+\newcommand{\rr}{\mathbb R}   %blackboard bold R
+\newcommand{\nn}{\mathbb N}   %blackboard bold N
+\newcommand{\cc}{\mathbb C}   %blackboard bold C
+\newcommand{\af}{\mathbb A}   %blackboard bold A
+\newcommand{\pp}{\mathbb P}   %blackboard bold P
+\newcommand{\id}{\operatorname{id}} %for identity map
+\newcommand{\im}{\operatorname{im}} %for image of a function
+\newcommand{\dom}{\operatorname{dom}} %for domain of a function
+\newcommand{\cat}[1]{\mathscr{#1}}   %calligraphic category
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert} %for absolute value
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert} %for norm
+\newcommand{\modar}[1]{\text{ mod }{#1}} %for modular arithmetic
+\newcommand{\set}[1]{\left\{#1\right\}} %for set
+\newcommand{\setp}[2]{\left\{#1\ \middle|\ #2\right\}} %for set with a property
+\newcommand{\card}[1]{\#\,{#1}} %for cardinality of a set
+\newcommand\m[1]{\begin{pmatrix}#1\end{pmatrix}} 
+\newcommand{\parg}{\operatorname{Arg}}
+%Re-defined notations
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\emptyset}{\varnothing}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+
+\newcommand{\lrp}[1]{\left(#1\right)}
+\newcommand{\lrb}[1]{\left[#1\right]}
+\newcommand{\lrc}[1]{\left\{#1\right\}}
+
+\newcommand{\tcr}[1]{\textcolor{red}{#1}}
+\newcommand{\tcb}[1]{\textcolor{blue}{#1}}
+\newcommand{\tco}[1]{\textcolor{orange}{#1}}
+%----------------------------
+
+\newtcolorbox[auto counter, number within=chapter]{example}[1][]{
+    enhanced,
+    breakable,
+    left=0.5em, right=0pt, top=1pt, bottom=15pt,    
+    attach boxed title to top left={yshift=-\tcboxedtitleheight},
+     boxed title style={%
+        empty,
+        right=0pt,
+        frame code={\draw[line width=2pt, gray] (frame.north west)--(frame.north east) --++ (0:1pt) ;}},
+    before upper=\hspace{\tcboxedtitlewidth},
+     colbacktitle=white,
+    coltitle={white},
+    colback={white},
+    fonttitle={\bfseries},
+    title={-},
+    sharp corners,
+    frame hidden,
+    boxrule=0pt,
+    borderline west={2pt}{0pt}{blue},
+     overlay unbroken and last={%
+        \draw[line width=2pt, red] (frame.south west)   -- ++(0:2cm);},
+    #1
+    }
+\allowdisplaybreaks
+ 
+ 
+\begin{document}
+ 
+\title{Homework 2}
+\author{Kevin Guillen\\[0.5em]
+MATH 103A  | Complex Analysis | Spring 2022}
+\date{} 
+\maketitle
+
+%Use \[...\] instead of $$...$$
+
+\begin{problem}{2.1}\hfill
+\begin{itemize}[itemsep=3em]
+\item[(a)] Prove that 
+\[\arg zw = \arg z + \arg w = \setp{(\parg z + \parg w) + 2k\pi}{k \in \zz}\]
+%----------------------------------------
+\begin{example}
+    \begin{proof}
+        We know from class, specifically Proposition 3.1 (1), that $\arg zw = \arg z + \arg w $. So all we want to show now is that 
+        \[\arg z + \arg w = \setp{(\parg z + \parg w) + 2k\pi}{k \in \zz}\]
+        We will do this by showing each set is contained in the other. First let us take an element $a$ in $\arg z$ and an element $b$ in $arg w$. We compute their sum to be,
+        \begin{align*}
+            a + b &= \parg z + 2\pi k\parg w + 2\pi l && k,l \in \zz \\
+            &= \parg z + \parg w + 2\pi(k + l)
+        \end{align*}
+        we know $\zz$ is closed under addition so $k+l \in \zz$. Meaning then that $a+b$ is an element of $\setp{(\parg z + \parg w) + 2k\pi}{k \in \zz}$. Recall though $a$ and $b$ were abitrary though so we have, 
+        \begin{align}\arg z + \arg w \subseteq \setp{(\parg z + \parg w) + 2k\pi}{k \in \zz}.
+        \end{align}
+
+        Now let $c$ be an element of $\setp{(\parg z + \parg w) + 2k\pi}{k \in \zz}$, we know then it is of the form
+        \begin{align*}
+            c = \parg z + \parg w + 2\pi k && k \in \zz 
+        \end{align*}
+        we always have though that $k = k + 0$ meaning the above can be expressed as,
+        \begin{align*}
+            c = \parg z + \parg w + 2\pi k = \tcr{\parg z + 2pi 0} + \tcb{\parg w + 2\pi k}
+        \end{align*}
+        which is clear then that $c$ is the sum of some element in $\tcr{\arg z}$ plus some element in $\tcb{\arg w}$. Meaning,
+        \begin{align}
+            \setp{(\parg z + \parg w) + 2k\pi}{k \in \zz} \subseteq \arg z + \arg w.
+        \end{align}
+        Finally, (1) and (2) together give us the desired equality. 
+    \end{proof}
+\end{example}
+%----------------------------------------
+\newpage
+
+\item[(b)] Show that if $\Re z > 0$ and $\Re w > 0$, then $\parg(zw) = \parg z + \parg w$.
+%----------------------------------------
+\begin{example}
+    \begin{solution}
+        We know $z$ and $w$ are of the form $re^{i \theta}$ and $se^{i \phi}$ respectively, and that their product is simply $rse^{i(\theta + \phi)}$. Meaning $\parg zw = \theta + \phi$, but notice $\parg z = \theta \in (-\frac{\pi}{2},\frac{\pi}{2} )$ and $\parg w = \phi \in (-\frac{\pi}{2},\frac{\pi}{2} )$. Therefore,
+        \[\parg zw = \parg z + \parg w\]
+
+        I know this is wrong, I'm just not sure how to incorporate the fact that $\phi$ and $\theta$ are in $(-\frac{\pi}{2}, \frac{\pi}{2})$
+    \end{solution}
+\end{example}
+%----------------------------------------
+
+\end{itemize}
+\end{problem}
+
+\newpage  %Do not delete
+
+\begin{problem}{2.2}\hfill
+\begin{itemize}[itemsep=3em]
+\item[(a)] Let $z\in \cc$. Using the principle of mathematical induction, show that the following formula holds for all integers $n\geq 1$
+\[1 + z + z^2 + \cdots + z^n = \frac{1-z^{n+1}}{1-z}.\]	
+%----------------------------------------
+\begin{example}
+    \begin{proof}
+        First, we show that the formula holds for $n = 1$ by working out the LHS and RHS of the formula. We see the LHS is,
+        \[1 + z\]
+        the RHS works out to be,
+        \[\dfrac{1 - z^{2}}{1-z} = \dfrac{(1-z)(1+z)}{1-z} = 1 + z.\]
+        Therefore the formula holds for $n = 1$. 
+
+        We assume the formula holds for all $n < k $. 
+
+        Using this assumption we now show the formula holds for $ n = k$ through the following,
+        \begin{align*}
+            \underbrace{1 + z + z^{2} + \dots + z^{k - 1}}_{assumption} + z^{k} &= \underbrace{\dfrac{1 - z^{k}}{1-z}}_{formula} +\ z^{k} \\
+            &=\dfrac{1 - z^{k}}{1-z}+ \dfrac{z^{k}(1-z)}{1-z}  \\ 
+            &= \dfrac{1 - z^{k} + z^{k} - z^{k + 1}}{1-z} \\
+            &= \dfrac{1 -z^{k + 1}}{1- z}
+        \end{align*}
+         
+        We see through induction then that the formula holds for all integers $n\geq 1 $ as desired. 
+        
+    \end{proof}
+\end{example}
+%----------------------------------------
+\newpage
+\item[(b)] If $\rho_1,\ldots,\rho_n$ are the \emph{distinct} $n^{\text{th}}$ roots of unity, show that, using (a), \[\sum_{i=1}^n \rho_i = 0.\]
+%----------------------------------------
+\begin{example}
+    \begin{proof}
+        We recall we can express the $n^{\text{th}}$ roots of unity in terms of the principal root and roots of unity. We first recall that,
+        \[\beta_0 = \sqrt[n]{\abs{\alpha}} e^{i\frac{\parg \alpha}{n }}\]
+        so we can rewrite the given summation as, 
+        \begin{align*}
+            \sum_{i=1}^n \rho_i = \sum_{k = 0}^{k- 1} \beta_0 \zeta_n^{k} && \beta_0 \text{ is a constant } \\
+            \beta_0 \sum_{k = 0}^{k-1}\zeta_n^{k}.
+        \end{align*}
+        Giving us something we can finally apply (a) to and get,
+        \begin{align*}
+            \beta_0 \sum_{k = 0}^{k-1}\zeta_n^{k} = \beta_0 \lrp{\dfrac{1 - (\zeta_n)^{n}}{1-\zeta_n}}.
+        \end{align*}
+        Recall though that $\zeta_n = e^{\frac{2\pi i }{n}}$, so the above becomes,
+        \begin{align*}
+            \beta_0 \lrp{\dfrac{1 - (e^{\frac{2\pi i }{n}})^{n}}{1 - \zeta_n}} &= \beta_0 \lrp{\dfrac{1 - (e^{\frac{2\pi  i n  }{n}})}{1 - \zeta_n}} \\
+            &= \beta_0 \lrp{\dfrac{1 - (e^{2\pi  i   })}{1 - \zeta_n}} && \text{Euler's Identity: } e^{2\pi i } = 1 \\
+            &= \beta_0 \lrp{\dfrac{0}{1 - \zeta_n}} \\
+            &= 0.
+        \end{align*}
+        Therefore $\sum_{i=1}^n \rho_i = 0$, as desired. 
+    \end{proof}
+\end{example}
+%----------------------------------------
+
+\item[(c)] We compute the following sum of real numbers
+\begin{equation*}\label{trigsum}
+\cos \frac{\pi}{7} + \cos \frac{3\pi}{7} + \cos \frac{5\pi}{7} \tag{$\dagger$}
+\end{equation*}
+\begin{itemize}[itemsep=2em]
+\item[(i)] Let $w = e^{\frac{\pi i}{7}}$. What is $\Re w$ and $w^7$? Furthermore, rewrite (\ref{trigsum}) as
+\[\Re(w^{a_1} + w^{a_2} + w^{a_3}),\quad \text{for some $0 \leq a_i < 7$.}\]
+\begin{example}
+    \begin{solution}
+        We use Euler's formula to obtain that $\Re w = cos(\dfrac{\pi}{7})$. Now we see $w^{7}$ is,
+        \begin{align*}
+            w^{7} = (e^{\frac{\pi i }{7}})^{7} &= e^{\frac{\pi i 7}{7}} \\ 
+            &= e^{\pi i } \\ 
+            &= -1.
+        \end{align*}
+        So it is clear that we can rewrite $\dagger$ as the desired equation using $a_1 = 1$, $a_2 = 3$, and $a_2 = 5 $, to get, 
+        \[\Re(w^{1} + w^{3} + w^{5}) = cos\frac{\pi}{7} + cos \frac{3\pi}{7} +  cos \frac{5\pi}{7}\]
+    \end{solution}
+    Letting $z = w$ we see we get,
+
+\end{example}
+
+
+\item[(ii)] Replacing $z$ by $-z$ in (a), find a formula for \[\dfrac{z^7 + 1}{z + 1}.\]
+Use this to deduce an identity involving $w$ and its powers.
+\begin{example}
+    \begin{proof}
+        In this case we have $ n= 6$ and $z = -z$, we apply (a) to see the formula for the given equation is just,
+        \begin{align*}
+            1 + (-z) + (-z)^{2} + (-z)^{3} + (-z)^{4} + (-z)^{5} + (-z)^{6} &= \dfrac{1 - (-z)^{7}}{1 - (-z)} \\ 
+            &= \dfrac{1 - (-1)^{7}z^{7}}{1 + z} \\
+            &= \dfrac{1 - (-1) z^{7}}{1 + z} \\
+            1 - z + z^{2} - z^{3} + z^{4} - z^{5} + z^{6}&= \dfrac{z^{7} + 1}{z + 1 }
+        \end{align*}
+
+        Let us consider then when we have $z = w$ we get,
+        \begin{align*}
+            1 - w + w^{2} - w^{3} + w^{4} - w^{5} + w^{6} &= \dfrac{w^{7} + 1}{w + 1} && \text{using (i)} \\
+            &= \dfrac{-1 + 1}{w + 1} \\
+            &= 0 
+        \end{align*}
+        Giving us an identity for $w$,
+        \[\sum_{k = 0}^{6} (-w)^{k} = 0\]
+    \end{proof}
+\end{example}
+
+\item[(iii)] Using the identity you found in (iii), conclude that 
+\[w^{a_1} + w^{a_2} + w^{a_3} = \frac{1}{1-w}\]
+where the $a_i$'s are the numbers you found in (ii).
+\begin{example}
+    \begin{solution}
+        Let us expand the summation in our identity from the previous part to obtain,
+        \begin{align*}
+            1 - w + w^{2} - w^{3} + w^{4} - w^{5} + w^{6} &= 0 \\ 
+            (1 + w^{2} + w^{4} + w^{6}) - (w + w^{3} + w^{5})  &= 0  \\
+            1 + w^{2} + w^{4} + w^{6} &= w + w^{3} + w^{5} && \text{Let $w^{2} =z $} \\
+            1+ z + z^{2} + z^{3} &= w + w^{3} + w^{5} && \text{Apply (a) to LHS} \\
+            \dfrac{1 - z^{4}}{ 1 - z} &=  w + w^{3} + w^{5}   && z = w^{2}\\
+            \dfrac{1 - (w^{2})^{4}}{1 - w^{2}} &= w + w^{3} + w^{5}\\ 
+            \dfrac{1 - w^{8}}{(1 -w)(1+w)} &= w + w^{3} + w^{5} \\
+            \dfrac{1 -\tcr{w^{7}}w}{(1-w)(1+w)} &= w + w^{3} + w^{5} && \text{apply (i) to $\tcr{w^{7}}$} \\
+            \dfrac{\tcr{1 + w}}{(1-w)\tcr{(1+w)}} &= w + w^{3} + w^{5} \\
+            \dfrac{1}{(1-w)}&= w + w^{3} + w^{5}.
+        \end{align*}
+        Recall though that $a_1 = 1$, $a_2 = 3$, and $a_3 = 5$ giving us the desired result.
+    \end{solution}
+\end{example}
+\newpage
+\item[(iv)] Finally compute (\ref{trigsum}).
+\begin{example}
+    \begin{solution}
+        Recall $w = e^{\frac{\pi * i}{7}}$, but from class we can use Euler's formula to express it as $w = cos\dfrac{\pi}{7} + i sin\dfrac{\pi}{7}$. Plugging this into what we showed in the last part,
+        \begin{align}
+            \dfrac{1}{1 - cos\dfrac{\pi}{7} - i sin\dfrac{\pi}{7}}.
+        \end{align}
+        To help compute it though we have,
+        \[\dfrac{1}{z} = \dfrac{\overline{z}}{\abs{z}^{2}}.\]
+        Applying this to (3) we get,
+        \begin{align*}
+            \dfrac{1}{1 - cos\dfrac{\pi}{7} - i sin\dfrac{\pi}{7}} &= \dfrac{1 - cos \dfrac{\pi}{7} + i sin\dfrac{\pi}{7}}{\lrp{sin^{2}\dfrac{\pi}{7}} + \lrp{1 -cos\dfrac{\pi}{7}}^{2}}  \\
+            &= \dfrac{1 - cos \dfrac{\pi}{7} + i sin\dfrac{\pi}{7}}{2 - 2cos\dfrac{\pi}{7}} \\
+            &= \dfrac{1 - cos \dfrac{\pi}{7}}{2(1 - cos \dfrac{\pi}{7})} + i\dfrac{ sin\dfrac{\pi}{7}}{2(1 - cos \dfrac{\pi}{7})} \\
+            &=\dfrac{1}{2} + i\dfrac{ sin\dfrac{\pi}{7}}{2(1 - cos \dfrac{\pi}{7})}.
+        \end{align*}
+        Recall though $\dagger$ was simply the real component of this, so $\dagger = \dfrac{1}.{2}$
+        
+        
+    \end{solution}
+\end{example}
+
+\end{itemize}
+\end{itemize}
+\end{problem}
+
+\newpage  %Do not delete
+
+\begin{problem}{2.3}\hfill
+\begin{itemize}[itemsep=3em]
+\item[(a)] Recall that a set is open if every point of the set is an interior point. Prove that a set $U \subseteq \cc$ is open if and only if it does not contain any of its boundary points; that is, $\partial U \cap U = \emptyset$. Then deduce that the complement of a closed set is open.
+\begin{example}
+    \begin{proof}
+        ($\Rightarrow$ ) Assuming that $U$ is an open set, that means by definition every point in $U$ is an interior point. If there existed a point $p$ in $U$ that was a boundary point, we know from class that means for all $\epsilon > 0$ the $\epsilon-$neighborhood of $p$ contains points in $U$ and points not in $U$. Such a $p$ in $U$  would contradict the fact that $U$ is open, since every point in an open set is an interior point, that means there is supposed to exist an $\epsilon$ for $p$ such that all points in the $\epsilon$-neighborhood of $p$ are contained in $U$. Therefore if $U$ is open, it does not contain any of its boundary points. 
+
+        ($\Leftarrow$) Assuming that $U$ does not contain any of its boundary points that means then $U^{c}$ contains it's boundary points. Which is to say that $\partial U \subseteq U^{c} $ which from class we know that means $U^{c}$ is closed, and by Definition $4.1$ its complement is open, but $(U^{c})^{c} = U$, therefore $U$ is open, if it does not contain any of its boundary points. 
+
+        We have shown both directions meaning we have a set $U$ is open if and only if it does not contain any of its boundary points. 
+    \end{proof}
+\end{example}
+
+\item[(b)] Prove that an open disk $D_\epsilon(z_0) = \setp{z \in \cc}{\abs{z - z_0} < \epsilon}$ is a domain; that is, a non-empty open and connected subset of $\cc$.
+\begin{example}
+    \begin{proof}
+        (non-empty) We show this is non-empty by simply considering $z_0$ which is in $\cc$ and $\abs{z_0 - z_0} = \abs{0} = 0 < \epsilon $ since by definition $\epsilon > 0 $.
+
+        (connected) To show that the open disk is connected we only need 1 line segment. Given any two points $p$ and $q$ in $D_\epsilon(z_0)$ we know we have the line,
+        \[f(x) = p +  x(q - p )\]
+        for $x \in [0,1]$. What we have to show now though is that ALL points in this line are indeed in the open disk, which is just showing \[\abs{f(x) - z_0} < \epsilon.\]
+        So let us expand the LHS of the inequality,
+        \begin{align*}
+            \abs{f(x) - z_0} &= \abs{p + x(q - p) - z_0} \\
+            &= \abs{p + xq -xp -z_0} \\
+            &= \abs{(1- x)p + xq -z_0} \\
+            &= \abs{(1-x)p - z_0 + xq + xz_0 - xz_0 } \\
+            &= \abs{(1-x)(p-z_0) + x(q - z_0)} && \text{triangle identity}\\
+            &\leq (1-x)\abs{p - z_0} + x\abs{q - z_0} && \text{$p$ and $q$ are points in the disk} \\
+            &\leq (1-x)\epsilon + x \epsilon \\
+            &= \epsilon \\
+            \abs{f(x) - z_0} &\leq \epsilon
+        \end{align*}
+        we see that all the points of $f(x)$ do indeed lie in the $D_\epsilon(z_0)$.
+
+        All this together shows that $D_\epsilon(z_0)$ is a domain
+
+    \end{proof}
+\end{example}
+
+\end{itemize}
+\end{problem}
+
+\newpage  %Do not delete
+
+\begin{problem}{2.4}
+Let $f : G \to \cc$ be a complex function, and suppose $z_0$ is an accumulation point of $G$. Show that 
+\[\lim_{z \to z_0} f(z) = w_0 \quad \text{if and only if} \quad \lim_{z\to z_0}\abs{f(z) - w_0} = 0.\]
+Thereby deduce that 
+\[\lim_{z \to z_0} \overline{f(z)} = \overline{w}_0 \quad \text{if and only if} \quad \lim_{z \to z_0} f(z) = w_0.\]
+\end{problem}
+
+
+\newpage  %Do not delete
+
+\begin{problem}{2.5}
+Compute the following limits and prove your claim by using only the $\epsilon$-$\delta$ definition.
+\begin{itemize}[itemsep=3em]
+\item[(a)] $\displaystyle \lim_{z \to i}\overline{z}$
+
+
+\item[(b)] $\displaystyle \lim_{z \to 1+i}z^2$
+
+
+\end{itemize}
+\end{problem}
+
+
+%----------------------------------------
+%Delete if nothing to add
+\newpage  %Do not delete
+
+\begin{center}
+\textbf{Collaborators:}
+%List your peers with whom you discussed the Problem Set
+\end{center}
+\vfill 
+
+\begin{center}
+\textbf{References:}
+%List any book/website/notes that you used to write your solutions
+\end{center}
+\begin{itemize}
+\item[$\bullet$] [Book(s): Title, Author]
+\item[$\bullet$] [Online: \href{http://example.com/}{\color{blue}Link}]
+\item[$\bullet$] [Notes: \href{http://example.com/}{\color{blue}Link}]
+\end{itemize}
+
+\vfill
+\begin{center}
+Fin.
+\end{center}
+\vfill
+%----------------------------------------
+
+\end{document}

@@ -1,0 +1,320 @@
+\documentclass[11pt]{article}
+ 
+\usepackage[top=0.75in, bottom=1.25in, left=1.5in, right=1.5in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb} %this is THE math package
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{fancybox}
+\usepackage{hyperref}
+\usepackage{varwidth}
+\usepackage{mdframed}
+\usepackage{mathrsfs}
+\usepackage[most]{tcolorbox}
+\usepackage{polynom}
+%------------------------
+%Fonts I use, uncomment if you like to use them.
+%The first is the general font, and the second a math font
+\usepackage{mathpazo}
+\usepackage{eulervm}
+%------------------------
+%This is so that we have standard fonts for the double-stroked symbols
+%for reals, naturals etc. regardless of what font you use.
+%Don't comment
+\AtBeginDocument{
+  \DeclareSymbolFont{AMSb}{U}{msb}{m}{n}
+  \DeclareSymbolFontAlphabet{\mathbb}{AMSb}}
+%------------------------
+
+%----------------------------------------------
+%User-defined environments
+%Commented because we're not using them in this document
+%The only uncommented ones are the Problem and Solution environment
+
+% \newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{question}[2][Question]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem\!]{\begin{tcolorbox}\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}\end{tcolorbox}}
+%\newenvironment{sub-problem}[2][]{\begin{trivlist}
+%\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+\newenvironment{solution}{\begin{proof}[\textbf{\textit{Solution}}] }{\end{proof}}
+%----------------------------------------------
+
+%----------------------------
+%User-defined notations
+\newcommand{\zz}{\mathbb Z}   %blackboard bold Z
+\newcommand{\qq}{\mathbb Q}   %blackboard bold Q
+\newcommand{\ff}{\mathbb F}   %blackboard bold F
+\newcommand{\rr}{\mathbb R}   %blackboard bold R
+\newcommand{\nn}{\mathbb N}   %blackboard bold N
+\newcommand{\cc}{\mathbb C}   %blackboard bold C
+\newcommand{\af}{\mathbb A}   %blackboard bold A
+\newcommand{\pp}{\mathbb P}   %blackboard bold P
+\newcommand{\id}{\operatorname{id}} %for identity map
+\newcommand{\im}{\operatorname{im}} %for image of a function
+\newcommand{\dom}{\operatorname{dom}} %for domain of a function
+\newcommand{\cat}[1]{\mathscr{#1}}   %calligraphic category
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert} %for absolute value
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert} %for norm
+\newcommand{\modar}[1]{\text{ mod }{#1}} %for modular arithmetic
+\newcommand{\set}[1]{\left\{#1\right\}} %for set
+\newcommand{\setp}[2]{\left\{#1\ \middle|\ #2\right\}} %for set with a property
+\newcommand{\card}[1]{\#\,{#1}} %for cardinality of a set
+\newcommand\m[1]{\begin{pmatrix}#1\end{pmatrix}} 
+\newcommand{\lrp}[1]{\left(#1\right)}
+\newcommand{\lrb}[1]{\left[#1\right]}
+\newcommand{\lrc}[1]{\left\{#1\right\}}
+
+%Re-defined notations
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\emptyset}{\varnothing}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+%----------------------------
+
+\allowdisplaybreaks
+ 
+ 
+\begin{document}
+ 
+\title{Homework 1}
+\author{Kevin Guillen\\[0.5em]
+MATH 202 | Algebra III | Spring 2022}
+\date{} 
+\maketitle
+
+%Use \[...\] instead of $$...$$
+
+\begin{problem} {13.1.1}
+    Show that $p(x) = x^{3} + 9x + 6$ is irreducible in $\qq[x]$. Let $\theta$ be a root of $p(x)$. Find the inverse of $1+\theta$ in $\qq(\theta)$
+\end{problem}
+\begin{proof}
+    First to show that $p(x)$ is indeed irreducible we will use Eisenstein's Irreducibility Criterion, which we learned in Math 200, to show it is irreducible over $\zz[x]$ and by the Gauss Lemma irreducible over $\qq[x]$. We can see that with $p = 3$ we have that 3 divides 6 and 9, 3 doesn't divide 1, and finally that $3^{2}$ doesn't divide 6. Meaning then that $p(x)$ is irreducible.
+
+    Now if $\theta$ is a root of $p(x)$ to find the inverse of $1 + \theta$ we will first perform division with remainder on $p(x)$ by $(1 + x)$.
+
+    \[ \polylongdiv{x^{3} + 9x + 6}{x + 1}\]
+    To get that $p(x) = (x + 1)(x^{2 } - x + 10) - 4$. We were given that $\theta$ is a root of $p(x)$, so it must be that case then that,
+    \[(1+\theta)(\theta^{2} - \theta + 10) = 4\]
+    implying,
+    \[(1 + \theta)^{-1} = \dfrac{(\theta^{2} - \theta + 10)}{4}\]
+    as desired.
+
+\end{proof}
+\newpage
+\begin{problem}{13.1.2}
+    Show that $x^{3} -2x -2$ is irreducible over $\qq$ and let $\theta$ be a root. Compute $(1 + \theta)(1 + \theta + \theta^{2})$ and $\dfrac{1 + \theta}{1 + \theta + \theta^{2}}$ in $\qq(\theta)$.
+\end{problem}
+\begin{proof}
+    Like the previous problem we will use Eisenstein's Irreducibility Criterion again and apply the Gauss Lemma, but in this case $p = 2$. We see that $2$ divides $-2$, $2$ doesn't divide $1$, and that $2^{2}$ doesn't divide $-2$. Therefore $x^{3} - 2x -2$ is irreducible. 
+
+    Computing $(1 + \theta)(1 + \theta + \theta^{2})$ we get, 
+    \begin{align}
+        \theta^{3} + 2\theta^{2} + 2\theta + 1
+    \end{align}
+    Recall though $\theta$ being a root of $x^{3} - 2x -2$ means $\theta^{3} - 2\theta -2 = 0$ and therefore,
+    \[\theta^{3} = 2\theta + 2\]
+    so plugging back into (1) we get,
+    \begin{align*}
+         2\theta^{2} + 4\theta + 3 
+    \end{align*}
+
+    Now we compute $\dfrac{1 + \theta}{1+ \theta + \theta^{2}}$, so first we need to obtain $(1 + \theta + \theta^{2})^{-1}$ which we do by performing division with remainder on $(x^{3} -2x -2)$ by $(x^{2} + x + 1)$,
+    \[\polylongdiv{x^{3} -2x -2}{ x^{2} + x + 1}\]
+    continuing we get,
+    \[\polylongdiv{x^{2} + x + 1}{-2x-1}\]
+    Giving us,
+    \begin{align*}
+        x^{3} -2x -2 &= (x^{2} + x + 1)(x-1) + (-2x - 1) \\
+        x^{2} + x + 1 &= (-2x -1)(\dfrac{1}{2}x - \dfrac{1}{4}) + \dfrac{3}{4}
+    \end{align*}
+    Solving for the remainder in both these equations we get,
+    \begin{align}
+        (-2x - 1) & = (x^{3} -2x -2) - (x^{2} + x + 1)(x-1) \\
+        \dfrac{3}{4} &= (x^{2} + x + 1) -(-2x -1)(\dfrac{1}{2}x - \dfrac{1}{4}) 
+    \end{align}
+    Now we multiply equation (3) by $\dfrac{4}{3}$ and plug in equation (2) into it to get,
+    \begin{align*}
+        1 = \dfrac{4}{3}(x^{2} + x + 1) - \dfrac{4}{3}((x^{3} -2x -2) - (x^{2} + x + 1)(x-1))(\dfrac{1}{2}x - \dfrac{1}{4}) 
+    \end{align*}
+    which works out to be,
+    \begin{align*}
+        1 = (-\dfrac{2}{3}x^{2} + \dfrac{1}{3}x + \dfrac{5}{3})(x^{2} + x + 1) + (\dfrac{2}{3}x + \dfrac{1}{3})(x^{3} - 2x -2)
+    \end{align*}
+    Meaning if we evaluate the equation at $\theta$ we get that,
+    \begin{align*}
+        1 = (-\dfrac{2}{3}\theta^{2} + \dfrac{1}{3}\theta + \dfrac{5}{3})(\theta^{2} + \theta + 1)
+    \end{align*}
+    therefore $(\theta^{2} + \theta + 1)^{-1} = (-\dfrac{2}{3}\theta^{2} + \dfrac{1}{3}\theta + \dfrac{5}{3})$. Now we can compute,
+    \begin{align*}
+        \dfrac{1 + \theta}{1 + \theta + \theta^{2}} &= (1+\theta)(-\dfrac{2}{3}\theta^{2} + \dfrac{1}{3}\theta + \dfrac{5}{3}) \\
+        &= -\dfrac{2}{3}\theta^{2} + \dfrac{1}{3}\theta + \dfrac{5}{3} -\dfrac{2}{3}\theta^{3} + \dfrac{1}{3}\theta^{2} + \dfrac{5}{3}\theta \\
+        &= -\dfrac{2}{3}\theta^{3} - \dfrac{1}{3}\theta^{2} + \dfrac{6}{3}\theta + \dfrac{5}{3} \\
+        &= -\dfrac{4}{3}\theta - \dfrac{4}{3} - \dfrac{1}{3}\theta^{2}+ \dfrac{6}{3}\theta + \dfrac{5}{3} \\
+        &= -\dfrac{1}{3}\theta^{2} + \dfrac{2}{3}\theta + \dfrac{1}{3}
+    \end{align*}
+    as desired.
+
+\end{proof}
+
+\begin{problem}{13.1.3}
+    Show that $x^{3} + x + 1$ is irreducible over $\ff_2$ and let $\theta$ be a root. Compute the powers of $\theta$ in $\ff_2(\theta)$.
+\end{problem}
+\begin{proof}
+    We see the given polynomial is of degree 3, therefore it will have to have a linear factor in order to be reducible. So it is enough to show that it has no roots, and because we are in $\ff_2$ the only roots it could possibly have are 0 and 1. We see though,
+    \begin{align*}
+        1^{3} + 1 + 1 &= 1 \\
+        0 + 0 + 1 & = 1 
+    \end{align*}
+    therefore $x^{3} + x + 1$ is irreducible over $\ff_2$. Now obtaining the powers of $\theta$ we get,
+    \begin{align*}
+        \theta^{0} &= 1 \\
+        \theta^{1} &= \theta \\
+        \theta^{2} &= \theta^{2} \\ 
+    \end{align*}
+    we pause here to note that since $\theta$ is a root of the given polynomial we have,
+    \[\theta^{3} + \theta + 1 = 0 \Rightarrow \theta^{3} = \theta + 1\]
+    continuing,
+    \begin{align*}
+        \theta^{4} &= \theta^{3}\theta = (\theta + 1)\theta = \theta^{2} + \theta \\
+        \theta^{5} &= (\theta^{2} + \theta)\theta = \theta^{3} +\theta^{2} = \theta^{2} + \theta + 1\\
+        \theta^{6} &= (\theta^{2} + \theta + 1)\theta = \theta^{3} + \theta^{2} + \theta = \theta + 1 +\theta^{2} + \theta = \theta^{2} + 1 \\
+        \theta^{7} &= (\theta^{2} + 1)\theta = \theta^{3} + \theta = \theta + 1 +\theta = 1 && \text{cycles back}
+    \end{align*} 
+    Therefore $\theta^{i}$ is unique for $0 \leq i \leq 6$, giving us all the powers of $\theta$, as desired.
+ \end{proof}
+
+\begin{problem}{13.1.4}
+    Prove directly that the map $a + b\sqrt{2} \mapsto a - b\sqrt{2}$ is an isomorphism of $\qq(\sqrt2)$ with itself 
+\end{problem}
+\begin{proof}
+    Let us denote the given map as $\pi$. The first thing we must do is show that $\pi$ is a homomorphism. First we see the additive property, 
+    \begin{align*}
+        \pi(a + b\sqrt2 + c + d\sqrt2) &= \pi((a+c) + (b + d)\sqrt{2}) \\
+        &= a+c -b\sqrt2 - d\sqrt2 \\
+        &= a - b\sqrt2 +c - d\sqrt2  \\ 
+        &= \pi( a + b\sqrt2) + \pi(c + d\sqrt2)
+    \end{align*}
+    now the multiplicative property,
+    \begin{align*}
+        \pi((a+b\sqrt2)\cdot (c+d\sqrt2)) &= \pi(ac + 2bd + (ad+bc)\sqrt2) \\
+        &= ac +2bd -ad\sqrt2 -bc\sqrt2 \\ 
+        &= (a-b\sqrt2)(c-d\sqrt2) \\
+        &= \pi(a+b\sqrt2)\cdot \pi(c + d\sqrt2)
+    \end{align*}
+    meaning $\pi$ is a homomorphism. 
+
+    Now we must show that $\pi$ is injective,
+    \begin{align*}
+        \pi(a +b \sqrt2) = \pi(c + d\sqrt2) \Rightarrow a-b\sqrt2 = c -d \sqrt2
+    \end{align*}
+    and because $\sqrt2$ is irrational so therefore not in the field of rational numbers, we have that
+    \begin{align*}
+        a = b \text{ and } c = d
+    \end{align*}
+    therefore $\pi$ is injective. Now we show that it is surjective, consider any $a+ b\sqrt2 \in \qq(\sqrt2)$, we have then that,
+    \begin{align*}
+        \pi(a + (-b)\sqrt2) = a+b \sqrt2
+    \end{align*}
+    therefore $\pi$ is surjective. All this together means that $\pi$ is an isomorphism of $\qq(\sqrt2)$ with itself. 
+\end{proof}
+
+\begin{problem}{13.1.5}
+    Suppose $\alpha$ is a rational root of a monic polynomial in $\zz[x]$. Prove that $\alpha$ is an integer. 
+\end{problem}
+\begin{proof}
+    We will do a proof by contradiction and let's assume $\alpha = \dfrac{c}{d}$ where $c$ and $d$ are relatively prime, and $d \neq \pm 1$. We are given that $\alpha$ is a root of some monic polynomial $p(x)\in \zz[x]$ so,
+    \begin{align*}
+        0 &= \alpha^{n} + a_{n-1}\alpha^{n-1} + \dots + a_1 \alpha + a_0  \\
+        0&= \lrp{\dfrac{c}{d}}^{n} + a_{n-1}\lrp{\dfrac{c}{d}}^{n-1} + \dots + a_1 \lrp{\dfrac{c}{d}} + \alpha_0 \\
+        -\dfrac{c^{n}}{d^{n}} &= a_{n-1}\dfrac{c^{n-1}}{d^{n-1}} + \dots + a_1\dfrac{c}{d} + a_0 \\
+        -c^{n} &= d^{n}(a_{n-1}\dfrac{c^{n-1}}{d^{n-1}} + \dots + a_1\dfrac{c}{d} + a_0) \\
+        -c^{n} &= d(a_{n-1}c^{n-1} + \dots + a_1cd^{n-2} + a_0d^{n-1}) 
+    \end{align*}
+    Meaning that any prime that divides $d$ must also divide $c^{n}$ and therefore divide $c$, but recall $c$ and $d$ were relatively prime, so there can't be a prime dividing $d$, but that means $d = \pm 1$ which is a contradiction. Therefore $\alpha$ must be an integer. 
+\end{proof}
+
+\begin{problem}{13.2.3}
+    Determine the minimal polynomial over $\qq$ for the element $1 + i$
+\end{problem}
+\begin{proof}
+    It is clear that the minimal polynomial of the given element has to be at least degree 2 since $1 + i$ is not in the field of rational numbers. We see through conjugation that,
+    \begin{align*}
+        (x- (1+i))(x - (1 -i)) &= (x-1 - i)(x -1 +i) \\
+        &= x^{2} -x -xi -x +1 +i +xi -i + 1\\
+        &= x^{2} -2x +2
+    \end{align*}
+    Then like in previous problems we apply Eisenstein's Irreducibility Criterion with $p =2$, we see that $2$ divides 2 and -2, doesn't divide 1, and 4 doesn't divide 2, so it is irreducible. Meaning the minimal polynomial over $\qq$ for the given element is,
+    \[x^{2} -2x + 2.\]
+\end{proof}
+\newpage
+\begin{problem}{13.2.5}
+    Let $F = \qq(i)$. Prove that $x^{3} -2$ and $x^{3} -3$ are irreducible over $F$.
+\end{problem}
+\begin{proof}
+    Since $x^{3}-2$ is of degree 3, if we it assume it to be reducible we would have that it can be factored by a linear factor, and therefore have at least one root in $F$. In other words, 
+    \begin{align*}
+        x^{3}-2 = (x-\alpha)p(x)
+    \end{align*}
+    where $p(x)$ is a monic quadratic polynomial and $\alpha \in F$. Now let $\zeta = \dfrac{1}{2} + \dfrac{\sqrt3}{2}i$, we have that the roots of $x^{3} - 2$ to be $\sqrt[3]{2}, \sqrt[3]{2}\zeta$, and $\sqrt[3]{2}(\overline{\zeta})$. Note though that elements of $F$ are of the form $a+bi$ where $a,b\in \qq$, we see that none of these roots are of this form, therefore $x^{3}-2$ is irreducible over $F$.
+
+    We proceed similarly to show the same for $x^{3} - 3$. If it were to be reducible over $F$ we would have the same story as above and the roots to be $\sqrt[3]{3}, \sqrt[3]{3}\zeta$, and $\sqrt[3]{3}(\overline{\zeta})$, but none of them are in $F$, meaning $x^{3} - 3$ is irreducible over $F$.
+\end{proof}
+
+\begin{problem}{13.2.13}
+    Suppose $F = \qq(\alpha_1, \alpha_2, \dots, \alpha_n)$ where $\alpha_i ^{2}\in \qq$ for $i = 1,2,\dots,n$. Prove that $\sqrt[3]{2} \notin F$.
+\end{problem}
+\begin{proof}
+    This will be a proof by contradiction. We see that ,
+    \[\lrb{\qq(\alpha_1, \dots ,\alpha_i): \qq(\alpha_1, \dots, \alpha_{i-1})} \in \set{1,2}\]
+    for $i = 1, \dots ,n$. So $[F:\qq] = 2^{k}$ for $k \in \nn$. Now assume that $\sqrt[3]{2}\in F$, we would have then that,
+    \[\qq \subset \qq(\sqrt[3]{2}) \subset F\]
+    and therefore $[\qq(\sqrt[3]{2}) : \qq]$ must divide  $[F: \qq]$, but that means $3$ divides $2^{k}$ which is a contradiction as desired. Meaning then that $\sqrt[3]{2}\in F$
+\end{proof}
+
+\begin{problem}{13.2.15}
+    A field $F$ is said to be formally real if $-1$ is not expressible as a sum of squares in $F$. Let $F$ be a formally real field, let $f(x) \in F[x]$ be an irreducible polynomial of odd degree and let $\alpha$ be a root of $f(x)$. Prove that $F(\alpha)$ is also formally real. [Pick $\alpha$ a counterexample of minimal degree. Show that $-1 + f(x)g(x) = (p_1(x))^{2}+ \dots + (p_m(x))^{2}$ for some $p_i(x), g(x)\in F[x]$ where $g(x)$ has odd degree $<$ deg ($f$). Show that some root $\beta$ of $g$ has odd degree over $F$ and $F(\beta)$ is not formally real, violating the minimality of $\alpha$.]
+\end{problem}
+\begin{proof}
+    Let $\alpha$ be of minimal degree so that $F(\alpha)$ is NOT formally real and $\alpha$ having minimal polynomial $f$ which is of odd degree. Meaning we can express the degree of said $f$ as,
+    \begin{align*}
+        deg(f) = 2k +1, \ k \in \nn
+    \end{align*}
+    As given in the problem statement $-1$ can be expressed as a sum of squares in $F(\alpha)$, and we have that $F(\alpha)$ is isomorphic to $F[x]/(f(x))$. Then we have that there exists polynomials $p_1(x), \dots , p_m(x)$, and $g(x)$ so that,
+    \begin{align}
+        (p_1(x))^{2} + \dots + (p_m(x))^{2} = -1 + f(x)g(x)
+    \end{align}
+    We know that elements of $F[x]/(f(x))$ can be expressed as a polynomial in $\alpha$ with degree $<$ deg$(f)$. Meaning we have then that, deg$p_i < 2k + 1$ for all $i$. This means that the degree on the LHS of (4) is less than $4k + 1$, so the degree of $g$ is also less than $2k + 1$. We want to show then that the degree of $g$ is odd because then that would imply the degree of the LHS of (4) must be even. 
+
+    So now we let $d$ be the maximal degree over $p_i$ for all $i$. We see that $x^{2d}$ is a sum of squares. Because $F$ is formally real, we have then that $0$ cannot be expressed as a sum of squares in $F$, therefore $x^{2d} \neq 0$. Meaning the degree of the LHS of (4) must be $2d$, and thus the degree of $g$ is odd. Meaning $g$ contains an irreducible factor of odd degree which we will denote $r(x)$, and because the degree of $g$ is less than the degree of $f$ we have,
+    \[deg(r) < deg(g) < deg(f)\]
+    So let $\beta$ be a root of $r(x)$ (therefore a root of $g(x)$), then,
+    \begin{align*}
+        (p_1(x))^{2} + \dots + (p_m(x))^{2}  = -1 r(x)\dfrac{f(x)g(x)}{r(x)}
+    \end{align*}
+    meaning $-1$ is a square in $F[x]/(h(x))$ which is isomorphic to $F(\beta)$. Giving to us that $F(\beta)$ is not formally real. Implying that $\beta$ is a root of $r$ such that $F(\beta)$ is not formally real, but $deg(r) < deg(f)$ which violates the minimality of $\alpha$, as desired. 
+\end{proof}
+
+\begin{problem}{13.2.16}
+    Let $K/F$ be an algebraic extension and let $R$ be a ring contained in $K$ and containing $F$. Show that $R$ is a subfield of $K$ containing $F$. 
+\end{problem}
+\begin{proof}
+    All we have to show is that $R$ contains multiplicative inverses. So let $r \in R$ and $r \neq 0$. We have that $r$ is algebraic over $F$ meaning that there exists an irreducible polynomial $p(x) = x^{n} + a_{n-1}x^{n-1} + \dots + a_1x + a_0$ in $F[x]$ such that $r$ is a root. Because $p$ is irreducible we have that the constant term of $p(x)$ must be non-zero. We know that,
+    \begin{align}
+        r^{-1} = -a_0^{-1}(r^{n-1} + \dots + a_1)
+    \end{align}
+    because $a_i \in F$ and $F$ is contained in $R$, and $r$ was an element of $R$, we have that $r^{-1} \in R$. Meaning $R$ has multiplicative inverse, making it a subfield of $K$ which contains $F$, as desired. 
+\end{proof}
+
+\end{document}

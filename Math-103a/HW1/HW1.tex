@@ -1,0 +1,408 @@
+\documentclass[11pt]{article}
+%------------------------
+%Packages
+\usepackage[top=0.75in, bottom=1.25in, left=1in, right=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb} %this is THE math package
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{fancybox}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{varwidth}
+\usepackage{mdframed}
+\usepackage{mathrsfs}
+\usepackage{lipsum}
+\usepackage{xcolor}
+%------------------------
+%Fonts I use, uncomment if you like to use them.
+%The first is the general font, and the second a math font
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\usepackage[most]{tcolorbox}
+%------------------------
+%This is so that we have standard fonts for the double-stroked symbols
+%for reals, naturals etc. regardless of what font you use.
+%Don't comment
+\AtBeginDocument{
+  \DeclareSymbolFont{AMSb}{U}{msb}{m}{n}
+  \DeclareSymbolFontAlphabet{\mathbb}{AMSb}}
+%------------------------
+
+%----------------------------------------------
+%User-defined environments
+%Commented because we're not using them in this document
+%The only uncommented ones are the Problem and Solution environment
+
+% \newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{question}[2][Question]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem\!]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+%\newenvironment{sub-problem}[2][]{\begin{trivlist}
+%\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+\newenvironment{solution}{\begin{proof}[\textbf{\textit{Solution}}]}{\end{proof}}
+%----------------------------------------------
+
+%----------------------------
+%User-defined notations
+\newcommand{\zz}{\mathbb Z}   %blackboard bold Z
+\newcommand{\qq}{\mathbb Q}   %blackboard bold Q
+\newcommand{\ff}{\mathbb F}   %blackboard bold F
+\newcommand{\rr}{\mathbb R}   %blackboard bold R
+\newcommand{\nn}{\mathbb N}   %blackboard bold N
+\newcommand{\cc}{\mathbb C}   %blackboard bold C
+\newcommand{\af}{\mathbb A}   %blackboard bold A
+\newcommand{\pp}{\mathbb P}   %blackboard bold P
+\newcommand{\id}{\operatorname{id}} %for identity map
+\newcommand{\im}{\operatorname{im}} %for image of a function
+\newcommand{\dom}{\operatorname{dom}} %for domain of a function
+\newcommand{\cat}[1]{\mathscr{#1}}   %calligraphic category
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert} %for absolute value
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert} %for norm
+\newcommand{\modar}[1]{\text{ mod }{#1}} %for modular arithmetic
+\newcommand{\set}[1]{\left\{#1\right\}} %for set
+\newcommand{\setp}[2]{\left\{#1\ \middle|\ #2\right\}} %for set with a property
+\newcommand{\card}[1]{\#\,{#1}} %for cardinality of a set
+\newcommand{\lrp}[1]{\left(#1\right)}
+\newcommand{\lrb}[1]{\left[#1\right]}
+\newcommand{\lrc}[1]{\left\{#1\right\}}
+
+%Re-defined notations
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\emptyset}{\varnothing}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\gcd}{\operatorname{GCD}}
+\renewcommand{\Im}{\operatorname{Im}}
+%----------------------------
+\newtcolorbox[auto counter, number within=chapter]{example}[1][]{
+    enhanced,
+    breakable,
+    left=0.5em, right=0pt, top=1pt, bottom=15pt,    
+    attach boxed title to top left={yshift=-\tcboxedtitleheight},
+     boxed title style={%
+        empty,
+        right=0pt,
+        frame code={\draw[line width=2pt, gray] (frame.north west)--(frame.north east) --++ (0:1pt) ;}},
+    before upper=\hspace{\tcboxedtitlewidth},
+     colbacktitle=white,
+    coltitle={white},
+    colback={white},
+    fonttitle={\bfseries},
+    title={-},
+    sharp corners,
+    frame hidden,
+    boxrule=0pt,
+    borderline west={2pt}{0pt}{blue},
+     overlay unbroken and last={%
+        \draw[line width=2pt, red] (frame.south west)   -- ++(0:2cm);},
+    #1
+    }
+\newcommand{\tcr}[1]{\textcolor{red}{#1}}
+\newcommand{\tcb}[1]{\textcolor{blue}{#1}}
+\newcommand{\tco}[1]{\textcolor{orange}{#1}}
+    
+\allowdisplaybreaks
+ 
+\begin{document}
+ 
+\title{Homework 1}
+\author{Kevin Guillen\\[0.5em]
+MATH 103A --- Complex Analysis --- Spring 2022}
+\date{} 
+\maketitle
+
+%Use \[...\] instead of $$...$$
+
+\begin{problem}{1.1}
+Let $p(z) = az^2 + bz + c$ be a polynomial with complex coefficients ($a\neq 0$). 
+\begin{itemize}[itemsep=2em]
+\item[(a)] By completing the square, show that the solution to $p(z) = 0$ is
+\[z = \frac{-b \pm \Delta^{1/2}}{2a},\]
+where $\Delta \coloneqq b^2 - 4ac$ is called the discriminant.
+\begin{example}
+\begin{proof}
+    First we want the leading coefficient to be 1, so we will divide by $a$ and continue from there.
+    \begin{align*}
+        z^{2} + \dfrac{b}{a}z + \dfrac{c}{a} &= 0 \\[.25em]
+        z^{2} + \dfrac{b}{a}z + \lrp{\dfrac{b}{2a}}^{2} &= -\dfrac{c}{a} + \lrp{\dfrac{b}{2a}}^{2} \\[.25em]
+        z^{2} + \dfrac{b}{a}z + \dfrac{b^{2}}{4a^{2}} &= -\dfrac{c}{a} + \dfrac{b^{2}}{4a^{2}} \\[.25em]
+        \lrp{z + \dfrac{b}{2a}}^{2}&= \dfrac{b^{2} -4ac}{4a^{2}} = \dfrac{\Delta}{4a^{2}} \\
+        \lrp{z + \dfrac{b}{2a}}^{2} - \lrp{\dfrac{\Delta^{1/2}}{2a}}^{2} &= 0 \\
+        \lrp{z + \dfrac{b}{2a} - \dfrac{\Delta^{1/2}}{2a}} \lrp{z + \dfrac{b}{2a} + \dfrac{\Delta^{1/2}}{2a}} &= 0
+    \end{align*}
+    Now we have two solutions that we can solve for,
+    \begin{align}
+        \lrp{z + \dfrac{b - \Delta^{1/2}}{2a}} &= 0 \\
+        \lrp{z +  \dfrac{b + \Delta^{1/2}}{2a}} &= 0
+    \end{align}
+    solving both (1) and (2) for $z$ we get,
+    \begin{align*}
+        z  & =  - \dfrac{b - \Delta^{1/2}}{2a} = \dfrac{-b + \Delta^{1/2}}{2a} \\
+        z & = -  \dfrac{b + \Delta^{1/2}}{2a} =   \dfrac{-b - \Delta^{1/2}}{2a}
+    \end{align*}
+    which means the solution for $p(z) = 0$ is,
+    \[z =  \dfrac{-b \pm \Delta^{1/2}}{2a}\]
+    as desired. 
+\end{proof} 
+
+\end{example}
+
+\vspace*{2em} %Do not delete
+
+
+\item[(b)] Consider the polynomial $p(z) = iz^2 -1$
+\begin{itemize}[itemsep=2em]
+\item[(i)] Compute $\Delta$.
+\begin{example}
+    \begin{solution} 
+        Given $p(z) = iz^{2} -1$ we see $a = i$, $b = 0$, and $c = -1$, plugging this in we get,
+        \[\Delta = 0^{2} -4i(-1) = 4i\] 
+    \end{solution}
+\end{example}
+
+
+
+\item[(ii)] For the $\Delta$ obtained in (b), compute $\Delta^{1/2}$ by solving a pair of simultaneous equations in $x$ and $y$ obtained by considering the equation \[(x + iy)^2 = \Delta.\]
+\begin{example}     
+    \begin{solution}
+        Solving the provided equation we get,
+        \begin{align*}
+            (x + iy)^{2} &= \Delta \\
+            (x+ iy)(x+iy) &= 4i \\ 
+            x^{2} - y^{2} + 2xyi -4i &= 0 \\
+            x^{2} -y^{2} + (2xy - 4)i &= 0 \\
+        \end{align*}
+        meaning we must have that,
+        \begin{align}
+            x^{2}-y^{2} &= 0 \\
+            2xy - 4 & = 0
+        \end{align}
+        equation (3) has solutions $x = y$ and $x = -y$, but from (4) we see that their product must be positive, eliminating the $x=-y$ case. Now plugging in $x =y$ we get,
+        \begin{align*}
+            2y^{2} -4 &= 0 \\
+            y^{2} &= 2 \\
+            y &= \pm \sqrt2 
+        \end{align*}
+        so we have that $x = y = \pm \sqrt 2$.
+
+    \end{solution} 
+\end{example}
+\item[(iii)] Finally, write down the roots of $p(z)$ in the form $u + iv$.
+\begin{example}
+    \begin{solution}
+        The roots of $p(z)$ are $\sqrt2 + \sqrt2i$ and $-\sqrt2 - \sqrt2i$
+    \end{solution} 
+\end{example}
+\end{itemize}
+\end{itemize}
+\end{problem}
+
+
+\newpage
+\begin{problem}{1.2}
+Consider the set of matrices
+\[X \coloneqq \setp{\begin{pmatrix}x & -y\\ y & x \end{pmatrix}}{x,y \in \rr}.\]
+\begin{itemize}
+\item[(a)] Let $\cc$ denote the set of complex numbers. Show that the map $\phi: X \to \cc$ defined by 
+\[\phi:X \to \cc,\quad \begin{pmatrix}x & -y\\ y & x \end{pmatrix} \mapsto x + iy\]
+is a bijection.
+\begin{example}
+    \begin{proof}
+        First we will show this mapping is \textbf{injective}. Let $A,B\in X$, then they are of the form $\begin{pmatrix}
+            a & -b \\ b & a
+        \end{pmatrix}$ and $\begin{pmatrix}
+            c & -d \\ d & c
+        \end{pmatrix}$ respectively. So if their image under $\phi$ were to be equal, that would mean, 
+        \begin{align*}
+            \phi(A) &= \phi(B) \\
+            \phi\lrp{\begin{pmatrix}
+            a & -b \\ b & a
+        \end{pmatrix}} &= \phi\lrp{\begin{pmatrix}
+            c & -d \\ d & c
+        \end{pmatrix}} \\
+            a + bi &= c + di \\
+            (a-c) + (b - d)i &= 0
+        \end{align*}
+        This can only be satisfied if $a = c$ and $b = d$, meaning $A = B$. Therefore $\phi$ is \textbf{injective}. 
+
+        Now we will show $\phi$ is \textbf{surjective}. If we have any $z \in \cc$, it is of the form $a + bi$ where $a,b \in \rr$. Matrices in $X$ are matrices with real numbers as entries, so we have $\begin{pmatrix} a & -b \\ b & a\end{pmatrix}\in X$ and its image under $\phi$ is,
+        \begin{align*}
+            \phi\lrp{\begin{pmatrix} a & -b \\ b & a\end{pmatrix}} = a +bi = z 
+        \end{align*}
+        showing $\phi$ is \textbf{surjective}. All together then we have shown $\phi$ is \textbf{bijective}, as desired. 
+    \end{proof}
+\end{example} 
+
+\item[(b)] Let $I$ be the identity matrix. Consider $A,B \in X$, show that $\phi$ has the following properties.
+\begin{itemize}
+\item[(i)] $\phi(A+B) = \phi(A)+\phi(B)$
+\begin{example}
+    \begin{proof}
+        As before we know $A$ and $B$ are of the form $\begin{pmatrix}
+            a & -b \\ b & a
+        \end{pmatrix}$ and $\begin{pmatrix}
+            c & -d \\ d & c
+        \end{pmatrix}$ respectively. We see through the following that $\phi$ is additive,
+        \begin{align*}
+            \phi(A + B) &= \phi\lrp{\begin{pmatrix}
+                a & -b \\ b & a
+            \end{pmatrix} +\begin{pmatrix}
+                c & -d \\ d & c
+            \end{pmatrix}} \\
+            &= \phi\lrp{\begin{pmatrix}
+                a + c & -b - d \\ b + d & a + c
+            \end{pmatrix}} \\
+            &= (a+c) + (b+d)i \\
+            &= a + bi + c + di \\
+            &= \phi(A) + \phi(B).
+        \end{align*}
+    \end{proof}
+\end{example} 
+
+\item[(ii)] $\phi(AB) = \phi(A)\phi(B)$
+\begin{example}
+    \begin{proof}
+        Let $A$ and $B$ be as before, we see through the following that $\phi$ is multiplicative,
+        \begin{align*}
+            \phi(AB) &= \phi\lrp{\begin{pmatrix}
+                a & -b \\ b & a
+            \end{pmatrix} \begin{pmatrix}
+                c & -d \\ d & c
+            \end{pmatrix}} \\
+            &=\phi\lrp{\begin{pmatrix}ac -bd & -ad-bc \\ bc + ad & -bd + ac  \end{pmatrix}} \\
+            &= (ac-bd) + (bc+ad)i \\
+            &= (a+bi)(c+di) \\
+            &= \phi(A)\phi(B).
+        \end{align*}
+    \end{proof}
+\end{example} 
+
+\item[(iii)] $\phi(I) = 1$
+\begin{example}
+    \begin{proof}
+        Recall that $I$ is simply $\begin{pmatrix}
+            1 & 0 \\ 0 & 1
+        \end{pmatrix}$
+        and we see through the following that the identity matrix is mapped to 1,
+        \begin{align}
+            \phi\lrp{\begin{pmatrix}1 & 0 \\ 0 & 1\end{pmatrix}} = 1 + 0i = 1.
+        \end{align}
+    \end{proof}
+\end{example} 
+
+\end{itemize}
+
+\item[(c)] Find a matrix $J$ satisfying $J^2 = -I$ and show that $\phi(J) = i$.
+\begin{example}
+    \begin{proof}
+        We need to find a matrix $J$ satisfying $J^{2} = -I$,so writing this out explicitly we get,
+        \begin{align*}
+            \begin{pmatrix}
+                a & -b \\ b & a
+            \end{pmatrix}\begin{pmatrix}
+                a & -b \\ b & a
+            \end{pmatrix} &= \begin{pmatrix}-1 & 0 \\ 0 & -1 \end{pmatrix} \\\begin{pmatrix}
+                a^{2} -b^{2} & -2ab \\ 2ab & a^{2}-b^{2}
+            \end{pmatrix} &=\begin{pmatrix}-1 & 0 \\ 0 & -1 \end{pmatrix}
+        \end{align*}
+        giving us that $b = 1$ and $a = 0$. Therefore $J = \begin{pmatrix}
+            0 & -1 \\ 1 & 0
+        \end{pmatrix}$ and we see
+        \begin{align*}
+            \phi(J) = 0 + 1i = i 
+        \end{align*}
+        as desired. 
+    \end{proof}
+\end{example}
+\end{itemize}
+
+\end{problem}
+
+
+\newpage  %Do not delete
+
+\begin{problem}{1.3}
+Let $z,w \in \cc$. 
+\begin{itemize}[itemsep=3em]
+\item[(a)] Prove the formula
+\[\abs{z+w}^2 = \abs{z}^2 + 2 \Re z\overline{w} + \abs{w}^2\]
+%----------------------------------------
+\begin{example}
+    \begin{proof}
+        Since $z,w$ are elements of $\cc$ they are each of the form $a+bi$ and $c+di$ respectively. First it would be useful to see what $\text{Re}(z\bar{w})$ is,
+        \begin{align*}
+            z\hat{w} &= (a+bi)(c-di) \\
+            &= ac + bd - (ad)i +(cb)i  \\
+            &= (ac + bd) + (cb -ad)i
+        \end{align*}
+        from this we see Re$(z\bar{w}) = ac + bd$. So let us work out the LHS,
+        \begin{align*}
+            \abs{z +w}^{2} &= \abs{a + bi + c + di}^{2} \\
+            &= \sqrt{(a+c)^{2} + (b+d)^{2}}^{2} \\
+            &= (a+c)^{2} + (b+d)^{2} \\
+            &= a^{2} + c^{2} + 2ac + b^{2} + d^{2} + 2bd \\
+            &= \tcb{a^{2}} + \tcb{b^{2}} + \tco{2ac} + \tco{2bd}+ \tcr{c^{2}} + \tcr{d^{2}}  \\
+            &= \tcb{\abs{z}^{2}} + \tco{2(ac + bd)} + \tcr{\abs{w}^{2}} \\
+            &= \abs{z}^{2} + 2\text{Re}(z\bar{w}) + \abs{w}^{2}
+        \end{align*}
+        which proves the formula. 
+    \end{proof}
+\end{example}
+%----------------------------------------
+
+
+\item[(b)] Use (a) to deduce the \emph{parallelogram law}
+\[\abs{z+w}^2 + \abs{z-w}^2 = 2\abs{z}^2 + 2\abs{w}^2\]
+Give a geometric interpretation of this formula. 
+%----------------------------------------
+\begin{example}
+    \begin{proof}
+        Let $z$ and $w$ be as before, now we will work out the LHS,
+        \begin{align}
+            \abs{z + w}^{2} + \abs{z + (-w)}^{2} = \abs{z}^{2} + 2\text{Re}(z\bar{w}) + \abs{w}^{2} + \abs{z}^{2} + 2\text{Re}(z(\overline{-w})) + \abs{-w}^{2}
+        \end{align}
+        We already worked out what Re$(z\bar{w})$ is, so let us work out Re$(z(\overline{-w}))$ now,
+        \begin{align*}
+            z(\bar{-w}) = (a+bi)(-c+di) &= -ac + (ad)i -(bc)i -bd \\
+            &= (-ac -bd) + (ad -bc)i
+        \end{align*}
+        so Re$(z(\overline{-w})) = -(ac+bd)$. We also recall the fact from class that the modulus is invariant to the sign of the inputted element. All this together we can continue with (6),
+        \begin{align*}
+            \abs{z + w}^{2} + \abs{z + (-w)}^{2} &= \abs{z}^{2} + 2(ac + bd) + \abs{w}^{2} + \abs{z}^{2} -2(ac +bd) + \abs{w}^{2} \\
+            &=\abs{z}^{2} + \abs{z}^{2} +2(ac+bd) -2(ac + bd) + \abs{w}^{2} + \abs{w}^{2} \\
+            &= 2\abs{z}^{2} + 2\abs{w}^{2}
+        \end{align*}
+        which deduces the parallelogram law. 
+
+        What this is saying geometrically is, if we sum the squares of the parallelogram's two diagonals length, it will be the same as if we square the lengths of the 4 sides and sum it all up. 
+    \end{proof}
+\end{example}
+%----------------------------------------
+
+\end{itemize}
+
+\end{problem}
+
+---------------
+%Delete if nothing to add
+\newpage  %Do not delete
+
+\begin{center}
+\textbf{Collaborators:}
+ I don't recall their names, but I worked on 1.1 and 1.2 with my assigned group from section on Wednesday 4/06. 
+\end{center}
+
+%----------------------------------------
+
+\end{document}

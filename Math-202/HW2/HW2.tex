@@ -1,0 +1,263 @@
+\documentclass[11pt]{article}
+ 
+\usepackage[top=0.75in, bottom=1.25in, left=1.25in, right=1.25in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb} %this is THE math package
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{fancybox}
+\usepackage{hyperref}
+\usepackage{varwidth}
+\usepackage{mdframed}
+\usepackage{mathrsfs}
+\usepackage[most]{tcolorbox}
+%------------------------
+%Fonts I use, uncomment if you like to use them.
+%The first is the general font, and the second a math font
+\usepackage{mathpazo}
+\usepackage{eulervm}
+%------------------------
+%This is so that we have standard fonts for the double-stroked symbols
+%for reals, naturals etc. regardless of what font you use.
+%Don't comment
+\AtBeginDocument{
+  \DeclareSymbolFont{AMSb}{U}{msb}{m}{n}
+  \DeclareSymbolFontAlphabet{\mathbb}{AMSb}}
+%------------------------
+
+%----------------------------------------------
+%User-defined environments
+%Commented because we're not using them in this document
+%The only uncommented ones are the Problem and Solution environment
+
+% \newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{question}[2][Question]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem\!]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+%\newenvironment{sub-problem}[2][]{\begin{trivlist}
+%\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+\newenvironment{solution}{\begin{proof}[\textbf{\textit{Solution}}] }{\end{proof}}
+%----------------------------------------------
+
+%----------------------------
+%User-defined notations
+\newcommand{\zz}{\mathbb Z}   %blackboard bold Z
+\newcommand{\qq}{\mathbb Q}   %blackboard bold Q
+\newcommand{\ff}{\mathbb F}   %blackboard bold F
+\newcommand{\rr}{\mathbb R}   %blackboard bold R
+\newcommand{\nn}{\mathbb N}   %blackboard bold N
+\newcommand{\cc}{\mathbb C}   %blackboard bold C
+\newcommand{\af}{\mathbb A}   %blackboard bold A
+\newcommand{\pp}{\mathbb P}   %blackboard bold P
+\newcommand{\id}{\operatorname{id}} %for identity map
+\newcommand{\im}{\operatorname{im}} %for image of a function
+\newcommand{\dom}{\operatorname{dom}} %for domain of a function
+\newcommand{\cat}[1]{\mathscr{#1}}   %calligraphic category
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert} %for absolute value
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert} %for norm
+\newcommand{\modar}[1]{\text{ mod }{#1}} %for modular arithmetic
+\newcommand{\set}[1]{\left\{#1\right\}} %for set
+\newcommand{\setp}[2]{\left\{#1\ \middle|\ #2\right\}} %for set with a property
+\newcommand{\card}[1]{\#\,{#1}} %for cardinality of a set
+\newcommand\m[1]{\begin{pmatrix}#1\end{pmatrix}} 
+
+%Re-defined notations
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\emptyset}{\varnothing}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+%----------------------------
+
+\newcommand{\tcr}[1]{\textcolor{red}{#1}}
+\newcommand{\tcb}[1]{\textcolor{blue}{#1}}
+\newcommand{\tco}[1]{\textcolor{orange}{#1}}
+
+\newcommand{\lrp}[1]{\left(#1\right)}
+\newcommand{\lrb}[1]{\left[#1\right]}
+\newcommand{\lrc}[1]{\left\{#1\right\}}
+
+\allowdisplaybreaks
+\newtcolorbox[auto counter, number within=chapter]{example}[1][]{
+    enhanced,
+    breakable,
+    left=0.5em, right=0pt, top=1pt, bottom=15pt,    
+    attach boxed title to top left={yshift=-\tcboxedtitleheight},
+     boxed title style={%
+        empty,
+        right=0pt,
+        frame code={\draw[line width=2pt, gray] (frame.north west)--(frame.north east) --++ (0:1pt) ;}},
+    before upper=\hspace{\tcboxedtitlewidth},
+     colbacktitle=white,
+    coltitle={white},
+    colback={white},
+    fonttitle={\bfseries},
+    title={-},
+    sharp corners,
+    frame hidden,
+    boxrule=0pt,
+    borderline west={2pt}{0pt}{blue},
+     overlay unbroken and last={%
+        \draw[line width=2pt, red] (frame.south west)   -- ++(0:2cm);},
+    #1
+    }
+ 
+\begin{document}
+ 
+\title{Homework 2}
+\author{Kevin Guillen\\[0.5em]
+MATH 202 | Algebra III | Spring 2022}
+\date{} 
+\maketitle
+
+%Use \[...\] instead of $$...$$
+
+\begin{problem} {13.3.4}
+    The construction of the regular 7-gon amounts to contractibility of $cos(2\pi / 7).$ We shall see later that $\alpha = 2cos(2\pi / 7)$ satisfies the equation $x^{3} + x^{2} -2x -1 = 0$. Use this to prove that the regular $7$-gon is not constructible by straightedge and compass. 
+\end{problem}
+\begin{example}
+    \begin{proof}
+        To begin we will show that the polynomial given,
+        \[p(x) = x^{3} + x^{2}  -2x - 1\] is irreducible over $\qq$. To do so, we use the Rational Root Theorem, where if $p(x)$ has a root in $\qq$ it will be of the form $\dfrac{p}{q}$ where $q$ divides the leading coefficient and $p$ divides the constant term. So the only potential roots are $\pm 1$ we see though that,
+        \begin{align*}
+            p(1) &= 1 + 1 - 2 - 1 = -1 \\
+            p(-1) &= -1 + 1 +2 -1 = 1 
+        \end{align*}
+        so it has not roots in $\qq$, meaning it is irreducible over $\qq$. This means then that $\alpha$ is of degree 3 and $\lrb{\qq(\alpha)
+        : \qq} \neq 2^{k}$ for some $k \in \nn$, but by Proposition 23 in D\&F $\alpha$ would have to be a power of 2 in order for it to be constructed, meaning then that the regular 7-gon cannot be constructed by straightedge and compass. 
+    \end{proof}
+\end{example}
+
+\vspace*{.5in}
+
+\begin{problem}{13.3.5}
+    Use the fact that $\alpha = 2cos(2\pi / 5)$ satisfies the equation $x^{2} +x - 1 = 0$ to conclude that the regular $5$-gon is constructible by straightedge and compass. 
+\end{problem}
+\begin{example}
+    \begin{proof}
+        We do like before and try to determine if,
+        \[p(x) = x^{2} + x -1 \] has roots in $\qq$. Similarly if it did, it would have to be $\pm1$ by the Rational Root Test. We see,
+        \begin{align*}
+            p(1) &= 1 + 1 - 1 = 1 \\
+            p(-1) &= 1 - 1 -1 = -1 
+        \end{align*}
+        meaning it has no roots in $\qq$, and so it is irreducible. Giving us that the degree of $\alpha$ is 2, which is clearly a power of 2 so it is constructible. We know we we are able to bisect and angle so we are also able to construct $cos(2\pi/5)$ from $2cos(2\pi/5)$. Now we just need to show that $sin(2\pi/5)$ is constructible, but recalling our trig identities this is equivalent to showing,
+        \begin{align*}
+            sin(2\pi/5) = \sqrt{1 - cos^{2}(2\pi/5)}
+        \end{align*}
+        the RHS is constructible. Recall though we are able to multiply constructions which is the squaring, we can subtract and we can take roots. Therefore $sin(2\pi/5)$ is also constructible. Which means then that the regular 5-gon is constructible by straightedge and compass. 
+    \end{proof}
+\end{example}
+
+\vspace*{.5in}
+
+\begin{problem}{13.4.1}
+    Determine the splitting field and its degree over $\qq$ for $x^{4} - 2$.
+\end{problem}
+\begin{example}
+    \begin{proof}
+        Let $p(x) = x^{4} - 2$. We see that the real roots of this polynomial are $\pm\sqrt[4]{2}$ and the complex roots are $\pm i\sqrt[4]{2}$. The relation between these two pairs of roots is that the complex root is just the real root multiplied by $i$, we also know from class that $\qq(-\alpha) = \qq(\alpha)$, meaning the splitting field for $p(x)$ is simply $\qq(i, \sqrt[4]{2})$ To calculate the degree of the splitting field over $\qq$, we use Theorem 14 from D\&F and obtain,
+        \begin{align*}
+            \lrb{\qq(i, \sqrt[4]{2}): \qq} = \lrb{\qq(i, \sqrt[4]{2}): \qq(\sqrt[4]{2})}\lrb{\qq(\sqrt[4]{2}): \qq}
+        \end{align*}
+        We know that $i \notin \qq(\sqrt[4]{2})$ so $x^{2} + 1$ which has root $i$ is irreducible. Meaning \[\lrb{\qq(i, \sqrt[4]{2}): \qq(\sqrt[4]{2})} = 2\]
+        next $\sqrt[4]{2}$ is the root of the irreducible polynomial $x^{4} + 2$ so,
+        \[\lrb{\qq(\sqrt[4]{2} : \qq)} = 4\]
+        multiplying the two we have the degree of $\qq(i, \sqrt[4]{2})$ over $\qq$ to be 8.
+
+    \end{proof}
+\end{example}
+
+\newpage
+
+\begin{problem}{13.4.2}
+    Determine the splitting field and its degree over $\qq$ for $x^{4}+2$.
+\end{problem}
+\begin{example}
+    \begin{proof}
+        Let $q(x) = x^{4} + 2$ and its splitting field to be $E_q$, and let $p(x) = x^{4}-2$ as before and its splitting field be $E_p = \qq(i, \sqrt[4]{2})$. Our claim now is that $E_q = E_p$. To do so we first want to show that \[\gamma = \dfrac{\sqrt2}{2} + i \dfrac{\sqrt2}{2}\] is in both $E_q$ and $E_p$. 
+
+        Let us begin with $E_q$ first. Showing $i, \sqrt2 \in E_q$ is suffice for showing $\gamma \in E_q$. Consider the polynomials $x^{4} + 2$ and $x^{4} - 1$, let $a$ be a root of the first one and $b$ be a root of the second one. We see that,
+        \begin{align*}
+            a^{4} &= -2 \\
+            b^{4} &= 1 
+        \end{align*} 
+        then that means $(ab)^{4} = a^{4}b^{4} = -2$, so $(ab)$ is also a root of $x^{4}+ 2$. We know though that the roots of $x^{4} - 1$ are $\pm 1$ and $\pm i$ so roots of $x^{4} + 2$ are $\pm a $ and $\pm i a $. Going back to $E_q$, this is the field generated by the roots $\pm a $ and $\pm i a $ over $\qq$, so we have,
+        \[(ia)a^{-1} = i \in E_q\]
+
+        Now all that is left is showing $\sqrt2 \in E_q$. Let $a$ be a root of $x^{4} + 2$, and then let $c = a^{2}$, we have then that $c$ is a root for the equation $x^{2} + 2$ since,
+        \[c^{2} = (a^{2})^{2} = a^{4} = - 2\]
+        we know though the roots of $x^{2} + 2$ are explicitly $\pm i \sqrt{2}$, in either case though we know $i \in E_q$ so we have,
+        \[c \cdot i^{-1} = \pm \sqrt2 \in E_q\]
+        and therefore $\gamma \in E_q$
+
+        Showing $i$ and $\sqrt2$ in $E_p$ is much easier since we already know $\sqrt[4]{2}\in E_p$ so we have $(\sqrt[4]{2})^{2} = \sqrt{2} \in E_p$, and we already know $i$ is in $E_p$ from the previous problem so we have $\gamma \in E_p$.
+
+        Finally let $\alpha$ be a root of $q(x)$ and let $\beta$ be a root of $p(x)$ we have then that $\alpha^{4} = -2$ and $\beta^{4} = 2$. Recall that we know $\gamma$ is in both of these polynomials splitting field and that,
+        \begin{align*}
+            \gamma^{2} &= i \\
+            \gamma^{4} &= -1
+        \end{align*}
+        Notice though that $(\gamma\beta)^{4} = \gamma^{4}\beta^{4} = -2$ and so $\gamma\beta$ is a root of $q(x)$. Applying what we observed earlier the roots of $q(x)$ are $\pm\gamma\beta$ and $\pm i \gamma \beta$. We know though because $i,\gamma$, and $\beta$ are in $E_q$ then these roots are also in $E_q$, recall though these roots are what generate $E_p$, so $E_p \subseteq E_q$.
+
+        Now we notice that $(\gamma\alpha)^{4} = \gamma^{4}\alpha^{4} = 2$, meaning $\gamma\alpha$ is a root of $p(x)$, but recalling from the previous problem, the roots are then $\pm \gamma\alpha$ and $\pm i \gamma \alpha$, but because $\alpha, \gamma$, and $i$ are in $E_p$, these roots are in $E_p$. These are the same roots that generate $E_q$ though, so we have $E_q\subseteq E_p$, showing containment both ways and therefore $E_q = E_p$. 
+
+        Meaning that $\qq(i, \sqrt[4]{2})$ is the splitting field of $q(x)$ and from the previous problem its degree is $8$. 
+    \end{proof}
+\end{example}
+
+\vspace*{.5in}
+
+\begin{problem}{13.4.3}
+    Determine the splitting field and its degree over $\qq$ for $x^{4} +x^{2} +1$.
+\end{problem}
+\begin{example}
+    \begin{proof}
+        Let $p(x) = x^{4} + x^{2} + 1$ be the given polynomial. We see that we can factor this polynomial as,
+        \begin{align*}
+            p(x) = x^{4} + x^{2} + 1 = (x^{2} -x + 1)(x^{2} + x + 1)
+        \end{align*} 
+        So solving for the root of $p(x)$ is simply solving for the roots of the two factors on the right, using the quadratic formula we obtain,
+        \begin{align*}
+             \pm \dfrac{1}{2} \pm i\dfrac{\sqrt3}{2}
+        \end{align*}
+        now let $ z = \dfrac{1}{2} - i \dfrac{\sqrt3}{2}$, then the roots of $p(x)$ are simply $z, -z, \overline{z}, \overline{-z}$. Recalling the fact from problem 1 that $\qq(\alpha) = \qq(-\alpha)$ we have the splitting field for $p(x)$ to be $\qq(z, \overline z)$. Notice though that,
+        \begin{align*}
+            z + \overline z = \dfrac{1}{2} - i \dfrac{\sqrt3}{2} + \dfrac{1}{2} + i \dfrac{\sqrt3}{2} = 1
+        \end{align*}
+        meaning the additive inverse of $z$ is simply $\overline z$, the splitting field is simply $\qq(z)$. Now for the degree, we know $z$ was the root of a factor of $p(x)$ specifically $x^{2} -x + 1$, which is irreducible over $\qq$ since $z$ is complex, therefore we have,
+        \[\lrb{\qq(z) : \qq} = 2\]
+    \end{proof}
+\end{example}
+
+\newpage
+
+\begin{problem}{13.4.4}
+    Determine the splitting field and its degree over $\qq$ for $x^{6} -4$.
+\end{problem}
+\begin{example}
+    \begin{proof}
+        Let $p(x) = x^{6} -4$ be the given polynomial. We see $p(x)$ can be factored to be,
+        \begin{align*}
+            p(x) = x^{6} - 4 = (x^{3} - 2)(x^{3} + 2)
+        \end{align*}
+        So like before the roots of $p(x)$ are simply the roots of the polynomials on the RHS. These polynomials are discussed as an example in chapter 13 section 4 of D\&F, so using the primitive 3rd root of unity $\zeta_3$, we know the roots of $(x^{3} - 2)$ to be  $\sqrt[3]{2}$, $\zeta_3 \sqrt[3]{2}$, and $(\zeta_3)^{2}\sqrt[3]{2}$. Similarly the roots for $x^{3} + 2$ are $-\sqrt[3]{2}$, $-\zeta_3\sqrt[3]{2} $, and $-(\zeta_3)^{2}\sqrt[3]{2}$. Which means the splitting field is $\qq(\zeta_3, \sqrt[3]{2})$. 
+
+        Now we can calculate the degree as before,
+        \[\lrb{\qq(\zeta_3, \sqrt[3]{2}) : \qq} = \lrb{\qq(\zeta_3, \sqrt[3]{2}): \qq(\sqrt[3]{2})}\lrb{\qq(\sqrt[3]{2}): \qq}.\]
+        We already know the degree of $\lrb{\qq(\sqrt[3]{2}): \qq}$ to be 3, since $\sqrt[3]{2}$ is a root of the polynomial $x^{3} - 2$ which is irreducible over $\qq$. Finally $\zeta_3$ is a root of the polynomial $x^{2} + x + 1$ which is irreducible over $\qq(\sqrt[3]{2})$, so $\lrb{\qq(\zeta_3, \sqrt[3]{2}): \qq(\sqrt[3]{2})}$ is of degree 2. All together we then have,
+        \[\lrb{\qq(\zeta_3, \sqrt[3]{2}) : \qq} = 6\] 
+    \end{proof}
+\end{example}
+
+\end{document}
