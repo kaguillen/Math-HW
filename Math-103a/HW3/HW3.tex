@@ -1,0 +1,508 @@
+\documentclass[11pt]{article}
+ 
+\usepackage[top=0.75in, bottom=1.25in, left=1in, right=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb} %this is THE math package
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{fancybox}
+\usepackage{hyperref}
+\usepackage{varwidth}
+\usepackage{enumitem}
+\usepackage{mdframed}
+\usepackage{mathrsfs}
+\usepackage[most]{tcolorbox}
+%------------------------
+%Fonts I use, uncomment if you like to use them.
+%The first is the general font, and the second a math font
+\usepackage{mathpazo}
+\usepackage{eulervm}
+%------------------------
+%This is so that we have standard fonts for the double-stroked symbols
+%for reals, naturals etc. regardless of what font you use.
+%Don't comment
+\AtBeginDocument{
+  \DeclareSymbolFont{AMSb}{U}{msb}{m}{n}
+  \DeclareSymbolFontAlphabet{\mathbb}{AMSb}}
+%------------------------
+
+%----------------------------------------------
+%User-defined environments
+%Commented because we're not using them in this document
+%The only uncommented ones are the Problem and Solution environment
+
+% \newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{question}[2][Question]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem\!]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+%\newenvironment{sub-problem}[2][]{\begin{trivlist}
+%\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+\newenvironment{solution}{\begin{proof}[\textbf{\textit{Solution}}] }{\end{proof}}
+%----------------------------------------------
+
+%----------------------------
+%User-defined notations
+\newcommand{\zz}{\mathbb Z}   %blackboard bold Z
+\newcommand{\qq}{\mathbb Q}   %blackboard bold Q
+\newcommand{\ff}{\mathbb F}   %blackboard bold F
+\newcommand{\rr}{\mathbb R}   %blackboard bold R
+\newcommand{\nn}{\mathbb N}   %blackboard bold N
+\newcommand{\cc}{\mathbb C}   %blackboard bold C
+\newcommand{\af}{\mathbb A}   %blackboard bold A
+\newcommand{\pp}{\mathbb P}   %blackboard bold P
+\newcommand{\id}{\operatorname{id}} %for identity map
+\newcommand{\im}{\operatorname{im}} %for image of a function
+\newcommand{\dom}{\operatorname{dom}} %for domain of a function
+\newcommand{\cat}[1]{\mathscr{#1}}   %calligraphic category
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert} %for absolute value
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert} %for norm
+\newcommand{\modar}[1]{\text{ mod }{#1}} %for modular arithmetic
+\newcommand{\set}[1]{\left\{#1\right\}} %for set
+\newcommand{\setp}[2]{\left\{#1\ \middle|\ #2\right\}} %for set with a property
+\newcommand{\card}[1]{\#\,{#1}} %for cardinality of a set
+\newcommand\m[1]{\begin{pmatrix}#1\end{pmatrix}} 
+
+%Re-defined notations
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\emptyset}{\varnothing}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+%----------------------------
+
+\allowdisplaybreaks
+
+\newcommand{\tcr}[1]{\textcolor{red}{#1}}
+\newcommand{\tcb}[1]{\textcolor{blue}{#1}}
+\newcommand{\tco}[1]{\textcolor{orange}{#1}}
+
+\newcommand{\lrp}[1]{\left(#1\right)}
+\newcommand{\lrb}[1]{\left[#1\right]}
+\newcommand{\lrc}[1]{\left\{#1\right\}}
+ 
+ 
+\begin{document}
+ 
+\title{Homework 3}
+\author{Kevin Guillen\\[0.5em]
+MATH-103A  | Complex Analysis | Spring 2022}
+\date{} 
+\maketitle
+
+\begin{problem}{3.1}
+Let \[M(z) = \dfrac{az + b}{cz + d},\quad ad-bc \neq 0.\]
+\begin{itemize}[itemsep=3em]
+\item[(a)] Prove that $\displaystyle\lim_{z \to \infty} M(z) = \infty$ if $c = 0$.
+%----------------------------------------
+\begin{proof}
+  If we $c =0$ then we have that $M(x) = \dfrac{az + b}{d}$. We recall Theorem 5.11, which tell us that proving
+  \[\lim_{z\to 0}\dfrac{1}{M(\frac{1}{z})} = 0\]
+  is equivalent to what we are asked to prove. We first see that,
+  \[\dfrac{1}{M(\frac{1}{z})} = \dfrac{d}{a(\frac{1}{z}) +b }.\]
+  and recall from class that $\displaystyle\lim_{z\to 0}\frac{1}{z} = \infty$.
+  So taking the desired limit we see,
+  \begin{align*}
+    \lim_{z\to 0}\dfrac{1}{M(\frac{1}{z})} &= \dfrac{ d }{ a\lrp{\lim_{z\to 0}\frac{1}{z} } + b } \\
+    &= \frac{1}{\infty} \\
+    &= 0
+  \end{align*}
+  which then implies that $\displaystyle\lim_{z \to \infty} M(z) = \infty$ as desired.
+
+\end{proof}
+%----------------------------------------
+\newpage
+\item[(b)] Prove that, if $c\neq 0$ \[\displaystyle\lim_{z \to \infty} M(z) = \dfrac{a}{c} \quad \text{and} \quad \displaystyle\lim_{z \to -d/c}M(z) = \infty.\]
+%----------------------------------------
+\begin{proof}
+  We can apply Theorem 5.11 again, which gives us that $\displaystyle\lim_{z \to \infty} M(z) = \lim_{z \to 0}M(1/z)$.
+  So working with the RHS of this equality we get,
+  \begin{align*}
+    \lim_{z\to 0 }M(1/z) = \lim_{z\to 0 }\dfrac{ a\lrp{\dfrac{1}{z}} + b  }{ c\lrp{\dfrac{1}{z}} + d } &= \lim_{z\to 0 }\dfrac{\dfrac{a + bz}{z}}{\dfrac{c + dz}{z}} \\
+    &= \lim_{z\to 0 }\dfrac{a + bz}{c+ dz} \\
+    &= \dfrac{a}{c}.
+  \end{align*}
+  Which means then that $\displaystyle\lim_{z \to \infty} M(z) = \dfrac{a}{c}$, as desired. 
+\end{proof}
+%----------------------------------------
+
+\item[(c)] Compute $M'(z)$. For what $z$ is $M'(z) = 0$? That is, describe the set $\setp{z \in \cc}{M'(z) = 0}$.
+%----------------------------------------
+\begin{proof}
+  We see that $M(z)$ is the quotient of two complex functions $f(z) = az + b$ and $g(z) = cz + d$. Meaning we can apply the Quotient rule from Theorem 6.12 to get,
+  \begin{align*}
+    M'(z) = \dfrac{f'(z)(cz + d) - (az+b)g'(z)}{(cz+d)^{2}}
+  \end{align*}
+  We quickly verify what the derivative of this type of function,
+  \begin{align*}
+    f'(z) = \lim_{h \to 0}\dfrac{f(z + h) - f(z)}{h} &= \dfrac{az + ah + b - az - b}{h} \\
+    &= \dfrac{ah}{h} \\
+    &= a
+  \end{align*}
+  also telling us that $g'(x) = c$.  Putting this all back into the first equation we get,
+  \begin{align*}
+    M'(z) &= \dfrac{a(cz + d ) - (az + b)c}{(cz + d)^{2}} \\
+    &= \dfrac{acz + ad - azc -bc}{(cz + d)^{2}} \\
+    &= \dfrac{ad - bc}{(cz + d)^{2}}.
+  \end{align*}
+
+  There is no $z$ such that $M'(z) = 0$. This is because the only way for the derivative to be 0 would be for the numerator to be 0, but from what was given $ad - bc \neq 0$.
+
+  Meaning the set of all complex numbers such that $M'(z) = 0$ can be best described as the empty set, since that is what it is. 
+
+
+\end{proof}
+%----------------------------------------
+
+\end{itemize}
+\end{problem}
+
+\newpage  %Do not delete
+
+\begin{problem}{3.2}
+Example 5.7 in the Lecture Notes tells us that polynomials are continuous. 
+\begin{itemize}[itemsep=3em]
+\item[(a)] Prove that the complex conjugation function $\sigma(z) \coloneqq \overline{z}$ is continuous.
+%----------------------------------------
+\begin{proof}
+  To show that $\sigma$ is indeed continuous we can consider:
+  \begin{align*}
+    \lim_{z\to z_0}\abs{\sigma(z) - \sigma(z_0)} &= \lim_{z\to z_0}\abs{\overline{z} - \overline{z_0}} \\
+    &= \lim_{z\to z_0}\abs{\overline{z - z_0}} && \text{By Proposition 2.4} \\
+    &= \lim_{z \to z_0}\abs{z - z_0} && \text{Modulus is invariant to sign} \\
+    &= 0
+  \end{align*}
+  meaning $\sigma$ is continuous.
+\end{proof}
+%----------------------------------------
+
+\item[(b)] Prove that a polynomial in $\overline{z}$ is continuous. That is, prove that a polynomial given as
+\[p(\overline{z}) = a_n\overline{z}^n + \cdots + a_1\overline{z} + a_0,\quad a_i \in \cc,\ a_n \neq 0\]
+is continuous.
+%----------------------------------------
+\begin{proof}
+  Let $g(z) = a_nz^{n} + \dots + a_1z + a_0$ where $a_i$ for $i = 1,\dots, n$ are the same $a_i$ from the given polynomial. Now let $\sigma(z) = \overline{z}$ be the complex conjugation function given from the previous part. 
+
+We know that $g(z)$ is clearly a polynomial and the lecture notes already tell us that polynomials are continuous. We just showed that $\sigma(z)$ is continuous. We see that,
+\[g(\sigma(z)) = p(\overline{z})\]
+meaning that $p(\overline{z})$ is just a composition of continuous functions. Therefore by Theorem 6.2 from the lecture notes we have that $p(\overline{z})$ is continuous as well. 
+\end{proof}
+%----------------------------------------
+
+\item[(c)] Prove that the following functions are continuous by writing them as a sum or product of polynomials $p(z)$ and $q(\overline{z})$
+\begin{itemize}[itemsep=2em]
+\item[(i)] $R(z) \coloneqq \Re z$
+%----------------------------------------
+\begin{proof}
+  We recall from class that we can express Re $z$ as $\dfrac{z + \overline{z}}{2}$, but this can be expressed as $\dfrac{z}{2} + \dfrac{\overline{z}}{2}$. Meaning we can let $p(z) = \dfrac{z}{2}$ and we see that,
+  \[\text{Re }z = p(z) + p(\overline{z}) = \dfrac{z + \overline{z}}{2}\]
+\end{proof}
+%----------------------------------------
+\newpage
+\item[(ii)] $I(z) \coloneqq \Im z$
+%----------------------------------------
+\begin{proof}
+  Note that for $z = a + bi$ we have,
+  \begin{align*}
+    z - \overline{z} = a+bi - a + bi = 2bi
+  \end{align*}
+  meaning we have a similar expression as before, Im $z = \dfrac{z - \overline{z}}{2}$ which can be separated again as $q(z) = \dfrac{z}{2}$. Now we can express Im $z$ as,
+  \[\text{Im }z = q(z) - q(\overline{z}) = \dfrac{z - \overline{z}}{2}\]
+\end{proof}
+%----------------------------------------
+
+\item[(iii)] $N(z) \coloneqq \abs{z}^2$
+%----------------------------------------
+\begin{proof}
+  Let $z = a + bi$ as before. We see that, 
+  \begin{align*}
+    N(z) = a^{2} + b^{2} &= (\text{Re }z)^{2} + (\text{Im }z)^{2} \\
+    &= (p(z) + p(\overline{z}))^{2} + (q(z) - q(\overline{z}))^{2}
+  \end{align*}
+  as desired. 
+\end{proof}
+%----------------------------------------
+
+\end{itemize}
+\end{itemize}
+\end{problem}
+
+\newpage  %Do not delete
+
+\begin{problem}{3.3}
+Show that the function $f : \cc \to \cc$ given by
+\[f(z) = \begin{cases} \dfrac{\overline{z}^2}{z} & \text{if }z \neq 0\\[1em] 0 & \text{if } z = 0 \end{cases}\]
+is not differentiable at $0$, possibly using Example 5.4 as an inspiration.
+\end{problem}
+%----------------------------------------
+\begin{proof}
+  We know that if a function is differentiable at a point, then the limit given in Definition 6.8 is exists, and by existing it must be unique. Let us consider the derivative of $f$ at $0$,
+  \begin{align*}
+    f'(0) = \lim_{h \to 0}\dfrac{f(h) - f(0)}{h - 0} &= \lim_{h \to 0}\dfrac{f(h)}{h} \\ 
+    &= \lim_{h \to 0}\dfrac{\overline{h}^{2}/h}{h} \\
+    &= \lim_{h \to 0}\dfrac{\overline{h}^{2}}{h^{2}} \\
+    &= \lim_{h \to 0}\lrp{\dfrac{\overline{h}}{h}}^{2}
+  \end{align*}
+  We know $h$ is of the form $a+ bi$ so we can consider approaching $0$ alongside the real axis, that is $b = 0$. So we have,
+  \begin{align*}
+    f'(0) = \lrp{\dfrac{\overline{h}}{h}}^{2} &= \lrp{\dfrac{a - bi}{a+bi}}^{2} \\
+    &= \lrp{\dfrac{a}{a}}^{2} &&\text{since $b = 0$} \\
+    &= 1^{2} \\
+    &= 1
+  \end{align*}
+
+  Now let's consider the limit when $h$ is approaching zero along the diagonal where $a = b$. We have,
+  \begin{align*}
+    f'(0) = \lrp{\dfrac{\overline{h}}{h}}^{2} &= \lrp{\dfrac{a - ai}{a + ai}}^{2} \\
+    &= \dfrac{a^{2}- a^{2} -2a^{2}i}{a^{2} -a^{2} +2a^{2}i } \\
+    &= \dfrac{-2a^{2}i}{2a^{2}i} \\
+    &= -1
+  \end{align*}
+  which does not equal the limit when approaching along the real line. Therefore $f$ is not differentiable at 0. 
+\end{proof}
+%----------------------------------------
+
+\newpage  %Do not delete
+
+\begin{problem}{3.4}
+Let $G$ be a domain and $f: G \to \cc$ a function that is differentiable at every point in $G$. Consider the domain
+\[G^* = \setp{z \in \cc}{\overline{z} \in G}\]
+and the function 
+\[f^*:G^* \to \cc,\ z \mapsto \overline{f(\overline{z})}\]
+Show that $f^*$ is differentiable at every point in $G^*$.
+\end{problem}
+%----------------------------------------
+\begin{proof}
+  We know if $f^{*}$ is differentiable at a point $z_0 \in G^{*}$ then we'd have the following limit exist,
+  \begin{align*}
+    f^{*}(z_0) = \lim_{z\to z_0}\dfrac{f^{*} (z) - f^{*} (z_0)}{z-z_0 }
+  \end{align*}
+  we know though that this limit will be equal to,
+  \begin{align}
+    \lim_{z\to z_0}\dfrac{f^{*} (z) - f^{*} (z_0)}{z-z_0 } &= \lim_{\overline{z} \to \overline{z_0}}\dfrac{f^{*}(\overline{z}) - f^{*}(\overline{z_0})}{\overline{z} - \overline{z_0}} \\
+    &= \lim_{\overline{z} \to \overline{z_0}} \dfrac{\overline{f(z)} - \overline{f(z_0)}}{\overline{z} - \overline{z_0}} \\
+    &=\lim_{\overline{z} \to \overline{z_0}} \dfrac{\overline{f(z) -f(z_0)}}{\overline{  z -z_0}} \\
+    &= \lim_{\overline{z} \to \overline{z_0}}\overline{ \lrp{\dfrac{f(z) -f(z_0)}{z -z_0}}} 
+  \end{align}
+  
+  Note though that elements are in the domain $G^{*}$ if their conjugate is in the domain $G$, meaning $\overline{z}$ and $\overline{z_0}$ are in $G$. We see once we input these into $f^{*}$ we are really taking the derivative of $f$ at $\overline{z}$ in $G$, and then taking the conjugation of that. We know can take this derivative because $f$ is defined to be differentiable at every point in $G$. In other words we know this derivative exists:
+  \begin{align}
+    \lim_{\overline{z} \to \overline{z_0}} \dfrac{f(z) -f(z_0)}{z -z_0}
+  \end{align}
+  We recall one more property about limits though and that is,
+  \begin{align*}
+    \lim_{z\to z_0}f(x) = L \implies \lim_{z\to z_0}\overline{f(x)} = \overline{L}
+  \end{align*}
+  because we know $f$ to be differentiable at $\overline{z_0}$ we have that (5) is equal to some value $L$ and therefore (4) is equal to $\overline{L}$, but then
+  \[\lim_{z\to z_0}\dfrac{f^{*} (z) - f^{*} (z_0)}{z-z_0 } = \overline{L}\]
+  which means that $f^{*}$ is differentiable at every point in $G^{*}$.
+
+\end{proof}
+%----------------------------------------
+
+\newpage  %Do not delete
+
+\begin{problem}{3.5}
+For each function, determine all points at which the derivative exists. When the derivative exists, find its value. Use Example 6.10 from the Lecture Notes as an inspiration.
+\begin{itemize}[itemsep=3em]
+\item[(a)] $f(z) = z + i\overline{z}$
+%----------------------------------------
+\begin{proof}
+  We know the derivative is of the form,
+  \begin{align*}
+    f'(z) = \lim_{h \to 0} \dfrac{f(z+ h) - f(z)}{h} 
+  \end{align*}
+  so expanding the RHS we get,
+  \begin{align*}
+    \lim_{h \to 0} \dfrac{f(z+ h) - f(z)}{h}  &= \lim_{h \to 0}\dfrac{z+h +i\overline{z} + i\overline{h} -z -i\overline{z} }{h} \\
+    &= \lim_{h \to 0}\dfrac{h +i\overline{h}}{h}
+  \end{align*}
+  We know that $h$ is of the form $a + bi$, so if we consider approaching 0 alongside the real axis we'd have $ h = \overline{h}$, which turns the limit to,
+  \begin{align*}
+    \lim_{h \to 0} \dfrac{f(z+ h) - f(z)}{h} &= \lim_{h \to 0}\dfrac{h + ih}{h} \\
+    &= 1 + i.
+  \end{align*}
+  Now if we consider when approaching 0 alongside the imaginary axis, that is $ h = -\overline{h}$ we have,
+  \begin{align*}
+    \lim_{h \to 0} \dfrac{f(z+ h) - f(z)}{h} &= \lim_{h \to 0}\dfrac{h - ih}{h} \\
+    &= 1-i
+  \end{align*}
+
+  Because a limit is unique that would be then that $1 + i = 1-i$, but this isn't true, therefore the limit does not exist, meaning there are no points where the function of the derivative exists. 
+
+\end{proof}
+%----------------------------------------
+
+\item[(b)] $g(z) = z\Im z$
+%----------------------------------------
+\begin{proof}
+  We know the derivative is of the form,
+  \begin{align*}
+    g'(z) = \lim_{h \to 0} \dfrac{g(z + h ) - g(z)}{h}
+  \end{align*}
+  so expanding the RHS we get,
+  \begin{align*}
+    \lim_{h \to 0}\dfrac{g(z +h ) - g(z)}{h} &= \lim_{h \to 0}\dfrac{(z+h)\Im{(z+h)} - z\Im z}{h} \\
+    &= \lim_{h \to 0}\dfrac{ z\Im(z+h) +h\Im(z+h) - z\Im z }{ h } \\
+    &= \lim_{h \to 0}\dfrac{ \tcr{z\Im z} + z\Im h + h\Im z + h\Im h - \tcr{z\Im z}}{ h } \\
+    &= \lim_{h \to 0}\dfrac{z\Im h + h\Im z + h\Im h }{h} && \text{apply }3.2(c)(iii) \\
+    &= \lim_{h \to 0}\lrp{ \dfrac{ zh - z\overline{h} }{2} + \dfrac{ hz - h\overline{z} }{2} + \dfrac{h^{2} -h\overline{h}}{2} }h^{-1} \\
+    &= \lim_{h \to 0}\dfrac{ zh - z\overline{h} +hz - h\overline{z} + h^{2} -h\overline{h} }{ 2h }
+  \end{align*}
+  Now let us consider when $h$ approaches 0 along the real axis, that is $h = \overline{h}$,
+  \begin{align*}
+    \lim_{h \to 0}\dfrac{g(z +h ) - g(z)}{h} &= \lim_{h \to 0}\dfrac{ zh - zh +hz - h\overline{z} + h^{2} -hh }{ 2h }\\
+    &=  \lim_{h \to 0}\dfrac{ hz -h\overline{z}}{ 2h } \\
+    &= \lim_{h \to 0}\dfrac{z - \overline{z}}{2} 
+  \end{align*}
+  Now let's see when $h$ approaches $0$ along the imaginary axis, that is $h = -\overline{h}$,
+  \begin{align*}
+    \lim_{h \to 0}\dfrac{g(z +h ) - g(z)}{h} &= \lim_{h \to 0}\dfrac{ zh + zh +hz - h\overline{z} + h^{2} +hh }{ 2h } \\
+    &= \lim_{h \to 0}\dfrac{3zh + 2h^{2} -h\overline{z}}{2h} \\
+    &= \lim_{h \to 0}\dfrac{3z + 2h -\overline{z}}{2} && h\to 0 \\
+    &= \lim_{h \to 0}\dfrac{3z - \overline{z}}{2}.
+  \end{align*}
+  Because limits are unique if $g'(z)$ existed we would have,
+  \begin{align*}
+    \dfrac{3z - \overline{z}}{2} &= \dfrac{z - \overline{z}}{2} \\
+    3z -\overline{z} &= z - \overline{z} \\
+    2z &= 0 \\
+    z &= 0
+  \end{align*}
+  meaning $g'(z)$ can only exist if $z = 0$, now we just need to check if it actually exists. We see that it does through the following,
+  \begin{align*}
+    g'(0) = \lim_{h\to 0}\dfrac{h^{2} -h\overline{h}}{2h} =\lim_{h\to 0} \dfrac{h -\overline{h}}{2} = 0.
+  \end{align*}
+
+\end{proof}
+%----------------------------------------
+
+\end{itemize}
+\end{problem}
+
+
+%----------------------------------------
+%Delete if not attempted
+%EXTRA CREDIT. OPTIONAL
+\newpage
+
+\begin{problem}{3.6}
+By definition, a function $f : G \to \cc$ is differentiable at $z_0 \in G$ if the limit
+\[f'(z_0) = \lim_{z\to z_0}\frac{f(z) - f(z_0)}{z - z_0}\]
+exists. Unpacking the limit definition, we see that $f$ is differentiable at $z_0$ if and only if for every $\epsilon > 0$, there exists a $\delta > 0$ such that
+\[\text{if }\ 0 < \abs{z - z_0} < \delta,\quad \text{then }\ \abs{\frac{f(z) - f(z_0)}{z - z_0} - f'(z_0)} < \epsilon.\]
+By appealing only to the definition, we show that $\sigma : \cc \to \cc$ defined by $\sigma(z) = \overline{z}$ is not differentiable anywhere by completing the following steps.
+\begin{itemize}[itemsep=3em]
+\item[(i)] Let $z_0 \in \cc$ and assume that $\sigma'(z_0)$ exists. Choose $\delta > 0$ according to the definition using $\epsilon = 1/2$ and write down the resulting statement.
+%----------------------------------------
+
+\textbf{Disclaimer}: I apologize in advanced if this is very wrong. I was scratching my head trying to think of a way to explicitly choose a $\delta$ for $\epsilon = \dfrac{1}{2}$, but I'm not sure how given that we are assuming $\sigma'(z_0)$ to exist, but not knowing what it actually is. So I decided that maybe we are being asked to just rewrite the definition using $\sigma(z)$ and the other given items, and that I'm misunderstanding the problem. 
+%----------------------------------------
+\begin{solution}
+  We assume that $\sigma'(z_0)$ exists, and so by definition we have then for every $\epsilon > 0$  theres exists a $\delta > 0$ such that
+  \begin{align*}
+    \text{if } 0 < \abs{z - z_0}< \delta, \text{     then }\abs{\dfrac{\sigma(z) - \sigma(z_0)}{z - z_0} - \sigma'(z_0)} < \epsilon.
+  \end{align*}
+  Let us choose $\epsilon = 1/2$, then by definition there exists a $\delta> 0$ such that
+  \begin{align}
+    0 < \abs{z - z_0}< \delta \implies \abs{\dfrac{\sigma(z) - \sigma(z_0)}{z - z_0} - \sigma'(z_0)} <\dfrac{1}{2}
+  \end{align}.
+\end{solution}
+
+\item[(ii)] Consider $z = z_0 + \dfrac{\delta}{2}$ and conclude from (a) that $\abs{1 - \sigma'(z_0)} < \epsilon$.
+%----------------------------------------
+\begin{solution}
+  Let us consider $z = z_0 + \dfrac{\delta}{2}$ we see that,
+  \begin{align*}
+    0< \abs{z -z_0}  &= \abs{z_0 + \dfrac{\delta}{2} - z_0} = \dfrac{\delta}{2} < \delta 
+  \end{align*}
+  since this $\delta$ is from our choice of $\epsilon = 1/2$, by (6) we have that ,
+  \begin{align*}
+    \abs{ \dfrac{ \overline{z_0} +\dfrac{\delta}{2} -\overline{z_0}}{ z_0 + \dfrac{\delta}{2} - z_0 }  - \sigma'(z_0)} &< \dfrac{1}{2} \\
+    \abs{\dfrac{\dfrac{\delta}{2}}{\dfrac{\delta}{2}} - \sigma'(z_0)}&< \dfrac{1}{2} \\
+    \abs{1 - \sigma'(z_0)} &< \dfrac{1}{2}
+  \end{align*}
+  as desired.
+  
+\end{solution}
+%----------------------------------------
+
+\item[(iii)] Consider $z = z_0 + i\dfrac{\delta}{2}$ and conclude from (a) that $\abs{1 + \sigma'(z_0)} < \epsilon$.
+%----------------------------------------
+\begin{solution}
+In a similar fashion we see,
+\begin{align*}
+  0 < \abs{z - z_0} = \abs{z_0 +i\dfrac{\delta}{2} -z_0} = \abs{i\dfrac{\delta}{2}} = \dfrac{\delta}{2} < \delta
+\end{align*}
+so by (6) we have that,
+\begin{align*}
+  \abs{ \dfrac{\overline{z_0} -i\dfrac{\delta}{2} - \overline{z_0}}{z_0+ i\dfrac{\delta}{2} - z_0 } - \sigma'(z_0)} &< \dfrac{1}{2} \\
+  \abs{ -\dfrac{i\dfrac{\delta}{2} }{ i\dfrac{\delta}{2}} - \sigma'(z_0) } &< \dfrac{1}{2} \\
+  \abs{-1 - \sigma'(z_0)} &< \dfrac{1}{2} \\
+  \abs{1 + \sigma'(z_0)} &< \dfrac{1}{2}.
+\end{align*}
+as desired. 
+\end{solution}
+%----------------------------------------
+
+\item[(iv)] Using the triangle inequality together with (ii) and (iii), obtain a contradiction.
+%----------------------------------------
+\begin{solution}
+  Using what we know of (ii) and (iii) we have that,
+  \begin{align*}
+      \abs{1 + \sigma'(z_0)} +\abs{1 - \sigma'(z_0)} < \dfrac{1}{2} + \dfrac{1}{2}
+  \end{align*}
+  we can apply the triangle inequality on the LHS and obtain,
+  \begin{align*}
+    \abs{1 + \sigma'(z_0) + 1 - \sigma'(z_0)} &\leq \abs{1 + \sigma'(z_0)} +\abs{1 - \sigma'(z_0)} < \dfrac{1}{2} + \dfrac{1}{2} \\
+    \abs{2} &< 1 \\
+    2 &< 1
+  \end{align*}
+  which is a contradiction. Therefore $\sigma(z)$ is not differentiable anywhere.  
+\end{solution}
+%----------------------------------------
+
+\end{itemize}
+\end{problem}
+
+%EXTRA CREDIT. OPTIONAL
+%Delete if not attempted
+%----------------------------------------
+
+
+%----------------------------------------
+%Delete if nothing to add
+\newpage  %Do not delete
+
+\begin{center}
+\textbf{Collaborators:}
+$\frac{\bar{d}}{\bar{x}}$
+\end{center}
+\vfill 
+
+\begin{center}
+\textbf{References:}
+%List any book/website/notes that you used to write your solutions
+\end{center}
+\begin{itemize}
+\item[$\bullet$] [Book(s): Title, Author]
+\item[$\bullet$] [Online: \href{http://example.com/}{\color{blue}Link}]
+\item[$\bullet$] [Notes: \href{http://example.com/}{\color{blue}Link}]
+\end{itemize}
+
+\vfill
+\begin{center}
+Fin.
+\end{center}
+\vfill
+
+\end{document}

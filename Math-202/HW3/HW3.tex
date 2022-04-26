@@ -1,0 +1,345 @@
+\documentclass[11pt]{article}
+ 
+\usepackage[top=0.75in, bottom=1.25in, left=1.25in, right=1.25in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb} %this is THE math package
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{fancybox}
+\usepackage{hyperref}
+\usepackage{varwidth}
+\usepackage{mdframed}
+\usepackage{mathrsfs}
+\usepackage[most]{tcolorbox}
+\usepackage{enumitem}
+%------------------------
+%Fonts I use, uncomment if you like to use them.
+%The first is the general font, and the second a math font
+\usepackage{mathpazo}
+\usepackage{eulervm}
+%------------------------
+%This is so that we have standard fonts for the double-stroked symbols
+%for reals, naturals etc. regardless of what font you use.
+%Don't comment
+\AtBeginDocument{
+  \DeclareSymbolFont{AMSb}{U}{msb}{m}{n}
+  \DeclareSymbolFontAlphabet{\mathbb}{AMSb}}
+%------------------------
+
+%----------------------------------------------
+%User-defined environments
+%Commented because we're not using them in this document
+%The only uncommented ones are the Problem and Solution environment
+
+% \newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{question}[2][Question]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem\!]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+%\newenvironment{sub-problem}[2][]{\begin{trivlist}
+%\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+\newenvironment{solution}{\begin{proof}[\textbf{\textit{Solution}}] }{\end{proof}}
+%----------------------------------------------
+
+%----------------------------
+%User-defined notations
+\newcommand{\zz}{\mathbb Z}   %blackboard bold Z
+\newcommand{\qq}{\mathbb Q}   %blackboard bold Q
+\newcommand{\ff}{\mathbb F}   %blackboard bold F
+\newcommand{\rr}{\mathbb R}   %blackboard bold R
+\newcommand{\nn}{\mathbb N}   %blackboard bold N
+\newcommand{\cc}{\mathbb C}   %blackboard bold C
+\newcommand{\af}{\mathbb A}   %blackboard bold A
+\newcommand{\pp}{\mathbb P}   %blackboard bold P
+\newcommand{\id}{\operatorname{id}} %for identity map
+\newcommand{\im}{\operatorname{im}} %for image of a function
+\newcommand{\dom}{\operatorname{dom}} %for domain of a function
+\newcommand{\cat}[1]{\mathscr{#1}}   %calligraphic category
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert} %for absolute value
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert} %for norm
+\newcommand{\modar}[1]{\text{ mod }{#1}} %for modular arithmetic
+\newcommand{\set}[1]{\left\{#1\right\}} %for set
+\newcommand{\setp}[2]{\left\{#1\ \middle|\ #2\right\}} %for set with a property
+\newcommand{\card}[1]{\#\,{#1}} %for cardinality of a set
+\newcommand\m[1]{\begin{pmatrix}#1\end{pmatrix}} 
+
+%Re-defined notations
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\emptyset}{\varnothing}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+%----------------------------
+
+\allowdisplaybreaks
+\newcommand{\tcr}[1]{\textcolor{red}{#1}}
+\newcommand{\tcb}[1]{\textcolor{blue}{#1}}
+\newcommand{\tco}[1]{\textcolor{orange}{#1}}
+
+\newcommand{\lrp}[1]{\left(#1\right)}
+\newcommand{\lrb}[1]{\left[#1\right]}
+\newcommand{\lrc}[1]{\left\{#1\right\}}
+
+\allowdisplaybreaks
+\newtcolorbox[auto counter, number within=chapter]{example}[1][]{
+    enhanced,
+    breakable,
+    left=0.5em, right=0pt, top=1pt, bottom=15pt,    
+    attach boxed title to top left={yshift=-\tcboxedtitleheight},
+     boxed title style={%
+        empty,
+        right=0pt,
+        frame code={\draw[line width=2pt, gray] (frame.north west)--(frame.north east) --++ (0:1pt) ;}},
+    before upper=\hspace{\tcboxedtitlewidth},
+     colbacktitle=white,
+    coltitle={white},
+    colback={white},
+    fonttitle={\bfseries},
+    title={-},
+    sharp corners,
+    frame hidden,
+    boxrule=0pt,
+    borderline west={2pt}{0pt}{blue},
+     overlay unbroken and last={%
+        \draw[line width=2pt, red] (frame.south west)   -- ++(0:2cm);},
+    #1
+    }
+ 
+\begin{document}
+ 
+\title{Homework 3}
+\author{Kevin Guillen\\[0.5em]
+MATH 202 | Algebra III | Spring 2022}
+\date{} 
+\maketitle
+
+\begin{tcolorbox}
+    \begin{problem}{13.5.2}
+        Find all irreducible polynomials of degrees 1,2, and 4 over $\mathbb{F}_2$ and prove that their product is $x^{16} - x$.
+    \end{problem}
+\end{tcolorbox}
+
+
+    \begin{proof}
+        For irreducible degree 1 polynomials it is pretty obvious that the only ones over $\mathbb{F}_2$ are $x + 1$ and $x$. 
+
+        For irreducible degree 2 polynomials, we know a quadratic polynomial must have linear factors if it were to be reducible. Meaning we can identify irreducible quadratic polynomial, $p(x)$, over $\mathbb{F}_2$ if it satisfies $p(1) = p(0) = 1$. We verify this requirement with the only quadratic polynomials of $\mathbb{F}_2$:
+        \begin{itemize}
+            \item $p(x) = x^{2} + x + 1$, verifying $p(0) =0 + 0 + 1 = 1$ and $p(1) = 1 + 1 + 1 = 1$, irreducible.
+            \item $p(x) = x^{2} + x$, verifying $p(0) = 0 + 0 = 0$, reducible.
+            \item $p(x) = x^{2} + 1$, verifying $p(0) = 0 + 1 = 1$, but $p(1) = 1 + 1 = 0$, reducible. 
+            \item $p(x) = x^{2}$, verifying $p(0) = 0$, but $p(1) = 1$, reducible. 
+        \end{itemize} 
+        so we have that the only irreducible polynomial of degree 2 over $\mathbb{F}_2$ is $x^{2} + x + 1$. 
+
+        For irreducible degree 4 polynomials the story a slightly different. We can still eliminate polynomials if they have linear factors through the same method as above. We then just have to check if any of the degree 4 polynomials that are left are a product of irreducible quadratic polynomials, that is, if any of them are equal to $(x^{2} + x + 1)^{2}$. We see though,
+        \[(x^{2} + x + 1)^{2} = x^{4} + x^{3} + x^{2} + x^{3} + x^{2} + x + x^{2} + x + 1 = x^{4}+  x^{2} + 1\]
+        so we have eliminated that polynomial. We also note though that this polynomial will have to have an odd number of terms because if we plug in 1 to a polynomial of even terms the result will be 0. So we it leaves us with the following polynomials which we verify as before:
+        \begin{itemize}
+            \item $p(x) = x^{4} + x^{3} + x^{2} + x + 1$, verifying, $p(0) = 0 + 0 + 0 + 0 + 1 = 1$ and $p(1) = 1 + 1 + 1 + 1 + 1 = 1$, irreducible.
+            \item $p(x) = x^{4} + x^{3} + 1$, verifying, $p(0) = 0 + 0 + 1 = 1$ and $p(1) = 1 + 1 + 1 = 1$, irreducible.
+            \item $p(x) = x^{4} + x + 1$, verifying, $p(0) = 0 + 0 + 1 = 1$ and $p(1) = 1 + 1 + 1 = 1$, irreducible. 
+        \end{itemize}
+        Meaning the above 3 polynomials are the only degree 4 irreducible polynomials over $\mathbb{F}_2$. 
+
+        So to recap, all our irreducible polynomials of the desired degrees are: $x$, $x + 1$, $x^{2} + x + 1$, $x^{4} + x + 1$, $x^{4} + x^{3} + 1$, and $x^{4} + x^{3} + x^{2}+ x + 1 $. So let us compute their product in this  order,
+        \begin{align*}
+            x(x + 1) &= \tcr{x^{2} + x}  \\
+            (x^{2} + x + 1)\tcr{(x^{2} + x)} &= x^{4} + x^{3} + x^{3} + x^{2} + x^{2} + x = \tcr{x^{4} + x} \\
+            (x^{4} + x + 1)\tcr{(x^{4} + x)} &= x^{8} + x^{5}+ x^{5} + x^{2} + x^{4} + x = \tcr{x^{8} + x^{4} + x^{2} + x} \\
+            (x^{4} + x^{3} + 1)\tcr{(x^{8} + x^{4} + x^{2} + x)} &= x^{12} + x^{8} + x^{6} + x^{5} + x^{11} + x^{7} + x^{5} + x^{4} + x^{8} + x^{4} + x^{2} + x \\
+            &= \tcr{x^{12} + x^{11} + x^{7} + x^{6} + x^{2} + x} \\
+        \end{align*}
+        our final product, 
+        \begin{align*}
+            (x^{4} + x^{3} + x^{2} + x + 1)\tcr{(x^{12} + x^{11} + x^{7} + x^{6} + x^{2} + x)} &= x^{16} + x^{15} + x^{11} + x^{10} + x^{6} + x^{5}\\& + x^{15} + x^{14} + x^{10} + x^{9} + x^{5} + x^{4}\\ & + x^{14} + x^{13} + x^{9} + x^{8} + x^{4} + x^{3}\\& + x^{13}+ x^{12} + x^{8} + x^{7}  + x^{3} + x^{2} \\&+ x^{12} + x^{11} + x^{7}+ x^{6} + x^{2} + x \\
+            &= \tcr{x^{16} + x}.
+        \end{align*}
+        Over $\ff_2$ $x^{16} + x = x^{16} -x$, showing the desired product. 
+    \end{proof}
+
+
+\vspace*{20pt}
+\begin{tcolorbox}
+    \begin{problem}{13.5.3}
+        Prove that $d$ divides $n$ if and only if $x^{d} -1$ divides $x^{n} -1$. [Note that if $n = qd + r$ then $x^{n} -1 = (x^{qd + r} - x^{r}) + (x^{r} -1 ).$]
+    \end{problem}
+\end{tcolorbox}
+\begin{proof}
+    Assuming that $d$ divides $n$ then there exists $q$ such that $n = qd$. We can apply the noted equation and have,
+    \begin{align*}
+        x^{n} -1 = x^{qd} - x^{0} + x^{0} - 1 = x^{qd} - 1.
+    \end{align*} 
+    Where we can factor out $x^{d} - 1$ from above to get,
+    \begin{align*}
+        x^{n} -1 &= x^{qd} -1 \\
+        &= (x^{d} -1)(x^{(q-1)d} + x^{(q-2)d} + \dots + x^{(q - (q+1))d} + 1)
+    \end{align*}
+    meaning that if $d$ divides $n$ then $x^{d} -1$ divides $x^{n} -1$ as we see above. 
+
+    Now we assume that $d$ doesn't divide $n$, and we want to show that implies then that $x^{d}-1$ does not divide $x^{n} - 1$. Because $d$ does not divide $n$ we have that, $n = qd + r$ where $0 < r < d$. So applying the noted equation we have,
+    \begin{align*}
+        x^{n}-1 &= x^{qd + r} - x^{r} + x^{r} -1 \\
+        &= x^{r}(x^{qd} - 1) +(x^{r}-1) \\
+        &= x^{r}(x^{d}-1)(x^{(q-1)d} + x^{(q-2)d} + \dots + x^{(q - (q + 1))d} + 1) + (x^{r} + 1)
+    \end{align*}
+    we see from above that when we attempt to divide $x^{n} -1$ by $x^{d}-1$ we have remainder $x^{r} + 1$, and we know $x^{r}+1$ can't be divided by $x^{d}-1$ since $ 0 <  r < d $. Therefore if $d$ does not divide $n$ then $x^{d} - 1$ does not divide $x^{n} -1$. 
+
+    All together we have $d$ divides $n $ if and only if $x^{d} -1 $ divides $x^{n} -1 $.
+\end{proof}
+
+\vspace*{20pt}
+\begin{tcolorbox}
+    \begin{problem}{13.5.5}
+        For any prime $p$ and any nonzero $a \in \mathbb{F}_p$ prove that $x^{p} -x +a$ is irreducible and separable over $\mathbb{F}_p$. [For the irreducibility: One approach - prove first that if $\alpha$ is a root then $\alpha + 1$ is also a root. Another approach - suppose it's reducible and compute derivatives.]
+    \end{problem}
+\end{tcolorbox}
+\begin{proof}
+    Let $p(x) = x^{p} -x + a$ and let $\alpha$ be a root of $p(x)$. We see $\alpha + 1$ is also a root of $p(x)$ through the following,
+    \begin{align*}
+        p(\alpha + 1) &= (\alpha + 1)^{p} - (\alpha + 1 ) + a && \text{Proposition 35: } (a+b)^{p} = a^{p} + b^{p}\\
+        &= \alpha^{p} + 1^{p} - \alpha + 1 + a \\
+        &= \alpha^{p} - \alpha + a  \\
+        &= p(\alpha)\\
+        &= 0.
+    \end{align*}
+    We have by induction then that $\alpha + k$ for all $k \in \ff_p$ is also a root of $p(x)$. Because of this we know that $\alpha$ cannot be a root in $\ff_p$ since that would mean that $0$ is also a root of $p(x)$ but that could only be the case if $a = 0$ which goes against the given assumption that $a \neq 0$. Therefore if $\alpha$ were to be a root of $p(x)$, it must be in some extension of $\ff_p$
+
+    Now assuming that $\alpha$ is in some extension of $\ff_p$ and is a root of $p(x)$, then so are $\alpha + k$ for all $k \in \ff_p$ by the reasoning above. This means then that for some $d$ that the degree of $\alpha + k$ is $ d$ for all $k \in \ff_p$ over $\ff_p$. 
+
+    Before we continue from here we note that $p(x)$ is separable since $D_xp(x) = -1 \neq 0$. 
+
+    Now because $p(x)$ is separable we have that $p(x)$ must be the product of all the minimal polynomials of $\alpha + k$ for all $k \in \ff_p$. Since they all have degree $d$ we have that $p = dn$ for some $n$. Recall though that $p$ was prime, so we have either $d = 1$ or $n = 1$. In the first case, that would imply that  $\alpha \in \ff_p$, but we already showed that can't be. Meaning we have that $n = 1$, but that means $p(x)$ is irreducible because it is the minimal polynomial, as desired. 
+\end{proof}
+
+\newpage
+\vspace*{20pt}
+\begin{tcolorbox}
+    \begin{problem}{13.5.6}
+        Prove that $x^{p^{n} - 1} -1 = \prod_{\alpha\in \mathbb{F}_{p^{n}}^{\times}}(x-\alpha)$. Conclude that $\prod_{\alpha \in \mathbb{F}_{p^{n}}^{\times}}\alpha = (-1)^{p^{n}}$so the product of nonzero elements of a finite field is $+1$ if $p= 2$ and $-1$ if $p$ is odd. For $p$ odd and $n= 1$ derive Wilson's Theorem: $(p-1)! \equiv -1 \mod{p}.$ 
+    \end{problem}
+\end{tcolorbox}
+\begin{proof}
+    We know from the textbook that the field $\ff_{p^{n}}$ is the field whose $p^{n}$ elements are the solutions to $x^{p^{n}}-x = 0$. We also know that $x^{p^{n}} - x$ is separable meaning it has $p^{n}$ distinct roots, which gives us,
+    \begin{align*}
+        x^{p^{n}} -x = \prod_{\alpha \in \ff_{p^{n}}}(x-\alpha) 
+    \end{align*}
+    note though that $0 \in \ff_{p^{n}}$, so we will be able to factor out an $x$ on the RHS, and it is clear we can factor out an $x$ on the LHS, so dividing both by $x$ we get,
+    \[x^{p^{n} -1} - 1 = \prod_{\alpha\in \mathbb{F}_{p^{n}}^{\times}}(x-\alpha)\]
+    since $\ff_{p^{n}}^{\times}$ is of order $p^{n} - 1$ ($\ff_{p^{n}}-  \set{0}$) which we know from the example in D\&F.
+
+    Now if we evaluate the above equality for $x = 0$ we get,
+    \begin{align*}
+        -1 &= \prod_{\alpha\in \mathbb{F}_{p^{n}}^{\times}}(-\alpha) \\
+        -1&= (-1)^{p^{n} - 1}\prod_{\alpha\in \mathbb{F}_{p^{n}}^{\times}}\alpha && \text{multiplying by }(-1)^{p^{n} -1 } \\
+        (-1)^{p^{n} -1 } -1&=(-1)^{p^{n} -1 } (-1)^{p^{n} - 1}\prod_{\alpha\in \mathbb{F}_{p^{n}}^{\times}}\alpha \\
+        (-1)^{p^{n}} &= \prod_{\alpha\in \mathbb{F}_{p^{n}}^{\times}}\alpha
+    \end{align*}
+    meaning the product of non-zero elements of $\ff_{p^{n}}$ will be 1 when $p =2$ and $-1$ otherwise, as desired. 
+
+    Now for a non-even $p$ and $n = 1$ we have,
+    \begin{align*}
+        -1 = \prod_{\alpha\in \mathbb{F}_{p^{n}}^{\times}}\alpha
+    \end{align*}
+    so if we take modulo $p$ we see that $(p-1)\cdot(p-2)\cdot \dots \cdot2 \cdot 1 = -1  $ we have that $(p-1)! \equiv -1 \mod{p}$ as desired. 
+\end{proof}
+
+\newpage
+\begin{tcolorbox}
+    \begin{problem}{13.5.9}
+        Show that the binomial coefficient $\binom{pn}{pi}$ is the coefficient of $x^{pi}$ in the expansion of $(1 + x)^{pn}$. Working over $\mathbb{F}_p$ show that this is the coefficient of $(x^{p})^{i}$ in $(1 + x^{p})^{n}$ and hence prove that $\binom{pn}{pi}\equiv \binom{n}{i} \mod{p}$. 
+    \end{problem}
+\end{tcolorbox}
+\begin{proof}
+    We can use the Binomial Theorem to express $(1+x)^{pn}$ as,
+    \begin{align*}
+        (1 + x)^{pn} = \sum_{k = 0}^{pn}\binom{pn}{k}x^{k}
+    \end{align*}
+    so if we have $k = pi$ we see the coefficient of $x^{pi}$ is indeed $\binom{pn}{pi}$
+
+    We know that $\ff_p$ is obviously of characteristic $p$ so, again by proposition 35, we have $(1+x)^{pn} = 1+ x^{pn} = (1+ x^{p})^{n}$, so over $\ff_p$ we have that $\binom{pn}{pi}$ is the coefficient of $(x^{p})^{i}$ in $(1+x^{p})^{n}$. 
+
+    Also $(1+x)^{pn} $ being equal to $(1+x^{p})^{n}$ implies,
+    \[(1+x^{p})^{n} = \sum_{k = 0}^{n}\binom{n}{k}(x^{p})^{k} = \sum_{k = 0}^{pn}\binom{pn}{k}x^{k}\]
+    when over $\ff_p$, therefore $\binom{pn}{pi} \equiv \binom{n}{i}\mod{p}$ as desired.
+\end{proof}
+
+\begin{tcolorbox}
+    \begin{problem}{13.6.2}
+        Let $\zeta_n$ be the primitive $n^{th}$ root of unity and let $d$ be a divisor of $n$. Prove that $\zeta_n^{d}$ is a primitive $(n/d)^{th}$ root of unity.
+    \end{problem}
+\end{tcolorbox}
+\begin{proof}
+    Notice that,
+    \[(\zeta_n^{d})^{n/d} = \zeta_n^{n} =1\]
+    meaning then that $\zeta_n^{d}$ is an $(n/d)^{th}$ root of unity. Now let us consider $i$ where $1\leq i < n/d$, we see that,
+    \[(\zeta_n^{d})^{i} = \zeta_n^{di}\]
+    and recall that $d$ is a divisor of $n$ and $i < n/d$ therefore $1 \leq di < n$, and so we have $\zeta_n^{di} \neq 1$, but this also means then that $(\zeta_n^{d})^{i}\neq 1$. 
+    
+    Thus the order of $\zeta_n^{d}$ is exactly $n/d$, meaning it generates the cyclic group of all the other $(n/d)^{th}$ roots of unity. Which means that $\zeta_n^{d}$ is a primitive $(n/d)^{th}$ root of unity, as desired.  
+\end{proof}
+
+\begin{tcolorbox}
+    \begin{problem}{13.6.3}
+        Prove that if a field contains the $n^{th}$ roots of unity for $n$ odd then it also contains the $2n^{th}$ roots of unity.
+    \end{problem}
+\end{tcolorbox}
+\begin{proof}
+    Let $K$ be a field containing the $n^{th}$ roots of unity for an odd $n$. Now let $\zeta$ represent an $2n^{th}$ root of unity. So if $\zeta^{n} = 1$ that means that $\zeta \in K$. So let us assume that $\zeta^{n} \ neq 1$, we know though by definition that $\zeta^{2n} = 1$, so $\zeta^{n}$ is a root of unity for $x^{2} -1$. 
+
+    We know however that the roots of this polynomial are $\pm1$, and by assumption that $\zeta^{n} \neq 1$ so it must be that $\zeta^{n} = -1$. Note though that,
+    \[(-\zeta)^{n} = -1^{n}\zeta^{n} = -1^{n}(-1) = -1^{n + 1}\]
+    but $n$ is odd, so this is $1$, meaning that $-\zeta \in K$. Recall though that $K$ is a field so we have that $\zeta\in K$ as desired. 
+\end{proof}
+
+\begin{tcolorbox}
+    \begin{problem}{13.6.4}
+        Prove that if $n= p^{k}m$ where $p$ is a prime and $m$ is relatively prime to $p$ then there are precisely $m$ distinct $n^{th}$ roots of unity over a field of characteristic $p$. 
+    \end{problem}
+\end{tcolorbox}
+\begin{proof}
+    Let $K$ again be a field, but with characteristic $p$. The roots of unity over $K$ are the roots in $K$ that satisfy,
+    \[x^{n} -1 =0\]
+    by definition, but since $n = p^{k}m$ this is the same as,
+    \begin{align*}
+        x^{n} -1 = x^{p^{k}m} - 1 = (x^{m} - 1)^{p^{k}}
+    \end{align*}
+    the last equality comes again from Proposition 35. This means then the roots of unity over $K$ are the roots of $x^{m} - 1$. Now we just want to show that they are distinct. Because $(m,p) =1$, $x^{m}-1$ and $D_x(x^{m} - 1)$ will be relatively prime, and by Proposition 33, $x^{m} - 1$ will be separable, meaning no repeated roots. Therefore there is $m$ distinct $n^{th}$ roots of unity over $K$ which is of characteristic $p$.
+\end{proof}
+
+\begin{tcolorbox}
+    \begin{problem}{13.6.5}
+        Prove that there are only a finite number of roots of unity in any finite extension $K$ of $\qq$.
+    \end{problem}
+\end{tcolorbox}
+\begin{proof}
+    Recall the Euler totient function $\phi$, we have that $\phi(n) \geq \frac{\sqrt n}{2}$ for $1 \leq n$. Now letting $K$ be an extension of $\qq$ with infinite number of roots of unity. Then we have that for $N \in \nn$ that there is some $n$ such that $4N^{2} < n$ and that there exists some $n^{th}$ root of unity in $K$ which we denote $\zeta$. 
+
+    Therefore 
+    \[\lrb{K : \qq} \geq \lrb{\qq(\zeta): \qq}= \phi(n) \geq \dfrac{\sqrt n}{2} > N\]
+    recall though that $N$ was arbitrary, meaning that $N < \lrb{K : \qq}$ for every natural number $N$. Showing that $\lrb{K : \qq}$ is infinite. It follows from this that any finite extension of $\qq$ there will be only a finite number of roots of unity. 
+\end{proof}
+
+\begin{tcolorbox}
+    \begin{problem}{13.6.6}
+        Prove that for $n$ odd, $n> 1$, $\psi_{2n}(x) = \psi_n(-x)$
+    \end{problem}
+\end{tcolorbox}
+\begin{proof}
+    We know from D\&F that $\psi_{2n}(x)$ and $\psi_n(-x)$ are irreducible, meaning then that they are the minimal polynomial of any their roots. So all we need to do is find a common root between both of them. 
+
+    Let $\zeta_n$ be the $n^{th}$ primitive root of unity as usual, and let $\zeta_2 = -1$ be the 2nd primitive root of unity specifically. That way we have their product to be
+    \[\zeta_n\zeta_2 = -\zeta_n\]
+    We assumed though that $n$ is odd so it is clear 2 and $n$ must be relatively prime. We know then that $\zeta_n\zeta_2$ must then me the $2n^{th}$ primitive root of unity (assuming this from the first exercise from this chapter), which is a root of $\psi_{2n}(x)$. Also note that $-\zeta_n$ is a root of $\psi_n(-x)$, therefore we have $-\zeta_n$ to be the common root between both the given polynomials. Therefore $\psi_{n}(-x) = \psi_{2n}(x)$.
+\end{proof}
+
+\end{document}
