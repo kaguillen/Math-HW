@@ -1,0 +1,393 @@
+\documentclass[11pt]{article}
+ 
+\usepackage[top=0.75in, bottom=1.25in, left=1.25in, right=1.25in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb} %this is THE math package
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{fancybox}
+\usepackage{hyperref}
+\usepackage{varwidth}
+\usepackage{mdframed}
+\usepackage{mathrsfs}
+\usepackage[most]{tcolorbox}
+%------------------------
+%Fonts I use, uncomment if you like to use them.
+%The first is the general font, and the second a math font
+\usepackage{mathpazo}
+\usepackage{eulervm}
+%------------------------
+%This is so that we have standard fonts for the double-stroked symbols
+%for reals, naturals etc. regardless of what font you use.
+%Don't comment
+\AtBeginDocument{
+  \DeclareSymbolFont{AMSb}{U}{msb}{m}{n}
+  \DeclareSymbolFontAlphabet{\mathbb}{AMSb}}
+%------------------------
+
+%----------------------------------------------
+%User-defined environments
+%Commented because we're not using them in this document
+%The only uncommented ones are the Problem and Solution environment
+
+% \newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{question}[2][Question]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem\!]{\begin{tcolorbox}\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}\end{tcolorbox}}
+%\newenvironment{sub-problem}[2][]{\begin{trivlist}
+%\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+\newenvironment{solution}{\begin{proof}[\textbf{\textit{Solution}}] }{\end{proof}}
+%----------------------------------------------
+
+%----------------------------
+%User-defined notations
+\newcommand{\zz}{\mathbb Z}   %blackboard bold Z
+\newcommand{\qq}{\mathbb Q}   %blackboard bold Q
+\newcommand{\ff}{\mathbb F}   %blackboard bold F
+\newcommand{\rr}{\mathbb R}   %blackboard bold R
+\newcommand{\nn}{\mathbb N}   %blackboard bold N
+\newcommand{\cc}{\mathbb C}   %blackboard bold C
+\newcommand{\af}{\mathbb A}   %blackboard bold A
+\newcommand{\pp}{\mathbb P}   %blackboard bold P
+\newcommand{\id}{\operatorname{id}} %for identity map
+\newcommand{\im}{\operatorname{im}} %for image of a function
+\newcommand{\dom}{\operatorname{dom}} %for domain of a function
+\newcommand{\cat}[1]{\mathscr{#1}}   %calligraphic category
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert} %for absolute value
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert} %for norm
+\newcommand{\modar}[1]{\text{ mod }{#1}} %for modular arithmetic
+\newcommand{\set}[1]{\left\{#1\right\}} %for set
+\newcommand{\setp}[2]{\left\{#1\ \middle|\ #2\right\}} %for set with a property
+\newcommand{\card}[1]{\#\,{#1}} %for cardinality of a set
+\newcommand\m[1]{\begin{pmatrix}#1\end{pmatrix}} 
+\newcommand*\MapsTo{%
+  \xrightarrow[\raisebox{0.2 em}{\smash{\ensuremath{\sim}}}]{}%
+}
+
+%Re-defined notations
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\emptyset}{\varnothing}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+%----------------------------
+
+\allowdisplaybreaks
+ 
+ 
+\begin{document}
+ 
+\title{Homework 4}
+\author{Kevin Guillen\\[0.5em]
+MATH 202 | Algebra III | Spring 2022}
+\date{} 
+\maketitle
+
+%Use \[...\] instead of $$...$$
+
+
+  \begin{problem} {14.1.5}
+    Prove that $\qq(\sqrt{2})$ and $\qq(\sqrt{3})$ are not isomorphic.
+  \end{problem}
+
+\begin{proof}
+    Let us assume that they are indeed isomorphic, that would then mean there exists an isomorphism between these two fields. Let us denote it by $\phi$. Recall that isomorphisms are injective and surjective homomorphisms. Meaning we can consider we have,
+    \[\phi(\sqrt{2}) = a + b\sqrt{3}\]
+    where $a,b\in \qq$. We know though that $b\neq 0$ since we have $\phi(a)$ and $\phi$ is injective.
+    Now we can consider, 
+    \begin{align*}
+      2 = \phi(2) &= \phi(\sqrt{2}^{2})  && \phi \text{ is multiplicative} \\
+      &= \phi(\sqrt{2})^{2} \\
+      &= (a+b\sqrt{3})^{2} \\
+      &= a^{2} + 3b^{2} + 2ab\sqrt{3}
+    \end{align*}
+    if $a\neq 0$ too, we have,
+    \begin{align*}
+      2 &= a^{2} + 3b^{2} + 2ab\sqrt{3} \\
+      2 - a^{2} -ab^{2} &= 2ab\sqrt{3} \\
+      \dfrac{2 - a^{2} -ab^{2}}{2ab} &= \sqrt{3}
+    \end{align*}
+    meaning that $\sqrt{3} \in \qq$, since $a$ and $b$ are rationals and $\qq$ is a field,  which is a contradiction. Therefore $a = 0$ and we have,
+    \begin{align*}
+      2 &= 3b^{2} \\
+      \dfrac{2}{3} &= b^{2} \\
+      \dfrac{\sqrt{2}}{\sqrt{3}} &= b
+    \end{align*}
+    meaning that $\dfrac{\sqrt{2}}{\sqrt{3}}\in \qq$ which is also a contradiction. We already covered why $b$ cant be 0, thus by contradiction there can be no isomorphism between $\qq(\sqrt{2})$ and $\qq(\sqrt{3})$, meaning they are not isomorphic. 
+\end{proof}
+
+\begin{problem}{14.1.5}
+  Determine the automorphisms of the extensions explicitly of \\ $\qq(\sqrt[4]{2})/\qq(\sqrt{2})$.
+\end{problem}
+\begin{proof}
+  We know the minimal polynomial of $\sqrt[4]{2}$ over $\qq(\sqrt{2})$ is $x^{2} - \sqrt{2}$. Where this equation has roots $\sqrt[4]{2}$ and $-\sqrt[4]{2}$ meaning we have the automorphisms $1$ and $\sigma$ where,
+  \begin{align*}
+    1(a+b\sqrt[4]{2}) &= a + b\sqrt[4]{2} \\
+    \sigma(a + b\sqrt[4]{2}) &= a-b\sqrt[4]{2}
+  \end{align*}
+  Meaning then that $Aut(\qq(\sqrt[4]{2})/\qq(\sqrt{2}))\cong \zz/2\zz$
+\end{proof}
+
+\vspace*{20pt}
+
+\begin{problem}{14.1.7}
+  This exercise determines $Aut(\rr/ \qq)$.
+  \begin{itemize}
+    \item[(a)] Prove that any $\sigma \in Aut(\rr/\qq)$ takes squares to squares and takes positives reals to positive reals. Conclude that $a < b$ implies $\sigma a < \sigma b$ for every $a,b\in \rr$.
+    \item[(b)] Prove that $-\dfrac{1}{m} < a-b < \dfrac{1}{m}$ implies $-\dfrac{1}{m} < \sigma a - \sigma b < \dfrac{1}{m}$ for every positive integer $m$. Conclude that $\sigma$ is a continuous map on $\rr$. 
+    \item[(c)]  Prove that any continuous map on $\rr$ which is the identity on $\qq$ is the identity map, hence $Aut(\rr/ \qq ) = 1$.
+  \end{itemize}
+\end{problem}
+\begin{itemize}
+  \item[(a)]
+  \begin{proof}
+    Let $\sigma$ be as defined in the problem statement. Now let $c\in\rr_+$ we have then that $\sqrt{c}\in \rr$, and we know $c = \sqrt{c}\sqrt{c}$. Now notice,
+    \begin{align*}
+      \sigma(c) &= \sigma(\sqrt{c}\sqrt{c}) \\
+      &= \sigma(\sqrt{c})\sigma(\sqrt{c})
+    \end{align*}
+    which is a square and also a positive real number as desired. 
+
+    If $a < b$ we have then by definition we have that $ 0 < b -a$ applying $\sigma$ to both we have,
+    \begin{align*}
+      \sigma(0) &< \sigma(b - a)  \\
+      0 &< \sigma(b) - \sigma(a) \\
+      \sigma(a) &< \sigma(b).
+    \end{align*}
+    as desired. 
+  \end{proof} 
+  \vspace*{15pt}
+  \item[(b)]
+  \begin{proof}
+    Due to the last part we know if  $-\dfrac{1}{m} < a-b < \dfrac{1}{m}$ then we have,
+    \begin{align*}
+      \sigma(-1/m) < \sigma(a-b) < \sigma(1/m)
+    \end{align*}
+    recall that $\sigma$ fixes $\qq$ and $1/m$ is rational so,
+    \begin{align*}
+      -\dfrac{1}{m} < \sigma(a-b) < \dfrac{1}{m} &&\sigma \text{ is additive}\\
+      -\dfrac{1}{m} < \sigma a - \sigma b < \dfrac{1}{m}
+    \end{align*}
+    as desired. 
+  
+    For $\sigma$ to be continuous we must have that for any $\epsilon > 0$ there exists $\delta > 0$ such that,
+    \[\abs{ a- b} < \delta \implies \abs{\sigma(a) - \sigma(b)} < \epsilon.\]
+    We see though that we can let $\delta = \epsilon$ and the implication we just proved proves the continuity of $\sigma$.
+  \end{proof}
+  \vspace*{15pt}
+  \item[(c)]  
+  \begin{proof}
+    Now let $\sigma$ be any continuous map on $\rr$ that fixes $\qq$. We know then from real analysis that for any $x \in \rr$ there exists a sequence $(x_n)$ such that $\displaystyle \lim_{n \to \infty}x_n = x$ where $x_n \in \qq$. By definition of continuity we have then that,
+    \begin{align*}
+      \lim_{n \to \infty}\sigma(x_n) = \sigma(\lim_{n \to \infty}x_n)
+    \end{align*} 
+    we know though that $\sigma$ fixes $\qq$ so $\sigma(x_n) = x_n$ for all $x_n$, so we have,
+    \begin{align*}
+      \lim_{n \to \infty}x_n  &= \sigma(\lim_{n \to \infty} x_n) \\ 
+      x &= \sigma(x)
+    \end{align*}
+    therefore any continuous map on $\rr$ that fixes $\qq$ is simply the identity map of $\rr$.
+  \end{proof}
+\end{itemize}
+
+\vspace*{20pt}
+\begin{problem}{14.1.10}
+  Let $K$ be an extension of the field $F$. Let $\phi: K \to K'$ be an isomorphism of $K$ with a field $K'$ which maps $F$ to the subfield $F'$ of $K'$. Prove that the map $\sigma \mapsto \phi\sigma\phi^{-1}$ defines a group isomorphism $Aut(K/F)\MapsTo Aut(K'/F')$
+\end{problem}
+\begin{proof}
+  
+  Let the map $\pi$ be defined as,
+  \begin{align*}
+    \pi: Aut(K/F) &\to Aut(K'/F') \\
+        \sigma &\mapsto  \phi \sigma \phi^{-1}.
+  \end{align*}
+  Let $\sigma_1,\sigma_2 \in Aut(K/F)$ we see that,
+  \begin{align*}
+    \pi(\sigma_1\sigma_2) &= \phi \sigma_1\sigma_2 \phi^{-1}  \\
+    &= \phi \sigma_1 1\sigma_2\phi^{-1} \\
+    &= \phi\sigma_1 \phi^{-1}\phi \sigma_2 \phi^{-1} \\
+    &= \pi(\sigma_1)\pi(\sigma_2) 
+  \end{align*}
+  $\pi$ is indeed a group homomorphism. 
+
+  Let $\sigma_1$ and $\sigma_2$ be as before, note that
+  \begin{align*}
+    \pi(\sigma_1) &= \pi(\sigma_2)  \\
+    \phi\sigma_1 \phi^{-1} &= \phi\sigma_2 \phi^{-1}  \\
+    \phi \sigma_1 &= \phi \sigma_2 \\
+    \sigma_1 &= \sigma_2
+  \end{align*}
+  and therefore $\pi$ is injective. 
+
+  Let $\delta \in Aut(K'/F')$ then let $\sigma = \phi^{-1}\delta\phi$ we see that,
+  \begin{align*}
+    \pi(\sigma) &= \phi\phi^{-1}\delta \phi\phi^{-1} \\
+    &= 1 \delta 1 \\
+    &= \delta
+  \end{align*}
+  we have then that $\pi$ is also surjective.
+
+  All together that means the given map $\pi$ is a group isomorphism. 
+\end{proof}
+
+\vspace*{20pt}
+\begin{problem}{14.2.4}
+    Let $p$ be a prime. Determine the elements of the Galois group of $x^{p} - 2$.
+\end{problem}
+\begin{proof}
+  Let $\theta = \sqrt[p]{2}$ (the real value) and $\zeta_p$ be a principle $p^{th}$ root of unity. Clearly $\qq(\sqrt{2}) \subset \rr$ and by Eisenstein $x^{p}-2$ is irreducible, so the splitting field will be of degree $\phi(p)p =(p-1)p $.
+
+  An element of the Galois group is of course defined by where it maps these generators, meaning $\theta$ can be mapped to $\theta\zeta^{n}$ for $n = 1,2,\dots, p$, and $\zeta_p$ can be mapped to $(\zeta_p)^{n}$ for $n = 1,2, \dots, p-1$.
+  
+  Because the order is $p(p-1)$ and we see the the number of possibilities is $p(p-1)$ we have that all the maps above are elements of the Galois group. 
+\end{proof}
+
+\vspace*{20pt}
+\begin{problem}{14.2.5}
+  Prove that the Galois group of $x^{p} - 2$ for $p$ a prime is isomorphic to the group of matrices $\begin{pmatrix}
+    a & b \\ 0 & 1
+  \end{pmatrix}$ where $a,b \in \ff_p$, $a\neq 0$.
+\end{problem}
+\begin{proof}
+  Let $\theta$  and $\zeta_p$ be as before. We know then the element of the group are $\sigma_{(m,n)}$ where,
+  \begin{align*}
+    \sigma_{(m,n)} = \begin{cases}
+      \zeta_p \mapsto \zeta^{m} \ &m = 1,2, \dots, p-1 \\
+      \theta \mapsto \zeta^{n} \ &n = 1,2,3 \dots , p-1
+    \end{cases}
+  \end{align*} 
+  Our claim now is that the correspondence between this group and the one defined in the problem statement are isomorphic through,
+  \begin{align*}
+    \pi: \sigma_{(m,n)} \mapsto \begin{pmatrix}
+      m & n \\ 0 & 1
+    \end{pmatrix}
+  \end{align*}
+  
+  It is clear why these two are bijective all that needs to be shown is that it is a group homomorphism. Notice the following though,
+  \begin{align*}
+    \sigma_{(m,n)}\sigma_{(m',n')}(\zeta_p) = \zeta_p^{m m'}   
+  \end{align*}
+  and 
+  \begin{align*}
+    \sigma_{(m,n)}\sigma_{(m',n')}(\theta) &= \sigma_{(m,n)}(\theta\zeta_p^{n'}) \\
+    &= \theta\zeta_p^{n}\zeta_p^{m n'}\\
+    &= \theta\zeta^{n + m  n'}
+  \end{align*}
+  and
+  \begin{align*}
+    \begin{pmatrix}
+      m & n \\ 0 & 1
+    \end{pmatrix}\cdot \begin{pmatrix}
+      m' & n' \\ 0 & 1
+    \end{pmatrix} = \begin{pmatrix}
+      m m' & n + mn' \\
+      0 & 1
+    \end{pmatrix}
+  \end{align*}
+  we we have then that $\pi$ is indeed a homomorphism and therefore an isomorphism as desired.  
+\end{proof}
+
+
+\vspace*{20pt}
+\begin{problem}{14.2.6}
+  Let $K = \qq(\sqrt[8]{2}, i)$ and let $F_1 = \qq(i)$, $F_2= \qq(\sqrt{2})$, $F_3 = \qq(\sqrt{2})$. Prove that $Gal(K/F_1) \cong Z_8$, $Gal(K/F_2) \cong D_8$, $Gal(K/F_3)\cong Q_8$.
+\end{problem}
+\begin{proof}
+  Let $zeta_8$ be the 8th primitive root of unity, similarly to a previous problem we have that,
+  \[Gal(\qq(\sqrt[8]{2}, i)/ \qq) = \left< \sigma, \tau \mid \sigma^{8} = \tau^{2}, \sigma\tau = \tau \sigma^{3} \right>\]
+  $\sigma$ and $\tau$ defined as,
+  \begin{align*}
+    \tau: \begin{cases}
+      \sqrt[8]{2} \mapsto \sqrt[8]{2} \\
+      i \mapsto -i \\
+      \zeta_8 \mapsto \zeta_8^{7}
+    \end{cases}
+    \sigma: \begin{cases}
+      \sqrt[8]{2} \mapsto \zeta_8\sqrt[8]{2} \\
+      i \mapsto i\\
+      \zeta_8 \mapsto \zeta_8^{5}
+    \end{cases}
+  \end{align*}
+  We see that $F_1$ then is the fixed field of $H_1 = \left< \sigma \right>$, $F_2$ the fixed field of $H_2 = \left<\sigma^{2}, \tau\right>$, and $F_3$ the fixed field of $\left<\sigma^{2}, \tau \sigma^{2}\right>$. We know from Dummit and Foote though (Corollary 11) that $Gal(K/F_n) = H_n$ for $n = 1,2,3$. 
+
+  $H_1$ is of order 8 containing an element of order 8 because recall that $\sigma^{8} = 1$, giving us that $H_1$ is isomorphic to $Z_8$ as desired. 
+
+  Note that $\sigma^{2}\tau = \sigma\sigma\tau = \sigma\tau\sigma^{3} = \sigma\tau^{-1}$ meaning that \[H_2 = \left< \sigma^{2} , \tau\mid (\sigma^{2})^{4} = \tau^{2} = 1, \ \sigma\tau = \tau \sigma^{-1} \right>\] but these generators and their relations are what define the dihedral group of order 8, thus \\ $H_2 \cong D_8$.
+
+  Finally we have that $(\sigma^{2})^{4} = 1, (\tau\sigma^{3})^{4} = 1$, $\sigma^{2}(\tau\sigma^{3}) = (\tau\sigma^{3})^{-1}\sigma^{2}$ and $(\sigma^{2})^{2} = \sigma^{4} (\tau\sigma^{3})^{2}$ giving us that,
+  \[H_3 = \left<\sigma^{2}, \tau\sigma^{3} \mid (\sigma^{2})^{4} = (\tau\sigma^{3})^{4}, \sigma^{2}(\tau\sigma^{3}) = (\tau\sigma^{3})^{-1}\sigma^{2}, (\sigma^{2})^{2} = (\tau\sigma^{3})^{2}  \right>\]
+  showing us that $H_3 \cong Q_8$ as desired.
+\end{proof}
+
+\vspace*{20pt}
+\begin{problem}{14.2.10}
+  Determine the Galois group of the splitting field over $\qq$ of $x^{8} - 3$.
+\end{problem}
+\begin{proof}
+  Let $\zeta_8$ be as usual, we have the 8 roots of the given polynomial to be $\zeta_8^{n}\sqrt[8]{3}$ where $n = 0,1, \dots, 7$. Therefore we have that the splitting field is $\qq(\sqrt[8]{3},\sqrt{2},i)$. We note that $x^{8} -3$ is Eisenstein so it is irreducible. Meaning the first extension will be of degree 8.
+
+  Now assuming that $x^{2}-2$ is reducible over $\qq(\sqrt[8]{3})$ gives us that,
+  \[(a_7\sqrt[8]{3}^{7} + \dots + a_1\sqrt[8]{3} + a_0)^{2} = 2\]
+  now we see the coefficient of the basis element 1 to be,
+  \[3a_4^{2} + 6a_3a_5 + 6a_2a_6 + 6a_1a_7 + a_0^{2} = 2.\]
+  The integral domain of the element of the form $b_7\sqrt[8]{3}^{7} + \dots + b_1\sqrt[8]{3} + b_0$ for $b_i \in \zz$ has field of fractions $\qq(\sqrt[8]{3})$, and that they contain each other. So we can assume then that $a_i \in \zz$ and if we mod 3 the equality becomes impossible. Giving us that $\qq(\sqrt[8]{3},\sqrt{2})$ is of degree 16 and because it is a field it is contained in $\rr$. Giving us then that $K = \qq(\sqrt[8]{3},\sqrt{2}, i )$ is of degree 32 over $\qq$. 
+
+  We have $32 = 2 \cdot 2 \cdot 8$ permutations of the roots and all are automorphisms so $\pi: \sqrt[8]{3} \mapsto \zeta_8\sqrt[8]{3}$, $\tau: \sqrt{2}\mapsto -\sqrt{2}$, and $\sigma: i \mapsto -i$ generate $Gal(K/\qq)$. 
+
+  We also note that
+  \begin{align*}
+    \pi^{8} = \tau^{2} = \sigma^{2} \\
+    \tau\sigma = \sigma\tau \\
+    \tau\pi = \pi^{5}\tau \\
+    \sigma\pi = \pi^{3}\sigma
+  \end{align*}
+  these relations on a free group of three generators is suffice to write any element in the form $\pi^{x}\tau^{y}\sigma^{z}$ which yield 32 combinations, which is,
+  \[Gal(K/\qq) = \left<\pi,\tau,\sigma \mid \pi^{8} = \tau^{2} = \sigma^{2} = 1, \tau\sigma = \sigma \tau, \tau\pi = \pi^{5}\tau, \sigma\pi = \pi^{3}\sigma\right>\] 
+
+
+  Finally, notice that $7^{2} \equiv 5^{2} \equiv 3^{2} \equiv 1 \text{ mod }8$ so $Aut(Z_8) = Z_2^{2}$, letting $f$ be the isomorphism between the two groups and letting $x$ generate $Z_8$ and $y,z \in Z_2^{2}$ such that $f(y)(x) = x^{5}$ and $f(z)(x) = x^{3}$ we see these elements have the same relations that $Z_2^{2}\rtimes_f Z_8 $ is of order 32.
+
+  Therefore $Gal(K/\qq) = Z_2^{2} \rtimes_f Z_8$
+\end{proof}
+
+\vspace*{20pt}
+\begin{problem}{14.2.14}
+  Show that $\qq(\sqrt{2 + \sqrt{2}})$ is a cyclic quartic field, i.e., is a Galois extension of degree 4 with cyclic Galois group. 
+\end{problem}
+\begin{proof}
+  Let $K = \qq(\sqrt{2 + \sqrt{2}})$ which is a field. For it to be Galois it must contain all the conjugates of the generator. The generator satisfies,
+  \begin{align*}
+    x&= \sqrt{2 + \sqrt{2}} \\
+    x^{2} -2 &= \sqrt{2} \\
+    (x^{2} -2)^{2} -2 &= 0
+  \end{align*}
+  we see that $x^{4} -4x^{2} + 2$ is Eisenstein and therefore irreducible, so it must be the minimal polynomial of the generator. We then see all the conjugates are $\pm\sqrt{2 \pm \sqrt{2}}$. Now we want to show that $K$ contains all of them. We have that,
+  \begin{align*}
+    \sqrt{2 - \sqrt{2}} = \dfrac{\sqrt{4 -2}}{\sqrt{2 + \sqrt{2}}} = \dfrac{\sqrt{2}}{\sqrt{2 + \sqrt{2}}}
+  \end{align*}
+  Note though that $\sqrt{2} \in K$ thereby showing that $\sqrt{2 -\sqrt{2}}\in K$. Because $K$ is a field we have the others through additive inverses, meaning then that $K$ is Galois over $\qq$. 
+  From what we have already shown it is clear $\left[K : \qq\right] = 4$. Meaning the Galois group is also of size 4, now consider the automorphism
+  \[\sigma(\sqrt{2 + \sqrt{2}}) = \sqrt{2 - \sqrt{2}}\]
+  if we apply this twice we see that,
+  \begin{align*}
+    \sigma^{2}(\sqrt{2 + \sqrt{2}}) &= \sigma(\sqrt{2 - \sqrt{2}}) \\
+    &= \sigma(\dfrac{\sqrt{2 + \sqrt{2}}^{2} - 2}{\sqrt{2 + \sqrt{2}}}) \\
+    &=\dfrac{\sigma(\sqrt{2 + \sqrt{2}})^{2} -2}{\sigma(\sqrt{2 + \sqrt{2}})} \\
+    &= \dfrac{\sqrt{2 - \sqrt{2}}^{2} - 2 }{\sqrt{2 - \sqrt{2}}} \\
+    &= \dfrac{-\sqrt{2}}{\sqrt{2 - \sqrt{2}}}
+  \end{align*}
+  which is not equal to $\sqrt{2 + \sqrt{2}}$. This means then that $\sigma$ is an automorphism of order 4. Therefore the Galois group is actually a cyclic group of order 4. 
+\end{proof}
+
+
+\end{document}

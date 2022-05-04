@@ -1,0 +1,371 @@
+\documentclass[11pt]{article}
+ 
+\usepackage[top=0.75in, bottom=1.25in, left=1in, right=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb} %this is THE math package
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{fancybox}
+\usepackage{hyperref}
+\usepackage{varwidth}
+\usepackage{mdframed}
+\usepackage{mathrsfs}
+\usepackage[most]{tcolorbox}
+%------------------------
+%Fonts I use, uncomment if you like to use them.
+%The first is the general font, and the second a math font
+\usepackage{mathpazo}
+\usepackage{eulervm}
+%------------------------
+%This is so that we have standard fonts for the double-stroked symbols
+%for reals, naturals etc. regardless of what font you use.
+%Don't comment
+\AtBeginDocument{
+  \DeclareSymbolFont{AMSb}{U}{msb}{m}{n}
+  \DeclareSymbolFontAlphabet{\mathbb}{AMSb}}
+%------------------------
+
+%----------------------------------------------
+%User-defined environments
+%Commented because we're not using them in this document
+%The only uncommented ones are the Problem and Solution environment
+
+% \newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{question}[2][Question]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem\!]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+%\newenvironment{sub-problem}[2][]{\begin{trivlist}
+%\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+\newenvironment{solution}{\begin{proof}[\textbf{\textit{Solution}}] }{\end{proof}}
+%----------------------------------------------
+
+%----------------------------
+%User-defined notations
+\newcommand{\zz}{\mathbb Z}   %blackboard bold Z
+\newcommand{\qq}{\mathbb Q}   %blackboard bold Q
+\newcommand{\ff}{\mathbb F}   %blackboard bold F
+\newcommand{\rr}{\mathbb R}   %blackboard bold R
+\newcommand{\nn}{\mathbb N}   %blackboard bold N
+\newcommand{\cc}{\mathbb C}   %blackboard bold C
+\newcommand{\af}{\mathbb A}   %blackboard bold A
+\newcommand{\pp}{\mathbb P}   %blackboard bold P
+\newcommand{\id}{\operatorname{id}} %for identity map
+\newcommand{\im}{\operatorname{im}} %for image of a function
+\newcommand{\dom}{\operatorname{dom}} %for domain of a function
+\newcommand{\cat}[1]{\mathscr{#1}}   %calligraphic category
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert} %for absolute value
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert} %for norm
+\newcommand{\modar}[1]{\text{ mod }{#1}} %for modular arithmetic
+\newcommand{\set}[1]{\left\{#1\right\}} %for set
+\newcommand{\setp}[2]{\left\{#1\ \middle|\ #2\right\}} %for set with a property
+\newcommand{\card}[1]{\#\,{#1}} %for cardinality of a set
+\newcommand\m[1]{\begin{pmatrix}#1\end{pmatrix}} 
+\newcommand{\conj}[1]{\overline{#1}}
+
+\newcommand{\pdiv}[2]{\dfrac{\partial #1}{\partial #2}}
+
+%Re-defined notations
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\emptyset}{\varnothing}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+%----------------------------
+
+\allowdisplaybreaks
+
+\newcommand{\tcr}[1]{\textcolor{red}{#1}}
+\newcommand{\tcb}[1]{\textcolor{blue}{#1}}
+\newcommand{\tco}[1]{\textcolor{orange}{#1}}
+
+\newcommand{\lrp}[1]{\left(#1\right)}
+\newcommand{\lrb}[1]{\left[#1\right]}
+\newcommand{\lrc}[1]{\left\{#1\right\}}
+ 
+ 
+\begin{document}
+ 
+\title{Homework 4}
+\author{Kevin Guillen\\[0.5em]
+MATH 103A  | Complex Analysis | Spring 2022}
+\date{} 
+\maketitle
+
+%Use \[...\] instead of $$...$$
+
+\begin{problem}{4.1}
+Prove that the function
+\[f(z) = e^{-\theta}\cos(\ln r) + ie^{-\theta}\sin(\ln r)\]
+is differentiable when $r > 0$ and $0 < \theta < 2\pi$, and find $f'(z)$ in terms of $f(z)$.
+\end{problem}
+\begin{proof}
+  We can use Theorem 7.4 to show that this function is differentiable under the given conditions for $r$ and $\theta$. We first see that,
+  \begin{align*}
+    f(re^{i\theta}) = u(r, \theta) + iv(r, \theta)
+  \end{align*}
+  where $u(r,\theta) = e^{-\theta}\cos(\ln r)$ and $v(r,\theta) = e^{-\theta}\sin(\ln r)$. Meaning we must show that both these functions' partial derivatives exist with respect to $r$ and $\theta$, are continuous, and the CR equations are satisfied. We see the partial derivatives are,
+  \begin{align*}
+    u_r &= -\dfrac{e^{-\theta}sin(\ln r)}{r} && v_r = \dfrac{e^{-\theta}cos(\ln r)}{r} \\
+    u_\theta &=-e^{-\theta}cos(\ln r) && v_\theta = -e^{-\theta}sin(\ln r)
+  \end{align*}
+  which we know are continuous when $r > 0$ and $\theta \in (0, 2\pi)$. We also have that $r u_r = v_\theta$ and $u_\theta = -rv_r$, meaning then that this function is differentiable when $r > 0$ and $\theta \in (0, 2\pi)$. 
+
+  We know by by Discussion 7.7 that $f'(re^{i\theta}) = e^{-i\theta}(u_r(r,\theta) + iv_r(r,\theta))$, applying this to what we have we get,
+  \begin{align*}
+    f'(z) = f'(re^{i\theta}) &= e^{-i\theta}\lrp{-\dfrac{e^{-\theta}sin(\ln r)}{r} + i\dfrac{e^{-\theta}cos(\ln r)}{r}} \\
+    &= \dfrac{e^{-i\theta}}{r}(-e^{-\theta}sin(\ln r) +ie^{-\theta}cos(\ln r)) \\
+    &= \dfrac{e^{-i\theta}}{r}(i^{2}e^{-\theta}sin(\ln r) +ie^{-\theta}cos(\ln r)) \\
+    &= i\dfrac{e^{-i\theta}}{r}(ie^{-\theta}sin(\ln r) +e^{-\theta}cos(\ln r)) \\
+    &= i\dfrac{e^{-i\theta}}{r}f(re^{i\theta}) \\
+    &= i\dfrac{e^{-i\theta}}{r}f(z)
+  \end{align*}
+  as desired.
+\end{proof}
+
+\newpage  %Do not delete
+
+\begin{problem}{4.2}
+Let $f = u + iv$ be a complex-valued function defined on an open set $G \subseteq \cc$. Suppose that the first-order partial derivatives of $\Re f = u$ and $\Im f = v$ exist and are continuous on $G$.
+
+\begin{itemize}[itemsep=3em]
+\item[(a)] Recall that if $z = x + iy$, then
+\[x = \frac{z + \overline{z}}{2} \quad \text{and} \quad y = \frac{z - \overline{z}}{2i}\]
+Treat $f = f(x,y)$ as a function in two real-variables, and \emph{formally} apply the chain rule in Calculus to obtain the expressions
+\[\frac{\partial f}{\partial z} = \frac{1}{2}\left(\frac{\partial f}{\partial x} - i\frac{\partial f}{\partial y}\right) \quad \text{and} \quad \frac{\partial f}{\partial \overline{z}} = \frac{1}{2}\left(\frac{\partial f}{\partial x} + i\frac{\partial f}{\partial y}\right)\]
+%----------------------------------------
+\begin{solution}
+  By chain rule we have $\pdiv{f}{z} = \pdiv{f}{x}\pdiv{x}{z} + \pdiv{f}{y}\pdiv{y}{z}$. Before manipulating this, we evaluate the following terms as,
+  \begin{align*}
+    \pdiv{x}{z} = \dfrac{1}{2} && \pdiv{y}{z} = \dfrac{1}{2i}
+  \end{align*}
+  now plugging in and doing some algebra to our original equation given to us by the chain rule we get,
+  \begin{align*}
+    \pdiv{f}{z} &= \pdiv{f}{x}\pdiv{x}{z} + \pdiv{f}{y}\pdiv{y}{z} \\
+    &= \pdiv{f}{x}\dfrac{1}{2} + \pdiv{f}{y}\dfrac{1}{2i} \\
+    &= \dfrac{1}{2}\lrp{\pdiv{f}{x} + \pdiv{f}{y} \dfrac{1}{i}} \\
+    &= \dfrac{1}{2}\lrp{\pdiv{f}{x} - i \pdiv{f}{y} }
+  \end{align*}
+  as desired. 
+
+  Again by chain rule we have $\pdiv{f}{\conj{z}} = \pdiv{f}{x}\pdiv{x}{\conj{z}} + \pdiv{f}{y}\pdiv{y}{\conj{z}}$. Like before we note that,
+  \begin{align*}
+    \pdiv{x}{\conj{z}} = \dfrac{1}{2} && \pdiv{y}{\conj{z}} = -\dfrac{1}{2i}.
+  \end{align*}
+  Finally plugging this into the equation given by the chain rule and doing some algebra we get,
+  \begin{align*}
+    \pdiv{f}{\conj{z}} &= \pdiv{f}{x}\pdiv{x}{\conj{z}} + \pdiv{f}{y}\pdiv{y}{\conj{z}} \\
+    &= \pdiv{f}{x}\dfrac{1}{2} - \pdiv{f}{y}\dfrac{1}{2i} \\
+    &= \dfrac{1}{2}\lrp{\pdiv{f}{x} - \pdiv{f}{y}\dfrac{1}{i}} \\
+    &= \dfrac{1}{2}\lrp{\pdiv{f}{x} + i \pdiv{f}{y}}
+  \end{align*}
+  as desired.
+  
+\end{solution}
+%----------------------------------------
+
+\item[(b)] Define $\dfrac{\partial f}{\partial x} \coloneqq \dfrac{\partial u}{\partial x} + i\dfrac{\partial v}{\partial x}$, and similarly for $\dfrac{\partial f}{\partial y}$. Prove that $f$ is holomorphic on $G$ if and only if $\dfrac{\partial f}{\partial \overline{z}} = 0$.
+%----------------------------------------
+\begin{proof}
+  ($\Leftarrow$) First we will move in the reverse direction and assume that $\pdiv{f}{\conj{z}} = 0.$ Recall though that we obtained the expression $\pdiv{f}{\conj{z}} = \dfrac{1}{2}\lrp{\pdiv{f}{x} + i\pdiv{f}{y}}$. Meaning we have,
+  \begin{align*}
+    0 &= \dfrac{1}{2}\lrp{\pdiv{f}{x} + i\pdiv{f}{y}} \\
+    &= \pdiv{f}{x} + i \pdiv{f}{y} \\
+    &= \pdiv{u}{x} + i\pdiv{v}{x} + i\lrp{\pdiv{u}{y} + i\pdiv{v}{y}} \\
+    0&= \pdiv{u}{x} -\pdiv{v}{y} + i\lrp{\pdiv{v}{x} + \pdiv{u}{y}}
+  \end{align*}
+  which implies the following two equalities,
+  \begin{align*}
+    0 &= \pdiv{u}{x} - \pdiv{v}{y} &  0 &= \pdiv{v}{x} + \pdiv{u}{y} \\
+    \pdiv{v}{y} &= \pdiv{u}{x} & \pdiv{u}{y} &= -\pdiv{v}{x} \\
+    v_y &= u_x & u_y &= -v_x
+  \end{align*}
+  meaning we not only have that the first order partial derivatives exist, but also that the Cauchy-Riemann equations are satisfied, giving us that $f$ is holomorphic as desired.
+
+  ($\Rightarrow$) With the work we did in the reverse direction, we can easily prove the forward direction by following what we did in reverse order. We assume that $f$ is holomorphic meaning the Cauchy-Riemann equations are satisfied giving us that,
+  \begin{align*}
+    v_y &= u_x & u_y &= -v_x \\
+    0 &= u_x - v_y & 0&= v_x + u_y \\
+    0 &=\tcr{\pdiv{u}{x}} - \tcr{\pdiv{v}{y}} & 0 &= \tcb{\pdiv{v}{x}} + \tcb{\pdiv{u}{y}}
+  \end{align*}
+
+  Recall we defined the following $\pdiv{f}{x} = \pdiv{u}{x} + i\pdiv{v}{x}$ and similarly for $\pdiv{f}{y}$, plugging these into the expression we obtained for $\pdiv{f}{\conj{z}}$ from the previous part we have,
+  \begin{align*}
+    \pdiv{f}{\conj{z}} &= \dfrac{1}{2}\lrp{\pdiv{f}{x} + i\pdiv{f}{y}} \\
+    &= \dfrac{1}{2}\lrp{\pdiv{u}{x} + i\pdiv{v}{x} + i\lrp{\pdiv{u}{y } + i\pdiv{v}{y}}} \\
+    &= \dfrac{1}{2}\lrp{\tcr{\pdiv{u}{x}} - \tcr{\pdiv{v}{y}} + i\lrp{\tcb{\pdiv{v}{x}} + \tcb{\pdiv{u}{y}}}} \\
+    &= \dfrac{1}{2}\lrp{0 + i0} \\
+    &= 0.
+  \end{align*}
+  Meaning if $f$ is holomorphic then $\pdiv{f}{\conj{z}} = 0$. Thereby proving the desired statement. 
+
+\end{proof}
+%----------------------------------------
+
+\item[(c)] 
+\begin{itemize}[itemsep=2em]
+\item[(i)] If $f$ is holomorphic on $G$, prove that $f'(z) = \dfrac{\partial f}{\partial z}$.
+%----------------------------------------
+\begin{proof}
+  We assume $f$ to be holomorphic meaning we have that the CR-equations are satisfied, and that its derivative is equal to $u_x + iv_x.$ Recall our expression for $\pdiv{f}{z} $, and note 
+  \begin{align*}
+    \pdiv{f}{z} &= \dfrac{1}{2}\lrp{\pdiv{f}{x} - i\pdiv{f}{y}} \\
+    &= \dfrac{1}{2}\lrp{u_x + iv_x -i(u_y + iv_y)} \\
+    &= \dfrac{1}{2}\lrp{u_x + v_y + i(v_x - u_y)} && \text{apply CR-equations} \\
+    &= \dfrac{1}{2}\lrp{u_x +u_x + i(v_x + v_x)} \\
+    &= \dfrac{1}{2}\lrp{2u_x + i(2v_x)} \\
+    &= u_x + iv_x.
+  \end{align*}
+  Therefore if $f$ is holomorphic on $G$, we have that $f'(z) = \pdiv{f}{z}$
+  
+\end{proof}
+%----------------------------------------
+
+\item[(ii)] The \emph{Jacobian} of the function $(x,y) \mapsto (u(x,y),v(x,y))$ is the determinant of the matrix
+\[\begin{pmatrix}
+\dfrac{\partial u}{\partial x} && \dfrac{\partial u}{\partial y}\\[1.5em]
+\dfrac{\partial v}{\partial x} && \dfrac{\partial v}{\partial y}
+\end{pmatrix}\]
+If $f$ is holomorphic on $G$, prove that the Jacobian equals $\abs{f'(z)}^2 \geq 0$.
+%----------------------------------------
+\begin{proof}
+  First let us compute the Jacobian, which is just taking the determinant of the matrix above turns out to be \[\pdiv{u}{x}\pdiv{v}{y} - \pdiv{u}{y}\pdiv{v}{x} = u_xv_y - u_yv_x.\]
+
+  Now recall that if $f$ is holomorphic we have the derivative to be $f' = u_x + iv_x$ and the CR-equations to be satisfied, so let us compute $\abs{f'}^{2}$,
+  \begin{align*}
+    \abs{f'}^{2} &= \abs{u_x + iv_x}^{2} = u_{x}u_x + v_xv_x  && \text{apply CR-equations} \\
+    &= u_xv_y -u_y v_x
+  \end{align*}
+  which is equal to the computation for the Jacobian. Giving us that the Jacobian is equal to $\abs{f'(z)}^{2}$, as desired.
+\end{proof}
+%----------------------------------------
+
+\end{itemize}
+\end{itemize}
+\end{problem}
+
+\newpage  %Do not delete
+
+\begin{problem}{4.3}
+Suppose $f$ is entire, with real and imaginary parts $u$ and $v$ satisfying
+\[u(x, y)\, v(x, y) = 3\]
+for all $z = x + i y$. Show that $f$ is constant.
+\end{problem}
+%----------------------------------------
+\begin{proof}
+  Let us consider taking the partial derivatives of the product of $u$ and $v$, meaning we'll take the derivatives with respect to $x$ and to $y$ using chain rule,
+  \begin{align*}
+    uv_x + u_xv &= 0 \ ( \star)\\
+    uv_y + u_yv &= 0.
+  \end{align*}
+  Using that the fact that $f$ was entire, we know it satisfies the Cauchy-Riemann equations which let us turn the last equation to 
+  \begin{align*}
+    uu_x -v_xv = 0 \ ( \spadesuit).
+  \end{align*}
+  But because we know $\star$ and $\spadesuit$ are 0, we know the following,
+  \begin{align*}
+    (\spadesuit) u + (\star) v &= 0 \\
+    u^{2} u_x -v_xvu + v_xvu + u_xv^{2} &= 0 \\
+    u_x(u^{2} + v^{2}) &= 0 
+  \end{align*}
+  giving us that $u_x$ is equal to 0.
+  For similar reason we know the following is true too,
+  \begin{align*}
+    (\star)u  - (\spadesuit)v &= 0 \\
+    u^{2}v_x  + u_xvu - uvu_x +v_xv^{2} &= 0\\
+    v_x(u^{2} + v^{2}) &= 0
+  \end{align*}
+  giving us that $v_x$ is equal to 0.
+
+  Now because $f $ is entire we know its derivative exists and can be expressed as $f' = u_x + iv_x$, plugging in what we know though we have that $f' = 0$, meaning that $f$ must be constant, as desired. 
+\end{proof}
+%----------------------------------------
+
+\newpage  %Do not delete
+
+\begin{problem}{4.4}
+Prove that, if $G \subseteq \cc$ is a domain and $f : G \to \cc$ is a complex-valued function with $f''(z)$ defined and equal to $0$ for all $z \in G$, then $f(z) = az + b$ for some $a, b \in \cc$. 
+\end{problem}
+%----------------------------------------
+\begin{proof}
+  We apply Theorem 8.4 and see that because $f''(z) = 0$ we have that $f'(z) $ must be constant, which we will express as $f'(z) = a$, where $a$ is some constant. Now consider the function $g(z) = f(z) - az$. If we take the derivative of $g$ we know it is,
+  \begin{align*}
+    g'(z) &= f'(z) -a  \\
+    g'(z) &= a-a \\
+    g'(z)&= 0.
+  \end{align*}
+  Applying Theorem 8.4 again, because $g'(z) =0$ we have that $g(z) = b$ where $b$ is some constant. Now if we solve for $f(z)$ in $g(z)$ we get,
+  \begin{align*}
+    g(z) &= f(z) + az \\
+    az + g(z) &= f(z) \\
+    az + b &= f(z).
+  \end{align*}
+  We see then that $f(z) = az+b $ for some $a,b\in \cc$, as desired. 
+\end{proof}
+%----------------------------------------
+
+\newpage  %Do not delete
+
+\begin{problem}{4.5}
+Find all solutions to the equation $e^{2z} - 2ie^z = 1$.
+\end{problem}
+%----------------------------------------
+\begin{proof}
+  First let us rewrite our equation as,
+  \begin{align*}
+    e^{2z} -2ie^{z} &= 1 \\
+    e^{2z} -2ie^{z} -1 &= 0 \\
+    (e^{z})^{2} -2ie^{z} - 1 &=0
+  \end{align*}
+  now let $u(z) = e^{z}$, which let's us rewrite our equation again,
+  \begin{align*}
+    u^{2} -2i u -1 &= 0. 
+  \end{align*}
+  Now recall from Homework 1 we derived a formula to obtain the solutions of this equations as $z = \dfrac{-b \pm \Delta^{1/2}}{2a}$ where $\Delta = b^{2} - 4ac$. Solving for these we see that 
+  \[\Delta = (-2i)^{2} -4(-1) = -4 + 4 = 0\]
+  giving us,
+  \begin{align*}
+    z = \dfrac{2i \pm 0}{2} = i.
+  \end{align*}
+  Recall that $u(z) = e^{z}$ meaning we have that $e^{z} = i$ as the solutions. Using the definitions of the complex exponential function we have that,
+  \begin{align*}
+    e^{z} &= i \\
+    e^{x}e^{i y} &= e^{i\pi/2}
+  \end{align*}
+  giving us that $e^{x} = 1$ which means that $x = 0$. We get that $y$ is,
+  \begin{align*}
+    y = \arg i = \dfrac{\pi}{2} + 2k\pi
+  \end{align*}
+  giving us the solutions to be $z = i\lrp{\dfrac{\pi}{2} +2k\pi}$ where $k \in \zz$.
+
+\end{proof}
+%----------------------------------------
+
+
+%----------------------------------------
+%Delete if not attempted
+%EXTRA CREDIT. OPTIONAL
+\newpage
+
+
+
+\begin{center}
+\textbf{Collaborators:}
+Peers at section on Wednesday. 
+\end{center}
+\vfill 
+
+
+%----------------------------------------
+
+\end{document}

@@ -1,0 +1,239 @@
+\documentclass[11pt]{article}
+%------------------------
+%Packages
+\usepackage[top=0.75in, bottom=1.25in, left=1in, right=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb} %this is THE math package
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{fancybox}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{varwidth}
+\usepackage{mdframed}
+\usepackage{mathrsfs}
+\usepackage{xcolor}
+%------------------------
+%Fonts I use, uncomment if you like to use them.
+%The first is the general font, and the second a math font
+\usepackage{mathpazo}
+\definecolor{darkblue}{rgb}{0.0,0.0,.7}
+%------------------------
+%This is so that we have standard fonts for the doublestroked symbols
+%for reals, naturals etc. regardless of what font you use.
+%Don't comment
+\AtBeginDocument{
+  \DeclareSymbolFont{AMSb}{U}{msb}{m}{n}
+  \DeclareSymbolFontAlphabet{\mathbb}{AMSb}}
+
+%----------------------------------------------
+%User-defined environments
+%Commented because we're not using them in this document
+%The only uncommented ones are the Problem and Solution environment
+
+% \newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{question}[2][Question]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem\!]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+%\newenvironment{sub-problem}[2][]{\begin{trivlist}
+%\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+\newenvironment{solution}{\begin{proof}[\textbf{\textit{Solution}}]}{\end{proof}}
+%----------------------------------------------
+
+%----------------------------
+%User-defined notations
+\newcommand{\zz}{\mathbf Z}   %blackboard bold Z
+\newcommand{\qq}{\mathbf Q}   %blackboard bold Q
+\newcommand{\ff}{\mathbf F}   %blackboard bold F
+\newcommand{\rr}{\mathbf R}   %blackboard bold R
+\newcommand{\nn}{\mathbf N}   %blackboard bold N
+\newcommand{\cc}{\mathbf C}   %blackboard bold C
+\newcommand{\af}{\mathbf A}   %blackboard bold A
+\newcommand{\pp}{\mathbf P}   %blackboard bold P
+\newcommand{\id}{\operatorname{id}} %for identity map
+\newcommand{\parg}{\operatorname{Arg}} %principal argument
+\newcommand{\im}{\operatorname{im}} %for image of a function
+\newcommand{\dom}{\operatorname{dom}} %for domain of a function
+\newcommand{\cat}[1]{\mathscr{#1}}   %calligraphic category
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert} %for absolute value
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert} %for norm
+\newcommand{\modar}[1]{\text{ mod }{#1}} %for modular arithmetic
+\newcommand{\set}[1]{\left\{#1\right\}} %for set
+\newcommand{\setp}[2]{\left\{#1\ \middle|\ #2\right\}} %for set with a property
+\newcommand{\card}[1]{\#\,{#1}} %for cardinality of a set
+
+%Re-defined notations
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\emptyset}{\varnothing}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\gcd}{\operatorname{GCD}}
+\renewcommand{\Im}{\operatorname{Im}}
+%----------------------------
+
+\allowdisplaybreaks
+ 
+\begin{document}
+ 
+\title{Homework 4}
+\author{[Your Full Name Here]\\[0.5em]
+MATH 103A --- Complex Analysis --- Spring 2022}
+\date{} 
+\maketitle
+
+%Use \[...\] instead of $$...$$
+
+\begin{problem}{4.1}
+Prove that the function
+\[f(z) = e^{-\theta}\cos(\ln r) + ie^{-\theta}\sin(\ln r)\]
+is differentiable when $r > 0$ and $0 < \theta < 2\pi$, and find $f'(z)$ in terms of $f(z)$.
+\end{problem}
+%----------------------------------------
+\begin{solution}
+%Uncomment and WRITE YOUR SOLUTION HERE
+\end{solution}
+%----------------------------------------
+
+\newpage  %Do not delete
+
+\begin{problem}{4.2}
+Let $f = u + iv$ be a complex-valued function defined on an open set $G \subseteq \cc$. Suppose that the first-order partial derivatives of $\Re f = u$ and $\Im f = v$ exist and are continuous on $G$.
+
+\begin{itemize}[itemsep=3em]
+\item[(a)] Recall that if $z = x + iy$, then
+\[x = \frac{z + \overline{z}}{2} \quad \text{and} \quad y = \frac{z - \overline{z}}{2i}\]
+Treat $f = f(x,y)$ as a function in two real-variables, and \emph{formally} apply the chain rule in Calculus to obtain the expressions
+\[\frac{\partial f}{\partial z} = \frac{1}{2}\left(\frac{\partial f}{\partial x} - i\frac{\partial f}{\partial y}\right) \quad \text{and} \quad \frac{\partial f}{\partial \overline{z}} = \frac{1}{2}\left(\frac{\partial f}{\partial x} + i\frac{\partial f}{\partial y}\right)\]
+%----------------------------------------
+\begin{solution}
+%Uncomment and WRITE YOUR SOLUTION HERE
+\end{solution}
+%----------------------------------------
+
+\item[(b)] Define $\dfrac{\partial f}{\partial x} \coloneqq \dfrac{\partial u}{\partial x} + i\dfrac{\partial v}{\partial x}$, and similarly for $\dfrac{\partial f}{\partial y}$. Prove that $f$ is holomorphic on $G$ if and only if $\dfrac{\partial f}{\partial \overline{z}} = 0$.
+%----------------------------------------
+\begin{solution}
+%Uncomment and WRITE YOUR SOLUTION HERE
+\end{solution}
+%----------------------------------------
+
+\item[(c)] 
+\begin{itemize}[itemsep=2em]
+\item[(i)] If $f$ is holomorphic on $G$, prove that $f'(z) = \dfrac{\partial f}{\partial z}$.
+%----------------------------------------
+\begin{solution}
+%Uncomment and WRITE YOUR SOLUTION HERE
+\end{solution}
+%----------------------------------------
+
+\item[(ii)] The \emph{Jacobian} of the function $(x,y) \mapsto (u(x,y),v(x,y))$ is the determinant of the matrix
+\[\begin{pmatrix}
+\dfrac{\partial u}{\partial x} && \dfrac{\partial u}{\partial y}\\[1.5em]
+\dfrac{\partial v}{\partial x} && \dfrac{\partial v}{\partial y}
+\end{pmatrix}\]
+If $f$ is holomorphic on $G$, prove that the Jacobian equals $\abs{f'(z)}^2 \geq 0$.
+%----------------------------------------
+\begin{solution}
+%Uncomment and WRITE YOUR SOLUTION HERE
+\end{solution}
+%----------------------------------------
+
+\end{itemize}
+\end{itemize}
+\end{problem}
+
+\newpage  %Do not delete
+
+\begin{problem}{4.3}
+Suppose $f$ is entire, with real and imaginary parts $u$ and $v$ satisfying
+\[u(x, y)\, v(x, y) = 3\]
+for all $z = x + i y$. Show that $f$ is constant.
+\end{problem}
+%----------------------------------------
+\begin{solution}
+%Uncomment and WRITE YOUR SOLUTION HERE
+\end{solution}
+%----------------------------------------
+
+\newpage  %Do not delete
+
+\begin{problem}{4.4}
+Prove that, if $G \subseteq \cc$ is a domain and $f : G \to \cc$ is a complex-valued function with $f''(z)$ defined and equal to $0$ for all $z \in G$, then $f(z) = az + b$ for some $a, b \in \cc$. 
+\end{problem}
+%----------------------------------------
+\begin{solution}
+%Uncomment and WRITE YOUR SOLUTION HERE
+\end{solution}
+%----------------------------------------
+
+\newpage  %Do not delete
+
+\begin{problem}{4.5}
+Find all solutions to the equation $e^{2z} - 2ie^z = 1$.
+\end{problem}
+%----------------------------------------
+\begin{solution}
+%Uncomment and WRITE YOUR SOLUTION HERE
+\end{solution}
+%----------------------------------------
+
+
+%----------------------------------------
+%Delete if not attempted
+%EXTRA CREDIT. OPTIONAL
+\newpage
+
+\begin{problem}{4.6}
+Let $G \subseteq \cc^*$ be an open set and let $f$ be a function that is continuous on $G$ with the property
+\[e^{f(z)} = z,\quad z \in G.\]
+Show that $f$ is holomorphic on $G$.
+\end{problem}
+%----------------------------------------
+\begin{solution}
+%Uncomment and WRITE YOUR SOLUTION HERE
+\end{solution}
+%----------------------------------------
+
+%EXTRA CREDIT. OPTIONAL
+%Delete if not attempted
+%----------------------------------------
+
+
+%----------------------------------------
+%Delete if nothing to add
+\newpage  %Do not delete
+
+\begin{center}
+\textbf{Collaborators:}
+%List your peers with whom you discussed the Problem Set
+\end{center}
+\vfill 
+
+\begin{center}
+\textbf{References:}
+%List any book/website/notes that you used to write your solutions
+\end{center}
+\begin{itemize}
+\item[$\bullet$] [Book(s): Title, Author]
+\item[$\bullet$] [Online: \href{http://example.com/}{\color{blue}Link}]
+\item[$\bullet$] [Notes: \href{http://example.com/}{\color{blue}Link}]
+\end{itemize}
+
+\vfill
+\begin{center}
+Fin.
+\end{center}
+\vfill
+%----------------------------------------
+
+\end{document}
