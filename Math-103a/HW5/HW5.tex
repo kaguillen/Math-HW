@@ -1,6 +1,6 @@
 \documentclass[11pt]{article}
  
-\usepackage[top=0.75in, bottom=1.25in, left=1in, right=1in]{geometry} 
+\usepackage[top=0.75in, bottom=1.25in, left=1.25in, right=1.25in]{geometry} 
 \usepackage{amsmath,amsthm,amssymb} %this is THE math package
 \usepackage{mathtools}
 \usepackage{tikz}
@@ -71,6 +71,7 @@
 \newcommand\m[1]{\begin{pmatrix}#1\end{pmatrix}} 
 \newcommand{\plog}{\operatorname{Log}}
 \newcommand{\parg}{\operatorname{Arg}}
+\newcommand{\conj}[1]{\overline{#1}}
 
 %Re-defined notations
 \renewcommand{\epsilon}{\varepsilon}
@@ -95,9 +96,9 @@
  
 \begin{document}
  
-\title{Assignment}
+\title{Homework 5}
 \author{Kevin Guillen\\[0.5em]
-MATH  | Class | Quarter}
+MATH 103A | Complex Analysis | Spring 2022}
 \date{} 
 \maketitle
 
@@ -123,6 +124,20 @@ show that we have equality of sets
     \end{align*}
     giving us the desired expression. 
 
+    Now we work out the second expression,
+    \begin{align*}
+      \dfrac{1}{n}\log z &= \dfrac{1}{n} \lrp{\log r + i \parg z + 2q \pi i }  && q \in \zz\\
+      &= \dfrac{1}{n}\ln r + i\lrp{\dfrac{\parg z + 2q\pi}{n}}.
+    \end{align*}
+
+    It is obvious that these two expressions are the exact same from the fact that we have division with remainder in $\zz$. Let the first set and second set be referred to as $A$ and $B$ respectively. We input a $z$ to generate the sets for some choice of $n$. We see that $q$ is any integer, now we argue that $pn +k$ can equal any $q$. If $q = 0$ then it is clear we have $pn + k = 0$ when  $p = 0$ and $k = 0$. In the case $q > 0$ then we can consider the set,
+    \[P = \set{p\in \zz \mid pn \leq q}\] 
+    we know that there is a maximal element in $P$, let us refer to it as $\alpha$. If $\alpha n = q$ then we are done, if not, we know that $\alpha n + k = q$, where $k = q- \alpha n  $. We know we have such a $k$ since it ranged from $0, \dots, n-1$, because if not that would mean $q -\alpha n > n-1$, but that would contradict the maximality of $\alpha$ since it was supposed to be the integer that obtains the greatest multiple of $n$ that is less than or equal to $q$. The case where $q < 0$ follows similarly except we would choose the minimal element and reverse the requirement for generating $P$. 
+    
+    So we have then that $pn + k = q$ where $q \in \zz$, therefore these two sets must be equal since there expression is the same. 
+    
+    
+
 \end{proof}
 %----------------------------------------
 
@@ -133,21 +148,84 @@ show that we have equality of sets
 \item[(a)] Find real valued functions $u,\, v : \rr^2 \to \rr$ such that $\cos z = u(x, y) + iv(x, y)$.
 %----------------------------------------
 \begin{solution}
-%Uncomment and WRITE YOUR SOLUTION HERE
+  We know $z = x + iy$, now using the trigonometric identities given to us in class we have,
+  \begin{align*}
+    \cos(z) &= \cos(x + i y) \\
+    &= \cos(x)\cos(i y) - \sin(x)\sin(i y)
+  \end{align*}
+  Now we can use Definition 10.5 and see,
+  \begin{align*}
+    \cos(i y) &= \dfrac{e^{i i y} + e^{- i i y}}{2}   & \sin(i y) &= \dfrac{e^{i i y} - e^{- i i y}}{2i} \\
+    &= \dfrac{e^{-y} + e^{y}}{2} & &= -1 \dfrac{1}{i}\dfrac{e^{y} - e^{-y}}{2} \\
+    &= \dfrac{e^{y} + e^{-y}}{2} & &= i \dfrac{e^{y} - e^{-y}}{2} \\
+    &= \cosh(y) & &= i\sinh(y).
+  \end{align*}
+  All together now, we have that,
+  \begin{align*}
+    \cos(z) = \cos(x)\cosh(y) - i \sin(x)\sinh(y)
+  \end{align*}
+  meaning $u(x,y) = \cos(x)\cosh(y)$ and $v(x,y) = -\sin(x)\sinh(y)$, as desired.
 \end{solution}
 %----------------------------------------
 
 \item[(b)] Show that $e^{\overline{z}} = \overline{e^z}$ and $\cos\overline{z} = \overline{\cos z}$.
 %----------------------------------------
 \begin{solution}
-%Uncomment and WRITE YOUR SOLUTION HERE
+  We know $z = x + i y$. Now applying definitions from class we see,
+  \begin{align*}
+    \conj{e^{z}} = \conj{e^{x}}\cdot \conj{e^{i y}} &= e^{x}\conj{\cos y - i \sin y} \\
+    &= e^{x}(\cos y + i\sin y)
+  \end{align*}
+  and 
+  \begin{align*}
+    e^{\conj z} = e^{x - i y} &= e^{x} \cdot e^{ -i y} \\
+    &= e^{x} (\cos(-y) - i \sin(-y)) \\
+    &= e^{x}( \cos y + i\sin y)
+  \end{align*}
+  giving us that $e^{\conj z} = \conj{e^{z}}$.
+
+  Let $z$ be expressed as before, applying definitions we see,
+  \begin{align*}
+    \cos (\conj z) = \cos(\conj{x + i y}) &= \cos(x - i y) \\
+    &= \cos(x)\cos(-i y) - \sin(x)\sin(-i y)\\
+    &= \cos(x)\cos(i y) + \sin(x)\sin(i y)  && \text{apply (a)} \\
+    &= \cos(x)\cosh(i y) + i\sin(x)\sinh(y)
+  \end{align*}
+  and
+  \begin{align*}
+    \conj{\cos z} = \conj{\cos(x + i y)} &= \conj{\cos(x)\cos(i y) - \sin(x)\sin(i y)} \\
+    &= \conj{\cos(x)\cosh(y)-i\sin(x)\sinh(y)} \\
+    &= \cos(x)\cosh(y) + i\sin(x)\sinh(y)
+  \end{align*}
+  giving us that $\cos(\conj z) = \conj{\cos z}$, as desired.
 \end{solution}
 %----------------------------------------
 
 \item[(c)] Show that $e^{iz} = \cos z + i\sin z$, and prove $\sin\overline{z} = \overline{\sin z}$.
 %----------------------------------------
 \begin{solution}
-%Uncomment and WRITE YOUR SOLUTION HERE
+  Let us apply the definitions to the RHS of the first equation,
+  \begin{align*}
+    \cos z + i \sin z &= \dfrac{e^{iz} + e^{-iz}}{2 } + i \dfrac{e^{i z} - e^{-i z}}{2i} \\
+    &= \dfrac{e^{iz} +e^{-iz} +e^{iz} -e^{iz}}{2} \\
+    &= \dfrac{e^{iz} + e^{iz}}{2} \\
+    &= e^{i z}
+  \end{align*}
+  giving us the desired equality.
+
+  Let $z = x + i y$, applying the definitions from class we see,
+  \begin{align*}
+    \sin \conj z = \sin(\conj{x + i y}) = \sin(x - i y) &= \sin(x)\cos(-i y ) + \cos(x)\sin(-i y) \\
+    &= \sin(x)\cos(i y)- \cos(x)\sin(i y) \\
+    &= \sin(x)\cosh( y) - i\cos(x)\sinh( y )
+  \end{align*}
+  and 
+  \begin{align*}
+    \conj{\sin z} = \conj{\sin(x + iy)} &= \conj{sin(x)\cos(i y) + \cos(x) \sin(i y)} \\
+    &= \conj{\sin(x)\cosh(y) + i\cos(x)\sinh(y)} \\
+    &= \sin(x)\cosh(y) - i\cos(x)\sinh(y)
+  \end{align*}
+  giving us that $\sin\conj z = \conj{\sin z}$.
 \end{solution}
 %----------------------------------------
 
@@ -161,14 +239,37 @@ show that we have equality of sets
 \item[(a)] Verify that $(z^\alpha)^n = z^{n\alpha}$ for $z \neq 0$ and $n \in \zz$.
 %----------------------------------------
 \begin{solution}
-%Uncomment and WRITE YOUR SOLUTION HERE
+  Using definitions given to use we have,
+  \begin{align*}
+    \lrp{z^{\alpha}}^{n} = \lrp{e^{\alpha \log z}}^{n} &= exp({n\log(e^{\alpha\log z})}) \\
+    &= e^{n\alpha \log(z) + 2kn\pi i } && e \text{ is periodic} \\
+    &= e^{n\alpha \log z} \\
+    &= z^{n\alpha}
+  \end{align*}
 \end{solution}
 %----------------------------------------
 
 \item[(b)] Find a counterexample to the statement: $(z^{\alpha})^\beta = z^{\alpha\beta}$, where $z \neq 0$ and $\alpha,\beta \in \cc$.
 %----------------------------------------
 \begin{solution}
-%Uncomment and WRITE YOUR SOLUTION HERE
+  Expanding the LHS,
+  \begin{align*}
+    \lrp{z^{\alpha}}^{\beta} = \lrp{e^{\alpha\log z}}^{\beta} &= e^{\beta\lrp{\alpha \log z + 2k\pi i }} \\
+    &= e^{\beta\alpha\log z + \beta2k\pi i } \\
+    &= e^{\beta\alpha \log z}e^{\beta 2 k \pi i } 
+  \end{align*}
+  expanding the RHS,
+  \begin{align*}
+    z^{\alpha \beta} = e^{\alpha\beta \log z}
+  \end{align*}
+
+  Now that we have them expanded out, let $\beta = (1 +i)$ and $\alpha = (1-i)$ and $z = i$. We see that $\beta\alpha = 2$, and $\log i = \ln 1 + i \arg i = i\frac{\pi}{2}$, giving us,
+  \begin{align*}
+    \lrp{z^{\alpha}}^{\beta} &= e^{i\pi}e^{(1 +i)2 k \pi  i } & z^{\alpha\beta} &= e^{i\pi } \\
+    &= e^{i \pi}e^{-2\pi k} & &=e^{i\pi}
+  \end{align*}
+  we see that the only integer solution where $e^{-2\pi k} = 1$ is when $k = 0$, but for all other $k$, say specifically $k = 1$ we see,
+  \[\lrp{z^{\alpha}}^{\beta} = e^{i\pi}e^{-2\pi} \neq e^{i\pi} = z^{\alpha\beta}\]
 \end{solution}
 %----------------------------------------
 
@@ -183,21 +284,43 @@ Determine the points at which the following functions are holomorphic. Find its 
 \item[(a)] $f(z) = e^{\overline{z}}$.
 %----------------------------------------
 \begin{solution}
-%Uncomment and WRITE YOUR SOLUTION HERE
+  As we have seen previously we have $e^{\conj z} = \conj{e^{z}}$. Let $z = x + i y$ and use use Definition 8.10 to expand and see,
+  \begin{align*}
+    \conj{e^{z}} = \conj{e^{x + i y}} &= \conj{e^{x}\cos y +i e^{x}  \sin y} \\
+    &= \underbrace{e^{x}\cos y}_{u(x,y)} - i \underbrace{e^{x} \sin y}_{v(x,y)} .
+  \end{align*}
+  Now if $f(z)$ where to be holomorphic at some $z$ then it would need to satisfy the Cauchy-Riemann equations, but we see,
+  \begin{align*}
+    u_x = e^{x}\cos y \neq -e^{x}\cos y = v_y
+  \end{align*}
+  therefore $f$ is holomorphic nowhere. 
+
 \end{solution}
 %----------------------------------------
 
 \item[(b)] $g(z) = \cos\overline{z}$.
 %----------------------------------------
 \begin{solution}
-%Uncomment and WRITE YOUR SOLUTION HERE
+  As before we recall that we showed $\cos \conj z = \conj{\cos z}$. Now using what we know from problem 5.2 (a) we have,
+  \begin{align*}
+    \conj{\cos z} = \conj{\cos (x + i y)} &= \conj{\cos(x)\cosh(y) - i\sin(x)\sinh(y)} \\
+    &=\cos(x)\cosh(y) + i\sin(x)\sinh(y).
+  \end{align*}
+  If $g(z)$ were to be holomorphic at some $z$, then it must satisfy the Cauchy-Riemann equations, we see though,
+  \begin{align*}
+    u_x = -\sin(x)\cosh(y) \neq \sin(x)\cosh(y) = v_y
+  \end{align*}
+  therefore $g$ is holomorphic nowhere. 
 \end{solution}
 %----------------------------------------
 
 \item[(c)] $a(z) = \dfrac{\plog(2z - i)}{z^2 + 1}$.
 %----------------------------------------
 \begin{solution}
-%Uncomment and WRITE YOUR SOLUTION HERE
+  Since this is the quotient of two functions, we can determine where it is holomorphic by determining where the numerator and denominator are holomorphic. We see for numerator is holomorphic everywhere except when $2z - i = -1$, so $z = \frac{1}{2} + i \frac{1}{2}$, we know from the notes that polynomials are entire, but since it is in the denominator we have to avoid $z^{2} + 1 = 0$, meaning $z = i$. All together we have that $a$ is holomorphic everywhere except $z = -1$ and $z = i$. Using the definitions given in the notes we have the derivative to be,
+  \begin{align*}
+    a(z)' = \lrp{\dfrac{1}{2z - i}(z^{2} + 1) - 2z\plog(2z -i)}\dfrac{1}{z^{4}+ 2z^{2} + 1}
+  \end{align*}
 \end{solution}
 %----------------------------------------
 
@@ -212,14 +335,32 @@ Find all complex values $z$ satisfying the given equation.
 \item[(a)] $\cos z = 4$
 %----------------------------------------
 \begin{solution}
-%Uncomment and WRITE YOUR SOLUTION HERE
+  Using the trigonometric identity given to us we have,
+  \begin{align*}
+    \dfrac{e^{i z} + e^{-i z }}{2} &= 4 \\
+    e^{i z} + e^{- i z} &= 8 \\
+    \lrp{e^{i z}}^{2} -8e^{i z} + 1  &= 0
+  \end{align*}
+  applying the quadratic formula we derived in homework 1 we get,
+  \[e^{iz} = \dfrac{8 \pm \sqrt{64 - 4}}{2} = \dfrac{8 \pm \sqrt{60}}{2} = \dfrac{8 \pm 2\sqrt{15}}{2} = 4 \pm \sqrt{15}\]
+  so we have,
+  \begin{align*}
+    i z &= \ln(4 \pm \sqrt{15}) + 2k\pi i  && k\in \zz \\
+    z &= 2k\pi i + i\ln(4\mp\sqrt{15} )
+  \end{align*}
 \end{solution}
 %----------------------------------------
 
 \item[(b)] $\cos z = i\,\sin z$
 %----------------------------------------
 \begin{solution}
-%Uncomment and WRITE YOUR SOLUTION HERE
+  One of the given trigonometric identities is $\cos^{2}(z) + \sin^{2}(z) = 1$, now note the following,
+  \begin{align*}
+    \cos(z) &= i\sin(z) \\
+    \cos^{2}(z) &= -\sin^2(z) \\
+    \cos^{2}(z) +\sin^{2}(z) &= 0
+  \end{align*}
+  which yields a contradiction, meaning there are no solutions. 
 \end{solution}
 %----------------------------------------
 
@@ -234,14 +375,53 @@ Let $z \in \cc$.
 \item[(a)] Prove that $\abs{1^z}$ is single-valued if and only if $\Im z = 0$.
 %----------------------------------------
 \begin{solution}
-%Uncomment and WRITE YOUR SOLUTION HERE
+  ($\Rightarrow$) Assume that $\abs{1^{z}}$ is single valued, let us expand it out,
+  \begin{align*}
+    \abs{1^{z}} = \abs{e^{z\log 1}} &= \abs{e^{z(\ln 1 + i\arg 1)}} \\
+    &= \abs{e^{z(\ln 1 + i2k\pi )}} \\
+    &= \abs{e^{(x + i y) i2k\pi}} \\
+    &= \abs{e^{-y2k\pi + i2k\pi x}} \\
+    &= \abs{e^{-y2k\pi}}\cdot \underbrace{\abs{e^{i(2k\pi x)}}}_{\star}.
+  \end{align*}
+  Now let us apply 5.2 (c) to $\star$,
+  \begin{align*}
+    \abs{e^{i(2k\pi x)}} &= \abs{\cos(2k\pi x) + i \sin(2k\pi x)} \\
+    &= \cos^{2}( 2k\pi x) + \sin^{2}( 2k\pi x) \\
+    &= 1.
+  \end{align*}
+  So going back to our expansion we have,
+  \begin{align*}
+    \abs{1^{z}} = \abs{e^{- y2k\pi }} = e^{- y2k\pi }
+  \end{align*}
+  recall that $e$ is periodic only for $2k\pi i $, meaning as $k$ changes through $\zz$, $-y2k\pi$ will generate different values and therefore change $\abs{1^{z}}$, but our assumption is that $\abs{1^{z}}$ is single valued. Therefore it must be that $y = 0$, or $\Im z = 0$.
+
+  ($\Leftarrow$) Assuming now that $\Im z = 0$, we have,
+  \begin{align*}
+    \abs{1^{z}} = \abs{e^{z \log 1}} &= \abs{e^{x(i2k\pi)}} \\
+    &= \abs{e^{i2k\pi x}} \\
+    &= \abs{\cos(2k\pi x) + i\sin(2k\pi x)} \\
+    &= \cos^{2}(2k\pi x) + \sin^{2}(2k\pi x) \\
+    &= 1
+  \end{align*}
+  show that $\abs{1^{z}}$ is single valued when $\Im z = 0$. 
+
+  All together we have that $\abs{1^{z}}$ is single valued if and only if $\Im z = 0$.
 \end{solution}
 %----------------------------------------
 
 \item[(b)] Find a necessary and sufficient condition for $\abs{i^{iz}}$ to be single-valued.
 %----------------------------------------
 \begin{solution}
-%Uncomment and WRITE YOUR SOLUTION HERE
+  Let $z= x + i $, and now let us expand like before,
+  \begin{align*}
+    \abs{1^{z}} = \abs{e^{iz\log i }} &= \abs{e^{i z\lrp{i \frac{\pi}{2} + 2k\pi i}}} && k \in \zz \\
+    &= \abs{e^{-z \frac{\pi}{2} -2k\pi z}} \\
+    &= \abs{e^{-\frac{\pi}{2}x - i\frac{\pi}{2}y - 2k\pi x - i 2k\pi y}}  \\
+    &= \abs{e^{-x (\frac{\pi}{2} + 2k\pi) -i(\frac{\pi}{2}y + 2k\pi y)}} \\
+    &= \abs{e^{-x (\frac{\pi}{2} + 2k\pi)}}\cdot \underbrace{\abs{e^{i(-\frac{\pi}{2}y - 2k\pi y)}}}_{ 1} \\
+    &= e^{-x (\frac{\pi}{2} + 2k\pi)}
+  \end{align*}
+  therefore $\abs{i^{iz}}$ is single valued only when $x = 0$, which is to say $\Re z = 0$
 \end{solution}
 %----------------------------------------
 
@@ -251,7 +431,15 @@ Let $z \in \cc$.
 \item[(c)] Show by counterexample that the statement is false: \[\text{$1^z$ is single-valued if and only if $\Im z = 0$.}\]
 %----------------------------------------
 \begin{solution}
-%Uncomment and WRITE YOUR SOLUTION HERE
+  Let us expand as before,
+  \begin{align*}
+    1^{z} = e^{z\log 1} = e^{z2k\pi i }.
+  \end{align*}
+  Now let us choose $z = 1/2$, and notice that we get,
+  \begin{align*}
+    1^{z} = e^{k\pi i }
+  \end{align*}
+  and for $k = 3$ we get $1^{z} = -1$, while $k=4$ we get $1^{z} = 1$. Showing that $1^{z}$ is not necessarily single valued when $\Im z = 0$. 
 \end{solution}
 %EXTRA CREDIT. OPTIONAL
 %Delete if not attempted
@@ -268,25 +456,11 @@ Let $z \in \cc$.
 
 \begin{center}
 \textbf{Collaborators:}
-%List your peers with whom you discussed the Problem Set
+Peers at section on Wednesday. 
 \end{center}
 \vfill 
 
-\begin{center}
-\textbf{References:}
-%List any book/website/notes that you used to write your solutions
-\end{center}
-\begin{itemize}
-\item[$\bullet$] [Book(s): Title, Author]
-\item[$\bullet$] [Online: \href{http://example.com/}{\color{blue}Link}]
-\item[$\bullet$] [Notes: \href{http://example.com/}{\color{blue}Link}]
-\end{itemize}
 
-\vfill
-\begin{center}
-Fin.
-\end{center}
-\vfill
 %----------------------------------------
 
 \end{document}

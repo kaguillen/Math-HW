@@ -1,0 +1,286 @@
+\documentclass[11pt]{article}
+ 
+\usepackage[top=0.75in, bottom=1.25in, left=1.3in, right=1.3in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb} %this is THE math package
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{fancybox}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{varwidth}
+\usepackage{mdframed}
+\usepackage{mathrsfs}
+\usepackage[most]{tcolorbox}
+%------------------------
+%Fonts I use, uncomment if you like to use them.
+%The first is the general font, and the second a math font
+\usepackage{mathpazo}
+\usepackage{eulervm}
+%------------------------
+%This is so that we have standard fonts for the double-stroked symbols
+%for reals, naturals etc. regardless of what font you use.
+%Don't comment
+\AtBeginDocument{
+  \DeclareSymbolFont{AMSb}{U}{msb}{m}{n}
+  \DeclareSymbolFontAlphabet{\mathbb}{AMSb}}
+%------------------------
+
+%----------------------------------------------
+%User-defined environments
+%Commented because we're not using them in this document
+%The only uncommented ones are the Problem and Solution environment
+
+% \newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{question}[2][Question]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem\!]{\begin{tcolorbox}\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}\end{tcolorbox}}
+%\newenvironment{sub-problem}[2][]{\begin{trivlist}
+%\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+\newenvironment{solution}{\begin{proof}[\textbf{\textit{Solution}}] }{\end{proof}}
+%----------------------------------------------
+
+%----------------------------
+%User-defined notations
+\newcommand{\zz}{\mathbb Z}   %blackboard bold Z
+\newcommand{\qq}{\mathbb Q}   %blackboard bold Q
+\newcommand{\ff}{\mathbb F}   %blackboard bold F
+\newcommand{\rr}{\mathbb R}   %blackboard bold R
+\newcommand{\nn}{\mathbb N}   %blackboard bold N
+\newcommand{\cc}{\mathbb C}   %blackboard bold C
+\newcommand{\af}{\mathbb A}   %blackboard bold A
+\newcommand{\pp}{\mathbb P}   %blackboard bold P
+\newcommand{\id}{\operatorname{id}} %for identity map
+\newcommand{\im}{\operatorname{im}} %for image of a function
+\newcommand{\dom}{\operatorname{dom}} %for domain of a function
+\newcommand{\cat}[1]{\mathscr{#1}}   %calligraphic category
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert} %for absolute value
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert} %for norm
+\newcommand{\modar}[1]{\text{ mod }{#1}} %for modular arithmetic
+\newcommand{\set}[1]{\left\{#1\right\}} %for set
+\newcommand{\setp}[2]{\left\{#1\ \middle|\ #2\right\}} %for set with a property
+\newcommand{\card}[1]{\#\,{#1}} %for cardinality of a set
+\newcommand\m[1]{\begin{pmatrix}#1\end{pmatrix}} 
+
+%Re-defined notations
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\emptyset}{\varnothing}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+%----------------------------
+
+\allowdisplaybreaks
+
+\newcommand{\tcr}[1]{\textcolor{red}{#1}}
+\newcommand{\tcb}[1]{\textcolor{blue}{#1}}
+\newcommand{\tco}[1]{\textcolor{orange}{#1}}
+
+\newcommand{\lrp}[1]{\left(#1\right)}
+\newcommand{\lrb}[1]{\left[#1\right]}
+\newcommand{\lrc}[1]{\left\{#1\right\}}
+\newcommand{\lrw}[1]{\left<#1\right>}
+ 
+ 
+\begin{document}
+ 
+\title{Homework 8}
+\author{Kevin Guillen\\[0.5em]
+MATH 202  | Algebra III | Spring 2022}
+\date{} 
+\maketitle
+
+%Use \[...\] instead of $$...$$
+
+\begin{problem} {14.9.2}
+    Let $p$ be a prime and let $K = \ff_p(x,y)$ with $x$ and $y$ independent transcendentals over $\ff_p$. 
+
+    Let $F = \ff_p(x^{p}- x, y^{p} - x)$.
+    \begin{itemize}
+        \item[(a)] Prove that $[K:F] = p^{2}$ and the separable degree and inseparable degree of $K/F$ are both equal to $p$.
+        \item[(b)] Prove that there is a subfield $E$ of $K$ containing $F$ which is purely inseparable over $F$ of degree $p$ (so then $K$ is a separable extension of $E$ of degree $p$). [Let $s = x^{p}-x\in F$ and $t = y^{p}-x\in F$ and consider $s -t$.]
+    \end{itemize}
+\end{problem}
+\begin{itemize}
+    \item[(a)]
+    \begin{proof} 
+        Let us recall from exercises in chapter 14.3 and 14.7 that \[a^{p} -t -(x^{p} -x)\in F[a]\] is an irreducible polynomial with roots $x + i$ for $i\in \zz_p$. We have then that $F(x)$ is a spearable extension of degree $p$ over $F$. Which then gives us that $y$ is the unique root of $a^{p} - y^{p}\in F(x)[a]$ and $F(x,y) = K$ is a purely inseparable extension of $F(x)$ of degree $p$
+    \end{proof}
+    \item[(b)]
+    \begin{proof}
+        If we use the hint that is given to us, let us consider, 
+        \[(x-y)^{p} = x^{p} - y^{p} = (x^{p} -x) - (y^{p} -x)\in F.\]
+        Using the equivalence relation found on page 649 of the book, we have that $F(x-y)$ is purely inseparable over $F$.
+    \end{proof}  
+\end{itemize}
+
+\vspace*{15pt}
+
+\begin{problem} {14.9.3}
+    Let $p$ be an odd prime, let $s$ and $t$ be independent transcendentals over $\ff_p$, and let $F$ be the field $\ff_p(s,t)$. Let $\beta$ be a root of $x^{2} -sx + t = 0$ and let $\alpha$ be a root of $x^{p} - \beta = 0$ (in some algebraic closure of $F$). Set $E = F(\beta)$ and $K = F(\alpha)$.
+    \begin{itemize}
+        \item[(a)] Prove that $E$ is Galois extension of $F$ of degree 2 and that $K$ is purely inseparable extension of $E$ of degree $p$. 
+        \item[(b)] Prove that $K$ is not a normal extension of $F$. [If it were, conjugate $\beta$ over $F$ to show that $K$ would contain a $p^{th}$ root of $s$ and then also a $p^{th}$ root of $t$, so $[K:F]\geq p^{2}$, a contradiction.]
+        \item[(c)]  Prove that there is no field $K_0$ such that $F\subseteq K_0 \subseteq K$ with $K_0/F$ purely inseparable and $K/K_0$ separable. [If there were such a field, use exercise 1 and the fact that the composite of two normal extension is again normal to show that $K$ would be the normal extension of $F$. 
+    \end{itemize}
+\end{problem}
+\begin{itemize}
+    \item[(a)]
+    \begin{proof}
+        Using the quadratic formula on the polynomial $p(x) = x^{2}-sx + t$ in $F[x]$ we have that it is irreducible. And we know that a quadratic extension is always Galois over fields of characteristic other than 2, we have that $E = F(\beta)$ is a Galois extension. 
+
+        Because $\alpha^{p} = \beta$ it is clear that $E < K$, and because $x^{p} - \beta$ in $E[x]$ is the minimal polynomial of $\alpha$ in $E$ we have that $K$ is an extension of degree $p$. We have then that an element $k$ of $K$ is of the form,
+        \begin{align*}
+            k = \sum_{i = 0}^{p-1}e_i\alpha^{i}
+        \end{align*}
+        and we have characteristic $p$ and $\alpha^{p} = \beta$, we have that $k^{p} \in E$ and its minimal polynomial to be $x^{p} -k^{p}$, and using the equivalence relation on page 649, $K$ is purely inseparable over $E$. 
+    \end{proof} 
+    \item[(b)]
+    \begin{proof}
+        Let us suppose that $K$ is indeed normal over $F$. We then have a conjugate $\gamma\in K$ of $\beta$ such that $\beta + \gamma = s$ and $\beta\gamma = t$. We have that $\sqrt[p]{\beta} = \alpha$ and from part (a), since $\gamma \in K$ we have that $\gamma^{p^{n}}\in E$ for some $n$, and so there is some $\alpha' = \sqrt[p]{\gamma}\in K$. We have then that 
+        \[s = \beta + \gamma = \alpha^{p} + (\alpha')^{p} = (\alpha + \alpha')^{p}\]
+        and 
+        \[t = \beta \gamma = (\alpha\alpha')^{p}\]
+        which means that
+        \[[K:F] \leq p^{2}\]
+        which is a contradiction. Proving that $K$ is not a normal extension of $F$. 
+    \end{proof} 
+    \item[(c)]  
+    \begin{proof}
+        Let us suppose that there is a field $K_0$ satisfy the given statements. We know (using exercise 1 statement) that $K_0/F$ is a normal extension. Then by assumption $K/K_0$ and by part (a) this extension must have a prime degree, therefore it is a normal extension, which then implies that $K/F$ is a normal extension which contradicts part (b). Thus no field $K_0$ can exist satisfying the given statement. 
+    \end{proof} 
+\end{itemize}
+
+\vspace*{15pt}
+
+\begin{problem} {14.9.5}
+    Let $p$ be a prime , let $t$ be transcendental over $\ff_p$ and let $K$ be obtained by adjoining to $\ff_p(t)$ all the $p-$power roots of $t$. Prove that $K$ has transcendence degree 1 over $\ff_p$ and has no separating transcendence base. 
+\end{problem}
+\begin{proof}
+    We have by definition that $K$ is the splitting field of $x^{p} - t$ over $\ff_p(t)$. So $K$ is algebraic over $\ff_p(t)$ and so we have $\set{t}$ to be a transcendentals base of $K$ over $\ff_p$, which means it has transcendence degree 1. 
+
+    Because $K$ is the splitting field of $x^{p}- t$ over $\ff_p(t)$ and the formal derivative of $x^{p} - t$ is $px^{p-1} = 0$ we have that $K$ is not separable over $\ff_P(t)$. Therefore $K$ has no separating transcendence base over $\ff_p$. 
+\end{proof}
+
+\vspace*{15pt}
+
+\begin{problem} {14.9.6}
+    Show that if $t$ is transcendental over $\qq$ then $\qq(t, \sqrt{t^{3} -t})$ is not a purely transcendental extension of $\qq$. (This is an example of what is called an elliptic function field.)
+\end{problem}
+\begin{proof}
+    Note that $\qq(t,\sqrt{t^{3}-t})$ has transcendence degree 1, therefore if $\qq(t,\sqrt{t^{3}-t})$ was purely transcendental it would be isomorphic to $\qq(x)$. Then there would be non-constant rational functions $f(x),g(x)\in \qq(x)$ such that 
+    \[g(x)^{2} = f(x)^{2} -f(x).\]
+    If we derive both sides we obtain,
+    \[\phi(x) = \dfrac{g'(x)}{3f(x)^{2} - 1} = \dfrac{f'(x)}{2g(x)}\]
+    which must be a polynomial. Because if not the denominators would have  factor $x-a$ and so,
+    \[2g(a) = 3f(a)^{2} -1 = 0\]
+    and 
+    \[g(a)^{2} = f(a)^{3} - f(a)\]
+    which is impossible. 
+
+    Since both $f(x)$ and $g(x)$ are nonzero we have that $\phi$ is a non-zero polynomial. Now, replacing $f(x)$ and $g(x)$ by $f(\dfrac{1}{x})$ and $f(\dfrac{1}{x})$ we would get that $\dfrac{\phi(1/x)}{x}$ is again a polynomial, which it obviously is not. Therefore we obtain a contradiction, and $\qq(t,\sqrt{t^{3}-t})$ is not purely transcendental.
+\end{proof}
+
+\vspace*{15pt}
+
+\begin{problem} {14.9.7}
+    Let $k$ be a field with 4 elements, $t$ is a transcendental over $k$, $F = k(t^{4} + t)$ and $K = k(t)$. 
+    \begin{itemize}
+        \item[(a)] Show that $[K:F] = 4$.
+        \item[(b)] Show that $K$ is separable over $F$.
+        \item[(c)] Show that $K$ is Galois over $F$.
+        \item[(d)] Describe the lattice of subgroups of the Galois group and the corresponding lattice of subfields of $K$, giving each subfield in the form $k(r)$ , for some rational function $r$.   
+    \end{itemize}
+\end{problem}
+\begin{itemize}
+    \item[(a)]
+    \begin{proof}
+        Because $t$ is a zero of the irreducible polynomial,
+        \[x^{4} +x + (t^{4} +t)\in F[x]\]
+        we have that,
+        \[[K:F] = 4.\]
+    \end{proof} 
+    \item[(b)]
+    \begin{proof}
+        Since $K$ is generated by $t$ over $F$. The minimal polynomial of $t$ is,
+        \[x^{4} + x + (t^{4} + t) = (x+t)(x + t + 1)(x+t + \zeta)( x+ t + \zeta + 1)\]
+        which means $t$ is separable over $F$. We conclude $K$ is separable extension of $F$. 
+    \end{proof} 
+    \item[(c)]
+    \begin{proof}
+        We know $K$ is separable algebraic extension of $F$, so we need to verify it is normal. This follows from the fact that $K$ is the splitting field of 
+        \[x^{4} + x + (t^{4} + t) = (x + t)(x + t + 1)(x + t + \zeta)(x + t + \zeta + 1).\]
+    \end{proof} 
+    \item[(d)]
+    We have,
+    \[Gal(K/F)\cong Z_2 \oplus Z_2\]
+    with one generator permuting the pairs of roots $(t,t+1)$ and $(t + \zeta, t + \zeta + 1)$ and the other generator permuting the pairs $(t , t + \zeta)$ and $(t + 1, t + \zeta + 1)$. This group as 3 subgroups and the associated fixed fields are $k(t^{2}+t), k(t^{2}+\zeta t),$ and $k(t^{2}+ \zeta t + t).$  
+\end{itemize}
+
+\newpage
+
+\begin{problem} {14.9.10}
+    Prove that a purely transcendental proper extension of a field is never algebraically closed.
+\end{problem}
+\begin{proof}
+    Let $E/F$ be a purely transcendental extension with $E = F(X)$ for some non-empty transcendental base $X = \set{t_1, \dots, t_m}.$ Consider a root of $\alpha$ of the polynomial $x^{2} -t_1$. We have that $\alpha \notin F(t_1)$ so if $E$ is algebraically closed then $\alpha \in E$ and so there are $a_{n_1, \dots, n_m}$ such that,
+    \[\lrp{\sum_{(n_1,\dots,n_m)\in \zz^{m}}a_{n_1,\dots, n_m}t_1^{n_1}\dots t_m^{n_m} }^{2} = t_1\]
+    which goes against the independence of the elements in $X$, therefore $E$ is not algebraically closed. 
+\end{proof}
+
+\vspace*{15pt}
+
+\begin{problem} {14.9.12}
+    Let $K$ be a subfield of $\cc$ maximal with respect to the property "$\sqrt{2}\notin K$"
+    \begin{itemize}
+        \item[(a)] Show such a field $K$ exists.
+        \item[(b)]  Show that $\cc$ is algebraic over $K$
+        \item[(c)] Prove that every finite extension of $K$ in $\cc$ is Galois with Galois group a cyclic $2-$group.
+        \item[(d)] Deduce that $[\cc:K]$ is countable (and not finite). 
+    \end{itemize}
+\end{problem}
+\begin{itemize}
+    \item[(a)]
+    \begin{proof}
+        Now consider the partially ordered set,
+        \[A = \set{L < \cc \mid \sqrt{2} \notin L}\]
+        This set is a non-empty since $\qq \in A$. Every chain of elements in $A$ is bound from above by the union of subfields of the chain, so by Zorn's Lemma, $A$ contained a maximal element $K$.
+    \end{proof} 
+    \item[(b)]
+    \begin{proof}
+        Suppose that $\alpha \in \cc$ is transcendental over $K$, then $\sqrt{2} \notin K(\alpha)$ since if $f(\alpha) \in K(\alpha)$ is such that $f(\alpha)^{2} = 2$ then $\alpha$ is algebraic over $K$, a contradiction.
+    \end{proof}
+    \item[(c)]
+    \begin{proof}
+         Let $L$ be non-trivial finite extension of $K$. By maximality $\sqrt{2}\in L$. There is some $\sigma \in Gal(L/K)$ that doesn't fix $\sqrt{2}$, so by maximality of $K$ the fixed field of $<\sigma>$ must be $K$, and so by Galois correspondence $Gal(L/K)$ is cyclic and generated by $\sigma$. Again by the maximality of $K$ there is no odd extension of $K$, so the order of $Gal(L/K)$ must be $2^{n}$ for some $n\in\nn$. Since every subgroup of a cyclic group is normal $L$ is a Galois extension. 
+    \end{proof} 
+    \item[(d)]
+    \begin{proof}
+        If $[\cc: K]$ was finite by the (c) $[\cc:K] = 2^{n}$. Note though that $\sqrt[n+1]{2}\in \cc$ and \[min(\sqrt[n+1]{2}, K) = x^{n+1}  -2\] has degree $n+1$, a contradiction. Therefore $[\cc:K]$ is infinite. 
+    \end{proof}    
+\end{itemize}
+
+\vspace*{15pt}
+
+\begin{problem} {14.9.13}
+    Let $K$ be a fixed field in $\cc$ of an automorphism of $\cc$. Prove that every finite extension of $K$ in $\cc$ is cyclic. 
+\end{problem}
+\begin{proof}
+    Let $K$ be a field of some automorphism $\sigma$ of $\cc$, and let $L < \cc$ be some finite some extension of $K$. Now notice that $L/K$ is separable since \[\text{char } K = \text{char } \cc = 0\]
+    We then have that the normal closure $\overline{L}$ of $L/K$ is a finite Galois extension. THen $\sigma$ restricts to a $\overline{\sigma}\in Gal(\overline{L}/K)$. The fixed field of $\overline{\sigma}$ is $K$, so by the Galois correspondence,
+    \[<\overline{\sigma} = Gal(\overline{L}/K)>\]
+    is a cyclic group. Since $L$ is an intermediary subfield \[K < L < \overline{L}\]
+    by the Galois correspondence we have that $Gal(L/K)$ is cyclic. 
+\end{proof}
+
+\end{document}

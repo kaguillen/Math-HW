@@ -1,0 +1,293 @@
+\documentclass[11pt]{article}
+ 
+\usepackage[top=0.75in, bottom=1.25in, left=1.25in, right=1.25in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb} %this is THE math package
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{fancybox}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{varwidth}
+\usepackage{mdframed}
+\usepackage{mathrsfs}
+\usepackage[most]{tcolorbox}
+%------------------------
+%Fonts I use, uncomment if you like to use them.
+%The first is the general font, and the second a math font
+\usepackage{mathpazo}
+\usepackage{eulervm}
+%------------------------
+%This is so that we have standard fonts for the double-stroked symbols
+%for reals, naturals etc. regardless of what font you use.
+%Don't comment
+\AtBeginDocument{
+  \DeclareSymbolFont{AMSb}{U}{msb}{m}{n}
+  \DeclareSymbolFontAlphabet{\mathbb}{AMSb}}
+%------------------------
+
+%----------------------------------------------
+%User-defined environments
+%Commented because we're not using them in this document
+%The only uncommented ones are the Problem and Solution environment
+
+% \newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{question}[2][Question]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem\!]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+%\newenvironment{sub-problem}[2][]{\begin{trivlist}
+%\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+\newenvironment{solution}{\begin{proof}[\textbf{\textit{Solution}}] }{\end{proof}}
+%----------------------------------------------
+
+%----------------------------
+%User-defined notations
+\newcommand{\zz}{\mathbb Z}   %blackboard bold Z
+\newcommand{\qq}{\mathbb Q}   %blackboard bold Q
+\newcommand{\ff}{\mathbb F}   %blackboard bold F
+\newcommand{\rr}{\mathbb R}   %blackboard bold R
+\newcommand{\nn}{\mathbb N}   %blackboard bold N
+\newcommand{\cc}{\mathbb C}   %blackboard bold C
+\newcommand{\af}{\mathbb A}   %blackboard bold A
+\newcommand{\pp}{\mathbb P}   %blackboard bold P
+\newcommand{\id}{\operatorname{id}} %for identity map
+\newcommand{\im}{\operatorname{im}} %for image of a function
+\newcommand{\dom}{\operatorname{dom}} %for domain of a function
+\newcommand{\cat}[1]{\mathscr{#1}}   %calligraphic category
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert} %for absolute value
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert} %for norm
+\newcommand{\modar}[1]{\text{ mod }{#1}} %for modular arithmetic
+\newcommand{\set}[1]{\left\{#1\right\}} %for set
+\newcommand{\setp}[2]{\left\{#1\ \middle|\ #2\right\}} %for set with a property
+\newcommand{\card}[1]{\#\,{#1}} %for cardinality of a set
+\newcommand\m[1]{\begin{pmatrix}#1\end{pmatrix}} 
+
+%Re-defined notations
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\emptyset}{\varnothing}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+%----------------------------
+
+\allowdisplaybreaks
+
+\newcommand{\tcr}[1]{\textcolor{red}{#1}}
+\newcommand{\tcb}[1]{\textcolor{blue}{#1}}
+\newcommand{\tco}[1]{\textcolor{orange}{#1}}
+
+\newcommand{\lrp}[1]{\left(#1\right)}
+\newcommand{\lrb}[1]{\left[#1\right]}
+\newcommand{\lrc}[1]{\left\{#1\right\}}
+\newcommand{\lrw}[1]{\left<#1\right>}
+ 
+ 
+\begin{document}
+ 
+\title{Homework 6}
+\author{Kevin Guillen\\[0.5em]
+MATH 103A | Complex Analysis | Spring 2022}
+\date{} 
+\maketitle
+
+%Use \[...\] instead of $$...$$
+
+\begin{problem}{6.1}
+Let $z : [a, b] \to \cc$ be a parameterization of a smooth arc $C$ and suppose $f(z)$ is holomorphic at a point $z_0 = z(t_0)$ on $\cc$. Show that
+\[(f \circ z)'(t_0) = f'(z(t_0))\,z'(t_0)\]
+\end{problem}
+%----------------------------------------
+\begin{proof}
+    Since $z$ is a parameterization of a smooth arc $C$ it can be expressed as $z = x + i y$, meaning then that,
+    \begin{align*}
+        z_0 = z(t_0) = x(t_0) + i y(t_0)
+    \end{align*}
+    and we know $f$ can be expressed as,
+    \begin{align*}
+        f(z) = f(x,y) = u(x,y) + i v(x,y).
+    \end{align*}
+    So if we consider $f(z(t))$ we have,
+    \begin{align*}
+        f(z(t)) = f(x(t), y(t)) = u(x(t), y(t)) + i v(x(t), y(t)).
+    \end{align*}
+    So if we want to take the derivative of $f(z(t_0))$ with respect to $t_0$ we have,
+    \begin{align*}
+        f(z(t_0))' &= u_x x_t (t_0) + u_y y_t (t_0) + i(v_x x_t (t_0) + v_y y_t (t_0)) \\
+        &= u_x(z(t_0))x_t(t_0) + u_x(z(t_0))y_t(t_0) + i(v_x(z(t_0))x_t(t_0) +  v_y(z(t_0))y_t(t_0))
+    \end{align*}
+    Since $f(z)$ is holomorphic at a point $z_0 = z(t_0)$ we have that,
+    \begin{align*}
+        f'(z(t_0)) = u_x(z(t_0)) + i v_x(z(t_0))
+    \end{align*}
+    and we have $z'(t_0) = x_t(t_0) + i y_t(t_0)$ so their product will be,
+    \begin{align*}
+        f'(z(t_0))z'(t_0)  &= \lrp{u_x(z(t_0)) + i v_x(z(t_0))}\lrp{x_t(t_0) + i y_t(t_0)} \\
+        &= u_x(z(t_0))x_t(t_0) + i v_x(z(t_0))x_t(t_0) + i u_x(z(t_0))y_t(t_0) - v_x(z(t_0))y_t(t_0) \\
+        &= u_x(z(t_0))x_t(t_0) - v_x(z(t_0))y_t(t_0) + i(v_x(z(t_0))x_t(t_0) +  u_x(z(t_0))y_t(t_0)) \\
+        &\ \ \ \ \ \ \  \text{                 apply Cauchy Riemann equations} \\
+        &= u_x(z(t_0))x_t(t_0) + u_x(z(t_0))y_t(t_0) + i(v_x(z(t_0))x_t(t_0) +  v_y(z(t_0))y_t(t_0))
+    \end{align*}
+    giving us the desired equality. 
+\end{proof}
+%----------------------------------------
+
+\newpage  %Do not delete
+
+\begin{problem}{6.2}
+Let $\alpha, \beta \in \rr$. Evaluate the following integral of real-valued functions
+\[\int_0^\pi e^{\alpha x}\cos\beta x\ dx \quad \text{and} \quad \int_0^\pi  e^{\alpha x}\sin\beta x\ dx\]
+simultaneously by computing a \emph{single} integral of a complex-valued function.
+\end{problem}
+%----------------------------------------
+\begin{proof}
+    We have $f(x) = e^{\alpha x}\cos(\beta x) + i e^{\alpha x}\sin(\beta x)$, which we can rewrite as,
+    \begin{align*}
+        f(x) &= e^{\alpha x}(\cos(\beta x) + i\sin(\beta x)) \\
+        &= e^{\alpha x}e^{i \beta x} \\
+        &= e^{\alpha x + i\beta x}\\
+        & = e^{(\alpha + i\beta) x}.
+    \end{align*}
+    Now if we integrate $f(x)$ from 0 to $\pi$ we have,
+    \begin{align*}
+        \int_0^{\pi}f(x)\ dx &= \int_0^{\pi}e^{(\alpha + i \beta)x}\ dx\\ &= \lrb{\dfrac{e^{(\alpha + i\beta )x}}{\alpha + i\beta}}_0^{\pi} \\
+        &= \dfrac{\lrb{e^{(\alpha + i \beta)x}}_0^{\pi}}{\alpha + i \beta} \\
+        &=\dfrac{e^{\alpha \pi + i\beta \pi} - 1}{\alpha + i \beta} \\
+        &= \dfrac{e^{\alpha \pi} (\cos(\beta \pi) + i\sin(\beta \pi)) - 1}{\alpha + i\beta} \\
+        &= \dfrac{\alpha - i \beta}{\alpha^{2}+ \beta^{2}}\lrp{e^{\alpha \pi }\cos(\beta \pi) +ie^{\alpha \pi}\sin(\beta\pi) - 1} \\
+        &= \dfrac{\alpha\lrp{e^{\alpha \pi }\cos(\beta \pi) +ie^{\alpha \pi}\sin(\beta\pi) - 1} -i\beta\lrp{e^{\alpha \pi }\cos(\beta \pi) +ie^{\alpha \pi}\sin(\beta\pi) - 1}}{\alpha^{2}+ \beta^{2}} \\
+        &= \dfrac{\alpha e^{\alpha \pi }\cos(\beta \pi) +i\alpha e^{\alpha \pi}\sin(\beta\pi) - \alpha + -\beta e^{\alpha \pi }i\cos(\beta \pi) +\beta e^{\alpha \pi}\sin(\beta\pi) + i\beta}{\alpha^{2} + \beta^{2}} \\
+        &= \dfrac{e^{\alpha \pi}\lrp{\alpha \cos(\beta \pi) +\beta \sin(\beta\pi) }-\alpha}{\alpha^{2}+ \beta^{2}} + i\dfrac{e^{\alpha \pi}\lrp{\alpha \sin(\beta \pi) -\beta\cos(\beta \pi)} + \beta}{\alpha^{2} + \beta^{2}}.
+    \end{align*}
+    Now recall that $\int_0^{\pi}f(x) \ dx = \int_0^{\pi}e^{\alpha x}\cos(\beta x) \ dx + i\int_0^{\pi} e^{\alpha x}\sin(\beta x)\ dx$. Therefore we have 
+    \begin{align*}
+        \int_0^\pi e^{\alpha x}\cos\beta x\ dx  &=  \dfrac{e^{\alpha \pi}\lrp{\alpha \cos(\beta \pi) +\beta \sin(\beta\pi) }-\alpha}{\alpha^{2}+ \beta^{2}}  \\
+        \int_0^\pi e^{\alpha x}\sin\beta x\ dx &=  \dfrac{e^{\alpha \pi}\lrp{\alpha \sin(\beta \pi) -\beta\cos(\beta \pi)} + \beta}{\alpha^{2} + \beta^{2}}
+    \end{align*}
+    as desired.
+\end{proof}
+%----------------------------------------
+
+\newpage  %Do not delete
+
+\begin{problem}{6.3}
+Let $z_1, z_2 \in \cc$. Compute the integral
+\[\int_C dz = \int_C 1\,dz\]
+where $C$ is any contour joining $z_1$ to $z_2$.
+\end{problem}
+%----------------------------------------
+\begin{solution}
+    Let $\sigma:[0, 1] \to \cc$ be the parameterization of $C$. Where $\sigma(0) = z_1$ and $\sigma(1) = z_2$ since $C$ is any contour joining $z_1$ and $z_2$. Now let $f(z)$ be the constant function that maps every complex number to 1. Note then that $f(\sigma(t)) = 1$ for $t \in [0,1]$. We have then that,
+    \begin{align*}
+        \int_C 1\ dz &= \int_Cf(z) \ dz  && \text{apply Def 12.3} \\
+        &= \int_0^{1}f(\sigma(t))\sigma'(t) \ dt \\
+        &= \int_0^{1}\sigma'(t) && \text{apply F.T.C} \\
+        &= \sigma(1) - \sigma(0) \\
+        &= z_2 - z_1.
+    \end{align*}
+\end{solution}
+%----------------------------------------
+
+\newpage  %Do not delete
+
+\begin{problem}{6.4}
+Let $C$ denote the unit circle with positive orientation. Compute the integral
+\[\frac{1}{2\pi i}\int_C \frac{(1 + z)^n}{z^{k+1}}\,dz = \star\]
+for any integers $0 \leq k \leq n$.
+\end{problem}
+%----------------------------------------
+\begin{solution}
+    The parameterization of $C$ is $z(t) = e^{it}$ for $0 \leq t\leq 2\pi$ which then gives us that $dz = ie^{it}$, so we have,
+    \begin{align*}
+        \star &=\dfrac{1}{2\pi i } \int_0^{2\pi} \dfrac{(1 + e^{i t})^{n}}{(e^{it})^{k + 1}}ie^{it}\  dt && \text{using Binomial theorem} \\
+       &=  \dfrac{1}{2\pi }\int_0^{2\pi} \dfrac{e^{it}}{e^{it(k + 1)}}\sum_{r = 0}^{n} \binom{n}{r}e^{it r} \ dt \\
+       &= \dfrac{1}{2\pi} \int_0^{2\pi}e^{-ikt}\sum_{r= 0}^{n}\binom{n}{r}e^{itr}\ dt \\
+       &= \dfrac{1}{2\pi} \int_0^{2\pi}\sum_{r= 0}^{n}\binom{n}{r}e^{it(r - k)}\ dt \\
+       &=\dfrac{1}{2\pi} \sum_{r= 0}^{n}\binom{n}{r}\int_0^{2\pi}e^{it(r - k)}\ dt \\
+    \end{align*}
+    We note here that integral above works out to be $\dfrac{-i(e^{i2\pi (r-k)} - 1)}{r-k}$ for $r\neq k$, but using Eulers identity in the numerator the expression works out to be 0. The only nonzero answer is when $r = k$ since6 we get,
+    \begin{align*}
+        \int_0^{2\pi}e^{0}\ dt &= \int_0^{2\pi}1 \ dt \\
+        &= 2\pi
+    \end{align*}
+    meaning the sum works out to be $2\pi \binom{n}{r}$, where $r = k$  turning our integral to,
+    \begin{align*}
+        \star = \dfrac{1}{2\pi}2\pi \binom{n}{r} = \binom{n}{k}
+    \end{align*}
+\end{solution}
+%----------------------------------------
+
+\newpage  %Do not delete
+
+\begin{problem}{6.5}
+Integrate the function $f(z) = \overline{z}$ over the following contours:
+\begin{itemize}[itemsep=3em]
+\item[(a)] $C_1$: the line segment joining $0$ to $1 + i$;
+%----------------------------------------
+\begin{solution}
+    We can parameterization the line segment as $z(t) = t + i t$ for $0 \leq t \leq 1$. Giving us that $dz = (1 + i)t dt$. All together now we integrating the given function over this contour we get,
+    \begin{align*}
+        \int_{C_1}\overline{z}\ d z &= \int_0^{1}(1 -i)(1 + i)x\ dx \\
+        &= 2\lrb{\dfrac{x^{2}}{2}}_0^{1} \\
+        &= 2\cdot \dfrac{1}{2} \\
+        &= 1.        
+    \end{align*}
+
+\end{solution}
+%----------------------------------------
+
+\item[(b)] $C_2$: the line segment joining $0$ to $1$, following by the line segment joining $1$ to $1 + i$.
+%----------------------------------------
+\begin{solution}
+    Let $A_1$ and $A_2$ denote the first and second line segment respectively. We have the parameterization of $A_1$ as $z(t) = t$ for $0 \leq t \leq 1$ which gives us that $dz = dt$. The parameterization of $A_2$ as $z(s) = 1 + i s$ for $0 \leq s \leq 1$ which gives us $dz = ids$. So we have $C_1 = A_1 + A_2$, now integrating $f(z)$ over the given contour we get,
+    \begin{align*}
+        \int_{C_1} f(z)\ dz &= \int_{A_1} f(z)\ dz + \int_{A_2}f(z) \ dz \\
+        &= \int_0^{1}t\ dt + \int_0^{1}(1-i s)\cdot  i\ ds  \\
+        &= \lrb{\dfrac{t^{2}}{2}}_0^{1} + \int_0^{1}s + i \ ds \\
+        &=  \dfrac{1}{2} + \lrb{\dfrac{s^{2}}{2} + i s}_0^{1} \\
+        &= \dfrac{1}{2} + \dfrac{1}{2} + i \\
+        &= 1 + i.
+    \end{align*}  
+\end{solution}
+%----------------------------------------
+
+\end{itemize}
+\end{problem}
+
+
+%----------------------------------------
+%Delete if nothing to add
+\newpage  %Do not delete
+
+\begin{center}
+\textbf{Collaborators:}
+%List your peers with whom you discussed the Problem Set
+\end{center}
+\vfill 
+
+\begin{center}
+\textbf{References:}
+%List any book/website/notes that you used to write your solutions
+\end{center}
+\begin{itemize}
+\item[$\bullet$] [Book(s): Title, Author]
+\item[$\bullet$] [Online: \href{http://example.com/}{\color{blue}Link}]
+\item[$\bullet$] [Notes: \href{http://example.com/}{\color{blue}Link}]
+\end{itemize}
+
+\vfill
+\begin{center}
+Fin.
+\end{center}
+\vfill
+
+\end{document}

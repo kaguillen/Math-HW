@@ -1,0 +1,196 @@
+\documentclass[11pt]{article}
+%------------------------
+%Packages
+\usepackage[top=0.75in, bottom=1.25in, left=1in, right=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb} %this is THE math package
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{fancybox}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{varwidth}
+\usepackage{mdframed}
+\usepackage{mathrsfs}
+\usepackage{xcolor}
+%------------------------
+%Fonts I use, uncomment if you like to use them.
+%The first is the general font, and the second a math font
+\usepackage{mathpazo}
+\definecolor{darkblue}{rgb}{0.0,0.0,.7}
+%------------------------
+%This is so that we have standard fonts for the doublestroked symbols
+%for reals, naturals etc. regardless of what font you use.
+%Don't comment
+\AtBeginDocument{
+  \DeclareSymbolFont{AMSb}{U}{msb}{m}{n}
+  \DeclareSymbolFontAlphabet{\mathbb}{AMSb}}
+
+%----------------------------------------------
+%User-defined environments
+%Commented because we're not using them in this document
+%The only uncommented ones are the Problem and Solution environment
+
+% \newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{question}[2][Question]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem\!]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+%\newenvironment{sub-problem}[2][]{\begin{trivlist}
+%\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+\newenvironment{solution}{\begin{proof}[\textbf{\textit{Solution}}]}{\end{proof}}
+%----------------------------------------------
+
+%----------------------------
+%User-defined notations
+\newcommand{\zz}{\mathbf Z}   %blackboard bold Z
+\newcommand{\qq}{\mathbf Q}   %blackboard bold Q
+\newcommand{\ff}{\mathbf F}   %blackboard bold F
+\newcommand{\rr}{\mathbf R}   %blackboard bold R
+\newcommand{\nn}{\mathbf N}   %blackboard bold N
+\newcommand{\cc}{\mathbf C}   %blackboard bold C
+\newcommand{\af}{\mathbf A}   %blackboard bold A
+\newcommand{\pp}{\mathbf P}   %blackboard bold P
+\newcommand{\id}{\operatorname{id}} %for identity map
+\newcommand{\parg}{\operatorname{Arg}} %principal argument
+\newcommand{\plog}{\operatorname{Log}} %principal log
+\newcommand{\im}{\operatorname{im}} %for image of a function
+\newcommand{\dom}{\operatorname{dom}} %for domain of a function
+\newcommand{\cat}[1]{\mathscr{#1}}   %calligraphic category
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert} %for absolute value
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert} %for norm
+\newcommand{\modar}[1]{\text{ mod }{#1}} %for modular arithmetic
+\newcommand{\set}[1]{\left\{#1\right\}} %for set
+\newcommand{\setp}[2]{\left\{#1\ \middle|\ #2\right\}} %for set with a property
+\newcommand{\card}[1]{\#\,{#1}} %for cardinality of a set
+
+%Re-defined notations
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\emptyset}{\varnothing}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\gcd}{\operatorname{GCD}}
+\renewcommand{\Im}{\operatorname{Im}}
+%----------------------------
+
+\allowdisplaybreaks
+ 
+\begin{document}
+ 
+\title{Homework 6}
+\author{[Your Full Name Here]\\[0.5em]
+MATH 103A --- Complex Analysis --- Spring 2022}
+\date{} 
+\maketitle
+
+%Use \[...\] instead of $$...$$
+
+\begin{problem}{6.1}
+Let $z : [a, b] \to \cc$ be a parameterization of a smooth arc $C$ and suppose $f(z)$ is holomorphic at a point $z_0 = z(t_0)$ on $\cc$. Show that
+\[(f \circ z)'(t_0) = f'(z(t_0))\,z'(t_0)\]
+\end{problem}
+%----------------------------------------
+\begin{solution}
+%Uncomment and WRITE YOUR SOLUTION HERE
+\end{solution}
+%----------------------------------------
+
+\newpage  %Do not delete
+
+\begin{problem}{6.2}
+Let $\alpha, \beta \in \rr$. Evaluate the following integral of real-valued functions
+\[\int_0^\pi e^{\alpha x}\cos\beta x\ dx \quad \text{and} \quad \int_0^\pi  e^{\alpha x}\sin\beta x\ dx\]
+simultaneously by computing a \emph{single} integral of a complex-valued function.
+\end{problem}
+%----------------------------------------
+\begin{solution}
+%Uncomment and WRITE YOUR SOLUTION HERE
+\end{solution}
+%----------------------------------------
+
+\newpage  %Do not delete
+
+\begin{problem}{6.3}
+Let $z_1, z_2 \in \cc$. Compute the integral
+\[\int_C dz = \int_C 1\,dz\]
+where $C$ is any contour joining $z_1$ to $z_2$.
+\end{problem}
+%----------------------------------------
+\begin{solution}
+%Uncomment and WRITE YOUR SOLUTION HERE
+\end{solution}
+%----------------------------------------
+
+\newpage  %Do not delete
+
+\begin{problem}{6.4}
+Let $C$ denote the unit circle with positive orientation. Compute the integral
+\[\frac{1}{2\pi i}\int_C \frac{(1 + z)^n}{z^{k+1}}\,dz\]
+for any integers $0 \leq k \leq n$.
+\end{problem}
+%----------------------------------------
+\begin{solution}
+%Uncomment and WRITE YOUR SOLUTION HERE
+\end{solution}
+%----------------------------------------
+
+\newpage  %Do not delete
+
+\begin{problem}{6.5}
+Integrate the function $f(z) = \overline{z}$ over the following contours:
+\begin{itemize}[itemsep=3em]
+\item[(a)] $C_1$: the line segment joining $0$ to $1 + i$;
+%----------------------------------------
+\begin{solution}
+%Uncomment and WRITE YOUR SOLUTION HERE
+\end{solution}
+%----------------------------------------
+
+\item[(b)] $C_2$: the line segment joining $0$ to $1$, following by the line segment joining $1$ to $1 + i$.
+%----------------------------------------
+\begin{solution}
+%Uncomment and WRITE YOUR SOLUTION HERE
+\end{solution}
+%----------------------------------------
+
+\end{itemize}
+\end{problem}
+
+
+%----------------------------------------
+%Delete if nothing to add
+\newpage  %Do not delete
+
+\begin{center}
+\textbf{Collaborators:}
+%List your peers with whom you discussed the Problem Set
+\end{center}
+\vfill 
+
+\begin{center}
+\textbf{References:}
+%List any book/website/notes that you used to write your solutions
+\end{center}
+\begin{itemize}
+\item[$\bullet$] [Book(s): Title, Author]
+\item[$\bullet$] [Online: \href{http://example.com/}{\color{blue}Link}]
+\item[$\bullet$] [Notes: \href{http://example.com/}{\color{blue}Link}]
+\end{itemize}
+
+\vfill
+\begin{center}
+Fin.
+\end{center}
+\vfill
+%----------------------------------------
+
+\end{document}

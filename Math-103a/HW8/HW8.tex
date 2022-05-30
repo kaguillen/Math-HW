@@ -1,0 +1,253 @@
+\documentclass[11pt]{article}
+ 
+\usepackage[top=0.75in, bottom=1.25in, left=1in, right=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb} %this is THE math package
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{fancybox}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{varwidth}
+\usepackage{mdframed}
+\usepackage{mathrsfs}
+\usepackage[most]{tcolorbox}
+%------------------------
+%Fonts I use, uncomment if you like to use them.
+%The first is the general font, and the second a math font
+\usepackage{mathpazo}
+\usepackage{eulervm}
+%------------------------
+%This is so that we have standard fonts for the double-stroked symbols
+%for reals, naturals etc. regardless of what font you use.
+%Don't comment
+\AtBeginDocument{
+  \DeclareSymbolFont{AMSb}{U}{msb}{m}{n}
+  \DeclareSymbolFontAlphabet{\mathbb}{AMSb}}
+%------------------------
+
+%----------------------------------------------
+%User-defined environments
+%Commented because we're not using them in this document
+%The only uncommented ones are the Problem and Solution environment
+
+% \newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{question}[2][Question]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem\!]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+%\newenvironment{sub-problem}[2][]{\begin{trivlist}
+%\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+\newenvironment{solution}{\begin{proof}[\textbf{\textit{Solution}}] }{\end{proof}}
+%----------------------------------------------
+
+%----------------------------
+%User-defined notations
+\newcommand{\zz}{\mathbb Z}   %blackboard bold Z
+\newcommand{\qq}{\mathbb Q}   %blackboard bold Q
+\newcommand{\ff}{\mathbb F}   %blackboard bold F
+\newcommand{\rr}{\mathbb R}   %blackboard bold R
+\newcommand{\nn}{\mathbb N}   %blackboard bold N
+\newcommand{\cc}{\mathbb C}   %blackboard bold C
+\newcommand{\af}{\mathbb A}   %blackboard bold A
+\newcommand{\pp}{\mathbb P}   %blackboard bold P
+\newcommand{\id}{\operatorname{id}} %for identity map
+\newcommand{\im}{\operatorname{im}} %for image of a function
+\newcommand{\dom}{\operatorname{dom}} %for domain of a function
+\newcommand{\cat}[1]{\mathscr{#1}}   %calligraphic category
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert} %for absolute value
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert} %for norm
+\newcommand{\modar}[1]{\text{ mod }{#1}} %for modular arithmetic
+\newcommand{\set}[1]{\left\{#1\right\}} %for set
+\newcommand{\setp}[2]{\left\{#1\ \middle|\ #2\right\}} %for set with a property
+\newcommand{\card}[1]{\#\,{#1}} %for cardinality of a set
+\newcommand\m[1]{\begin{pmatrix}#1\end{pmatrix}} 
+
+%Re-defined notations
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\emptyset}{\varnothing}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+%----------------------------
+
+\allowdisplaybreaks
+
+\newcommand{\tcr}[1]{\textcolor{red}{#1}}
+\newcommand{\tcb}[1]{\textcolor{blue}{#1}}
+\newcommand{\tco}[1]{\textcolor{orange}{#1}}
+
+\newcommand{\lrp}[1]{\left(#1\right)}
+\newcommand{\lrb}[1]{\left[#1\right]}
+\newcommand{\lrc}[1]{\left\{#1\right\}}
+\newcommand{\lrw}[1]{\left<#1\right>}
+ 
+ 
+\begin{document}
+ 
+\title{Homework 8}
+\author{Kevin Guillen\\[0.5em]
+MATH 103A | Complex Analysis | Spring 2022}
+\date{} 
+\maketitle
+
+%Use \[...\] instead of $$...$$
+
+\begin{problem}{8.1}\hfill
+\begin{itemize}[itemsep=3em]
+\item[(a)] Let $C$ denote the positively oriented boundary of the square whose sides lie along the lines $x = \pm 2$ and $y = \pm 2$. Compute
+\[\int_C\,\frac{\cos z}{z(z^2 + 8)}\]
+%----------------------------------------
+\begin{solution}
+    Let,
+    \[f(z) = \dfrac{\cos z}{z^{2}+8}\] 
+    we have then that,
+    \begin{align*}
+        \int_C\,\frac{\cos z}{z(z^2 + 8)}\, d z = \int_C\, \dfrac{f(z)}{z - 0}\, d z .
+    \end{align*}
+    Let $z_0 = 0$. Since $f(z)$ is holomorphic on $C$ and $z_0$ is in the interior of $C$, we have by Cauchy's Integral Formula that,
+    \begin{align*}
+        f(z_0) &= \dfrac{1}{2\pi i} \int_C \, \dfrac{f(z)}{z - z_0} \, d z \\
+        \dfrac{1}{8} &= \dfrac{1}{2\pi i}\int_C \, \dfrac{f(z)}{z - z_0} \, d z  \\
+        \dfrac{\pi i }{4} & = \int_C \, \dfrac{f(z)}{z - z_0} \, d z 
+    \end{align*}
+    therefore,
+    \[\int_C\,\frac{\cos z}{z(z^2 + 8)} = \dfrac{\pi i}{4}.\]
+\end{solution}
+%----------------------------------------
+
+\item[(b)] Let $C$ denote the circle centered at $i$ of radius $2$, positively oriented. Compute
+\[\int_C\,\frac{1}{(z^2 + 4)^2}\]
+%----------------------------------------
+\begin{solution}
+    Let us note that,
+    \[(z^{2} + 4) = (z + 2i)(z - 2i).\]
+    Now let $f(z) = \dfrac{1}{z + 2 i }$, we can rewrite the given integral as,
+    \begin{align*}
+        \int_C\,\frac{1}{(z^2 + 4)^2} &= \int_C\,\frac{1}{(z- 2 i)^{2} (2 +2 i)^{2}} \\
+        &= \int_C\,\dfrac{f(z)}{(z - 2i)^{2}}\, d z .
+    \end{align*}
+    Let $z_0 = 2i$. As before, we know that $f(z)$ is holomorphic on the given contour since the place it is not holomorphic is when $z = -2i$ which is not in or part of the contour, and since $z_0$ is inside the contour, we can apply the generalization of Cauchy's Integral Formula to obtain,
+    \begin{align}
+        f'(z_0) &= \dfrac{1!}{2\pi i }\int_C\, \frac{f(z)}{(z - z_0)^{2}} 
+    \end{align} 
+    We obtain the derivative of $f$ to be,
+    \begin{align*}
+        f'(z) = -\dfrac{2}{(z + 2 i )^{3}}
+    \end{align*}
+    which lets us calculate the LHS of (1) to be,
+    \begin{align*}
+        f'(2i) = -\dfrac{2}{(4i)^{3}} = \dfrac{2}{64 i} = -\dfrac{i}{32}.
+    \end{align*} 
+    Solving the integral now in (1) we get,
+    \begin{align*}
+        -\dfrac{i}{32} &= \dfrac{1}{2\pi i}\int_C\, \frac{f(z)}{(z - z_0)^{2}} \\
+        \dfrac{ \pi }{16} &= \int_C\, \frac{f(z)}{(z - z_0)^{2}}
+    \end{align*}
+    therefore,
+    \begin{align*}
+        \int_C\,\frac{1}{(z^2 + 4)^2} = \dfrac{\pi}{16}.
+    \end{align*}
+\end{solution}
+%----------------------------------------
+
+\end{itemize}
+\end{problem}
+
+\newpage  %Do not delete
+
+\begin{problem}{8.2}
+Let $C$ be the circle of radius $3$, positively oriented, centered at the origin. Show that if
+\[g(w) = \int_C\, \frac{2z^2 - z - 2}{z - w}\,dz,\quad \abs{w} \neq 3,\]
+then $g(2) = 8\pi i$. What is the value of $g(w)$ when $|w| > 3$?
+\end{problem}
+%----------------------------------------
+\begin{solution}
+    Let $f(z) = 2z^{2} -z - 2$, we rewrite $g$ now as,
+    \begin{align*}
+        g(w) = \int_C\, \frac{2z^2 - z - 2}{z - w}\,d z = \int_C\, \dfrac{f(z)}{z - w} \, d z 
+    \end{align*}
+    so evaluating at $w = 2$ we know $2$ is in the interior of $C$, and $f(z)$ is holomorphic on $C$, so we can applying Cauchy's Integral formula to obtain,
+    \begin{align*}
+        f(2) &= \dfrac{1}{2\pi i}\int_C \dfrac{2z^{2} - z -2}{z - 2 }\, d z  \\
+        4 &= \dfrac{1}{2\pi i} \int_C \dfrac{2z^{2} - z -2}{z - 2 }\, d z \\
+        8\pi i &=  \int_C \dfrac{2z^{2} - z -2}{z - 2 }\, d z
+    \end{align*}.
+
+    We have that $g(w)$ is holomorphic over $C$ for $\abs{w} > 3$, so by Cauchy-Goursat Theorem $g(w) = 0$ when $\abs{w} > 3$.
+\end{solution}
+%----------------------------------------
+
+\newpage  %Do not delete
+
+\begin{problem}{8.3}
+Let $C$ be the unit circle parametrised as $z(t) = e^{it},\  -\pi \leq t \leq \pi$. First show that for any $a \in \rr$,
+\[\int_C\, \frac{e^{az}}{z}\,dz = 2\pi i\]
+Then write this integral in terms of $t$, using the definition of a contour integral, to derive the integration formula
+\[\int_0^\pi\, e^{a\cos t}\cos(a\sin t)\,dt = \pi.\]
+\end{problem}
+%----------------------------------------
+\begin{solution}
+%Uncomment and WRITE YOUR SOLUTION HERE
+\end{solution}
+%----------------------------------------
+
+\newpage  %Do not delete
+
+\begin{problem}{8.4}
+Let $f$ be an entire function such that there exists an $M > 0$ such that $\Re(f(z)) \geq M$ for all $z \in \cc$. Prove that $f$ is constant. 
+\end{problem}
+%----------------------------------------
+\begin{solution}
+%Uncomment and WRITE YOUR SOLUTION HERE
+\end{solution}
+%----------------------------------------
+
+\newpage  %Do not delete
+
+\begin{problem}{8.5}
+Let $f$ be an entire function such that $\abs{f(z)} \leq A\abs{z}$ for all $z$, where $A$ is a fixed positive number. Show that $f(z) = \alpha z$, where $\alpha$ is a complex constant.
+\end{problem}
+%----------------------------------------
+\begin{solution}
+%Uncomment and WRITE YOUR SOLUTION HERE
+\end{solution}
+%----------------------------------------
+
+
+%----------------------------------------
+%Delete if nothing to add
+\newpage  %Do not delete
+
+\begin{center}
+\textbf{Collaborators:}
+%List your peers with whom you discussed the Problem Set
+\end{center}
+\vfill 
+
+\begin{center}
+\textbf{References:}
+%List any book/website/notes that you used to write your solutions
+\end{center}
+\begin{itemize}
+\item[$\bullet$] [Book(s): Title, Author]
+\item[$\bullet$] [Online: \href{http://example.com/}{\color{blue}Link}]
+\item[$\bullet$] [Notes: \href{http://example.com/}{\color{blue}Link}]
+\end{itemize}
+
+\vfill
+\begin{center}
+Fin.
+\end{center}
+\vfill
+
+\end{document}

@@ -1,0 +1,212 @@
+\documentclass[11pt]{article}
+ 
+\usepackage[top=0.75in, bottom=1.25in, left=1.4in, right=1.4in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb} %this is THE math package
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{fancybox}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{varwidth}
+\usepackage{mdframed}
+\usepackage{mathrsfs}
+\usepackage[most]{tcolorbox}
+%------------------------
+%Fonts I use, uncomment if you like to use them.
+%The first is the general font, and the second a math font
+\usepackage{mathpazo}
+\usepackage{eulervm}
+%------------------------
+%This is so that we have standard fonts for the double-stroked symbols
+%for reals, naturals etc. regardless of what font you use.
+%Don't comment
+\AtBeginDocument{
+  \DeclareSymbolFont{AMSb}{U}{msb}{m}{n}
+  \DeclareSymbolFontAlphabet{\mathbb}{AMSb}}
+%------------------------
+
+%----------------------------------------------
+%User-defined environments
+%Commented because we're not using them in this document
+%The only uncommented ones are the Problem and Solution environment
+
+% \newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{question}[2][Question]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem\!]{\begin{tcolorbox}\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}\end{tcolorbox}}
+%\newenvironment{sub-problem}[2][]{\begin{trivlist}
+%\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+\newenvironment{solution}{\begin{proof}[\textbf{\textit{Solution}}] }{\end{proof}}
+%----------------------------------------------
+
+%----------------------------
+%User-defined notations
+\newcommand{\zz}{\mathbb Z}   %blackboard bold Z
+\newcommand{\qq}{\mathbb Q}   %blackboard bold Q
+\newcommand{\ff}{\mathbb F}   %blackboard bold F
+\newcommand{\rr}{\mathbb R}   %blackboard bold R
+\newcommand{\nn}{\mathbb N}   %blackboard bold N
+\newcommand{\cc}{\mathbb C}   %blackboard bold C
+\newcommand{\af}{\mathbb A}   %blackboard bold A
+\newcommand{\pp}{\mathbb P}   %blackboard bold P
+\newcommand{\id}{\operatorname{id}} %for identity map
+\newcommand{\im}{\operatorname{im}} %for image of a function
+\newcommand{\dom}{\operatorname{dom}} %for domain of a function
+\newcommand{\cat}[1]{\mathscr{#1}}   %calligraphic category
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert} %for absolute value
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert} %for norm
+\newcommand{\modar}[1]{\text{ mod }{#1}} %for modular arithmetic
+\newcommand{\set}[1]{\left\{#1\right\}} %for set
+\newcommand{\setp}[2]{\left\{#1\ \middle|\ #2\right\}} %for set with a property
+\newcommand{\card}[1]{\#\,{#1}} %for cardinality of a set
+\newcommand\m[1]{\begin{pmatrix}#1\end{pmatrix}} 
+
+%Re-defined notations
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\emptyset}{\varnothing}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+%----------------------------
+
+\allowdisplaybreaks
+
+\newcommand{\tcr}[1]{\textcolor{red}{#1}}
+\newcommand{\tcb}[1]{\textcolor{blue}{#1}}
+\newcommand{\tco}[1]{\textcolor{orange}{#1}}
+
+\newcommand{\lrp}[1]{\left(#1\right)}
+\newcommand{\lrb}[1]{\left[#1\right]}
+\newcommand{\lrc}[1]{\left\{#1\right\}}
+\newcommand{\lrw}[1]{\left<#1\right>}
+ 
+ 
+\begin{document}
+ 
+\title{Homework 7}
+\author{Kevin Guillen\\[0.5em]
+MATH 202 | Algebra III | Spring 2021}
+\date{} 
+\maketitle
+
+%Use \[...\] instead of $$...$$
+
+\begin{problem} {14.7.4}
+    Let $K = \qq(\sqrt[n]{a})$, where $a \in \qq$, $a > 0$ and suppose $[K:\qq] = n $ (i.e., $x^{n} - a$ is irreducible). Let $E$ be any subfield of $K$ and let $[E : \qq] = d$. Prove that $E = \qq(\sqrt[d]{a})$. [Consider $N_{K/E}(\sqrt[n]{a}) \in E$.]
+\end{problem}
+\begin{proof}
+    First let $\delta = N_{K/E})\sqrt[n]{a} = \prod_{Gal(K/E)} \sigma(\sqrt[n]{a})$. For all $\sigma \in Gal(K/E)$ we have $\sigma(\sqrt[n]{a}) = \zeta_\sigma \sqrt[n]{a}$ for some root of unity $\zeta_\sigma$, and therefore \[\delta = \lrp{\prod_{Gal(K/E)}\zeta_\sigma}\sqrt[n]{a}^{\frac{n}{d}} = \lrp{\prod_{Gal(K/E)}\zeta_\sigma}\sqrt[d]{a}.\] Since $\delta \in E \subseteq \qq(\sqrt[n]{a})\subseteq \rr$ and the only real roots of unity are $\pm 1$ we have that $\delta = \pm \sqrt[d]{a}$. Therefore we have that $\qq(\sqrt[d]{a})\subseteq E$ with $\sqrt[d]{a}$ of degree $d$ over $\qq$. Thus $E = \qq(\sqrt[d]{a})$ as desired. 
+\end{proof}
+
+\vspace*{15pt}
+
+\begin{problem} {14.7.5}
+    Let $K$ be as in the previous exercise. Prove that if $n$ is odd then $K$ has no nontrivial subfields which are Galois over $\qq$ and if $n$ is even then the only nontrivial subfield of $K$ which is Galois over $\qq$ is $\qq(\sqrt{a})$. 
+\end{problem}
+\begin{proof}
+    The minimal polynomial of $\sqrt[n]{a}$ is $x^{n} - a$, which has splitting field $\qq(\sqrt[n]{a}, \zeta_n)$ for some primitive $n^{th}$ root of unity $\zeta_n$. For $n > 2$ we have $\qq(\sqrt[n]{a}) \neq \qq(\sqrt[n]{a}, \zeta_n)$, so $\qq(\sqrt[n]{a})$ is Galois if and only if $n = 2$. Then by the previous exercise we have that $K$ has a subfield $E$ that is Galois only when $n$ is even, in which case it is $\qq(\sqrt{a})$.
+\end{proof}
+
+\vspace*{15pt}
+\newpage
+\begin{problem} {14.7.6}
+    Let $L$ be the Galois closure of $K$ in the previous two exercises (i.e., the splitting field of $n^{n} -a$). Prove that $[L: \qq] = n\phi(n)$ or $\dfrac{1}{2}n\phi(n)$. [Note that $\qq(\zeta_n)\cap K$ is a Galois extension of $\qq$. ]
+\end{problem}
+\begin{proof}
+    First we consider the splittinf field of $x^{n}- a$ which is just $\qq(\sqrt[n]{a}, \zeta_n)$ where $\zeta_n$ is $n^{th}$ primitive root of unity. We have then that,
+    \[[\qq(\sqrt[n]{a}, \zeta_n):\qq] = \qq] = \dfrac{[\qq(\sqrt[n]{a}): \qq][\qq(\zeta_n):\qq]}{[\qq(\sqrt[n]{a}\cap\qq(\zeta_n)): \qq]} = \dfrac{n\phi(n)}{[\qq(\sqrt[n]{a})\cap\qq(\zeta_n):\qq]}.\]
+    Using what we have seen in the previous exercise we have that if $n$ is odd then $[\qq(\sqrt[n]{a}, \zeta_n):\qq] = n\phi(n)$ or $[\qq(\sqrt[n]{a},\zeta_n):\qq ] = \dfrac{1}{2}n\phi(n)$ depending on if $\qq(\sqrt[n]{a})\cap\qq(\zeta_n) = \qq(\sqrt{a})$.  
+\end{proof}
+
+\vspace*{15pt}
+
+\begin{problem} {14.7.8}
+    Let $p, q,$ and $r$ be primes in $\zz$ with $q \neq r$. Let $\sqrt[p]{q}$ denote any root of $x^{p} - q$ and let $\sqrt[p]{r}$ denote any root of $x^{p} - r$. Prove that $\qq(\sqrt[p]{q}) \neq \qq(\sqrt[p]{r})$. 
+\end{problem}
+\begin{proof}
+    For this proof we can use the fact seen in exercise 7 part c, which in the context of this problem gives us that, $\qq(\sqrt[p]{q}) = \qq(\sqrt[p]{r})$ if and only if $k/l, \ m/n \in \qq$ with $i,j \in \zz$ such that
+    \begin{align*}
+        q = r^{i}\dfrac{k^{p}}{l^{p}} && r = q^{j}\dfrac{m^{p}}{n^{p}}
+    \end{align*}
+    Assuming though that $k/l$ is in lowest terms we have that $l^{p} = r^{i}$ and $k^{p} = q$ which means that $p =1$, but $p$ is assumed to be prime in $\zz$, which is a contradiction!
+\end{proof}
+
+\vspace*{15pt}
+
+\begin{problem} {14.7.9}
+    (Artin-Schrier Extensions) Let $F$ be a field of characteristic $p$ and let $K$ be a cyclic extension of $F$ of degree $p$. Prove that $K = F(\alpha)$ where $\alpha$ is a root of the polynomial $x^{p} - x - a$ for some $a \in F$. [Note that $Tr_{K/F}(-1) = 0$ since $F$ is characteristic $p$ so that $-1 = \alpha -\sigma \alpha$ for some $\alpha \in K $ where $\sigma$ is a generator of $Gal(K/F)$ by exercise 26 of section 2. Show that $a = \alpha^{p} - \alpha$ is an element of $F.$] Note that since $F$ contains the $p^{th}$ rot of unity (namely 1) that this completes the description of all cyclic extension of prime degree $p$ over fields containing the $p^{th}$ roots of unity in all characteristics. 
+\end{problem}
+\begin{proof}
+    Using the noted comment we have that $Tr_{K/F}(-1) = 0$, so there is some $\alpha \in K$ such that $\alpha - \sigma\alpha = -1$, therefore we have $\sigma\alpha = \alpha + 1$. Generalizing this we have that 
+    \[\sigma^{i}\alpha = \alpha + i.\]
+    Because $F$ is of characteristic $p$ the elements $\sigma^{i}\alpha$ are distinct for $i = 0, \dots, p-1$ and thus $[F(\alpha): F] = p$ so $K = F(\alpha)$. 
+
+    We have,
+    \begin{align*}
+        \sigma(\alpha^{p}- \alpha) = \sigma(\alpha)^{p} -\sigma(\alpha) = (\alpha+1)^{p} -\alpha + 1 = \alpha^{p} - \alpha
+    \end{align*}
+    so $\alpha^{p}-\alpha$ is in the fixed field of $\sigma$ which is $F$. Let $a  = \alpha^{p} - \alpha$ we have that $\alpha$ is a root of $x^{p} -x - a $ as desired. 
+\end{proof}
+
+\vspace*{15pt}
+
+\begin{problem} {14.7.12}
+    Let $L$ be the Galois closure of the finite extension of $\qq(\alpha)$ of $\qq$. For any prime $p$ dividing the order of $Gal(L/\qq)$ prove there is a subfield $F$ of $L$ with $[L:F] = p$ and $L = F(\alpha)$.
+\end{problem}
+\begin{proof}
+    We have that $p$ is prime dividing the order of $Gal(L/\qq)$. Then by Cauchy's theorem $G$ has a subgroup $H$ and through the fundamental theorem it corresponds to a subfield $F'$ of $L$ where $[L: F'] = p$. Suppose then that for all $\sigma \in G$ we have $\sigma(\alpha)\in F'$, then $F' = L$, which is a contradiction. So there must be a $\sigma \in G$ that satisfies $\sigma(\alpha)\notin F'$. Because $p$ is prime and degree is multiplicative we have that $F'(\sigma(\alpha)) = L$. So if we set $F = \sigma^{-1}(F')$ we have $F(\alpha) = L$ and $[L:F] = p$ as desired.
+\end{proof}
+
+\vspace*{15pt}
+
+\begin{problem} {14.7.13}
+    Let $F$ be subfield of the real numbers $\rr$. let $a$ be an element of $F$ and let $K = F(\sqrt[n]{a})$ where $\sqrt[n]{a}$ denotes a real $n^{th}$ root of $a$. Prove that if $L$ is any Galois extension of $F$ contained in $K$ then $[L:F] \leq 2$. 
+\end{problem}
+\begin{proof}
+    Apply the arguments made in exercise 5, any Galois extension of $F$ contained in $K$, as defined in the problem statement, is trivial if $n$ is odd and if $n$ is even the only non-trivial Galois extension will be $F(\sqrt{a})$. Thus the degree of any Galois extension of $F$ contained in $K$ is at most 2. 
+\end{proof}
+
+\vspace*{15pt}
+
+\begin{problem} {14.7.16}
+    Let $a$ be a nonzero rational number.
+    \begin{itemize}
+        \item[(a)] Determine when the extension $\qq(\sqrt{ai})(i^{2} = -1)$ is of degree 4 over $\qq$.
+        \item[(b)] When $K = \qq(\sqrt{ai})$ is of degree 4 over $\qq$ show that $K$ is Galois over $\qq$ with the Klein 4-group as Galois group. In this case determine the quadratic extensions of $\qq$ contained in $K$. 
+    \end{itemize}
+\end{problem}
+
+\begin{itemize}
+    \item[(a)] \begin{proof}
+        Note $\sqrt{ai} = \dfrac{\sqrt{2\abs{a}}}{2} + \dfrac{\sqrt{2\abs{a}}}{2}i$ is a root of,
+        \begin{align*}
+            x^{4} + a^{2} = \prod_{j=0}^{3}(x - i^{j}\sqrt{ai}). 
+        \end{align*} 
+        This is an irreducible polynomial and is the minimal polynomial of $\sqrt{ai}$ if and only if $\sqrt{2\abs{a}}$ is irrational. This is because if it is not,
+        \[(x-\sqrt{ai})(x + i\sqrt{ai}) = x^{2} + \sqrt{2a} + a\in \qq[x]\]
+        divides $x^{4} + a^{2}$.
+    \end{proof} 
+    \item[(b)]\begin{proof}
+        Using the same description of the roots above we have that the Galois group is generated by,
+        \begin{align*}
+            \sqrt{ai} \mapsto -\sqrt{ai} && \sqrt{ai}\mapsto \overline{\sqrt{ai}}
+        \end{align*}
+        which are both of order 2. Therefore the Galois group is the Klein 4-group, and by the observations made, the quadratic extension is $\qq(\sqrt{2a})$.
+        
+    \end{proof}
+\end{itemize}
+
+\vspace*{15pt}
+
+\end{document}

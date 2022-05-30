@@ -1,7 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1651021887 "/Users/kevin/Documents/Math-HW/HWTemplate2/PS1_MATH105A_Shell.tex" "/Users/kevin/Documents/Math-HW/HWTemplate2/PS1_MATH105A_Shell.pdf" "PS1_MATH105A_Shell" 1651021888
-  "/Users/kevin/Documents/Math-HW/HWTemplate2/PS1_MATH105A_Shell.aux" 1651021888 721 99a7676d6fc59271102ebdb4471f4eee ""
-  "/Users/kevin/Documents/Math-HW/HWTemplate2/PS1_MATH105A_Shell.tex" 1651021887 4140 37458ee14a21e09c3584ee4c6ae999af ""
+["pdflatex"] 1651699855 "/Users/kevin/Documents/Math-HW/HWTemplate2/PS1_MATH105A_Shell.tex" "/Users/kevin/Documents/Math-HW/HWTemplate2/PS1_MATH105A_Shell.pdf" "PS1_MATH105A_Shell" 1651699856
+  "/Users/kevin/Documents/Math-HW/HWTemplate2/PS1_MATH105A_Shell.aux" 1651699856 721 99a7676d6fc59271102ebdb4471f4eee ""
+  "/Users/kevin/Documents/Math-HW/HWTemplate2/PS1_MATH105A_Shell.tex" 1651699855 4178 76eeac7fa7e626849f5d3d9754da3fe9 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2021/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/tfm/adobe/palatino/pplb7t.tfm" 1136768653 1616 371d1ee60c04b008c8fd760060cd34f1 ""
@@ -202,13 +202,13 @@
   "/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1616695603 5169178 a2ce6e2d73f603b690db6777d06dbccb ""
   "/usr/local/texlive/2021/texmf-var/web2c/pdftex/pdflatex.fmt" 1636886989 2724736 b6b491193b19382292690a3c1f46d0cf ""
   "/usr/local/texlive/2021/texmf.cnf" 1616695596 577 4c1911a7228e554c6032256d3cf5567d ""
-  "PS1_MATH105A_Shell.aux" 1651021888 721 99a7676d6fc59271102ebdb4471f4eee "pdflatex"
-  "PS1_MATH105A_Shell.out" 1651021888 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "PS1_MATH105A_Shell.tex" 1651021887 4140 37458ee14a21e09c3584ee4c6ae999af ""
+  "PS1_MATH105A_Shell.aux" 1651699856 721 99a7676d6fc59271102ebdb4471f4eee "pdflatex"
+  "PS1_MATH105A_Shell.out" 1651699856 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "PS1_MATH105A_Shell.tex" 1651699855 4178 76eeac7fa7e626849f5d3d9754da3fe9 ""
   (generated)
-  "PS1_MATH105A_Shell.out"
   "/Users/kevin/Documents/Math-HW/HWTemplate2/PS1_MATH105A_Shell.log"
   "PS1_MATH105A_Shell.pdf"
-  "/Users/kevin/Documents/Math-HW/HWTemplate2/PS1_MATH105A_Shell.pdf"
   "PS1_MATH105A_Shell.aux"
+  "/Users/kevin/Documents/Math-HW/HWTemplate2/PS1_MATH105A_Shell.pdf"
+  "PS1_MATH105A_Shell.out"
   "PS1_MATH105A_Shell.log"

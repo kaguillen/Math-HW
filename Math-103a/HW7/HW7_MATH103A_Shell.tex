@@ -1,0 +1,225 @@
+\documentclass[11pt]{article}
+%------------------------
+%Packages
+\usepackage[top=0.75in, bottom=1.25in, left=1in, right=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb} %this is THE math package
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{fancybox}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{varwidth}
+\usepackage{mdframed}
+\usepackage{mathrsfs}
+\usepackage{xcolor}
+%------------------------
+%Fonts I use, uncomment if you like to use them.
+%The first is the general font, and the second a math font
+\usepackage{mathpazo}
+\definecolor{darkblue}{rgb}{0.0,0.0,.7}
+%------------------------
+%This is so that we have standard fonts for the doublestroked symbols
+%for reals, naturals etc. regardless of what font you use.
+%Don't comment
+\AtBeginDocument{
+  \DeclareSymbolFont{AMSb}{U}{msb}{m}{n}
+  \DeclareSymbolFontAlphabet{\mathbb}{AMSb}}
+
+%----------------------------------------------
+%User-defined environments
+%Commented because we're not using them in this document
+%The only uncommented ones are the Problem and Solution environment
+
+% \newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{question}[2][Question]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem\!]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+%\newenvironment{sub-problem}[2][]{\begin{trivlist}
+%\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2}]}{\end{trivlist}}
+\newenvironment{solution}{\begin{proof}[\textbf{\textit{Solution}}]}{\end{proof}}
+%----------------------------------------------
+
+%----------------------------
+%User-defined notations
+\newcommand{\zz}{\mathbf Z}   %blackboard bold Z
+\newcommand{\qq}{\mathbf Q}   %blackboard bold Q
+\newcommand{\ff}{\mathbf F}   %blackboard bold F
+\newcommand{\rr}{\mathbf R}   %blackboard bold R
+\newcommand{\nn}{\mathbf N}   %blackboard bold N
+\newcommand{\cc}{\mathbf C}   %blackboard bold C
+\newcommand{\af}{\mathbf A}   %blackboard bold A
+\newcommand{\pp}{\mathbf P}   %blackboard bold P
+\newcommand{\id}{\operatorname{id}} %for identity map
+\newcommand{\parg}{\operatorname{Arg}} %principal argument
+\newcommand{\plog}{\operatorname{Log}} %principal log
+\newcommand{\im}{\operatorname{im}} %for image of a function
+\newcommand{\dom}{\operatorname{dom}} %for domain of a function
+\newcommand{\cat}[1]{\mathscr{#1}}   %calligraphic category
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert} %for absolute value
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert} %for norm
+\newcommand{\modar}[1]{\text{ mod }{#1}} %for modular arithmetic
+\newcommand{\set}[1]{\left\{#1\right\}} %for set
+\newcommand{\setp}[2]{\left\{#1\ \middle|\ #2\right\}} %for set with a property
+\newcommand{\card}[1]{\#\,{#1}} %for cardinality of a set
+
+%Re-defined notations
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\emptyset}{\varnothing}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\gcd}{\operatorname{GCD}}
+\renewcommand{\Im}{\operatorname{Im}}
+%----------------------------
+
+\allowdisplaybreaks
+ 
+\begin{document}
+ 
+\title{Homework 7}
+\author{[Your Full Name Here]\\[0.5em]
+MATH 103A --- Complex Analysis --- Spring 2022}
+\date{} 
+\maketitle
+
+%Use \[...\] instead of $$...$$
+
+\begin{problem}{7.1}
+Let 
+\[f(z) = \frac{z^2+2}{(z^2+3)(z^2 + 2z + 1)}\]
+and let $C_R$ denote the semicircle of radius $R$ parameterised by $z(t) = Re^{it}$ with $t \in [0,\pi]$. Show that
+\[\lim_{R\to \infty} \int_{C_R}f(z) \, dz = 0.\]
+\end{problem}
+%----------------------------------------
+\begin{solution}
+%Uncomment and WRITE YOUR SOLUTION HERE
+\end{solution}
+%----------------------------------------
+
+\newpage  %Do not delete
+
+\begin{problem}{7.2}
+Let $C$ be a positively oriented simply closed contour and let $R$ be the region consisting of $C$ and its interior.
+\begin{itemize}[itemsep=3em]
+\item[(a)] Show that the area $A$ of the region $R$ is given by the formula \[A = \frac{1}{2i} \int_C \overline{z} \, dz.\]
+%----------------------------------------
+\begin{solution}
+%Uncomment and WRITE YOUR SOLUTION HERE
+\end{solution}
+%----------------------------------------
+
+\item[(b)] Compute the area $A$ of the region enclosed by the \emph{cardioid} $C$ with parameterization
+\[z(t) = \frac{1}{2} + e^{it} + \frac{1}{2}e^{2it},\quad 0 \leq t \leq 2\pi.\] 
+%----------------------------------------
+\begin{solution}
+%Uncomment and WRITE YOUR SOLUTION HERE
+\end{solution}
+%----------------------------------------
+
+\end{itemize}
+\end{problem}
+
+\newpage  %Do not delete
+
+\begin{problem}{7.3}
+Let $C$ be a closed contour and let $z_0 \in \cc$ be a point not lying on $C$. The \emph{winding number} of $C$ about $z_0$ is defined by the integral
+\[n(C,z_0) = \frac{1}{2\pi i}\int_C \frac{1}{z-z_0} \, dz.\]
+\begin{itemize}[itemsep=3em]
+\item[(a)] Compute $n(C_1,z_0)$ where $C_1$ is parameterised by \[z(t) = z_0 + Re^{it},\quad 0 \leq t \leq 2k\pi,\ k\in \zz,\ R>0.\] 
+%----------------------------------------
+\begin{solution}
+%Uncomment and WRITE YOUR SOLUTION HERE
+\end{solution}
+%----------------------------------------
+
+\item[(b)] Compute $n(C_2,z_0)$, where $C_2$ is any circle and $z_0$ is any point not lying on or interior to $C_2$. 
+%----------------------------------------
+\begin{solution}
+%Uncomment and WRITE YOUR SOLUTION HERE
+\end{solution}
+%----------------------------------------
+
+\item[(c)] Let $C_3$ be any closed contour and $z_0$ any point not lying on $C_3$, parameterized by $z:[a,b] \to \cc$. For any such contour, we can always find real-valued (piece-wise) differentiable functions $r,\theta :[a,b] \to \rr$ with $r(t)>0$ such that $z(t) = z_0 + r(t) e^{i\theta(t)}$. Compute $n(C_3,z_0)$.  
+%----------------------------------------
+\begin{solution}
+%Uncomment and WRITE YOUR SOLUTION HERE
+\end{solution}
+%----------------------------------------
+
+\end{itemize}
+\end{problem}
+
+\newpage  %Do not delete
+
+\begin{problem}{7.4}
+Let $a,b \in \cc$ and let $C_R$ be the circle of radius $R$ centered at the origin, traversed once in the positive orientation. If $\abs{a} < R < \abs{b}$, show that
+\[\int_{C_R} \frac{1}{(z-a)(z-b)}\, dz = \frac{2\pi i}{a-b}.\]
+\end{problem}
+%----------------------------------------
+\begin{solution}
+%Uncomment and WRITE YOUR SOLUTION HERE
+\end{solution}
+%----------------------------------------
+
+\newpage  %Do not delete
+
+\begin{problem}{7.5}
+Let \[f(z) = \frac{1}{z^2+1}.\]
+Determine whether $f$ has an antiderivative on the given domain $G$. You must prove your claims. 
+\begin{itemize}[itemsep=3em]
+\item[(a)] $G = \cc \setminus \{i,-i\}$.
+%----------------------------------------
+\begin{solution}
+%Uncomment and WRITE YOUR SOLUTION HERE
+\end{solution}
+%----------------------------------------
+
+\item[(b)] $G = \setp{z \in \cc}{\Re z > 0}$.
+%----------------------------------------
+\begin{solution}
+%Uncomment and WRITE YOUR SOLUTION HERE
+\end{solution}
+%----------------------------------------
+
+\end{itemize}
+\end{problem}
+
+
+%----------------------------------------
+%Delete if nothing to add
+\newpage  %Do not delete
+
+\begin{center}
+\textbf{Collaborators:}
+%List your peers with whom you discussed the Problem Set
+\end{center}
+\vfill 
+
+\begin{center}
+\textbf{References:}
+%List any book/website/notes that you used to write your solutions
+\end{center}
+\begin{itemize}
+\item[$\bullet$] [Book(s): Title, Author]
+\item[$\bullet$] [Online: \href{http://example.com/}{\color{blue}Link}]
+\item[$\bullet$] [Notes: \href{http://example.com/}{\color{blue}Link}]
+\end{itemize}
+
+\vfill
+\begin{center}
+Fin.
+\end{center}
+\vfill
+%----------------------------------------
+
+\end{document}
